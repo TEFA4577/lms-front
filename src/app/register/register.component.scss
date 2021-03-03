@@ -1,0 +1,118 @@
+.botonRegistrar {
+  padding: 0.5%;
+  font-size: 15px !important;
+  min-width: auto !important;
+}
+
+.redesSociales {
+  font-size: 25px;
+}
+
+.imagenLogo {
+  margin-top: 5%;
+  margin-left: 10%;
+  width: 80%;
+}
+/**
+ * Ajuste de estilos dependiendo a las resoluciones del dispositivo
+ */
+
+/* Smartphone (Galaxy Fold) ----------- */
+@media only screen and (min-device-width: 300px) and (max-device-width: 409px) {
+  /* Styles */
+  .fondo {
+    height: auto;
+  }
+
+  .grupoBotonRedes {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 540px) {
+  /* Styles */
+  .fondo {
+    height: auto;
+  }
+
+  .grupoBotonRedes {
+    margin-left: 8%;
+    margin-right: 8%;
+  }
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-device-width: 360px) {
+  /* Styles */
+  .fondo {
+    height: auto;
+  }
+
+  .grupoBotonRedes {
+    margin-left: 8%;
+    margin-right: 8%;
+  }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .fondo {
+    height: 100%;
+  }
+  /* Styles */
+  .grupoBotonRedes {
+    margin-left: 12%;
+    margin-right: 12%;
+  }
+
+  ._cuerpo {
+    padding-top: 27%;
+  }
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 1224px) {
+  /* Styles */
+  .fondo {
+    height: 100%;
+  }
+}
+
+.d1 {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  float: left;
+  background: url(../../assets/img/register1.png) center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: table;
+  top: 0;
+}
+
+.login {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  max-width: 700px;
+  right: 0;
+  margin: 0;
+  // background: #fff;
+  height: 100%;
+  z-index: 1;
+}
+
+.example-card {
+  max-width: 500px;
+
+  margin: 20px;
+
+
+  // box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/*.footer{
+  margin: 8px 8px 20px 8px;
+}*/

@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row bg-dark">
+    <div class="col-md-12 py-4 text-white">
+      <p>Docentes de la Academia.</p>
+    </div>
+  </div>
+  <hr />
+  <!--Presentacion del usuario-->
+  <div class="row justify-content-center">
+    <div class="col-md-3" *ngFor="let item of docente">
+      <!--Cards de los nuevos cursos-->
+      <mat-card class="example-card">
+        <img src="{{item.foto_usuario}}" class="img-cards" fallimg="avatar"/>
+        <hr>
+        <mat-card-header>
+          <mat-card-title>
+            <p class="lead">{{item.nombre_usuario}}</p>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list role="list" align="justify">
+            <mat-list-item role="listitem">Correo electronico: {{item.correo_usuario}}</mat-list-item>
+            <mat-list-item role="listitem">Descripcion del docente: {{item.datos_docente.descripcion_docente}}</mat-list-item>
+            <mat-list-item role="listitem">Experiencia del docente: {{item.datos_docente.experiencia_docente}}</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+      <br>
+      <!--Final de los Cards - nuevos cursos-->
+    </div>
+  </div>
+</div>

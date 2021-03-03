@@ -1,0 +1,168 @@
+<div class="d-flex flex-lg-row-reverse">
+  <button mat-button routerLink="./mis-cursos">volver atras</button>
+</div>
+<div *ngIf="!curso">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="container-lg cuerpo" *ngIf="curso">
+  <div class="row">
+    <div class="col-md-7">
+      <form [formGroup]="formCurso" (ngSubmit)="actualizarCurso($event)" autocomplete="off">
+        <mat-card class=" contenidoCurso">
+          <mat-card-header>
+            <mat-card-title>{{curso.nombre_curso}}</mat-card-title>
+            <mat-card-subtitle>Estado del Curso: {{curso.estado_curso}}</mat-card-subtitle>
+            <hr>
+            <div class="d-flex flex-row-reverse">
+              <button mat-icon-button color="warn" type="button" (click)="borrarCurso(curso.id_curso)"
+                matTooltip="borrar el curso">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button mat-icon-button color="primary" type="button" (click)="enviarARevision()"
+                matTooltip="enviar el curso a revision">
+                <mat-icon>send</mat-icon>
+              </button>
+              <button mat-icon-button color="accent" type="button" (click)="imagenCurso.click()"
+                matTooltip="cambiar imagen del curso">
+                <mat-icon>perm_media</mat-icon>
+              </button>
+              <input type="file" name="imagenCurso" #imagenCurso hidden accept="image/*"
+                (change)="uploadFile($event.target.files)">
+            </div>
+          </mat-card-header>
+          <hr>
+          <div *ngIf="imagenCambio">
+            <h3>Nueva imagen</h3>
+            <img mat-card-image [src]="imagenCambio" alt="{{curso.nombre_curso}}">
+          </div>
+          <img *ngIf="!imagenCambio" mat-card-image [src]="curso.imagen_curso" alt="{{curso.nombre_curso}}">
+          <mat-card-content>
+            <div class="row">
+              <mat-form-field class="col-md-6">
+                <mat-label>nombre del curso</mat-label>
+                <input matInput formControlName="nombre_curso" type="text" placeholder="">
+              </mat-form-field>
+              <mat-form-field class="col-md-6">
+                <mat-label>Precio del Curso</mat-label>
+                <input matInput formControlName="precio" type="number" placeholder="">
+              </mat-form-field>
+              <mat-form-field class="col-md-12" hintLabel="Maximo de caracteres 500">
+                <mat-label>descripcion del curso</mat-label>
+                <textarea matInput #input formControlName="descripcion_curso" maxlength="500"></textarea>
+                <mat-hint align="end">{{input.value?.length || 0}}/500</mat-hint>
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-button color="wanr" type="button" (click)="resetForm()">Descartar Cambios</button>
+            <button mat-button color="primary" type="submit" [disabled]="formCurso.invalid">Guardar cambios</button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+    <div class="col-md-5">
+      <hr>
+      <div *ngIf="rutaVideo">
+        <h3>Vista Previa del Video</h3>
+        <video [src]="rutaVideo" class="videoPreview" controls></video>
+        <button mat-raised-button class="btn-block"color="warn"(click)="verVideo('')">cerrar</button>
+      </div>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Modulos</mat-card-title>
+          <hr>
+          <div class="d-flex flex-row-reverse">
+            <button mat-icon-button color="primary" type="button" (click)="crearModulo(curso.id_curso)"
+              matTooltip="Crear un modulo">
+              <mat-icon>library_add</mat-icon>
+            </button>
+          </div>
+        </mat-card-header>
+        <hr>
+        <mat-card-content>
+          <mat-accordion multi>
+            <div *ngFor="let modulo of modulos" class="row">
+              <div class="col">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      {{modulo.nombre_modulo}}
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <mat-panel-description>
+                    {{modulo.descripcion_modulo}}
+                  </mat-panel-description>
+                  <div>
+                    <div class="d-flex flex-row-reverse">
+                      <button mat-icon-button color="warn" matTooltip="eliminar el modulo"
+                        (click)="borrarModulo(modulo.id_modulo)">
+                        <mat-icon>delete_forever</mat-icon>
+                      </button>
+                      <button mat-icon-button color="accent" matTooltip="cambiar datos del modulo"
+                        (click)="editarModulo(modulo.id_modulo)">
+                        <mat-icon>attach_file</mat-icon>
+                      </button>
+                      <button mat-icon-button color="primary" matTooltip="crear una clase"
+                        (click)="crearClase(modulo.id_modulo)">
+                        <mat-icon>add_box</mat-icon>
+                      </button>
+                    </div>
+                    <div>
+                      <mat-selection-list [multiple]="false">
+                        <mat-list-item *ngFor="let clase of modulo.clases_modulo" class="row">
+                          <mat-icon mat-list-icon>school</mat-icon>
+                          <div mat-line (click)="verVideo(clase.video_clase)">
+                            <div mat-line>Titulo: {{clase.titulo_clase}}</div>
+                            <div mat-line>Descripcion: {{clase.descripcion_clase}}</div>
+                          </div>
+                          <div mat-line align="end">
+                            <button mat-icon-button color="accent" matTooltip="cambiar datos de la clase"
+                              (click)="editarClase(clase.id_clase)">
+                              <mat-icon>create</mat-icon>
+                            </button>
+                            <button mat-icon-button color="primary" matTooltip="subir un recurso para el curso"
+                              (click)="abrirRecurso(clase.id_clase)">
+                              <mat-icon>create_new_folder</mat-icon>
+                            </button>
+                            <button mat-icon-button matTooltip="ver el video de la clase" type="button" (click)="verVideo(clase.video_clase)">
+                              <mat-icon>video_settings</mat-icon>
+                            </button>
+                            <button mat-icon-button color="warn" matTooltip="eliminar la clase"
+                              (click)="borrarClase(clase.id_clase)">
+                              <mat-icon>delete_forever</mat-icon>
+                            </button>
+                          </div>
+                        </mat-list-item>
+                      </mat-selection-list>
+                    </div>
+                  </div>
+                </mat-expansion-panel>
+              </div>
+            </div>
+          </mat-accordion>
+        </mat-card-content>
+      </mat-card>
+      <hr>
+      <div class="btns">
+        <button mat-raised-button color="warn" type="button" (click)="borrarCurso(curso.id_curso)"
+          matTooltip="borrar el curso"
+          matTooltipPosition="right">
+          <mat-icon align="start">delete</mat-icon>
+          <span class="texto">Borrar Curso</span>
+        </button>
+        <button mat-raised-button color="primary" type="button" (click)="enviarARevision()"
+          matTooltip="enviar el curso a revision"
+          matTooltipPosition="right">
+          <mat-icon align="start">send</mat-icon>
+          <span class="texto">Enviar a Revison</span>
+        </button>
+        <button mat-raised-button color="accent" type="button" (click)="imagenCurso.click()"
+          matTooltip="cambiar imagen del curso"
+          matTooltipPosition="right">
+          <mat-icon align="start">perm_media</mat-icon>
+          <span class="texto">Cambiar la imagen</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

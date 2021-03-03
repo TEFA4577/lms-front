@@ -1,0 +1,28 @@
+<div class="container-fluid py-3">
+  <div class="row justify-content-center py-3">
+      <p class="lead">Cursos pertenecientes a la categoria</p>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let miCurso of categorias">
+      <mat-card class="example-card">
+        <img src="{{ miCurso.imagen_curso }}" routerLink="/curso/curso-detalle/{{ miCurso.id_curso }}" class="img-cards"
+          fallimg />
+        <hr />
+        <mat-card-header>
+          <mat-card-title>
+            <a class="lead" routerLink="/curso/curso-detalle/{{ miCurso.id_curso }}">{{ miCurso.nombre_curso }}</a>
+          </mat-card-title>
+          <br>
+          <mat-card-subtitle>Precio: Bs. {{ miCurso.precio}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-subtitle>Descripcion: </mat-card-subtitle>
+        <mat-card-content>
+          <div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
+            {{ miCurso.descripcion_curso }}
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<mat-dialog-content class="mat-typography">
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+        Datos Personales
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>paid</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form [formGroup]="formPago" (ngSubmit)="submitEditarUsuario($event)" class="example-form">
+        <!--Campos del formulario-->
+        <!--Nombre completo del estudiante-->
+        <mat-form-field appearance="outline" class="col-12">
+          <mat-label>Nombre Completo</mat-label>
+          <input matInput formControlName="nombre_usuario" type="text">
+        </mat-form-field>
+        <!--Correo electronico del estudiante-->
+        <mat-form-field appearance="outline" class="col-12">
+          <mat-label>Correo electrónico</mat-label>
+          <input matInput formControlName="correo_usuario" type="email">
+        </mat-form-field>
+        <!--Final del formmulario de registro-->
+        <div class="col-12" align="end">
+          <button mat-flat-button color="accent" class="col-12"  type="submit">Edita tus datos</button>
+        </div>
+      </form>
+      <mat-action-row>
+        <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Comprobante de pago
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>paid</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <app-pago-deposito [id]="data.id">
+      </app-pago-deposito>
+
+      <mat-action-row>
+        <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

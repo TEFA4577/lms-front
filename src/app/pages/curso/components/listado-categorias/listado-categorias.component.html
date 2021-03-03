@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <div class="row bg-dark">
+    <div class="col-md-12 py-3 text-white text-center">
+      <h3>Categorias Principales</h3>
+    </div>
+  </div>
+  <hr />
+  <!--Presentacion del usuario-->
+  <div class="row justify-content-center">
+    <div class="col-md-3" *ngFor="let item of etiquetas">
+      <!--Cards de los nuevos cursos-->
+      <mat-card class="example-card">
+        <img src="{{item.imagen_etiqueta}}" class="img-cards" />
+        <hr>
+        <mat-card-header>
+          <mat-card-title>
+            <p class="lead center">{{item.nombre_etiqueta}}</p>
+          </mat-card-title>
+          <mat-card-subtitle>Descripcion: {{item.descripcion_etiqueta}}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+      <br>
+      <!--Final de los Cards - nuevos cursos-->
+    </div>
+  </div>
+</div>

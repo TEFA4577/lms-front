@@ -1,0 +1,73 @@
+<div class="d1">
+</div>
+<div class="login">
+  <!--Inicio del Card-->
+  <!--Formulario del lado derecho-->
+  <mat-card class="example-card">
+    <!--Titulo o cabecera del card-->
+    <div class="justify-content-center">
+      <img src="assets/img/Iconos/logo jpg de alta resolucion.png" class="imagenLogo" />
+    </div>
+    <!--Final del Titulo o cabecera del card-->
+    <!--Formulario de registro-->
+    <form [formGroup]="form" (ngSubmit)="ingresoLogin($event)" autocomplete="off">
+      <mat-form-field appearance="outline" class="col-md-12">
+        <mat-label>
+          Ingresa tu correo electrónico
+        </mat-label>
+        <input matInput placeholder="ejemplo@gmail.com" formControlName="correo_usuario" />
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-md-12">
+        <mat-label>Ingresa tu contraseña</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{
+            hide ? "visibility_off" : "visibility"
+            }}</mat-icon>
+        </button>
+
+      </mat-form-field>
+      <p>
+        <button [disabled]="form.invalid" type="submit" mat-raised-button class="col-md-12 btn2">Inicia
+          sesion!</button>
+      </p>
+    </form>
+    <!--Final del Formulario de registro-->
+    <br>
+    <mat-card-footer>
+      <div class="card-footer">
+        <h3>
+          Continua con:
+        </h3>
+        <div class="grupoBotonRedes">
+          <div class="d-flex align-content-center justify-content-center">
+            <div class="col" align="center">
+              <button mat-fab type="button" color="warn" (click)="abrirRegistro('google')">
+                <mat-icon fontSet="fab" fontIcon="fa-google" class="redesSociales"></mat-icon>
+              </button>
+            </div>
+            <div style="height: 20px; margin-top: 5%; margin-bottom: 8%;" align="center">
+              <h2>
+                - O -
+              </h2>
+            </div>
+            <div class="col" align="center">
+              <button mat-fab type="button" color="primary" (click)="abrirRegistro('facebook')">
+                <mat-icon fontSet="fab" fontIcon="fa-facebook-f" class="redesSociales"></mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <span>Aun no tienes una cuenta <a style="color: blue;" routerLink="/register">Registrate Aqui</a></span>
+        </div>
+        <div class="d-flex justify-content-center">
+          <span><a style="color: crimson;" routerLink="/">Volver a Inicio</a></span>
+        </div>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+</div>

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "lms-proyect": {
+      "hosting": {
+        "LMS-FRONTEND": [
+          "lms-proyect"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+.menu {
+  background-color: #673AB7;
+}
+
+.ventajas {
+  margin: 0 0;
+  width: 100%;
+}
+
+.mat-raised-button {
+  border-radius: 800px;
+}
+
+.col {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.col2 {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.text {
+  color: #2e3d4b;
+}
+.long-text{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+//Cards de las categorias
+.mat-card {
+  width: 100%;
+  height: 100%;
+}
+
+.cat-img-cards {
+  height: 70%;
+  width: 100%;
+}
+
+//Cards de los cursos
+.mat-card {
+  min-height: 200px;
+  max-height: 400px;
+  margin-bottom: 15px;
+}
+
+.mat-card-title {
+  text-align: center;
+}
+
+.mat-card-content {
+  flex-grow: 1;
+  overflow: auto;
+  align-content: justify;
+  text-align: justify;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+.img-cards {
+  max-height: 150px;
+}
+
+.portafolio {
+  margin-left: 10%;
+}
+
+.img-svg path {
+  fill: #fff;
+}
+
+.card-doc {
+  width: 100%;
+  height: 90%;
+}
+
+.img-cards-testimonios {
+  width: 100%;
+  height: 80%;
+}
+.mat-chip {
+  max-width: 200px;
+  margin-left: 40px;
+}

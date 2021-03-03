@@ -1,0 +1,78 @@
+<div class="d1">
+</div>
+<div class="login">|
+  <div class="fondo">
+    <!--Inicio del Card-->
+    <mat-card class="example-card">
+      <!--Titulo o cabecera del card-->
+      <div class="justify-content-center">
+        <img src="assets/img/Iconos/logo jpg de alta resolucion.png" class="imagenLogo" />
+      </div>
+      <p class="lead text-center">Registrate aquí!</p>
+      <!--Final del Titulo o cabecera del card-->
+      <!--Formulario de registro-->
+      <form [formGroup]="form" (ngSubmit)="submitRegistrar($event)" autocomplete="off">
+
+        <mat-form-field appearance="outline" class="col-md-12">
+          <mat-label>Nombre Completo</mat-label>
+          <input matInput placeholder="Escribe tu Nombre" formControlName="nombre_usuario">
+          <mat-error *ngIf="nombreError.hasError('required')">el campo es requrido</mat-error>
+          <mat-error *ngIf="nombreError.hasError('minlength')">el minimo de caracteres es 4</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col-md-12">
+          <mat-label>Correo Electronico</mat-label>
+          <input matInput placeholder="correo@mail.com" formControlName="correo_usuario">
+          <mat-error *ngIf="correoError.hasError('required')">el campo es requrido</mat-error>
+          <mat-error *ngIf="correoError.hasError('email')">el dato tiene que ser un correo electronico valido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col-md-12">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña" formControlName="password">
+          <mat-error *ngIf="passwordError.hasError('required')">el campo es requrido</mat-error>
+          <mat-error *ngIf="passwordError.hasError('minlength')">el minimo de caracteres es 6</mat-error>
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <button [disabled]="form.invalid" type="submit" mat-raised-button class="botonRegistrar col-md-12"
+          color="primary">Registrarte!</button>
+      </form>
+      <!--Final del Formulario de registro-->
+      <br>
+      <p class="lead text-center">Registrate con tus redes sociales!</p>
+      <mat-card-footer>
+        <div class="grupoBotonRedes">
+          <div class="d-flex align-content-center justify-content-center">
+            <div class="col" align="center">
+              <button mat-fab type="button" color="warn" (click)="abrirRegistro('google')">
+                <mat-icon fontSet="fab" fontIcon="fa-google" class="redesSociales"></mat-icon>
+              </button>
+            </div>
+            <div style="height: 20px; margin-top: 5%; margin-bottom: 8%;" align="center">
+              <h2>
+                - O -
+              </h2>
+            </div>
+            <div class="col" align="center">
+              <button mat-fab type="button" color="primary" (click)="abrirRegistro('facebook')">
+                <mat-icon fontSet="fab" fontIcon="fa-facebook-f" class="redesSociales"></mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <span class="text-center">Ya tienes una cuenta <a style="color: blue;" routerLink="/login"><br>Ingresa Aqui</a></span>
+        </div>
+        <div class="d-flex justify-content-center">
+          <span><a style="color: crimson;" routerLink="/">Volver a Inicio</a></span>
+        </div>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>

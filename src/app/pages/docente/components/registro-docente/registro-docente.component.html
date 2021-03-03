@@ -1,0 +1,73 @@
+<!--Componte de dialogo o modal para el proceso de pago-->
+<mat-spinner *ngIf="isActive"></mat-spinner>
+<div *ngIf="!isActive">
+  <h1 mat-dialog-title>Formulario de solicitud para instructores</h1>
+  <mat-dialog-content class="mat-typography">
+    <div class="container">
+      <form [formGroup]="formDocente" (ngSubmit)="submitRegistrarDocente($event)" class="example-form">
+        <div class="col-md-12">
+          <h3>Tus datos de Usuario</h3>
+          <div class="row">
+            <!--Informacion del usuario-->
+            <mat-form-field class="col-md-6" appearance="outline">
+              <mat-label>Tu nombre completo:</mat-label>
+              <input matInput value="{{datosUsuario.nombre_usuario}}" [readonly]="true" />
+            </mat-form-field>
+            <mat-form-field class="col-md-6" appearance="outline">
+              <mat-label>Correo electronico:</mat-label>
+              <input matInput value="{{datosUsuario.correo_usuario}}" [readonly]="true" />
+            </mat-form-field>
+            <!--Informacion del usuario-->
+          </div>
+          <hr>
+          <h3>Agrega tus Datos de Instructor</h3>
+          <div class="row">
+            <!--Datos del Docente-->
+            <mat-form-field class="col-md-6" appearance="outline">
+              <mat-label>Tu numero de celular:</mat-label>
+              <input matInput formControlName="telefono_docente" required />
+            </mat-form-field>
+            <mat-form-field class="col-md-6" appearance="outline">
+              <mat-label>Tu experiencia como instructor / docente:</mat-label>
+              <input matInput formControlName="experiencia_docente" required />
+            </mat-form-field>
+          </div>
+          <hr>
+          <h3>Informacion adicional</h3>
+          <div class="row">
+            <mat-form-field class="col-md-12" appearance="outline">
+              <mat-label>Hablanos acerca de ti (Descripcion del instructor):</mat-label>
+              <textarea matInput formControlName="descripcion_docente" placeholder="Ex. Soy una persona..."
+                required></textarea>
+            </mat-form-field>
+            <div class="col-md-6">
+              <input type="file" #imagen hidden accept="video/mp4,video/x-m4v,video/*"
+                (change)="uploadFile($event.target.files)">
+              <button mat-raised-button class="button-width" type="button" color="accent" (click)="imagen.click()">Sube
+                un video tuyo</button>
+              <div class="contenidoVideo">
+                <video [src]="videoURL" *ngIf="videoURL" class="videoR" controls></video>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <input type="file" name="CV" #imagen2 hidden (change)="uploadFileCV($event.target.files)">
+              <button mat-raised-button class="button-width" type="button" color="warn" (click)="imagen2.click()">Sube
+                tu CV</button>
+              <p *ngIf="filesCV">
+                {{filesCV | json}}
+              </p>
+            </div>
+            <!--Datos del Docente-->
+          </div>
+          <button mat-raised-button class="col-md-12" color="primary" type="submit" [disabled]="formDocente.invalid">
+            Enviar mi solicitud de docencia
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+  </mat-dialog-actions>
+
+</div>

@@ -1,0 +1,134 @@
+<div class="container">
+  <!--  Descripcion: Este es el contenido o Informacion del curso-->
+  <div class="row">
+    <div *ngIf="!curso">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div class="col-md-4 boder py-4">
+      <!--Card del curso:
+                  * Fotografia
+                  * Titulo
+                  * Precio
+                  * Secciones-->
+      <mat-card class="example-card" *ngIf="curso">
+        <!--Fotografia de referencia al curso-->
+        <img mat-card-image src="{{ curso.imagen_curso }}" />
+        <!--Informacion del curso-->
+        <mat-card-header>
+          <mat-card-title class="py-3">{{ curso.nombre_curso }}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h3>Número de Secciones: {{ modulos.length }}</h3>
+          <h3>Precio del Curso: Bs. {{ curso.precio }}</h3>
+          <button mat-raised-button *ngIf="!estado; else logged" class="btn-block py-1" color="primary"
+            routerLink="/register">Registrate y compra el curso!
+            <!--<a href="/register" style="color: white;">Registrate y compra el curso!</a>-->
+          </button>
+          <ng-template #logged>
+            <button mat-raised-button (click)="openCompra();" class="btn-block py-1" color="primary">Compra el curso
+              ahora!</button>
+          </ng-template>
+        </mat-card-content>
+      </mat-card>
+      <br>
+      <mat-card class="example-card" [hidden]="!mostrarMetodo">
+        <mat-card-header>
+          <mat-card-title>Elige tu metodo de pago</mat-card-title>
+        </mat-card-header>
+        <div class="example-button-row">
+          <div class="example-flex-container">
+            <button mat-stroked-button class="btn-block" (click)="metodoDeposito()" matTooltip="Transferencia Bancaria"
+              color="primary">
+              <mat-icon>receipt_long
+              </mat-icon> Deposito Bancario
+            </button>
+            <button mat-stroked-button class="btn-block" (click)="metodoMone()" matTooltip="Pago por Mone"
+              color="basic">
+              <mat-icon>qr_code</mat-icon> Pago por Mone
+            </button>
+            <button mat-stroked-button class="btn-block" (click)="metodoTarjeta()"
+              matTooltip="Tarjeta de Credito/Debito" color="warn">
+              <mat-icon>credit_card</mat-icon> Tarjeta de Credito/Debito
+            </button>
+          </div>
+        </div>
+      </mat-card>
+      <!--Final del Card-->
+    </div>
+    <div class="col-md-8 boder py-4">
+      <!--Informacion del Curso-->
+      <div class="container border py-4">
+        <div *ngIf="curso">
+          <h3>¿Qué aprenderás del curso?</h3>
+          <hr />
+          <p align="justify">
+            Descripción del curso: &nbsp; {{ curso.descripcion_curso }}
+          </p>
+        </div>
+      </div>
+      <br />
+      <div class="container border py-3">
+        <!--Contenido del Curso-->
+        <h3>Contenido del curso</h3>
+        <hr />
+        <mat-accordion *ngFor="let item of modulos; let i = index">
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Sección {{ i + 1 }}: &nbsp; {{ item.nombre_modulo }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>
+              Descripcion de la seccion: &nbsp; {{ item.descripcion_modulo }}
+            </p>
+          </mat-expansion-panel>
+          <br />
+        </mat-accordion>
+        <!--Final del contenido del curso-->
+      </div>
+    </div>
+  </div>
+  <!--Final del Contenido o Informacion del curso-->
+  <hr>
+  <!--Presentacion del docente-->
+  <div class="row">
+    <div *ngIf="!docente">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div class="col-md-7 py-4">
+      <!--Datos del docente-->
+      <div class="col-md-12 py-4 border" *ngIf="docente">
+        <h3>Información del Instructor</h3>
+        <hr />
+        <h3 align="justify">
+          Nombre del Instructor: {{ docente?.nombre_usuario }}
+        </h3>
+        <h3 align="justify">
+          Descripcion del Instructor: {{ datosDocente?.descripcion_docente }}
+        </h3>
+        <h3 align="justify">
+          Experiencia: {{ datosDocente?.experiencia_docente }}
+        </h3>
+      </div>
+    </div>
+    <div class="col-md-5 py-4">
+      <!--Video de presentacion, Fotografia y nombre del Usuario-->
+      <mat-card class="doc-img" *ngIf="datosDocente">
+        <!--Fotografia de referencia-->
+        <video src="{{ rutaVideo }}" poster="{{ docente.foto_usuario }}" width="100%" controls muted
+          controlslist="nodownload" autoplay></video>
+        <!--<img mat-card-image src="{{ docente.foto_usuario }}" />-->
+        <!--<button mat-icon-button color="primary" type="button" (click)="setVideo(datosDocente.video_presentacion)"
+            matTooltip="Reproducir video">
+            <mat-icon>play_circle_filled</mat-icon>
+          </button>-->
+        <mat-card-header>
+          <mat-card-title class="py-3">{{ docente?.nombre_usuario }}</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </div>
+  </div>
+  <!--Final de la presentacion del Docente-->
+  <!--Final del Contenido o Informacion del curso-->
+</div>

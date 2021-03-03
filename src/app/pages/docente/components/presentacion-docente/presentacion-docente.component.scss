@@ -1,0 +1,30 @@
+.text {
+  color: #2e3d4b;
+}
+.long-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+//docente
+.example-card {
+  max-width: 200px;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+.img-cards {
+  max-height: 150px;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+.mat-chip {
+  max-width: 200px;
+  margin-left: 40px;
+}

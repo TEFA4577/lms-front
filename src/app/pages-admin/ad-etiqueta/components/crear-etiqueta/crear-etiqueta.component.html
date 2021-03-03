@@ -1,0 +1,27 @@
+<div mat-dialog-title>
+  <h1>Registrar una Etiqueta</h1>
+</div>
+<form [formGroup]="formEtiqueta" (ngSubmit)="submitEtiqueta($event)" autocomplete="off">
+  <div mat-dialog-content>
+    <div class="container">
+      <div class="row">
+        <mat-form-field class="col-md-12">
+          <mat-label>Nombre de la etiqueta</mat-label>
+          <input matInput formControlName="nombre_etiqueta" type="text" placeholder="">
+        </mat-form-field>
+        <mat-form-field class="col-md-12">
+          <mat-label>descripcion de la etiqueta </mat-label>
+          <textarea matInput formControlName="descripcion_etiqueta"></textarea>
+        </mat-form-field>
+        <input type="file" name="video_clase" #imagen hidden accept="image/*"
+          (change)="uploadFile($event.target.files)">
+        <button type="button" mat-raised-button color="primary" class="col-md-12" (click)="imagen.click()">Subir una
+          imagen</button>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="warn" [mat-dialog-close]>cancelar</button>
+    <button type="submit" color="primary" [disabled]="formEtiqueta.invalid" mat-raised-button>Guardar Cambios</button>
+  </div>
+</form>

@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <h2>Mis Cursos Creados</h2>
+    <button mat-raised-button matTooltip="Crear un nuevo curso" color="primary" (click)="openDialog()">
+      Crear nuevo <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <hr>
+  <div *ngIf="estado" class="sinCurso bg-aqua d-flex align-items-center justify-content-center">
+    <p class="mensaje">Aun no tienes cursos creado empieza <a mat-button (click)="openDialog()">aqui</a></p>
+  </div>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let miCurso of misCursos">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{miCurso.nombre_curso }}<hr></mat-card-title>
+          <mat-card-subtitle>Estado: {{miCurso.estado_curso}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{ miCurso.imagen_curso }}" alt="{{miCurso.nombre_curso}}" class="imgCurso">
+        <mat-card-subtitle>Mensaje del revisor: {{miCurso.mensaje}}
+        </mat-card-subtitle>
+        <mat-card-content>
+        <h3>Etiquetas Curso</h3>
+          <div class="container">
+            <mat-chip-list aria-label="eltiquetas" class="row">
+              <mat-chip *ngFor="let item of miCurso.etiquetas_curso" class="col-md">{{item.nombre_etiqueta}}</mat-chip>
+            </mat-chip-list>
+          </div>
+          <br>
+        </mat-card-content>
+        <mat-card-footer>
+          <mat-card-actions align="center">
+            <button mat-raised-button color="accent" (click)="verEtiquetas(miCurso)">Cambiar Etiquetas</button>
+            <button *ngIf="miCurso.estado_curso != 'aprobado'"  mat-raised-button color="primary" routerLink="../administrar/{{miCurso.id_curso}}">Administrar Curso</button>
+          </mat-card-actions>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</div>

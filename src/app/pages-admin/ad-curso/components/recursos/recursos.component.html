@@ -1,0 +1,43 @@
+<mat-spinner *ngIf="!datos || estadoCargando"></mat-spinner>
+<div *ngIf="datos && !estadoCargando">
+  <h1 mat-dialog-title *ngIf="datos">Sube Recursos</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="formRecurso" (ngSubmit)="submitRecurso($event)" autocomplete="off">
+      <div class="row">
+        <mat-form-field class="col-md-12">
+          <mat-label>Nombre del Recurso</mat-label>
+          <input matInput formControlName="nombre_recurso" type="text" placeholder="">
+        </mat-form-field>
+        <input type="file" name="recurso" #imagen hidden (change)="uploadFile($event.target.files)">
+        <button type="button" mat-raised-button color="primary" class="col-md-12" (click)="imagen.click()">Subir un
+          archivo</button>
+        <p *ngIf="files">
+          {{files | json}}
+        </p>
+        <button type="submit" mat-raised-button color="accent" class="col-md-12">Guardar</button>
+      </div>
+    </form>
+    <hr>
+    <div *ngIf="datos">
+      <mat-selection-list [multiple]="false">
+        <div mat-subheader>Lista de Recursos</div>
+        <mat-list-item *ngFor="let recurso of datos.recursos" class="row">
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <div mat-line>Titulo: {{recurso.nombre_recurso}}</div>
+          <button align="end" mat-icon-button color="warn" matTooltip="eliminar recurso"
+            (click)="borrarRecurso(recurso.id_recurso)">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+          <a align="end" mat-icon-button color="accent" matTooltip="descargar recurso"
+          target=”_blank”
+            href="{{recurso.link_recurso}}">
+            <mat-icon>get_app</mat-icon>
+          </a>
+        </mat-list-item>
+      </mat-selection-list>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button color="warn" type="button" (click)="onNoClick()">cerrar</button>
+  </div>
+</div>

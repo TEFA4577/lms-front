@@ -1,0 +1,67 @@
+.imgizquierda {
+  width: 100%;
+  margin-top: 10%;
+}
+
+.card1 {
+  margin-top: 10%;
+}
+
+.img {
+  margin-top: 7%;
+  margin-left: 10%;
+  width: 80%;
+}
+.redesSociales {
+  font-size: 25px;
+}
+.btn {
+  background-color: #3B5998;
+  color: white;
+}
+
+.btn1 {
+  background-color: #FDFEFE;
+  color: #2C3E50;
+}
+
+.btn2 {
+  background-color: #2C3E50;
+  color: white;
+}
+
+a {
+  color: #2C3E50;
+}
+.imagenLogo {
+  margin-top: 5%;
+  margin-left: 10%;
+  width: 80%;
+}
+.d1 {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  float: left;
+  background: url(../../assets/img/lap7.png) center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: table;
+  top: 0;
+}
+
+.login {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  // background: #fff;
+  height: 100%;
+  z-index: 1;
+}
+
+.example-card {
+  max-width: 600px;
+  margin: 50px;
+  // box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}

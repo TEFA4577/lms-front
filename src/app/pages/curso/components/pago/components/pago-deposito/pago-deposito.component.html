@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <mat-card>
+        <mat-card-title align="center">
+          <h2>Detalle de la Cuenta</h2>
+        </mat-card-title>
+        <hr />
+        <mat-card-content>
+          <h3>Número de la Cuenta: 10000029862592</h3>
+          <h3>Nombre de la Cuenta: COMARCACM</h3>
+          <h3>Nombre del originante: Carla Valencia Machado</h3>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-6 py-3" align="center">
+      <mat-card>
+        <!--Card del comprobante de pago-->
+        <img mat-card-image [src]="imgURL" class="imagenR" *ngIf="imgURL">
+        <mat-card-actions>
+          <!--Formulario para subir la imagen del comprobante-->
+          <form (ngSubmit)="submitAdquirirCurso($event)">
+            <!--En este input se sube la imagen del comprobante de deposito-->
+            <input type="file" name="comprobante" #imagen hidden accept="image/*"
+              (change)="uploadFile($event.target.files)" />
+            <div class="example-button-row">
+              <button type="button" mat-raised-button class="col-10" color="accent" (click)="imagen.click()">
+                Elige una imagen
+              </button>
+              <button mat-raised-button class="col-10" color="primary" type="submit">
+                Sube tu comprobante
+              </button>
+            </div>
+          </form>
+          <!--Final del formulario-->
+        </mat-card-actions>
+        <!--Final del card de comprobante de pago-->
+      </mat-card>
+    </div>
+  </div>
+</div>

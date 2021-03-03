@@ -1,0 +1,179 @@
+<div class="container-fluid">
+  <!--Menu Principal de la HomePage:
+    * Menu con inicio, novedades y categorias
+    * Lista en horizontal con las categorias principales
+  -->
+  <!--Carousel con imagenes-->
+  <div class="container py-3">
+    <div class="row justify-content-center">
+      <!--<img src="./assets/img/Inicio/10.png" class="ventajas" alt="ventajas" />-->
+      <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active" style="height: 100%">
+            <img src="./assets/img/Slides-image/Crema Negro Blanco Ventas Presentación.png" class="d-block w-100"
+              alt="...">
+          </div>
+          <div class="carousel-item" style="height: 100%">
+            <img src="./assets/img/Slides-image/10 (1).png " class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" style="height: 100%">
+            <img src="./assets/img/Slides-image/12.png " class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" style="height: 100%">
+            <img src="./assets/img/Slides-image/11.png " class="d-block w-100" alt="...">
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only ">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only ">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Final del carousel con imagenes-->
+
+  <!--Listado de Cursos en general-->
+  <hr>
+  <div class="row justify-content-center py-3">
+    <div class="text-center">
+      <p class="lead">Cursos y novedades</p>
+      <button mat-raised-button routerLink="/curso/cursos-general" matTooltip="Descubre nuevos cursos" align="end"
+        color="accent">Ver <mat-icon>add_circle_outline</mat-icon></button>
+    </div>
+  </div>
+  <!--Fila donde estaran los Cards de Cursos-->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div *ngIf="!curso">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div class="col-md-3" *ngFor="let item of curso; let i = index">
+        <!--Cards de los nuevos cursos-->
+        <mat-card class="example-card" *ngIf="i < 4">
+          <img mat-card-image src="{{ item.imagen_curso }}" routerLink="/curso/curso-detalle/{{ item.id_curso }}"
+            class="img-cards" fallimg />
+          <mat-card-header>
+            <mat-card-title>
+              <a class="lead" routerLink="/curso/curso-detalle/{{ item.id_curso }}">{{ item.nombre_curso }}</a>
+            </mat-card-title>
+            <br>
+            <mat-card-subtitle>Precio: Bs. {{ item.precio}}</mat-card-subtitle>
+          </mat-card-header>
+          <!--<mat-card-subtitle>Descripcion: </mat-card-subtitle>
+          <mat-card-content>
+            <div class="container" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
+              {{ item.descripcion_curso }}
+            </div>
+          </mat-card-content>-->
+          <mat-card-subtitle>Categorias pertenecientes:</mat-card-subtitle>
+          <mat-chip-list align="center" aria-label="Fish selection">
+            <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection"
+              *ngFor="let etiqueta of item.etiquetas_curso">
+              <mat-chip routerLink="/curso/cursos-categorias/{{etiqueta.id_etiqueta}}" class="mat-chip" selected>
+                {{etiqueta.nombre_etiqueta}}
+              </mat-chip>
+            </mat-chip-list>
+          </mat-chip-list>
+        </mat-card>
+        <br>
+        <!--Final de los Cards - nuevos cursos-->
+      </div>
+      <br />
+    </div>
+  </div>
+  <hr />
+  <!--Final Cursos en general-->
+
+  <!--Ventajas-->
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <img src="./assets/img/Inicio/ventajas6.png " class="ventajas" alt="ventajas" />
+    </div>
+  </div>
+  <hr />
+  <!--Fin de Ventajas-->
+
+  <!--Catogorias Principales-->
+  <div class="container" #target>
+    <div class="row justify-content-center py-3">
+      <div class="text-center">
+        <p class="lead">Categorías Principales</p>
+        <button mat-raised-button routerLink="/curso/categorias" matTooltip="Descubre todas las categorias" align="end"
+          color="accent">Ver <mat-icon>add_circle_outline</mat-icon></button>
+      </div>
+    </div>
+    <!--Cards de Categorias-->
+    <div class="row justify-content-center">
+      <div *ngIf="!etiqueta">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div class="col-md-4" *ngFor="let item of etiqueta">
+        <!--; let i = index *ngIf="i < 5" -->
+        <mat-card class="categorie-card">
+          <img src="{{ item.imagen_etiqueta }} " routerLink="/curso/cursos-categorias/{{item.id_etiqueta}}"
+            class="cat-img-cards" alt=" " fallimg />
+          <hr />
+          <mat-card-header>
+            <mat-card-title>
+              <p class="lead" routerLink="/curso/cursos-categorias/{{item.id_etiqueta}}">{{ item.nombre_etiqueta }}</p>
+            </mat-card-title>
+          </mat-card-header>
+        </mat-card>
+        <!--Final de Categorias-->
+      </div>
+    </div>
+    <br>
+  </div>
+
+  <!--Profesionales y su descripcion-->
+  <hr />
+  <div class="container">
+    <div class="row justify-content-center py-3">
+      <div class="text-center">
+        <p class="lead">Nuestros Instructores</p>
+        <button mat-raised-button routerLink="/instructores/listado-instructores"
+          matTooltip="Descubre a nuestros instructores" align="end" color="accent">Ver <mat-icon>add_circle_outline
+          </mat-icon></button>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div *ngIf="!docente">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div class="col-md-4" *ngFor="let doc of docente; let i = index">
+        <mat-card class="card-doc" *ngIf="i < 3">
+          <img src="{{ doc.foto_usuario }} " routerLink="/instructores/presentacion-docente/{{ doc.id_usuario }}"
+            class="img-cards-testimonios" alt="{{ doc.nombre_usuario }}" fallimg="avatar" />
+          <hr />
+          <mat-card-header>
+            <mat-card-title align="center">
+              <a class="lead" routerLink="/docente/presentacion-docente/{{ doc.id_usuario }}">{{ doc.nombre_usuario
+                }}</a>
+            </mat-card-title>
+          </mat-card-header>
+          <!--<mat-card-actions align="center">
+            <button mat-button color="primary" (click)="openDialog(doc.id_usuario)">Ver informacion</button>
+          </mat-card-actions>-->
+          <!--<mat-card-content>
+            <p class="text-center">
+              {{ doc.datos_docente.descripcion_docente }}
+            </p>
+          </mat-card-content>-->
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <!--Fin Profesionales y testimonios-->
+</div>
+<!--Final Catogorias Principales-->
+<!--<div class="section " id="novedades "></div>-->

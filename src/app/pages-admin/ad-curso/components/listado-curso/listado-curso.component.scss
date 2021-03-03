@@ -1,0 +1,46 @@
+.mat-card {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-card-header {
+  flex-shrink: 0;
+}
+.mat-card-content {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.container {
+  min-height: 40%;
+}
+
+.sinCurso {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.mensaje {
+  font-size: large;
+  text-align: center;
+
+  a {
+    font-size: large;
+  }
+}
+.long-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+nav li {
+  display: inline-block;
+  width: auto;
+  text-align: center;
+  color: #fff;
+}
+.mat-expansion-panel-body {
+  padding: 0;
+}

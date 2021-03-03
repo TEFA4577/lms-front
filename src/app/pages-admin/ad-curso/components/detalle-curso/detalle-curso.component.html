@@ -1,0 +1,136 @@
+<mat-spinner *ngIf="carga"></mat-spinner>
+<div class="modalR" *ngIf="!carga">
+  <div class="container-fluid">
+    <div class="row">
+      <h1 mat-dialog-title class="col-md-4">Detalle completo del curso</h1>
+      <div class="col-md-3"></div>
+      <mat-form-field class="col-md-3">
+        <mat-label>Mensaje para el docente creador</mat-label>
+        <input matInput [(ngModel)]="mensaje" autocomplete="off">
+      </mat-form-field>
+      <button class="col-md-1" mat-icon-button color="warn" matTooltip="rechazar el curso"
+        (click)="cambiarEstado('rechazado')">
+        <mat-icon>privacy_tip</mat-icon>
+      </button>
+      <button class="col-md-1" mat-icon-button color="primary" matTooltip="aprobar el Curso"
+        (click)="cambiarEstado('aprobado')">
+        <mat-icon>verified_user</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="row" mat-dialog-content>
+    <div class="col">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{curso.nombre_curso}}</mat-card-title>
+          <mat-card-subtitle>
+            {{curso.descripcion_curso}}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{curso.imagen_curso}}" alt="{{curso.nombre_curso}}">
+        <mat-card-content class="container">
+          <h3>etiquetas del curso</h3>
+          <mat-chip-list class="row" aria-label="Fish selection">
+            <mat-chip class="col-md" *ngFor="let item of curso.etiquetas_curso">{{item.nombre_etiqueta}}</mat-chip>
+          </mat-chip-list>
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-card-title>Datos del Curso</mat-card-title>
+              <mat-list>
+                <mat-list-item>Precio del Curso: {{curso.precio}} bs.</mat-list-item>
+                <mat-list-item>Cantidad de Modulos: {{ modulos.length }}</mat-list-item>
+              </mat-list>
+            </div>
+            <div class="col-md-6">
+              <mat-card-title>Datos del Docente Creador</mat-card-title>
+              <img class="avatar" src="{{docente.foto_usuario}}">
+              <p>
+                Nombre Docente: {{docente.nombre_usuario}}
+              </p>
+              <p>
+                Correo Electronico: {{docente.correo_usuario}}
+              </p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <hr>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Contenido del Curso</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8">
+                <mat-accordion multi>
+                  <div *ngFor="let modulo of modulos" class="row">
+                    <div class="col">
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            {{modulo.nombre_modulo}}
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-panel-description>
+                          {{modulo.descripcion_modulo}}
+                        </mat-panel-description>
+                        <div>
+                          <div>
+                            <mat-selection-list [multiple]="false">
+                              <mat-list-item *ngFor="let clase of modulo.clases_modulo" class="row">
+                                <mat-icon mat-list-icon>school</mat-icon>
+                                <div mat-line>
+                                  <div mat-line>Titulo: {{clase.titulo_clase}}</div>
+                                  <div mat-line>Descripcion: {{clase.descripcion_clase}}</div>
+                                </div>
+                                <div mat-line align="end">
+                                  <button type="button" (click)="seleccionVideo(clase.video_clase , clase.id_clase)"
+                                    mat-icon-button matTooltip="ver el video de la clase">
+                                    <mat-icon>video_settings</mat-icon>
+                                  </button>
+                                  <button type="button" (click)="seleccionClase(clase.id_clase)" mat-icon-button
+                                    matTooltip="ver los recursos de la clase">
+                                    <mat-icon>folder</mat-icon>
+                                  </button>
+                                </div>
+                              </mat-list-item>
+                            </mat-selection-list>
+                          </div>
+                        </div>
+                      </mat-expansion-panel>
+                    </div>
+                  </div>
+                </mat-accordion>
+              </div>
+              <div class="col-md-4">
+                <div *ngIf="rutaVideo">
+                  <video class="videoPreview" [src]="rutaVideo" controls></video>
+                </div>
+                <div *ngIf="recursos">
+                  <mat-selection-list [multiple]="false">
+                    <div mat-subheader>Lista de Recursos</div>
+                    <h3 *ngIf="recursos.length == 0">no existe recursos asociados</h3>
+                    <mat-list-item *ngFor="let recurso of recursos" class="row">
+                      <mat-icon mat-list-icon>folder</mat-icon>
+                      <div mat-line>Titulo: {{recurso.nombre_recurso}}</div>
+                      <a align="end" mat-icon-button color="accent" matTooltip="descargar recurso" target=”_blank”
+                        href="{{recurso.link_recurso}}">
+                        <mat-icon>get_app</mat-icon>
+                      </a>
+                    </mat-list-item>
+                  </mat-selection-list>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="warn" type="button" (click)="onNoClick()">Cerrar</button>
+  </div>
+
+</div>

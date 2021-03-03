@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 py-3">
+      <mat-card *ngIf="docente">
+        <mat-card-header>
+          <mat-card-title>Instructor/a: {{ docente.nombre_usuario }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{docente.foto_usuario}}" alt="{{docente.usurio_nombre}}" fallimg="avatar">
+        <hr>
+        <mat-card-content>
+          <mat-card-title align="center">
+            <h2>Información del Instructor</h2>
+          </mat-card-title>
+          <!--Info del Instructor-->
+          <mat-card-subtitle align="justify">
+            <h3>Descripcion del Instructor: {{ docente.datos_docente.descripcion_docente }}
+            </h3>
+          </mat-card-subtitle>
+          <mat-card-subtitle align="justify">
+            <h3>Experiencia: {{ docente.datos_docente.experiencia_docente }}
+            </h3>
+          </mat-card-subtitle>
+        </mat-card-content>
+        <!--<mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>-->
+      </mat-card>
+    </div>
+    <div class="col-md-8 py-3">
+      <div class="row justify-content-center">
+        <p class="lead">Cursos impartidos por: {{docente.nombre_usuario}}</p>
+      </div>
+      <hr>
+      <div *ngIf="!curso">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div class="row" *ngFor="let item of curso; let i = index">
+        <div class="col-12">
+          <mat-card>
+            <div class="row">
+              <div class="col-md-6">
+                <img src="{{ item.imagen_curso }}" routerLink="/curso/curso-detalle/{{ item.id_curso }}"
+                  class="img-cards" fallimg />
+                <hr />
+                <mat-card-header>
+                  <mat-card-title>
+                    <a class="lead" routerLink="/curso/curso-detalle/{{ item.id_curso }}">{{ item.nombre_curso }}</a>
+                  </mat-card-title>
+                  <br>
+                  <mat-card-subtitle>Precio: Bs. {{ item.precio}}</mat-card-subtitle>
+                </mat-card-header>
+              </div>
+              <div class="col-md-6">
+                <mat-card-subtitle>Descripcion: </mat-card-subtitle>
+                <mat-card-content>
+                  <div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
+                    {{ item.descripcion_curso }}
+                  </div>
+                </mat-card-content>
+                <mat-card-subtitle>Categorias pertenecientes:</mat-card-subtitle>
+                <mat-chip-list align="center" aria-label="Fish selection">
+                  <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection"
+                    *ngFor="let etiqueta of item.etiquetas_curso">
+                    <mat-chip routerLink="/curso/cursos-categorias/{{etiqueta.id_etiqueta}}" class="mat-chip" selected>
+                      {{etiqueta.nombre_etiqueta}}
+                    </mat-chip>
+                  </mat-chip-list>
+                </mat-chip-list>
+              </div>
+            </div>
+          </mat-card>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>

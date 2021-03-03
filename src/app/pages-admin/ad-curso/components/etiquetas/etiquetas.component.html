@@ -1,0 +1,31 @@
+<h1>Lista de Etiquetas curso: {{data.nombre_curso}}</h1>
+<div mat-dialog-content>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 cardEtiqueta">
+        <h3>Etiquetas Activas en Tu Curso</h3>
+        <h5 *ngIf="misEtiquetas.length == 0">no tienes etiquetas seleccionadas en este curso</h5>
+        <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip color="accent" selected *ngFor="let miEtiqueta of misEtiquetas;let i=index" [removable]="true" (removed)="remove(i)">
+            {{miEtiqueta.nombre_etiqueta}}
+            <mat-icon matChipRemove color="danger">cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+      <div class="col-md-6 cardEtiqueta">
+        <h3>Etiquetas Disponibles</h3>
+        <mat-spinner *ngIf="!etiquetas"></mat-spinner>
+        <mat-chip-list>
+          <mat-chip *ngFor="let etiqueta of etiquetas;let i=index" (click)="add(etiqueta)">
+            {{etiqueta.nombre_etiqueta}}
+            <mat-icon matChipRemove (click)="add(etiqueta)" color="accent">add_circle_outline</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancelar</button>
+</div>

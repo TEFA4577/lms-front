@@ -1,0 +1,28 @@
+<mat-dialog-content class="mat-typography">
+  <div class="container">
+    <!--Comentario del estudiante o docente-->
+    <form [formGroup]="formRegistrarComentario" (ngSubmit)="submitRegistrarComentario($event)" class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Agrega un comentario publico</mat-label>
+        <textarea matInput formControlName="texto_comentario" type="text"></textarea>
+      </mat-form-field>
+      <div align="end">
+        <button mat-raised-button color="primary" (click)="onNoClick()">CANCELAR</button>
+        <button mat-raised-button color="primary" [disabled]="formRegistrarComentario.invalid">COMENTAR</button>
+      </div>
+    </form>
+    <!--Comentario del estudiante o docente-->
+    <!--<div *ngIf="datos">
+      <mat-selection-list [multiple]="false">
+        <div mat-subheader>Comentarios de la clase</div>
+        <mat-list-item *ngFor="let item of datos" class="row">
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <div mat-line>Titulo: {{item.texto_comentario}}</div>
+          <button align="end" mat-icon-button color="warn" matTooltip="eliminar recurso">
+           Responder
+          </button>
+        </mat-list-item>
+      </mat-selection-list>
+    </div>-->
+  </div>
+</mat-dialog-content>
