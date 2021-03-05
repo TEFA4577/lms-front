@@ -14,6 +14,7 @@ export class InicioComponent implements OnInit {
   listadoCursos: any = [];
   estado = true;
   texto = true;
+  panelOpenState = false;
 
   constructor(public serCursos: CursosService, public serDocente: DocentesService) {
   }

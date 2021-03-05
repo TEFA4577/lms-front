@@ -40,5 +40,14 @@ export const MENU_ADMIN = [
         link: './etiquetas'
       }
     ]
+  },
+  {
+    grupo: 'Preguntas',
+    contenido: [
+      {
+        titulo: 'Preguntas Frecuentas',
+        link: './preguntas-frecuentes'
+      }
+    ]
   }
 ];

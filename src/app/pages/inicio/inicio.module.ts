@@ -15,6 +15,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [InicioComponent],
@@ -31,7 +32,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatChipsModule,
     MatIconModule,
     MatTooltipModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatExpansionModule
   ]
 })
 export class InicioModule { }

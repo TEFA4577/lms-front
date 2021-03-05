@@ -20,6 +20,11 @@ const routes: Routes = [
     loadChildren: () => import('./ad-etiqueta/ad-etiqueta.module').then(m => m.AdEtiquetaModule)
   },
   {
+    path: 'preguntas-frecuentes',
+    canActivate: [RolGuard],
+    loadChildren: () => import('./ad-pregunta/ad-pregunta.module').then(m => m.AdPreguntaModule)
+  },
+  {
     path: '**',
     redirectTo: 'cursos'
   }
