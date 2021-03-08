@@ -1,1 +1,19 @@
-<p>crear-pregunta works!</p>
+<div mat-dialog-title>
+  <h1>Registrar una Pregunta</h1>
+</div>
+<form [formGroup]="formPregunta" (ngSubmit)="submitPregunta($event)" autocomplete="off">
+  <div mat-dialog-content>
+    <div class="container">
+      <div class="row">
+        <mat-form-field class="col-md-12">
+          <mat-label>Pregunta </mat-label>
+          <textarea matInput formControlName="texto_pregunta"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="warn" [mat-dialog-close]>cancelar</button>
+    <button type="submit" color="primary" [disabled]="formPregunta.invalid" mat-raised-button>Guardar Cambios</button>
+  </div>
+</form>
