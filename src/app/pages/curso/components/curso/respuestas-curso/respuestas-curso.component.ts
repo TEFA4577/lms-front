@@ -44,6 +44,8 @@ export class RespuestasCursoComponent implements OnInit {
 
   submitRegistrarRespuesta(event): void {
     event.preventDefault();
+    this.estadoCargando = true;
+    console.log(this.formRegistrarRespuesta.value);
     const myFormData = new FormData();
     const datos = JSON.parse(localStorage.getItem('datosUsuario'));
     const id = datos.id_usuario;

@@ -19,9 +19,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CrearPreguntaComponent } from './components/crear-pregunta/crear-pregunta.component';
 import { EditarPreguntaComponent } from './components/editar-pregunta/editar-pregunta.component';
+import { CrearRespuestaComponent } from './components/respuestas/crear-respuesta/crear-respuesta.component';
+import { EditarRespuestaComponent } from './components/respuestas/editar-respuesta/editar-respuesta.component';
 
 @NgModule({
-  declarations: [PreguntasComponent, CrearPreguntaComponent, EditarPreguntaComponent],
+  declarations: [PreguntasComponent, CrearPreguntaComponent, EditarPreguntaComponent, CrearRespuestaComponent, EditarRespuestaComponent],
   imports: [
     CommonModule,
     MatDividerModule,

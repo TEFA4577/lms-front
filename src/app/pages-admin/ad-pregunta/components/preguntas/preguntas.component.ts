@@ -1,12 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { Preguntas } from '../../../../models/preguntas';
 import { PreguntaService } from '../../../../services/pregunta.service';
-import { EditarPreguntaComponent } from '../editar-pregunta/editar-pregunta.component';
 import { CrearPreguntaComponent } from '../crear-pregunta/crear-pregunta.component';
+import { EditarPreguntaComponent } from '../editar-pregunta/editar-pregunta.component';
+import { CrearRespuestaComponent } from '../respuestas/crear-respuesta/crear-respuesta.component';
 
 @Component({
   selector: 'app-preguntas',
@@ -18,12 +15,7 @@ export class PreguntasComponent implements OnInit {
 
   panelOpenState = false;
   pregunta: any;
-
-  /*displayedColumns: string[] = ['texto_pregunta'];
-  dataSource: MatTableDataSource<Preguntas>;
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  // obtener el orden de la tabla
-  @ViewChild(MatSort, { static: true }) sort: MatSort;*/
+  respuesta: any;
 
   constructor(
     public serPregunta: PreguntaService,
@@ -32,13 +24,22 @@ export class PreguntasComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarPreguntas();
+    this.cargarRespuestas();
   }
 
   cargarPreguntas() {
     this.serPregunta.mostrarPregunta().subscribe(data => {
       console.log(data);
       this.pregunta = data;
-      console.log(this.pregunta);
+      //console.log(this.pregunta);
+    });
+  }
+
+  cargarRespuestas() {
+    this.serPregunta.mostrarRepuesta().subscribe(data => {
+      console.log(data);
+      this.respuesta = data;
+      console.log(this.respuesta);
     });
   }
 
@@ -48,6 +49,30 @@ export class PreguntasComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      this.cargarPreguntas();
+    });
+  }
+
+  editarPregunta(id: number): void {
+    const dialogRef = this.dialog.open(EditarPreguntaComponent, {
+      data: id,
+      width: '100vh'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(id);
+    });
+  }
+
+  registrarRespuesta(idP: number): void {
+    const dialogRef = this.dialog.open(CrearRespuestaComponent, {
+      data: idP,
+      width: '100vh'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(idP);
+      this.cargarRespuestas();
     });
   }
 }

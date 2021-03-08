@@ -24,10 +24,10 @@
               <button mat-icon-button color="warn" matTooltip="eliminar pregunta">
                 <mat-icon>delete_forever</mat-icon>
               </button>
-              <button mat-icon-button color="accent" matTooltip="editar pregunta">
+              <button mat-icon-button color="accent" (click)="editarPregunta(item.id_pregunta)" matTooltip="editar pregunta">
                 <mat-icon>drive_file_rename_outline</mat-icon>
               </button>
-              <button mat-icon-button color="primary" matTooltip="añadir respuesta">
+              <button mat-icon-button color="primary" (click)="registrarRespuesta(item.id_pregunta)" matTooltip="añadir respuesta">
                 <mat-icon>playlist_add</mat-icon>
               </button>
             </div>
@@ -41,12 +41,12 @@
                       Ver respuestas
                     </mat-panel-title>
                   </mat-expansion-panel-header>
-                  <mat-selection-list [multiple]="false">
+                  <mat-selection-list [multiple]="false" *ngFor="let res of respuesta">
                     <mat-list-option>
                       <div mat-line>
                         <div mat-line>
                           <mat-icon mat-list-icon color="primary">done_all</mat-icon>
-                          Respuesta:
+                          Respuesta: {{res.texto_respuesta_pregunta}}
                         </div>
                         <div mat-line align="end">
                           <button mat-icon-button color="accent" matTooltip="editar respuesta">
