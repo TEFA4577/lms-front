@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { threadId } from 'worker_threads';
 import { CursosService } from '../../../../services/cursos.service';
 import { DocentesService } from '../../../../services/docentes.service';
+import {PreguntaService } from '../../../../services/pregunta.service';
 
 @Component({
   selector: 'app-inicio',
@@ -14,15 +16,19 @@ export class InicioComponent implements OnInit {
   listadoCursos: any = [];
   estado = true;
   texto = true;
+  pregunta: any;
   panelOpenState = false;
+  respuesta: any;
 
-  constructor(public serCursos: CursosService, public serDocente: DocentesService) {
+  constructor(public serCursos: CursosService, public serDocente: DocentesService, public serPregunta: PreguntaService) {
   }
 
   ngOnInit(): void {
     this.cargarCursos();
     this.cargarEtiquetas();
     this.cargarDocentes();
+    this.cargarPreguntas();
+    /*this.cargarRespuestas();*/
   }
   // tslint:disable-next-line: typedef
   cargarCursos() {
@@ -51,4 +57,20 @@ export class InicioComponent implements OnInit {
       }
     });
   }
+
+  cargarPreguntas(){
+    this.serPregunta.mostrarPregunta().subscribe(data => {
+      console.log(data);
+      this.pregunta = data;
+      console.log(this.pregunta);
+    });
+  }
+
+  /*cargarRespuestas(){
+    this.serPRegunta.mostrarRepuesta().subscribe(data => {
+      console.log(data);
+      this.respuesta = data;
+      console.log(this.respuesta);
+    });
+  }*/
 }

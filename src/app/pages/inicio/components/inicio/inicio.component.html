@@ -3,7 +3,7 @@
     * Lista en horizontal con las categorias principales
   -->
   <!--Carousel con imagenes-->
-  <div class="container py-3">
+  <div class="container">
     <div class="row justify-content-center">
       <!--<img src="./assets/img/Inicio/10.png" class="ventajas" alt="ventajas" />-->
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -40,6 +40,8 @@
     </div>
   </div>
   <!--Final del carousel con imagenes-->
+  <br>
+
 
   <!--Listado de Cursos en general-->
   <hr>
@@ -94,13 +96,43 @@
   <!--Final Cursos en general-->
 
   <!--Ventajas-->
-  <div class="container-fluid">
+  <div class="container">
     <div class="row justify-content-center">
       <img src="./assets/img/Inicio/ventajas6.png " class="ventajas" alt="ventajas" />
     </div>
   </div>
   <hr />
   <!--Fin de Ventajas-->
+
+  <!--Listado de Preguntas Frecuentes-->
+  <div class="container py-3">
+    <div align="center">
+      <p class="lead">¿Tienes preguntas...?</p>
+    </div>
+    <hr>
+    <div *ngIf="!pregunta">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div *ngFor="let item of pregunta">
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon>help_outline</mat-icon>
+              {{item.texto_pregunta}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-icon>
+            check_circle
+          </mat-icon>
+          <p></p>
+        </mat-expansion-panel>
+        <br>
+      </mat-accordion>
+    </div>
+    <br>
+  </div>
+  <!--Listado de Preguntas Frecuentes-->
 
   <!--Catogorias Principales-->
   <div class="container" #target>
@@ -174,19 +206,6 @@
   </div>
   <!--Fin Profesionales y testimonios-->
 </div>
-<hr>
-<div class="container">
-  <mat-accordion>
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Self aware panel
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
-    </mat-expansion-panel>
-  </mat-accordion>
-  <br>
-</div>
+
 <!--Final Catogorias Principales-->
 <!--<div class="section " id="novedades "></div>-->

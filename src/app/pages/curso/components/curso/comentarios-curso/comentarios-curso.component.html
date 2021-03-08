@@ -7,7 +7,7 @@
         <textarea matInput formControlName="texto_comentario" type="text"></textarea>
       </mat-form-field>
       <div align="end">
-        <button mat-raised-button color="primary" (click)="onNoClick()">CANCELAR</button>
+        <button mat-raised-button color="primary" [mat-dialog-close]>CANCELAR</button>
         <button mat-raised-button color="primary" [disabled]="formRegistrarComentario.invalid">COMENTAR</button>
       </div>
     </form>

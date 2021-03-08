@@ -12,8 +12,6 @@ export class CrearPreguntaComponent implements OnInit {
   formPregunta: FormGroup;
   datos: any;
   id: number;
-  files: any = [];
-  filedata: any;
 
   constructor(
     public dialogRef: MatDialogRef<CrearPreguntaComponent>,

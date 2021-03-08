@@ -12,4 +12,10 @@ export class PreguntaService {
   registrarPregunta(datos: any): any {
     return this.http.post(this.API_BACKEND + 'pregunta/registrar', datos);
   }
+  mostrarPregunta(){
+    return this.http.get(this.API_BACKEND + 'pregunta/list');
+  }
+  /*mostrarRepuesta(){
+    return this.http.get(this.API_BACKEND + 'respuesta-pregunta-frecuente/list');
+  }*/
 }
