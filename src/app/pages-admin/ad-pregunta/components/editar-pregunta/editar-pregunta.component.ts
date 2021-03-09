@@ -52,7 +52,7 @@ export class EditarPreguntaComponent implements OnInit {
   submitEditarPregunta(event): void {
     event.preventDefault();
     console.log(this.formEditarPregunta.value);
-    this.serPregunta.actualizarPregunta(this.formEditarPregunta.value, this.id).subscribe(res => {
+    this.serPregunta.actualizarPregunta( this.id, this.formEditarPregunta.value).subscribe(res => {
       console.log(res);
       this.formEditarPregunta.reset();
       this.cargarDatosPregunta();

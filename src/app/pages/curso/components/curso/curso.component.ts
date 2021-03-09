@@ -155,7 +155,16 @@ export class CursoComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(idR);
-      this.openComentarios(this.idClase);
+      this.cargarDatos();
+    });
+  }
+
+  cargarDatos(): void {
+    this.serCursos.comentario().subscribe(res => {
+      this.dat = res;
+      console.log(this.dat);
+    }, error => {
+      console.log(error);
     });
   }
 

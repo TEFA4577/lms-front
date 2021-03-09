@@ -5,23 +5,28 @@
   z-index: 100;
   -webkit-box-shadow: 0px 0px 11px 4px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 11px 4px rgba(0, 0, 0, 0.5);
+  outline: none;
 }
 .avatar {
   object-fit: cover;
   border-radius: 50%;
   width: 50px;
   height: 50px;
+  outline: none;
 }
 span {
   font-size: medium;
   text-transform: capitalize;
+  outline: none;
 }
 .user {
   font-weight: 700;
   font-size: large;
+  outline: none;
 }
 .rol {
   color: #2980b9;
+  outline: none;
 }
 .input {
   border: 0;
@@ -32,12 +37,14 @@ span {
 .search_wrap {
   width: 350px;
   margin: 30px auto;
+  outline: none;
 }
 
 .search_wrap .search_box {
   position: relative;
   width: 100%;
   height: 50px;
+  outline: none;
 }
 
 .search_wrap .search_box .input {
@@ -49,6 +56,7 @@ span {
   padding: 10px 20px;
   border-radius: 3px;
   font-size: 18px;
+  outline: none;
 }
 
 .search_wrap .search_box .btn {
@@ -60,6 +68,7 @@ span {
   background: #ffc924;
   z-index: 1;
   cursor: pointer;
+  outline: none;
 }
 
 .search_wrap .search_box .btn:hover {
@@ -91,28 +100,35 @@ span {
 @media screen and (max-width: 600px) {
   .wrapper {
     width: 100%;
+    outline: none;
   }
   .search_wrap {
     display: block;
     width: 100%;
     margin: 30px auto;
+    outline: none;
   }
   span {
     font-size: 12px;
+    outline: none;
   }
 }
 
 .example-button-row {
   display: table-cell;
   width: 490px;
+  outline: none;
 }
 
 .example-button-row .mat-button-base {
   margin: 8px 8px 8px 0;
+  outline: none;
 }
 .categories {
   background: #673ab7;
+  outline: none;
 }
 .btn {
   color: #fff;
+  outline: none;
 }
