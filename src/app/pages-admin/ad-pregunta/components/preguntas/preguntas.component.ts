@@ -43,6 +43,14 @@ export class PreguntasComponent implements OnInit {
     });
   }
 
+  cargarPreguntasId(res) {
+    this.serPregunta.datosPregunta(res).subscribe(data => {
+      console.log(data);
+      //console.log(this.pregunta);
+    });
+  }
+
+
   registrarPregunta(): void {
     const dialogRef = this.dialog.open(CrearPreguntaComponent, {
       width: '100vh'
@@ -61,6 +69,7 @@ export class PreguntasComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(id);
+      this.cargarPreguntasId(id);
     });
   }
 
