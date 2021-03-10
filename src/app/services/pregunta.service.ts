@@ -18,14 +18,19 @@ export class PreguntaService {
   datosPregunta(id) {
     return this.http.get(this.API_BACKEND + 'pregunta/mostrar/' + id);
   }
-  mostrarRepuesta() {
-    return this.http.get(this.API_BACKEND + 'respuesta_pregunta/list');
-  }
-  registrarRespuesta(datos) {
-    return this.http.post(this.API_BACKEND + 'respuesta_pregunta/registrar', datos);
-  }
   actualizarPregunta(id: number, datos: any) {
     return this.http.put(this.API_BACKEND + 'pregunta/actualizar/' + id, datos);
   }
-
+  mostrarRepuesta(id) {
+    return this.http.get(this.API_BACKEND + 'respuesta-pregunta/list/' + id);
+  }
+  registrarRespuesta(datos) {
+    return this.http.post(this.API_BACKEND + 'respuesta-pregunta/registrar', datos);
+  }
+  actualizarRespuesta(id: number, datos:any){
+    return this.http.put(this.API_BACKEND+ 'respuesta-pregunta/actualizar/' + id, datos);
+  }
+  datosRespuesta(id){
+    return this.http.get(this.API_BACKEND+ 'respuesta-pregunta/mostrar/' + id);
+  }
 }

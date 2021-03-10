@@ -36,7 +36,7 @@
             <div>
               <mat-accordion>
                 <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                  <mat-expansion-panel-header>
+                  <mat-expansion-panel-header (click)="getIdPregunta(item.id_pregunta)">
                     <mat-panel-title>
                       Ver respuestas
                     </mat-panel-title>
@@ -49,7 +49,7 @@
                           Respuesta: {{res.texto_respuesta_pregunta}}
                         </div>
                         <div mat-line align="end">
-                          <button mat-icon-button color="accent" matTooltip="editar respuesta">
+                          <button mat-icon-button color="accent" (click)="editarRespuesta(res.id_respuesta_pregunta)" matTooltip="editar respuesta">
                             <mat-icon>create</mat-icon>
                           </button>
                           <button mat-icon-button color="warn" matTooltip="eliminar respuesta">

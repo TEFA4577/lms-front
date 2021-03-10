@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog} from '@angular/material/dialog';
 import { PreguntaService } from '../../../../services/pregunta.service';
 import { CrearPreguntaComponent } from '../crear-pregunta/crear-pregunta.component';
 import { EditarPreguntaComponent } from '../editar-pregunta/editar-pregunta.component';
 import { CrearRespuestaComponent } from '../respuestas/crear-respuesta/crear-respuesta.component';
+import { EditarRespuestaComponent } from '../respuestas/editar-respuesta/editar-respuesta.component';
 
 @Component({
   selector: 'app-preguntas',
@@ -16,29 +17,36 @@ export class PreguntasComponent implements OnInit {
   panelOpenState = false;
   pregunta: any;
   respuesta: any;
+  id: number;
+  preguntaId: any;
 
   constructor(
-    public serPregunta: PreguntaService,
     public dialog: MatDialog,
-  ) { }
+    public serPregunta: PreguntaService,
+  ) {
+  }
 
   ngOnInit(): void {
     this.cargarPreguntas();
-    this.cargarRespuestas();
   }
 
   cargarPreguntas() {
     this.serPregunta.mostrarPregunta().subscribe(data => {
-      console.log(data);
       this.pregunta = data;
       //console.log(this.pregunta);
     });
   }
 
-  cargarRespuestas() {
-    this.serPregunta.mostrarRepuesta().subscribe(data => {
-      console.log(data);
-      this.respuesta = data;
+  getIdPregunta(idPregunta:any) {
+    this.preguntaId = idPregunta;
+    // console.log(this.preguntaId);
+    this.cargarRespuestas(idPregunta)
+  }
+
+  cargarRespuestas(comments: any): void {
+    this.serPregunta.mostrarRepuesta(comments).subscribe(res => {
+      console.log(res);
+      this.respuesta = res;
       console.log(this.respuesta);
     });
   }
@@ -63,7 +71,16 @@ export class PreguntasComponent implements OnInit {
       console.log(id);
     });
   }
-
+  editarRespuesta(id: number):void{
+    const dialogRef = this.dialog.open(EditarRespuestaComponent, {
+      data: id,
+      width: '100vh'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(id);
+    });
+  }
   registrarRespuesta(idP: number): void {
     const dialogRef = this.dialog.open(CrearRespuestaComponent, {
       data: idP,
@@ -72,7 +89,7 @@ export class PreguntasComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(idP);
-      this.cargarRespuestas();
+      this.cargarRespuestas(idP);
     });
   }
 }
