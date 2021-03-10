@@ -28,9 +28,9 @@ export class InicioComponent implements OnInit {
     this.cargarEtiquetas();
     this.cargarDocentes();
     this.cargarPreguntas();
-    /*this.cargarRespuestas();*/
+    this.cargarRespuestas();
   }
-  // tslint:disable-next-line: typedef
+
   cargarCursos() {
     this.serCursos.listarCursos().subscribe(data => {
       console.log(data);
@@ -38,7 +38,7 @@ export class InicioComponent implements OnInit {
     });
   }
 
-  // tslint:disable-next-line: typedef
+
   cargarEtiquetas() {
     this.serCursos.etiquetaCurso().subscribe(data => {
       console.log(data);
@@ -46,7 +46,6 @@ export class InicioComponent implements OnInit {
     });
   }
 
-  // tslint:disable-next-line: typedef
   cargarDocentes() {
     this.serDocente.listarDocente().subscribe(data => {
       console.log(data);
@@ -66,11 +65,11 @@ export class InicioComponent implements OnInit {
     });
   }
 
-  /*cargarRespuestas(){
-    this.serPRegunta.mostrarRepuesta().subscribe(data => {
+  cargarRespuestas(){
+    this.serPregunta.mostrarRepuesta().subscribe(data => {
       console.log(data);
       this.respuesta = data;
       console.log(this.respuesta);
     });
-  }*/
+  }
 }
