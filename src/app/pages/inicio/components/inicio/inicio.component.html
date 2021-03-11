@@ -168,16 +168,19 @@
         <!--; let i = index *ngIf="i < 5" -->
         <mat-card class="categorie-card">
           <img src="{{ item.imagen_etiqueta }} " routerLink="/curso/cursos-categorias/{{item.id_etiqueta}}"
-            class="cat-img-cards" alt=" " fallimg />
+            class="cat-img-cards" alt=" " />
           <hr />
           <mat-card-header>
             <mat-card-title>
-              <p class="lead" routerLink="/curso/cursos-categorias/{{item.id_etiqueta}}">{{ item.nombre_etiqueta }}</p>
+              <a class="lead" routerLink="/curso/cursos-categorias/{{item.id_etiqueta}}">{{
+                item.nombre_etiqueta }}</a>
             </mat-card-title>
           </mat-card-header>
         </mat-card>
+        <br>
         <!--Final de Categorias-->
       </div>
+      <br>
     </div>
     <br>
   </div>

@@ -36,6 +36,10 @@ export class CursosService {
     return this.http.get(this.API_BACKEND + 'etiquetas', { headers });
   }
 
+  cursosEtiquetas(id : any) {
+    return this.http.get(this.API_BACKEND + 'etiquetas/cursos/'+ id);
+  }
+
   // Presentacion del Docente por su id
   // tslint:disable-next-line: typedef
   presentacionDocente(id) {

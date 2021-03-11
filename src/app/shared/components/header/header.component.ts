@@ -71,7 +71,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.cargarEtiquetas();
     this.getData();
-
     this.search.valueChanges.subscribe(value => this.searchEmitter.emit(value))
 
   }

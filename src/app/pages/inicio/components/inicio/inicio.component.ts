@@ -38,7 +38,6 @@ export class InicioComponent implements OnInit {
     });
   }
 
-
   cargarEtiquetas() {
     this.serCursos.etiquetaCurso().subscribe(data => {
       console.log(data);

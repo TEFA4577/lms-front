@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EtiquetaService } from '../../../../services/etiqueta.service';
 
@@ -10,6 +10,10 @@ import { EtiquetaService } from '../../../../services/etiqueta.service';
 export class ListadoCategoriasComponent implements OnInit {
 
   etiquetas: any;
+
+  @Input()
+  // tslint:disable-next-line: no-unused-expression
+  id: any;
 
   constructor(
     public route: ActivatedRoute,
