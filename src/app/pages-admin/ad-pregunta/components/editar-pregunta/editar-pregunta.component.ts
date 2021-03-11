@@ -2,6 +2,11 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PreguntaService } from '../../../../services/pregunta.service';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-editar-pregunta',
@@ -13,10 +18,14 @@ export class EditarPreguntaComponent implements OnInit {
   datos: any;
   preguntas: any;
   id: number;
+  respuesta:any;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   constructor(
     public dialogRef: MatDialogRef<EditarPreguntaComponent>,
     public formBuilder: FormBuilder,
     public serPregunta: PreguntaService,
+    private _snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: number
   ) {
     this.id = data;
@@ -48,12 +57,18 @@ export class EditarPreguntaComponent implements OnInit {
       console.log(error);
     });
   }
-
+  openSnackBar(message: string, action: string): void {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
   submitEditarPregunta(event): void {
     event.preventDefault();
     console.log(this.formEditarPregunta.value);
     this.serPregunta.actualizarPregunta( this.id, this.formEditarPregunta.value).subscribe(res => {
       console.log(res);
+      this.respuesta = res;
+      this.openSnackBar(this.respuesta.mensaje, 'cerrar');
       this.formEditarPregunta.reset();
       this.cargarDatosPregunta();
       this.onNoClick();

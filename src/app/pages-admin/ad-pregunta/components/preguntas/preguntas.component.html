@@ -14,56 +14,69 @@
         <mat-spinner></mat-spinner>
       </div>
       <mat-selection-list [multiple]="false">
-        <mat-list-item *ngFor=" let item of pregunta" class="row">
-          <div mat-line>
-              <mat-icon mat-list-icon color="warn">check_circle_outline</mat-icon>
-              {{item.texto_pregunta}}
-          </div>
-          <div mat-line>
-            <div class="d-flex flex-row-reverse">
-              <button mat-icon-button color="warn" matTooltip="eliminar pregunta">
-                <mat-icon>delete_forever</mat-icon>
-              </button>
-              <button mat-icon-button color="accent" (click)="editarPregunta(item.id_pregunta)" matTooltip="editar pregunta">
-                <mat-icon>drive_file_rename_outline</mat-icon>
-              </button>
-              <button mat-icon-button color="primary" (click)="registrarRespuesta(item.id_pregunta)" matTooltip="añadir respuesta">
-                <mat-icon>playlist_add</mat-icon>
-              </button>
+        <div>
+          <mat-list-item *ngFor=" let item of pregunta" class="row">
+            <div mat-line class="row">
+              <div mat-line>
+                <mat-icon mat-list-icon color="warn">help</mat-icon>{{item.texto_pregunta}}
+              </div>
+              <div mat-line>
+                <div class="d-flex flex-row-reverse">
+                  <button mat-icon-button color="warn" (click)="borrarPregunta(item.id_pregunta)"
+                    matTooltip="eliminar pregunta">
+                    <mat-icon>delete_forever</mat-icon>
+                  </button>
+                  <button mat-icon-button color="accent" (click)="editarPregunta(item.id_pregunta)"
+                    matTooltip="editar pregunta">
+                    <mat-icon>drive_file_rename_outline</mat-icon>
+                  </button>
+                  <button mat-icon-button color="primary" (click)="registrarRespuesta(item.id_pregunta)"
+                    matTooltip="añadir respuesta">
+                    <mat-icon>playlist_add</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <hr>
             </div>
-          </div>
-          <div mat-line>
-            <div>
-              <mat-accordion>
-                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      Ver respuestas
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-                  <mat-selection-list [multiple]="false" *ngFor="let res of item.pregunta_respuesta">
-                    <mat-list-option>
-                      <div mat-line>
+            <div mat-line>
+              <div *ngIf="item.pregunta_respuesta.length || 0">
+                <mat-accordion>
+                  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Ver respuestas
+                        <!--item.pregunta_respuesta-->
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-selection-list [multiple]="false" *ngFor="let res of item.pregunta_respuesta">
+
+                      <mat-list-option>
                         <div mat-line>
-                          <mat-icon mat-list-icon color="primary">done_all</mat-icon>
-                          Respuesta: {{res.texto_respuesta_pregunta}}
+                          <div mat-line>
+                            <mat-icon mat-list-icon color="primary">done_all</mat-icon>
+                            Respuesta:{{res.texto_respuesta_pregunta}}
+                          </div>
+                          <div mat-line align="end">
+                            <button mat-icon-button color="accent" (click)="editarRespuesta(res.id_respuesta_pregunta)"
+                              matTooltip="editar respuesta">
+                              <mat-icon>create</mat-icon>
+                            </button>
+                            <button mat-icon-button color="warn" (click)="borrarRespuesta(res.id_respuesta_pregunta)"
+                              matTooltip="eliminar respuesta">
+                              <mat-icon>delete_forever</mat-icon>
+                            </button>
+                          </div>
                         </div>
-                        <div mat-line align="end">
-                          <button mat-icon-button color="accent" (click)="editarRespuesta(res.id_respuesta_pregunta)" matTooltip="editar respuesta">
-                            <mat-icon>create</mat-icon>
-                          </button>
-                          <button mat-icon-button color="warn" matTooltip="eliminar respuesta">
-                            <mat-icon>delete_forever</mat-icon>
-                          </button>
-                        </div>
-                      </div>
-                    </mat-list-option>
-                  </mat-selection-list>
-                </mat-expansion-panel>
-              </mat-accordion>
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </div>
+              <mat-divider></mat-divider>
             </div>
-          </div>
-        </mat-list-item>
+            <hr>
+          </mat-list-item>
+        </div>
       </mat-selection-list>
     </mat-card-content>
   </mat-card>

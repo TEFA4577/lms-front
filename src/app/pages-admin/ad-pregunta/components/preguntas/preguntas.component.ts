@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { PreguntaService } from '../../../../services/pregunta.service';
 import { CrearPreguntaComponent } from '../crear-pregunta/crear-pregunta.component';
 import { EditarPreguntaComponent } from '../editar-pregunta/editar-pregunta.component';
@@ -22,6 +22,8 @@ export class PreguntasComponent implements OnInit {
   id: number;
   preguntaId: any;
   dat: any;
+  estado: any;
+  state: any;
 
   constructor(
     public dialog: MatDialog,
@@ -36,14 +38,24 @@ export class PreguntasComponent implements OnInit {
     this.cargarRespuestas();
   }
 
-  cargarPreguntas(){
+  cargarPreguntas() {
     this.serPregunta.mostrarPregunta().subscribe(data => {
       this.pregunta = data;
-      //console.log(this.pregunta);
+      console.log(this.pregunta);
+
+    });
+    //if (this.pregunta.length == 1) {
+      //this.estado = false;
+    //}
+  }
+
+  cargarRespuestas() {
+    this.serPregunta.mostrarRepuesta().subscribe(res => {
+      this.respuesta = res;
     });
   }
 
-  getIdPregunta(idPregunta:any) {
+  getIdPregunta(idPregunta: any) {
     this.preguntaId = idPregunta;
     // console.log(this.preguntaId);
   }
@@ -57,14 +69,7 @@ export class PreguntasComponent implements OnInit {
     });
   }
 
-  cargarRespuestas(){
-    this.serPregunta.mostrarPregunta().subscribe(res => {
-      this.respuesta = res;
-      console.log(res);
-    }, error => {
-      console.log(error);
-    });
-  }
+
 
   cargarPreguntasId(res) {
     this.serPregunta.datosPregunta(res).subscribe(data => {
@@ -92,18 +97,19 @@ export class PreguntasComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(id);
-      this.cargarPreguntasId(id);
+      this.cargarPreguntas();
     });
   }
 
-  editarRespuesta(id: number):void{
+  editarRespuesta(idR: number): void {
     const dialogRef = this.dialog.open(EditarRespuestaComponent, {
-      data: id,
+      data: idR,
       width: '100vh'
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      console.log(id);
+      console.log(idR);
+      this.cargarPreguntas();
     });
   }
   registrarRespuesta(idP: number): void {
@@ -113,8 +119,57 @@ export class PreguntasComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      console.log(idP);
-      // this.cargarRespuestas();
+      this.cargarPreguntas();
+    });
+  }
+
+  borrarPregunta(id: number): void {
+    Swal.fire({
+      title: 'Eliminar clase?',
+      text: 'seguro que desea eliminar la clase!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si deseo eliminar',
+      cancelButtonText: 'No, cancelar!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.serPregunta.eliminarPregunta(id).subscribe(res => {
+          console.log(res);
+          this.cargarPreguntas();
+        });
+        Swal.fire(
+          'Eliminado!',
+          'La Clase se elimino correctamente.',
+          'success'
+        );
+      }
+    });
+  }
+
+  borrarRespuesta(id: number): void {
+    Swal.fire({
+      title: 'Eliminar clase?',
+      text: 'seguro que desea eliminar la clase!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si deseo eliminar',
+      cancelButtonText: 'No, cancelar!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.serPregunta.eliminarRespuesta(id).subscribe(res => {
+          console.log(res);
+          this.cargarPreguntas();
+        });
+        Swal.fire(
+          'Eliminado!',
+          'La Clase se elimino correctamente.',
+          'success'
+        );
+      }
     });
   }
 }

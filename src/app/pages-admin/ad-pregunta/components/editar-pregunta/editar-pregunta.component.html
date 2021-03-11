@@ -9,7 +9,7 @@
     </div>
   </div>
   <div mat-dialog-actions>
-    <button mat-button color="warn" type="button" (click)="onNoClick()">cancelar</button>
+    <button mat-button color="warn" type="button" [mat-dialog-close]>cancelar</button>
     <button mat-button color="primary" type="submit" [disabled]="formEditarPregunta.invalid">Guardar Cambios</button>
   </div>
 </form>

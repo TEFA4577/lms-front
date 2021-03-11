@@ -1,8 +1,9 @@
 <!-- <mat-spinner *ngIf="!datos || estadoCargando"></mat-spinner>
 {{datos.pregunta.texto_pregunta}}-->
 <div mat-dialog-title>
-<h1>Registrar una Respuesta a </h1>
-  respuetas
+  <div *ngIf="datos">
+    <h1>Registrar una Respuesta de: {{datos.texto_pregunta}}</h1>
+  </div>
 </div>
 <form [formGroup]="formRespuesta" (ngSubmit)="submitRespuestas($event)" autocomplete="off">
   <div mat-dialog-content>
@@ -16,7 +17,7 @@
     </div>
   </div>
   <div mat-dialog-actions>
-    <button mat-raised-button color="warn" (click)="onNoClick()">cancelar</button>
+    <button mat-raised-button color="warn" [mat-dialog-close]>Cancelar</button>
     <button type="submit" color="primary" [disabled]="formRespuesta.invalid" mat-raised-button>Guardar Cambios</button>
   </div>
 </form>
