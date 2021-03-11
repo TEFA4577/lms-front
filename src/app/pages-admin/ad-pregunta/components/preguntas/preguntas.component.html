@@ -36,12 +36,12 @@
             <div>
               <mat-accordion>
                 <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                  <mat-expansion-panel-header (click)="getIdPregunta(item.id_pregunta)">
+                  <mat-expansion-panel-header>
                     <mat-panel-title>
                       Ver respuestas
                     </mat-panel-title>
                   </mat-expansion-panel-header>
-                  <mat-selection-list [multiple]="false" *ngFor="let res of respuesta">
+                  <mat-selection-list [multiple]="false" *ngFor="let res of item.pregunta_respuesta">
                     <mat-list-option>
                       <div mat-line>
                         <div mat-line>

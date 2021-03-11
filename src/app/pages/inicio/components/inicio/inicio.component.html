@@ -122,7 +122,7 @@
               {{item.texto_pregunta}}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <mat-list *ngFor="let res of respuesta">
+          <mat-list *ngFor="let res of  item.pregunta_respuesta">
             <!-- reemplazar en lugar del ngfor de arriba
               *ngFor="let res of item.texto_respuesta_pregunta"-->
             <mat-list-item role="listitem">

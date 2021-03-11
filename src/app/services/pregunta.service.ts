@@ -21,8 +21,11 @@ export class PreguntaService {
   actualizarPregunta(id: number, datos: any) {
     return this.http.put(this.API_BACKEND + 'pregunta/actualizar/' + id, datos);
   }
-  mostrarRepuesta(id) {
-    return this.http.get(this.API_BACKEND + 'respuesta-pregunta/list/' + id);
+  // eliminarPregunta(id) {
+  //   return this.http.put(this.API_BACKEND + 'pregunta/eliminar/' + id);
+  // }
+  mostrarRepuesta() {
+    return this.http.get(this.API_BACKEND + 'respuesta-pregunta/list');
   }
   registrarRespuesta(datos) {
     return this.http.post(this.API_BACKEND + 'respuesta-pregunta/registrar', datos);
