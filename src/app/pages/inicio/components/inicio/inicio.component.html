@@ -44,14 +44,20 @@
 
 
   <!--Listado de Cursos en general-->
-  <hr>
-  <div class="row justify-content-center py-3">
-    <div class="text-center">
-      <p class="lead">Cursos y novedades</p>
-      <button mat-raised-button routerLink="/curso/cursos-general" matTooltip="Descubre nuevos cursos" align="end"
-        color="accent">Ver <mat-icon>add_circle_outline</mat-icon></button>
+  <div class="container">
+    <hr>
+    <div class="row justify-content-center py-3">
+      <div class="col-6">
+        <p class="lead">Cursos y novedades</p>
+      </div>
+      <div class="col-6" align="end">
+        <button mat-raised-button routerLink="/curso/cursos-general" matTooltip="Descubre nuevos cursos" align="end"
+          color="accent">Ver <mat-icon>add_circle_outline</mat-icon></button>
+      </div>
     </div>
+    <hr>
   </div>
+
   <!--Fila donde estaran los Cards de Cursos-->
   <div class="container">
     <div class="row justify-content-center">
@@ -138,14 +144,21 @@
   <!--Listado de Preguntas Frecuentes-->
 
   <!--Catogorias Principales-->
-  <div class="container" #target>
+  <div class="container">
+    <hr>
     <div class="row justify-content-center py-3">
-      <div class="text-center">
+      <div class="col-6">
         <p class="lead">Categorías Principales</p>
+      </div>
+      <div class="col-6" align="end">
         <button mat-raised-button routerLink="/curso/categorias" matTooltip="Descubre todas las categorias" align="end"
           color="accent">Ver <mat-icon>add_circle_outline</mat-icon></button>
       </div>
     </div>
+    <hr>
+  </div>
+
+  <div class="container">
     <!--Cards de Categorias-->
     <div class="row justify-content-center">
       <div *ngIf="!etiqueta">
@@ -171,15 +184,23 @@
 
   <!--Profesionales y su descripcion-->
   <hr />
+
   <div class="container">
+    <hr>
     <div class="row justify-content-center py-3">
-      <div class="text-center">
+      <div class="col-6">
         <p class="lead">Nuestros Instructores</p>
+      </div>
+      <div class="col-6" align="end">
         <button mat-raised-button routerLink="/instructores/listado-instructores"
           matTooltip="Descubre a nuestros instructores" align="end" color="accent">Ver <mat-icon>add_circle_outline
           </mat-icon></button>
       </div>
     </div>
+    <hr>
+  </div>
+
+  <div class="container">
     <div class="row justify-content-center">
       <div *ngIf="!docente">
         <mat-spinner></mat-spinner>
