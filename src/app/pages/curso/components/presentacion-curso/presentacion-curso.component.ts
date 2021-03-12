@@ -65,6 +65,10 @@ export class PresentacionCursoComponent implements OnInit {
       console.log(this.datosDocente);
     });
   }
+  verVideo(ruta): void {
+    this.rutaVideo = ruta;
+    console.log(this.rutaVideo);
+  }
   setVideo(ruta: string) {
     this.rutaVideo = ruta;
     console.log(this.rutaVideo);
