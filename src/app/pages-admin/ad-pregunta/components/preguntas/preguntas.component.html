@@ -50,7 +50,7 @@
                     </mat-expansion-panel-header>
                     <mat-selection-list [multiple]="false" *ngFor="let res of item.pregunta_respuesta">
 
-                      <mat-list-option>
+                      <mat-list-option *ngIf="res.estado_respuesta_pregunta != 0">
                         <div mat-line>
                           <div mat-line>
                             <mat-icon mat-list-icon color="primary">done_all</mat-icon>

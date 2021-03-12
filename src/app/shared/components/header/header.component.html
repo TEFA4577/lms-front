@@ -63,16 +63,17 @@
     <button mat-button>Nuestros Instructores</button>
     <button mat-button routerLink="/info/nosotros">Nosotros</button>
   </mat-toolbar-row> class="categories" sasasas -->
-  <mat-toolbar-row *ngIf="!deviceXs" class="categories">
-    <!--Categorias principales-->
+<!--Categorias principales-->
+
+  <!-- <mat-toolbar-row *ngIf="!deviceXs" class="categories">
     <div class="col-md-12">
       <div class="row example-button-row">
         <a mat-raised-button *ngFor="let item of etiqueta" routerLink="/curso/cursos-categorias/{{item.id_etiqueta}}"
           target="_blank">{{ item.nombre_etiqueta }}</a>
       </div>
     </div>
-    <!--Final de Categorias principales-->
-  </mat-toolbar-row>
+  </mat-toolbar-row> -->
+    <!-- Final de Categorias principales -->
 
   <mat-toolbar-row *ngIf="deviceXs">
     <div class="wrapper">
