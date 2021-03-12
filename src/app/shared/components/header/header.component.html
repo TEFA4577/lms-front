@@ -68,9 +68,12 @@
     <div class="col-md-12">
       <div class="row example-button-row">
         <a mat-raised-button *ngFor="let item of etiqueta" routerLink="/curso/cursos-categorias/{{item.id_etiqueta}}"
-          target="_blank">{{ item.nombre_etiqueta }}</a>
+          target="_blank">{{
+          item.nombre_etiqueta }}</a>
       </div>
     </div>
+
+
     <!--Final de Categorias principales-->
   </mat-toolbar-row>
 
