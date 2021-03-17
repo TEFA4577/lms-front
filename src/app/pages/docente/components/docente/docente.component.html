@@ -18,16 +18,16 @@
               }}</a>
           </mat-card-title>
         </mat-card-header>
-        <mat-card-content align="left">
-          <mat-card-subtitle>
-            <h3>Correo electrónico: {{item.correo_usuario}}</h3>
-          </mat-card-subtitle>
-          <mat-card-subtitle align="center">
-            <h3>Descripcion del docente: {{item.datos_docente.descripcion_docente}}</h3>
-          </mat-card-subtitle>
-          <mat-card-subtitle align="center">
-            <h3>Experiencia del docente: {{item.datos_docente.experiencia_docente}}</h3>
-          </mat-card-subtitle>
+        <hr>
+        <img src="{{item.foto_usuario}}" routerLink="/instructores/presentacion-docente/{{ item.id_usuario }}"
+          class="img-cards" fallimg="avatar" />
+        <mat-card-content align="center">
+          <div class="container py-2" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
+            <mat-card-subtitle>
+              <h3>{{item.correo_usuario}}</h3>
+              <h3>{{item.datos_docente.descripcion_docente}}</h3>
+            </mat-card-subtitle>
+          </div>
         </mat-card-content>
       </mat-card>
       <br>
