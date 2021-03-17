@@ -90,3 +90,22 @@ a {
   max-width: 200px;
   margin-left: 40px;
 }
+
+.carousel-inner .img {
+  width: auto;
+  height: 400px;
+}
+
+@media only screen and (max-width: 600px){
+  .carousel-inner .img {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 500px){
+  .carousel-inner .img{
+    width: auto;
+    height: 200px;
+  }
+}
