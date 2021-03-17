@@ -5,6 +5,10 @@ export const MENU_DOCENTE = [
       {
         titulo: 'Mis Cursos',
         link: './curso/mis-cursos',
+      },
+      {
+        titulo: 'Mis Estudiantes',
+        link: './curso/',
       }
     ]
   },
