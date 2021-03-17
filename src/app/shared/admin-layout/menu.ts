@@ -5,9 +5,13 @@ export const MENU_DOCENTE = [
       {
         titulo: 'Mis Cursos',
         link: './curso/mis-cursos',
+      },
+      {
+        titulo: 'Mis Cursos Adquiridos',
+        link: '/estudiante/mis-cursos-adquiridos'
       }
     ]
-  },
+  }
 ];
 export const MENU_ADMIN = [
   {

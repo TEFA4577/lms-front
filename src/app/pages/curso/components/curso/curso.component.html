@@ -109,8 +109,8 @@
         </div>
       </div>
       <!--Fin Progress bar de progreso-->
-      <mat-accordion multi *ngFor="let modulo of modulos; let i = index">
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-accordion multi>
+        <mat-expansion-panel *ngFor="let modulo of modulos; let i = index, first as isFirst" [expanded]="isFirst">
           <mat-expansion-panel-header>
             Sección {{ i + 1 }}: &nbsp;{{ modulo.nombre_modulo }}
           </mat-expansion-panel-header>
