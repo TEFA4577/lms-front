@@ -9,20 +9,13 @@
   <div class="row justify-content-center">
     <div class="col-md-3" *ngFor="let item of docente">
       <!--Cards de los nuevos cursos-->
-<<<<<<< HEAD
       <mat-card class="example-card">
-=======
-      <mat-card class="example-card"  style="width: auto; height: 350px;" routerLink="/instructores/presentacion-docente/{{ item.id_usuario }}">
-        <img mat-card-image src="{{item.foto_usuario}}" style="height: 150px; width:auto;" class="img-cards" fallimg />
-        <hr>
->>>>>>> 859aa552396dea03f12444adf77440e73b3f246c
         <mat-card-header>
           <mat-card-title align="center">
             <a class="lead" routerLink="/instructores/presentacion-docente/{{ item.id_usuario }}">{{ item.nombre_usuario
               }}</a>
           </mat-card-title>
         </mat-card-header>
-<<<<<<< HEAD
         <hr>
         <img src="{{item.foto_usuario}}" routerLink="/instructores/presentacion-docente/{{ item.id_usuario }}"
           class="img-cards" fallimg="avatar" />
@@ -33,18 +26,6 @@
               <h3>{{item.datos_docente.descripcion_docente}}</h3>
             </mat-card-subtitle>
           </div>
-=======
-        <mat-card-content align="left">
-          <mat-card-subtitle>
-            <h3>Correo electrónico: {{item.correo_usuario}}</h3>
-          </mat-card-subtitle>
-          <mat-card-subtitle align="center">
-            <h3>Descripcion del docente: {{item.datos_docente.descripcion_docente}}</h3>
-          </mat-card-subtitle>
-          <mat-card-subtitle align="center">
-            <h3>Experiencia del docente: {{item.datos_docente.experiencia_docente}}</h3>
-          </mat-card-subtitle>
->>>>>>> 859aa552396dea03f12444adf77440e73b3f246c
         </mat-card-content>
       </mat-card>
       <br>

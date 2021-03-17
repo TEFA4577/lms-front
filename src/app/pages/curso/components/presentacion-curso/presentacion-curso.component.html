@@ -96,33 +96,34 @@
     <div *ngIf="!docente">
       <mat-spinner></mat-spinner>
     </div>
+    <!--Datos del docente-->
     <div class="col-md-7 py-4">
-      <!--Datos del docente-->
-      <div class="col-md-12 py-4 border" *ngIf="docente">
-        <h3>Información del Instructor</h3>
-        <hr />
-        <h3 align="justify">
-          Nombre del Instructor: {{ docente?.nombre_usuario }}
-        </h3>
-        <h3 align="justify">
-          Descripcion del Instructor: {{ datosDocente?.descripcion_docente }}
-        </h3>
-        <h3 align="justify">
-          Experiencia: {{ datosDocente?.experiencia_docente }}
-        </h3>
+      <div *ngIf="docente">
+        <mat-card>
+          <div>
+            <mat-card-title class="py-3">{{ docente.nombre_usuario }}</mat-card-title>
+          </div>
+          <hr />
+          <mat-card-content align="justify">
+            <mat-card-subtitle>¿Quien es {{docente.nombre_usuario}}?</mat-card-subtitle>
+            <p>{{ datosDocente?.descripcion_docente }}</p>
+            <mat-card-subtitle>Experiencia: </mat-card-subtitle>
+            <p>{{ datosDocente?.experiencia_docente }}</p>
+          </mat-card-content>
+        </mat-card>
       </div>
     </div>
     <div class="col-md-5 py-4">
       <!--Video de presentacion, Fotografia y nombre del Usuario-->
       <mat-card class="doc-img" *ngIf="docente">
         <!--Fotografia de referencia-->
-          <video [src]="rutaVideo" poster="{{ docente.foto_usuario }}" width="100%" controls muted
-          controlslist="nodownload" autoplay></video>
+        <video [src]="rutaVideo" (click)="verVideo(datosDocente.video_presentacion)" poster="{{ docente.foto_usuario }}"
+          width="100%" controls muted controlslist="nodownload" autoplay></video>
         <!--<img mat-card-image src="{{ docente.foto_usuario }}" />-->
-        <button mat-icon-button color="primary" type="button" (click)="verVideo(datosDocente.video_presentacion)"
+        <!--<button mat-icon-button color="primary" type="button" (click)="verVideo(datosDocente.video_presentacion)"
             matTooltip="Reproducir video">
             <mat-icon>play_circle_filled</mat-icon>
-          </button>
+          </button>-->
         <mat-card-header>
           <mat-card-title class="py-3">{{ docente.nombre_usuario }}</mat-card-title>
         </mat-card-header>
