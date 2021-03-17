@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row bg-dark">
     <div class="col-md-12 py-3 text-white text-center">
       <h3>Categorias Principales</h3>
@@ -10,7 +10,7 @@
     <div class="col-md-3" *ngFor="let item of etiquetas">
       <!--Cards de los nuevos cursos-->
       <mat-card class="example-card">
-        <img src="{{item.imagen_etiqueta}}" class="img-cards" />
+        <img src="{{item.imagen_etiqueta}}" class="img-cards" fallimg="avatar" />
         <hr>
         <mat-card-header>
           <mat-card-title>

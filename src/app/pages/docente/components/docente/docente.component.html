@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row bg-info justify-content-center">
     <div class="col-md-12 py-4 text-white">
       <p class="lead">Docentes de la Academia</p>
@@ -10,29 +10,28 @@
     <div class="col-md-3" *ngFor="let item of docente">
       <!--Cards de los nuevos cursos-->
       <mat-card class="example-card">
-        <img mat-card-image src="{{item.foto_usuario}}"
-          routerLink="/instructores/presentacion-docente/{{ item.id_usuario }}" class="img-cards" fallimg />
-        <hr>
         <mat-card-header>
           <mat-card-title align="center">
             <a class="lead" routerLink="/instructores/presentacion-docente/{{ item.id_usuario }}">{{ item.nombre_usuario
               }}</a>
           </mat-card-title>
         </mat-card-header>
-        <mat-card-content align="justify">
-          <mat-card-subtitle>
-            <h3>Correo electronico: {{item.correo_usuario}}</h3>
-          </mat-card-subtitle>
-          <mat-card-subtitle>
-            <h3>Descripcion del docente: {{item.datos_docente.descripcion_docente}}</h3>
-          </mat-card-subtitle>
-          <mat-card-subtitle>
-            <h3>Experiencia del docente: {{item.datos_docente.experiencia_docente}}</h3>
-          </mat-card-subtitle>
+        <hr>
+        <img src="{{item.foto_usuario}}" routerLink="/instructores/presentacion-docente/{{ item.id_usuario }}"
+          class="img-cards" fallimg="avatar" />
+        <mat-card-content align="center">
+          <div class="container py-2" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
+            <mat-card-subtitle>
+              <h3>{{item.correo_usuario}}</h3>
+              <h3>{{item.datos_docente.descripcion_docente}}</h3>
+            </mat-card-subtitle>
+          </div>
         </mat-card-content>
       </mat-card>
       <br>
       <!--Final de los Cards - nuevos cursos-->
     </div>
+    <br>
   </div>
+  <br>
 </div>

@@ -10,6 +10,7 @@ import { DocentesService } from 'src/app/services/docentes.service';
 export class DocenteComponent implements OnInit {
 
   docente: any;
+  texto = true;
 
   constructor(
     public route: ActivatedRoute,

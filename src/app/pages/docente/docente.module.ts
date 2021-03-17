@@ -19,6 +19,7 @@ import { EditarDocenteComponent } from './components/editar-docente/editar-docen
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
+import { NgFallimgModule } from 'ng-fallimg';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatStepperModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatChipsModule
+    MatChipsModule,
+    NgFallimgModule
   ],
   exports: [
     RegistroDocenteComponent
