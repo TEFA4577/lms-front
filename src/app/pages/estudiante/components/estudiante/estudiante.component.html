@@ -1,73 +1,78 @@
 <div class="container">
   <div class="row py-3">
     <div class="col-md-12">
-      <div class="container py-2">
+      <div class="container py-4">
         <!--Card de foto y datos de usuario-->
-        <mat-card class="example-card">
           <form [formGroup]="formUsuario" (ngSubmit)="submitEditarUsuario($event)" class="example-form">
             <div class="row">
               <!--Fotografia del usuario-->
-              <div class="col-md-4">
-                <img mat-card-image src="{{datosUsuario.foto_usuario}}">
-                <mat-card-header class="py-2">
-                  <mat-card-title>{{ datosUsuario.nombre_usuario }}</mat-card-title>
-                </mat-card-header>
-                <hr>
-                <mat-card-actions>
-                  <input type="file" name="foto_usuario" #imagen hidden accept="image/*"
-                    (change)="uploadFile($event.target.files)">
-                  <button type="button" mat-mini-fab matTooltip="Cambia tu foto de perfil" (click)="imagen.click()"
-                    matTooltipClass="example-tooltip-red" class="example-button" color="warn">
-                    <mat-icon>mode_edit</mat-icon>
-                  </button>
-                </mat-card-actions>
+              <div class="col-md-4 py-2">
+                <mat-card>
+                  <mat-card-header class="py-2">
+                    <mat-card-title>{{ datosUsuario.nombre_usuario }}</mat-card-title>
+                  </mat-card-header>
+                  <img mat-card-image src="{{datosUsuario.foto_usuario}}">
+                  <hr>
+                  <mat-card-actions>
+                    <input type="file" name="foto_usuario" #imagen hidden accept="image/*"
+                      (change)="uploadFile($event.target.files)">
+                    <button type="button" mat-mini-fab matTooltip="Cambia tu foto de perfil" (click)="imagen.click()"
+                      matTooltipClass="example-tooltip-red" class="example-button" color="warn">
+                      <mat-icon>mode_edit</mat-icon>
+                    </button>
+                  </mat-card-actions>
+                </mat-card>
               </div>
               <!--Fotografia del usuario-->
-              <div class="col-md-8 py-4">
-                <mat-card-header>
-                  <mat-card-title>Datos de Usuario</mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                  <hr>
-                  <mat-form-field class="col-md-6">
-                    <mat-label>Nombre Completo:</mat-label>
-                    <input matInput formControlName="nombre_usuario" type="text">
-                  </mat-form-field>
-                  <mat-form-field class="col-md-6">
-                    <mat-label>Correo electronico:</mat-label>
-                    <input matInput formControlName="correo_usuario" type="email">
-                  </mat-form-field>
-                </mat-card-content>
-                <mat-card-actions align="end">
-                  <button mat-button color="primary" type="submit">Guardar cambios</button>
-                </mat-card-actions>
-                <hr>
+              <div class="col-md-4 py-2">
+                <mat-card>
+                  <mat-card-header>
+                    <mat-card-title>Datos de Usuario</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <hr>
+                    <mat-form-field class="col-md-12">
+                      <mat-label>Nombre Completo:</mat-label>
+                      <input matInput formControlName="nombre_usuario" type="text">
+                    </mat-form-field>
+                    <mat-form-field class="col-md-12">
+                      <mat-label>Correo electrónico:</mat-label>
+                      <input matInput formControlName="correo_usuario" type="email">
+                    </mat-form-field>
+                  </mat-card-content>
+                  <mat-card-actions align="end">
+                    <button mat-raised-button color="accent" type="submit">Guardar cambios</button>
+                  </mat-card-actions>
+                </mat-card>
+              </div>
+              <div class="col-md-4 py-2">
                 <div *ngIf="datosUsuario.id_rol == 2">
                   <form [formGroup]="formDocente" (ngSubmit)="actualizarPerfilDocente($event)" class="example-form">
-                    <mat-card-header>
-                      <mat-card-title>Datos de Instructor</mat-card-title>
-                    </mat-card-header>
-                    <mat-form-field class="col-md-12">
-                      <mat-label>Numero de Celular:</mat-label>
-                      <input matInput formControlName="telefono_docente" type="number">
-                    </mat-form-field>
-                    <mat-form-field class="col-md-6">
-                      <mat-label>Descripcion profesional:</mat-label>
-                      <textarea matInput formControlName="descripcion_docente" type="text"></textarea>
-                    </mat-form-field>
-                    <mat-form-field class="col-md-6">
-                      <mat-label>Experiencia profesional:</mat-label>
-                      <textarea matInput formControlName="experiencia_docente" type="text"></textarea>
-                    </mat-form-field>
-                    <mat-card-actions align="end">
-                      <button mat-button color="primary" type="submit">Guardar cambios</button>
-                    </mat-card-actions>
+                    <mat-card>
+                      <mat-card-header>
+                        <mat-card-title>Datos de Instructor</mat-card-title>
+                      </mat-card-header>
+                      <mat-form-field class="col-md-12">
+                        <mat-label>Número de Celular:</mat-label>
+                        <input matInput formControlName="telefono_docente" type="number">
+                      </mat-form-field>
+                      <mat-form-field class="col-md-12">
+                        <mat-label>Descripcion profesional:</mat-label>
+                        <textarea matInput formControlName="descripcion_docente" type="text"></textarea>
+                      </mat-form-field>
+                      <mat-form-field class="col-md-12">
+                        <mat-label>Experiencia profesional:</mat-label>
+                        <textarea matInput formControlName="experiencia_docente" type="text"></textarea>
+                      </mat-form-field>
+                      <mat-card-actions align="end">
+                        <button mat-raised-button color="accent" type="submit">Guardar cambios</button>
+                      </mat-card-actions>
+                    </mat-card>
                   </form>
                 </div>
               </div>
             </div>
           </form>
-        </mat-card>
       </div>
     </div>
   </div>

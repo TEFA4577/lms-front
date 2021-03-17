@@ -9,7 +9,9 @@
   <div class="row justify-content-center">
     <div class="col-md-3" *ngFor="let item of docente">
       <!--Cards de los nuevos cursos-->
-      <mat-card class="example-card">
+      <mat-card class="example-card"  style="width: auto; height: 350px;" routerLink="/instructores/presentacion-docente/{{ item.id_usuario }}">
+        <img mat-card-image src="{{item.foto_usuario}}" style="height: 150px; width:auto;" class="img-cards" fallimg />
+        <hr>
         <mat-card-header>
           <mat-card-title align="center">
             <a class="lead" routerLink="/instructores/presentacion-docente/{{ item.id_usuario }}">{{ item.nombre_usuario
