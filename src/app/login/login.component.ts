@@ -83,7 +83,11 @@ export class LoginComponent implements OnInit {
       console.log(res);
       if (this.respuesta.mensaje === 'usuario no registrado') {
         console.log(res);
-      } else {
+      } else if(this.respuesta.usuario.id_rol === 2){
+        this.serUsuario.guardarDatosUsuario(this.respuesta.usuario);
+        this.serUsuario.guardarToken(this.respuesta.token);
+        this.router.navigateByUrl('admin/cursos/mis-cursos');
+      }else {
         this.serUsuario.guardarDatosUsuario(this.respuesta.usuario);
         this.serUsuario.guardarToken(this.respuesta.token);
         this.router.navigateByUrl('inicio');

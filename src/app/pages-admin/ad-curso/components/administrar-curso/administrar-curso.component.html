@@ -1,12 +1,13 @@
 <div class="d-flex flex-lg-row-reverse">
-  <button mat-button routerLink="./mis-cursos">volver atras</button>
+  <button mat-raised-button class="btn-volver" color="primary" routerLink="./mis-cursos">volver atras</button>
 </div>
 <div *ngIf="!curso">
   <mat-spinner></mat-spinner>
 </div>
 <div class="container-lg cuerpo" *ngIf="curso">
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-6">
+        <a class="cr-paso">1</a><br/>
       <form [formGroup]="formCurso" (ngSubmit)="actualizarCurso($event)" autocomplete="off">
         <mat-card class=" contenidoCurso">
           <mat-card-header>
@@ -14,14 +15,14 @@
             <mat-card-subtitle>Estado del Curso: {{curso.estado_curso}}</mat-card-subtitle>
             <hr>
             <div class="d-flex flex-row-reverse">
-              <button mat-icon-button color="warn" type="button" (click)="borrarCurso(curso.id_curso)"
+              <!-- <button mat-icon-button color="warn" type="button" (click)="borrarCurso(curso.id_curso)"
                 matTooltip="borrar el curso">
                 <mat-icon>delete</mat-icon>
-              </button>
-              <button mat-icon-button color="primary" type="button" (click)="enviarARevision()"
+              </button> -->
+              <!-- <button mat-icon-button color="primary" type="button" (click)="enviarARevision()"
                 matTooltip="enviar el curso a revision">
                 <mat-icon>send</mat-icon>
-              </button>
+              </button> -->
               <button mat-icon-button color="accent" type="button" (click)="imagenCurso.click()"
                 matTooltip="cambiar imagen del curso">
                 <mat-icon>perm_media</mat-icon>
@@ -60,8 +61,8 @@
         </mat-card>
       </form>
     </div>
-    <div class="col-md-5">
-      <hr>
+    <div class="col-md-6">
+      <a class="cr-paso">2</a><br/>
       <div *ngIf="rutaVideo">
         <h3>Vista Previa del Video</h3>
         <video [src]="rutaVideo" class="videoPreview" controls></video>
@@ -100,7 +101,7 @@
                       </button>
                       <button mat-icon-button color="accent" matTooltip="cambiar datos del modulo"
                         (click)="editarModulo(modulo.id_modulo)">
-                        <mat-icon>attach_file</mat-icon>
+                        <mat-icon>drive_file_rename_outline</mat-icon>
                       </button>
                       <button mat-icon-button color="primary" matTooltip="crear una clase"
                         (click)="crearClase(modulo.id_modulo)">
@@ -142,26 +143,33 @@
           </mat-accordion>
         </mat-card-content>
       </mat-card>
-      <hr>
-      <div class="btns">
-        <button mat-raised-button color="warn" type="button" (click)="borrarCurso(curso.id_curso)"
+    </div>
+    <hr/>
+    <div class="col-md-12"><br/>
+      <a class="cr-paso">3</a><br/>
+      <div class="btns row">
+        <div class="col-md-6">
+          <button mat-raised-button color="warn" type="button" (click)="borrarCurso(curso.id_curso)"
           matTooltip="borrar el curso"
           matTooltipPosition="right">
           <mat-icon align="start">delete</mat-icon>
           <span class="texto">Borrar Curso</span>
         </button>
+        </div>
+        <div class="col-md-6">
         <button mat-raised-button color="primary" type="button" (click)="enviarARevision()"
-          matTooltip="enviar el curso a revision"
-          matTooltipPosition="right">
-          <mat-icon align="start">send</mat-icon>
-          <span class="texto">Enviar a Revison</span>
-        </button>
-        <button mat-raised-button color="accent" type="button" (click)="imagenCurso.click()"
+        matTooltip="enviar el curso a revision"
+        matTooltipPosition="right">
+        <mat-icon align="start">send</mat-icon>
+        <span class="texto">Enviar a Revison</span>
+      </button>
+        </div>
+        <!-- <button mat-raised-button color="accent" type="button" (click)="imagenCurso.click()"
           matTooltip="cambiar imagen del curso"
           matTooltipPosition="right">
           <mat-icon align="start">perm_media</mat-icon>
           <span class="texto">Cambiar la imagen</span>
-        </button>
+        </button> -->
       </div>
     </div>
   </div>

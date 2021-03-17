@@ -8,8 +8,8 @@
   <hr>
   <div class="row">
     <div class="col-md-4 py-2" *ngFor="let item of curso">
-      <mat-card class="example-card">
-        <img src="{{ item.imagen_curso }}" routerLink="/curso/curso-detalle/{{ item.id_curso }}" class="img-cards"
+      <mat-card class="example-card" routerLink="/curso/curso-detalle/{{ item.id_curso }}">
+        <img src="{{ item.imagen_curso }}" class="img-cards"
           fallimg />
         <hr />
         <mat-card-header>
@@ -19,7 +19,7 @@
           <br>
           <mat-card-subtitle>Precio: Bs. {{ item.precio}}</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-subtitle>Descripcion: </mat-card-subtitle>
+        <mat-card-subtitle>Descripción: </mat-card-subtitle>
         <mat-card-content>
           <div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
             {{ item.descripcion_curso }}
