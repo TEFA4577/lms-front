@@ -18,9 +18,9 @@
           <mat-card-title class="py-3">{{ curso.nombre_curso }}
           </mat-card-title>
         </mat-card-header>
+        <h3>Número de Secciones: {{ modulos.length }}</h3>
+        <h3>Precio del Curso: Bs. {{ curso.precio }}</h3>
         <mat-card-content>
-          <h3>Número de Secciones: {{ modulos.length }}</h3>
-          <h3>Precio del Curso: Bs. {{ curso.precio }}</h3>
           <button mat-raised-button *ngIf="!estado; else logged" class="btn-block py-1" color="primary"
             routerLink="/register">Registrate y compra el curso!
             <!--<a href="/register" style="color: white;">Registrate y compra el curso!</a>-->
@@ -58,34 +58,48 @@
     </div>
     <div class="col-md-8 boder py-4">
       <!--Informacion del Curso-->
-      <div class="container border py-4">
+      <div class="container">
         <div *ngIf="curso">
-          <h3>¿Qué aprenderás del curso?</h3>
-          <hr />
-          <p align="justify">
-            Descripción del curso: &nbsp; {{ curso.descripcion_curso }}
-          </p>
+          <mat-card>
+            <mat-card-title>{{ curso.nombre_curso }}</mat-card-title>
+            <hr>
+            <mat-card-content>
+              <p align="justify">
+                Número de Secciones: {{ modulos.length }}
+              </p>
+              <p> Precio del Curso: Bs. {{ curso.precio }}</p>
+            </mat-card-content>
+          </mat-card>
         </div>
       </div>
-      <br />
-      <div class="container border py-3">
-        <!--Contenido del Curso-->
-        <h3>Contenido del curso</h3>
-        <hr />
-        <mat-accordion *ngFor="let item of modulos; let i = index">
-          <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Sección {{ i + 1 }}: &nbsp; {{ item.nombre_modulo }}
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>
-              Descripcion de la seccion: &nbsp; {{ item.descripcion_modulo }}
+      <br>
+      <div class="container">
+        <div *ngIf="curso">
+          <mat-card>
+            <h3>¿Qué aprenderás del curso?</h3>
+            <hr />
+            <p align="justify">
+              Descripción del curso: &nbsp; {{ curso.descripcion_curso }}
             </p>
-          </mat-expansion-panel>
-          <br />
-        </mat-accordion>
-        <!--Final del contenido del curso-->
+            <!--Contenido del Curso-->
+            <h3>Contenido del curso</h3>
+            <hr />
+            <mat-accordion *ngFor="let item of modulos; let i = index">
+              <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Sección {{ i + 1 }}: &nbsp; {{ item.nombre_modulo }}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>
+                  Descripcion de la seccion: &nbsp; {{ item.descripcion_modulo }}
+                </p>
+              </mat-expansion-panel>
+              <br />
+            </mat-accordion>
+            <!--Final del contenido del curso-->
+          </mat-card>
+        </div>
       </div>
     </div>
   </div>
