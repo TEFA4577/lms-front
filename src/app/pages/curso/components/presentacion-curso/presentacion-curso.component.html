@@ -18,8 +18,8 @@
           <mat-card-title class="py-3">{{ curso.nombre_curso }}
           </mat-card-title>
         </mat-card-header>
-        <h3>Número de Secciones: {{ modulos.length }}</h3>
-        <h3>Precio del Curso: Bs. {{ curso.precio }}</h3>
+        <!--<h3>Número de Secciones: {{ modulos.length }}</h3>
+        <h3>Precio del Curso: Bs. {{ curso.precio }}</h3>-->
         <mat-card-content>
           <button mat-raised-button *ngIf="!estado; else logged" class="btn-block py-1" color="primary"
             routerLink="/register">Registrate y compra el curso!
@@ -76,13 +76,15 @@
       <div class="container">
         <div *ngIf="curso">
           <mat-card>
-            <h3>¿Qué aprenderás del curso?</h3>
+            <mat-card-title class="py-3">¿Qué aprenderás del curso?
+            </mat-card-title>
             <hr />
             <p align="justify">
               Descripción del curso: &nbsp; {{ curso.descripcion_curso }}
             </p>
             <!--Contenido del Curso-->
-            <h3>Contenido del curso</h3>
+            <mat-card-title class="py-3">Contenido del curso
+            </mat-card-title>
             <hr />
             <mat-accordion *ngFor="let item of modulos; let i = index">
               <mat-expansion-panel hideToggle>
