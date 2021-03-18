@@ -49,7 +49,7 @@
         </button>
         <mat-menu #menu="matMenu" xPosition="before">
           <button mat-menu-item routerLink="/estudiante/mi-perfil">Mi Perfil</button>
-          <button mat-menu-item routerLink="/estudiante/mis-cursos-adquiridos">Que estoy Cursando</button>
+          <button mat-menu-item *ngIf="datosUsuario.id_rol==3" routerLink="/estudiante/mis-cursos-adquiridos">Que estoy Cursando</button>
           <button mat-menu-item *ngIf="datosUsuario.id_rol<3" routerLink="admin">Sistema Administrativo</button>
           <button mat-menu-item *ngIf="datosUsuario.id_rol==3" (click)="openDialog()">Quiero Ser Docente</button>
           <button mat-menu-item (click)="cerrarSesion()">Cerrar Session</button>

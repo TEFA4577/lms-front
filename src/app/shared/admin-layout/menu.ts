@@ -7,11 +7,11 @@ export const MENU_DOCENTE = [
         link: './curso/mis-cursos',
       },
       {
-        titulo: 'Mis Estudiantes',
-        link: './curso/',
+        titulo: 'Mis Cursos Adquiridos',
+        link: '/estudiante/mis-cursos-adquiridos'
       }
     ]
-  },
+  }
 ];
 export const MENU_ADMIN = [
   {

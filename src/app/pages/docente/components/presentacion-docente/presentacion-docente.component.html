@@ -13,7 +13,7 @@
           </mat-card-title>
           <!--Info del Instructor-->
           <mat-card-subtitle align="justify">
-            <h3>Descripcion del Instructor: {{ docente.datos_docente.descripcion_docente }}
+            <h3> {{ docente.datos_docente.descripcion_docente }}
             </h3>
           </mat-card-subtitle>
           <mat-card-subtitle align="justify">
@@ -54,8 +54,8 @@
               <div class="col-md-6">
                 <mat-card-subtitle>Descripcion: </mat-card-subtitle>
                 <mat-card-content>
-                  <div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
-                    {{ item.descripcion_curso }}
+                  <div class="container descripcion">
+                    <p>{{ item.descripcion_curso }}</p>
                   </div>
                 </mat-card-content>
                 <mat-card-subtitle>Categorias pertenecientes:</mat-card-subtitle>
