@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PagoComponent } from '../pago/pago.component';
 import { PagoTarjetaComponent } from '../pago/components/pago-tarjeta/pago-tarjeta.component';
 import { PagoMoneComponent } from '../pago/components/pago-mone/pago-mone.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-presentacion-curso',
@@ -34,8 +35,10 @@ export class PresentacionCursoComponent implements OnInit {
   mostrarMetodo = false;
   rutaVideo: string;
   // tslint:disable-next-line: max-line-length
-  constructor(public route: ActivatedRoute, public serCursos: CursosService, public dialog: MatDialog) { }
-
+  constructor(public route: ActivatedRoute,
+              public serCursos: CursosService,
+              public dialog: MatDialog,
+              public datepipe: DatePipe ) { }
   // tslint:disable-next-line: typedef
   ngOnInit(): void {
     this.comprobarAuth();

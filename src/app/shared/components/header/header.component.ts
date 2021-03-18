@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, Input, EventEmitter, Output, NgModule } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input, EventEmitter, Output} from '@angular/core';
 import { UsuarioService } from '../../../services/usuario.service';
 import { AuthService } from '../../../services/auth.service';
 import { LoginService } from '../../../services/login.service';

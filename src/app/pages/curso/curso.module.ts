@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe  } from '@angular/common';
 
 import { CursoRoutingModule } from './curso-routing.module';
 import { CursoComponent } from './components/curso/curso.component';
@@ -59,6 +59,9 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
     MatTabsModule,
     MatTableModule,
     MatChipsModule
+  ],
+  providers: [
+    DatePipe,
   ],
   exports:
     [MatInputModule, PagoDepositoComponent, PagoMoneComponent, PagoTarjetaComponent,

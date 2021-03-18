@@ -61,13 +61,15 @@
       <div class="container">
         <div *ngIf="curso">
           <mat-card>
-            <mat-card-title>{{ curso.nombre_curso }}</mat-card-title>
+            <mat-card-title class="title-curso">{{ curso.nombre_curso }}</mat-card-title>
             <hr>
             <mat-card-content>
               <p align="justify">
-                Número de Secciones: {{ modulos.length }}
+                Número de Secciones:
+                 <a class="sub-seccion">{{ modulos.length }}</a>
               </p>
-              <p> Precio del Curso: Bs. {{ curso.precio }}</p>
+              <p> Precio del Curso: <a class="sub-seccion">{{ curso.precio }} Bs.</a></p>
+              <p> Fecha de Publicación: <a class="sub-seccion">{{curso.created_at | date:"MM/dd/yy"}}</a></p>
             </mat-card-content>
           </mat-card>
         </div>
@@ -76,25 +78,26 @@
       <div class="container">
         <div *ngIf="curso">
           <mat-card>
-            <mat-card-title class="py-3">¿Qué aprenderás del curso?
+            <mat-card-title class="py-2">¿Qué aprenderás del curso?
             </mat-card-title>
             <hr />
-            <p align="justify">
-              Descripción del curso: &nbsp; {{ curso.descripcion_curso }}
+            <p align="justify" class="descript">
+             {{ curso.descripcion_curso }}
             </p>
             <!--Contenido del Curso-->
-            <mat-card-title class="py-3">Contenido del curso
+            <mat-card-title class="py-2">
+              Contenido del curso
             </mat-card-title>
-            <hr />
+            <hr/>
             <mat-accordion *ngFor="let item of modulos; let i = index">
               <mat-expansion-panel hideToggle>
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                    Sección {{ i + 1 }}: &nbsp; {{ item.nombre_modulo }}
+                    <p class="sub-seccion">Sección {{ i + 1 }}: &nbsp;</p> {{ item.nombre_modulo }}
                   </mat-panel-title>
                 </mat-expansion-panel-header>
-                <p>
-                  Descripcion de la seccion: &nbsp; {{ item.descripcion_modulo }}
+                <p class="descript">
+                  {{ item.descripcion_modulo }}
                 </p>
               </mat-expansion-panel>
               <br />
@@ -117,14 +120,14 @@
       <div *ngIf="docente">
         <mat-card>
           <div>
-            <mat-card-title class="py-3">{{ docente.nombre_usuario }}</mat-card-title>
+            <mat-card-title class="py-3 nom-doc">{{ docente.nombre_usuario }}</mat-card-title>
           </div>
           <hr />
           <mat-card-content align="justify">
             <mat-card-subtitle>¿Quien es {{docente.nombre_usuario}}?</mat-card-subtitle>
-            <p>{{ datosDocente?.descripcion_docente }}</p>
+            <p class="descript">{{ datosDocente?.descripcion_docente }}</p>
             <mat-card-subtitle>Experiencia: </mat-card-subtitle>
-            <p>{{ datosDocente?.experiencia_docente }}</p>
+            <p class="descript">{{ datosDocente?.experiencia_docente }}</p>
           </mat-card-content>
         </mat-card>
       </div>

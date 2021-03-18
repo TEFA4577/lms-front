@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { DocenteComponent } from './components/docente/docente.component';
 import { PresentacionDocenteComponent } from './components/presentacion-docente/presentacion-docente.component';
 import { RegistroDocenteComponent } from './components/registro-docente/registro-docente.component';
+import { PasosDocenteComponent } from './components/pasos-docente/pasos-docente.component';
+
 
 const routes: Routes = [
   {
@@ -14,9 +16,13 @@ const routes: Routes = [
     component: PresentacionDocenteComponent
   },
   {
+    path: 'pasos-instructor',
+    component: PasosDocenteComponent
+  },
+  {
     path: 'registro-docente',
     component: RegistroDocenteComponent
-  },
+  }
 ];
 
 @NgModule({

@@ -1,5 +1,14 @@
 export const MENU_DOCENTE = [
   {
+    grupo: 'Incio',
+    contenido: [
+      {
+        titulo: 'Volver a Inicio',
+        link: ''
+      }
+    ]
+  },
+  {
     grupo: 'Cursos',
     contenido: [
       {
@@ -9,7 +18,7 @@ export const MENU_DOCENTE = [
       {
         titulo: 'Mis Cursos Adquiridos',
         link: '/estudiante/mis-cursos-adquiridos'
-      }
+      },
     ]
   }
 ];

@@ -63,6 +63,11 @@ export class CursosService {
     const id = datos.id_usuario;
     return this.http.get(this.API_BACKEND + 'usuario/cursos-creados/' + id);
   }
+  listarCursoEstudiantes(){
+    const datos = JSON.parse(localStorage.getItem('datosUsuario'));
+    const id = datos.id_usuario;
+    return this.http.get(this.API_BACKEND + 'usuario/cursos-estudiantes/' + id);
+  }
   // tslint:disable-next-line: typedef
   registrarCurso(datos) {
     return this.http.post(this.API_BACKEND + 'cursos/registrar', datos);

@@ -24,12 +24,8 @@
         </button>
         <button mat-button [matMenuTriggerFor]="menu" color="warn">Categorias</button>
         <mat-menu #menu="matMenu">
-          <button
-            mat-menu-item
-            *ngFor="let item of etiqueta"
-            routerLink="/curso/cursos-categorias/{{ item.id_etiqueta }}"
-            color="warn"
-          >
+          <button mat-menu-item *ngFor="let item of etiqueta"
+            routerLink="/curso/cursos-categorias/{{ item.id_etiqueta }}" color="warn">
             {{ item.nombre_etiqueta }}
           </button>
         </mat-menu>
@@ -42,7 +38,8 @@
     </div>
     <div>
       <div *ngIf="!estado">
-        <button mat-button color="warn" routerLink="/info/nosotros"> <span>Ser Docente</span> </button>
+        <button mat-button color="warn" routerLink="/instructores/pasos-instructor"> <span>Se instructor</span>
+        </button>
         <button mat-button color="accent" routerLink="/login">
           <span>Iniciar Sesión</span>
         </button>
@@ -50,31 +47,22 @@
           <span>Regístrate</span>
         </button>
       </div>
+
       <div *ngIf="estado">
-        <button
-          mat-button
-          color="warn"
-          *ngIf="datosUsuario.id_rol == 3"
-          routerLink="/estudiante/mis-cursos-adquiridos"
-        >
-          <span>Mis Cursos</span>
+        <button mat-button color="warn" *ngIf="datosUsuario.id_rol == 3" routerLink="/estudiante/mis-cursos-adquiridos">
+          Mis Cursos
+        </button>
+        <button mat-button color="warn" *ngIf="datosUsuario.id_rol == 3" routerLink="/instructores/pasos-instructor">
+          Quiero Ser Instructor
         </button>
         <button mat-button [matMenuTriggerFor]="menu">
           <div fxLayout="row" fxLayoutAlign="end center">
-            <div
-              fxLayout="column"
-              fxLayoutAlign="center center"
-              *ngIf="!deviceXs"
-            >
+            <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!deviceXs">
               <span class="user">{{ datosUsuario.nombre_usuario }}</span>
               <span class="rol">{{ datosUsuario.rol_usuario.nombre_rol }}</span>
             </div>
             <div>
-              <img
-                class="avatar"
-                [src]="datosUsuario.foto_usuario"
-                (error)="imagenError()"
-              />
+              <img class="avatar" [src]="datosUsuario.foto_usuario" (error)="imagenError()" />
             </div>
           </div>
         </button>
@@ -82,19 +70,14 @@
           <button mat-menu-item routerLink="/estudiante/mi-perfil">
             Mi Perfil
           </button>
-          <button
-            mat-menu-item
-            *ngIf="datosUsuario.id_rol < 3"
-            routerLink="admin"
-          >
-            Sistema Administrativo
+          <button mat-menu-item *ngIf="datosUsuario.id_rol == 1" routerLink="admin">
+            Panel Administrativo
           </button>
-          <button
-            mat-menu-item
-            *ngIf="datosUsuario.id_rol == 3"
-            (click)="openDialog()"
-          >
-            Quiero Ser Docente
+          <button mat-menu-item *ngIf="datosUsuario.id_rol == 2" routerLink="admin">
+            Panel del Instructor
+          </button>
+          <button mat-menu-item *ngIf="datosUsuario.id_rol == 3" routerLink="/instructores/pasos-instructor">
+            Quiero Ser Instructor
           </button>
           <button mat-menu-item (click)="cerrarSesion()">Cerrar Session</button>
         </mat-menu>
@@ -107,8 +90,8 @@
     <button mat-button>Nuestros Instructores</button>
     <button mat-button routerLink="/info/nosotros">Nosotros</button>
   </mat-toolbar-row> class="categories" sasasas -->
-    <!--Categorias principales-->
-    <!--<div class="col-md-12">
+  <!--Categorias principales-->
+  <!--<div class="col-md-12">
       <div class="row example-button-row">
         <a
           mat-raised-button
@@ -120,18 +103,14 @@
       </div>
     </div>-->
 
-    <!--Final de Categorias principales-->
+  <!--Final de Categorias principales-->
   <!--</mat-toolbar-row>-->
 
   <mat-toolbar-row *ngIf="deviceXs">
     <div class="wrapper">
       <div class="search_wrap search_wrap_3">
         <div class="search_box">
-          <input
-            type="text"
-            class="input"
-            placeholder="¿Qué cursos te interesan?"
-          />
+          <input type="text" class="input" placeholder="¿Qué cursos te interesan?" />
           <div class="btn btn_common">
             <i class="fas fa-search"></i>
           </div>
@@ -143,11 +122,7 @@
     <button mat-button routerLink="/curso/cursos-general">Novedades</button>
     <button mat-button [matMenuTriggerFor]="menu">Categorias</button>
     <mat-menu #menu="matMenu">
-      <button
-        mat-menu-item
-        *ngFor="let item of etiqueta"
-        routerLink="/curso/cursos-categorias/{{ item.id_etiqueta }}"
-      >
+      <button mat-menu-item *ngFor="let item of etiqueta" routerLink="/curso/cursos-categorias/{{ item.id_etiqueta }}">
         {{ item.nombre_etiqueta }}
       </button>
     </mat-menu>
