@@ -6,6 +6,25 @@
     </button>
   </div>
   <hr>
+
+  <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Curso </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre_curso}} </td>
+    </ng-container>
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Id Estudiante </th>
+      <td mat-cell *matCellDef="let element"> {{ element.curso_estudiante.id_usuario }} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table> -->
+
+<hr/>
   <div *ngIf="estado" class="sinCurso bg-aqua d-flex align-items-center justify-content-center">
     <p class="mensaje">Aun no tienes cursos creado empieza <a mat-button (click)="openDialog()">aqui</a></p>
   </div>
