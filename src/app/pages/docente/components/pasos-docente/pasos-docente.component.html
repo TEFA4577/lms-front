@@ -1,9 +1,9 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col-md-7">
       <img src="assets/img/Inicio/11.png" class="image" />
     </div>
-    <div class="col-md-5 py-3" align="end">
+    <div class="col-md-5 py-5" align="end">
       <h1>Haz un impacto en ti!</h1>
       <h1>Cree un curso de video en línea y gane dinero enseñando a personas de toda Bolivia.</h1>
       <button mat-raised-button color="warn" (click)="openDialog()">Convierte en instructor</button>
@@ -68,19 +68,17 @@
   </div>
   <mat-tab-group mat-align-tabs="center">
     <mat-tab label="Planifica tu curso">
-      <div class="col-6">
-        <mat-card class="example-card">
-          <mat-card-header>
-            <mat-card-title>Planifica tu curso</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6 py-5">
             <p>
               Organizarse
               Empiece por su pasión y conocimiento. Luego, elija un tema y planifique sus conferencias en Google Docs,
               Microsoft Excel o su cuaderno favorito.
             </p>
             <p>
-              Puede enseñar de la manera que desee, incluso crear cursos en varios idiomas e inspirar a más estudiantes.
+              Puede enseñar de la manera que desee, incluso crear cursos en varios idiomas e inspirar a más
+              estudiantes.
             </p>
             <p>
               Como te ayudamos
@@ -88,57 +86,55 @@
               real. Además, nuestro panel del instructor y las páginas del plan de estudios lo ayudan a mantenerse
               encaminado.
             </p>
-          </mat-card-content>
-        </mat-card>
+          </div>
+          <div class="col-md-6">
+            <img mat-card-image src="../../../../assets/img/Inicio/12.png">
+          </div>
+        </div>
       </div>
     </mat-tab>
 
     <mat-tab label="Grabe su video">
-      <div class="col-6">
-        <mat-card class="example-card">
-          <mat-card-header>
-            <mat-card-title>Grabe su video</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p>
-              Luces, CAMARA, ACCION
-              ¿Tienes un teléfono inteligente o una DSLR? Agregue un micrófono y estará listo para filmar su primer
-              curso desde su casa o donde sea que se encuentre.
-            </p>
-            <p>
-              ¿Vergonzoso ante la Cámara? No hay problema. Utilice un software de screencasting, como Camtasia, para
-              hacer demostraciones de screencast.
-            </p>
-            <p>
-              Como te ayudamos
-              Nuestro equipo de soporte está disponible para ayudar y ofrece una revisión gratuita de sus videos. Y
-              nuestra comunidad de instructores en línea está aquí para ofrecer consejos e inspiración.
-            </p>
-          </mat-card-content>
-        </mat-card>
+      <div class="row">
+        <div class="col-md-6 py-5">
+          <p>
+            Luces, CAMARA, ACCION
+            ¿Tienes un teléfono inteligente o una DSLR? Agregue un micrófono y estará listo para filmar su primer
+            curso desde su casa o donde sea que se encuentre.
+          </p>
+          <p>
+            ¿Vergonzoso ante la Cámara? No hay problema. Utilice un software de screencasting, como Camtasia, para
+            hacer demostraciones de screencast.
+          </p>
+          <p>
+            Como te ayudamos
+            Nuestro equipo de soporte está disponible para ayudar y ofrece una revisión gratuita de sus videos. Y
+            nuestra comunidad de instructores en línea está aquí para ofrecer consejos e inspiración.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <img mat-card-image src="../../../../assets/img/Inicio/Profesor.png">
+        </div>
       </div>
     </mat-tab>
 
     <mat-tab label="Construye tu comunidad">
-      <div class="col-6">
-        <mat-card class="example-card">
-          <mat-card-header>
-            <mat-card-title>Construye tu comunidad</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p>
-              LAlcanzar
-              Cree cuestionarios, ejercicios y asignaciones para desarrollar la interactividad. Escriba mensajes de
-              bienvenida para sus estudiantes y responda a sus preguntas. Porque los estudiantes no solo miran,
-              lo hacen.
-            </p>
-            <p>
-              Como te ayudamos
-              Proporcionamos todas las herramientas para mensajería, preguntas y respuestas, anuncios de cursos y
-              cuestionarios, todo en un solo lugar.
-            </p>
-          </mat-card-content>
-        </mat-card>
+      <div class="row">
+        <div class="col-md-6 py-5">
+          <p>
+            Cree cuestionarios, ejercicios y asignaciones para desarrollar la interactividad. Escriba mensajes de
+            bienvenida para sus estudiantes y responda a sus preguntas. Porque los estudiantes no solo miran,
+            lo hacen.
+          </p>
+          <p>
+            Como te ayudamos
+            Proporcionamos todas las herramientas para mensajería, preguntas y respuestas, anuncios de cursos y
+            cuestionarios, todo en un solo lugar.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <img mat-card-image src="../../../../assets/img/Inicio/presentacion.png">
+        </div>
       </div>
     </mat-tab>
   </mat-tab-group>
@@ -147,7 +143,7 @@
     <hr>
   </div>
   <div class="row">
-    <div class="col-md-4 border">
+    <div class="col-md-4">
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
@@ -164,7 +160,7 @@
       </mat-card>
 
     </div>
-    <div class="col-md-4 border">
+    <div class="col-md-4">
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
@@ -181,7 +177,7 @@
       </mat-card>
 
     </div>
-    <div class="col-md-4 border">
+    <div class="col-md-4">
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
