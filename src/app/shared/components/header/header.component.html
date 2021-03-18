@@ -79,31 +79,11 @@
           </div>
         </button>
         <mat-menu #menu="matMenu" xPosition="before">
-<<<<<<< HEAD
-          <button mat-menu-item routerLink="/estudiante/mi-perfil">
-            Mi Perfil
-          </button>
-          <button
-            mat-menu-item
-            *ngIf="datosUsuario.id_rol < 3"
-            routerLink="admin"
-          >
-            Sistema Administrativo
-          </button>
-          <button
-            mat-menu-item
-            *ngIf="datosUsuario.id_rol == 3"
-            (click)="openDialog()"
-          >
-            Quiero Ser Docente
-          </button>
-=======
           <button mat-menu-item routerLink="/estudiante/mi-perfil">Mi Perfil</button>
           <button mat-menu-item *ngIf="datosUsuario.id_rol==3" routerLink="/estudiante/mis-cursos-adquiridos">Mi aprendizaje</button>
           <button mat-menu-item *ngIf="datosUsuario.id_rol==1" routerLink="admin">Panel Administrativo</button>
           <button mat-menu-item *ngIf="datosUsuario.id_rol==2" routerLink="admin">Panel del Instructor</button>
           <button mat-menu-item *ngIf="datosUsuario.id_rol==3" (click)="openDialog()">Enseña en la Academia</button>
->>>>>>> f437406bdf47344671cdc6db485a4f6bdb6e54ad
           <button mat-menu-item (click)="cerrarSesion()">Cerrar Session</button>
         </mat-menu>
       </div>
