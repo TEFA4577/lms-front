@@ -11,19 +11,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PresentacionDocenteComponent } from './components/presentacion-docente/presentacion-docente.component';
 import { RegistroDocenteComponent } from './components/registro-docente/registro-docente.component';
-import { EditarDocenteComponent } from './components/editar-docente/editar-docente.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 import { NgFallimgModule } from 'ng-fallimg';
+import { PasosDocenteComponent } from './components/pasos-docente/pasos-docente.component';
 
 
 @NgModule({
-  declarations: [DocenteComponent, PresentacionDocenteComponent, RegistroDocenteComponent, EditarDocenteComponent],
+  declarations: [DocenteComponent, PresentacionDocenteComponent, RegistroDocenteComponent, PasosDocenteComponent],
   imports: [
     CommonModule,
     DocenteRoutingModule,
@@ -40,7 +41,8 @@ import { NgFallimgModule } from 'ng-fallimg';
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatChipsModule,
-    NgFallimgModule
+    NgFallimgModule,
+    MatTabsModule
   ],
   exports: [
     RegistroDocenteComponent
