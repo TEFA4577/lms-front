@@ -4,21 +4,12 @@ import { CrearCursoComponent } from '../crear-curso/crear-curso.component';
 import { CursosService } from '../../../../services/cursos.service';
 import { EtiquetasComponent } from '../etiquetas/etiquetas.component';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
 @Component({
   selector: 'app-listado-curso',
   templateUrl: './listado-curso.component.html',
   styleUrls: ['./listado-curso.component.scss']
 })
 export class ListadoCursoComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight'];
-  dataSource: any;
   misCursos: any = [];
   estado = true;
   texto = true;
@@ -26,7 +17,6 @@ export class ListadoCursoComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarMisCursos();
-    this.listarMisEstudiantes();
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(CrearCursoComponent);
@@ -58,13 +48,6 @@ export class ListadoCursoComponent implements OnInit {
       if (this.misCursos.length !== 0) {
         this.estado = false;
       }
-    });
-  }
-
-  listarMisEstudiantes(): void{
-    this.cursoSrv.listarCursoEstudiantes().subscribe(data =>{
-      console.log(data);
-      this.dataSource = data;
     });
   }
 }
