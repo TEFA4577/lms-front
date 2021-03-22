@@ -1,0 +1,40 @@
+<div class="container-lg">
+  <h1>
+    Solicitudes de adquisición membresia
+  </h1>
+  <hr/>
+  <mat-card-content>
+    <div class="mat-elevation-z8">
+      <table mat-table class="table-responsive-lg table-hover">
+        <ng-container matColumnDef="usuario">
+          <th mat-header-cell *matHeaderCellDef>Usuario</th>
+          <td mat-cell *matCellDef="">nombre</td>
+        </ng-container>
+        <ng-container matColumnDef="membrecia">
+          <th mat-header-cell *matHeaderCellDef>Membresia</th>
+          <td mat-cell *matCellDef="">premium</td>
+        </ng-container>
+        <ng-container matColumnDef="">
+          <th mat-header-cell *matHeaderCellDef>Comprobante</th>
+          <td class="comprobante" mat-cell *matCellDef="">
+            <img src=""/>
+          </td>
+        </ng-container>
+        <!--Simbolos-->
+        <ng-container matColumnDef="id_membresia">
+          <th mat-header-cell *matHeaderCellDef>Opciones</th>
+          <td mat-cell>
+            <button mat-raised-button color="accent" class="btn-block">Habilitar Membresia</button>
+            <button mat-raised-button color="warn" class="btn-block">Rechazar Solicitud</button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" align="center">no hay solicitudes</td>
+        </tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10,20]" showFirstLastButtons></mat-paginator>
+    </div>
+  </mat-card-content>
+</div>

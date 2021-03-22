@@ -25,6 +25,11 @@ const routes: Routes = [
     loadChildren: () => import('./ad-pregunta/ad-pregunta.module').then(m => m.AdPreguntaModule)
   },
   {
+    path: 'membresia',
+    canActivate: [RolGuard],
+    loadChildren: () => import('./ad-membresia/ad-membresia.module').then(m => m.AdMembresiaModule)
+  },
+  {
     path: '**',
     redirectTo: 'cursos'
   }

@@ -5,7 +5,6 @@ import { PagesAdminRoutingModule } from './pages-admin-routing.module';
 
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     PagesAdminRoutingModule

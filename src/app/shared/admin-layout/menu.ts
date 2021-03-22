@@ -19,8 +19,21 @@ export const MENU_DOCENTE = [
         titulo: 'Mis Cursos Adquiridos',
         link: '/estudiante/mis-cursos-adquiridos'
       },
+      {
+        titulo: 'Mis Estudiantes',
+        link: 'cursos/estudiantes'
+      }
     ]
-  }
+  },
+  {
+    grupo: 'membresia',
+    contenido: [
+      {
+        titulo: 'Adquirir Membresia',
+        link: './membresia'
+      }
+    ]
+  },
 ];
 export const MENU_ADMIN = [
   {
@@ -30,6 +43,10 @@ export const MENU_ADMIN = [
         titulo: 'Administrar Usuarios',
         link: './cursos/lista',
       },
+      {
+        titulo: 'Solicitudes de Memnbresia',
+        link: './membresia/solicitudes',
+      }
     ]
   },
   {
@@ -42,7 +59,7 @@ export const MENU_ADMIN = [
       {
         titulo: 'Solicitudes de Compra',
         link: './cursos/solicitudes',
-      }
+      },
     ]
   },
   {

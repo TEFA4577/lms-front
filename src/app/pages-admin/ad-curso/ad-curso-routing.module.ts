@@ -4,6 +4,7 @@ import { ListadoCursoComponent } from './components/listado-curso/listado-curso.
 import { AdministrarCursoComponent } from './components/administrar-curso/administrar-curso.component';
 import { ListaAdCursoComponent } from './lista-ad-curso/lista-ad-curso.component';
 import { SolicitudesCursoComponent } from './solicitudes-curso/solicitudes-curso.component';
+import { ListadoCursoEstudianteComponent } from './components/listado-curso-estudiante/listado-curso-estudiante.component';
 import { RolGuard } from 'src/app/guards/rol.guard';
 
 const routes: Routes = [
@@ -19,6 +20,11 @@ const routes: Routes = [
     path: 'lista',
     canActivate: [RolGuard],
     component: ListaAdCursoComponent,
+  },
+  {
+    path: 'estudiantes',
+    canActivate: [RolGuard],
+    component: ListadoCursoEstudianteComponent,
   },
   {
     path: 'solicitudes',

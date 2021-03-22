@@ -17,6 +17,8 @@ export interface PeriodicElement {
 export class ListadoCursoEstudianteComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight'];
   dataSource: any;
+  misEstudiantes: any = [];
+  estado = true;
 
   constructor(
     public dialog: MatDialog,
@@ -30,7 +32,10 @@ export class ListadoCursoEstudianteComponent implements OnInit {
   listarMisEstudiantes(): void{
     this.cursoSrv.listarCursoEstudiantes().subscribe(data =>{
       console.log(data);
-      this.dataSource = data;
+      this.misEstudiantes = data;
+      if (this.misEstudiantes !== 0) {
+        this.estado = false;
+      }
     });
   }
 

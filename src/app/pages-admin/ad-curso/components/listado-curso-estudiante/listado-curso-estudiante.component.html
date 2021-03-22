@@ -1,1 +1,33 @@
-<p>listado-curso-estudiante works!</p>
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <h2>Mis Estudiantes</h2>
+  </div>
+  <hr>
+  <div *ngIf="estado" class="sinCurso bg-aqua d-flex align-items-center justify-content-center">
+    <p class="mensaje">
+      Aún no tienes estudiantes
+    </p>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">N°</th>
+            <th scope="col">Cursos</th>
+            <th scope="col">Estudiantes</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let miCurso of misEstudiantes">
+          <tr>
+            <th scope="row">#</th>
+            <td>{{miCurso.nombre_curso}}</td>
+            <td>
+              <h3 *ngFor="let res of miCurso.curso_estudiante"> {{res.id_usuario}}</h3>
+             </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
