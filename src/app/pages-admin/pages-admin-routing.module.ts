@@ -25,6 +25,11 @@ const routes: Routes = [
     loadChildren: () => import('./ad-pregunta/ad-pregunta.module').then(m => m.AdPreguntaModule)
   },
   {
+    path: 'encuestas',
+    canActivate: [RolGuard],
+    loadChildren: () => import('./ad-pregunta/ad-pregunta.module').then(m => m.AdPreguntaModule)
+  },
+  {
     path: '**',
     redirectTo: 'cursos'
   }
