@@ -21,10 +21,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 import { NgFallimgModule } from 'ng-fallimg';
 import { PasosDocenteComponent } from './components/pasos-docente/pasos-docente.component';
+import { PagoComponent } from './components/pago/pago/pago.component';
+import { PagoDepositoComponent } from './components/pago/components/pago-deposito/pago-deposito/pago-deposito.component';
+import { PagoMoneComponent } from './components/pago/components/pago-mone/pago-mone/pago-mone.component';
+import { PagoTarjetaComponent } from './components/pago/components/pago-tarjeta/pago-tarjeta/pago-tarjeta.component';
 
 
 @NgModule({
-  declarations: [DocenteComponent, PresentacionDocenteComponent, RegistroDocenteComponent, PasosDocenteComponent],
+  declarations: [DocenteComponent, PresentacionDocenteComponent, RegistroDocenteComponent, PasosDocenteComponent, PagoComponent, PagoDepositoComponent, PagoMoneComponent, PagoTarjetaComponent],
   imports: [
     CommonModule,
     DocenteRoutingModule,
