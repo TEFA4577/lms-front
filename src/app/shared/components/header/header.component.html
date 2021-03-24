@@ -1,12 +1,12 @@
-<mat-toolbar class="position:fixed, navbar">
+<mat-toolbar>
   <mat-toolbar-row fxLayoutAlign="space-between center">
     <div fxLayout="row">
       <!--Boton y logo de la academia que redirecciona al inicio-->
       <button mat-button routerLink="/inicio">
         <img src="assets/img/Iconos/logoAcademia.png" height="45px" alt="" />
       </button>
-      <!--<app-filter-cursos (search)="handleSearch($event)"></app-filter-cursos>
 
+      <!--<app-filter-cursos (search)="handleSearch($event)"></app-filter-cursos>
       <div *ngIf="!deviceXs">
         <div class="search_wrap search_wrap_3">
           <div class="search_box">
@@ -33,10 +33,68 @@
           Nuestros Instructores
         </button>
         <button mat-button color="warn" routerLink="/info/nosotros">Nosotros</button>
-
       </div>
     </div>
-    <div>
+
+    <div fxLayout="row" *ngIf="deviceXs">
+      <div *ngIf="estado">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!deviceXs">
+              <span class="user">{{ datosUsuario.nombre_usuario }}</span>
+              <span class="rol">{{ datosUsuario.rol_usuario.nombre_rol }}</span>
+            </div>
+            <div>
+              <img class="avatar" [src]="datosUsuario.foto_usuario" (error)="imagenError()" />
+            </div>
+          </div>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item routerLink="/estudiante/mi-perfil">
+            Mi Perfil
+          </button>
+          <button mat-menu-item color="warn" *ngIf="datosUsuario.id_rol == 3"
+            routerLink="/estudiante/mis-cursos-adquiridos">
+            Mis Cursos
+          </button>
+          <button mat-menu-item *ngIf="datosUsuario.id_rol == 1" routerLink="admin">
+            Panel Administrativo
+          </button>
+          <button mat-menu-item *ngIf="datosUsuario.id_rol == 2" routerLink="admin">
+            Panel del Instructor
+          </button>
+          <button mat-menu-item *ngIf="datosUsuario.id_rol == 3" routerLink="/instructores/pasos-instructor">
+            Quiero Ser Instructor
+          </button>
+          <button mat-menu-item (click)="cerrarSesion()">Cerrar Session</button>
+        </mat-menu>
+      </div>
+
+      <div *ngIf="!estado">
+        <button mat-button color="warn" routerLink="/instructores/pasos-instructor"> <span>Se instructor</span>
+        </button>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" color="primary">menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item routerLink="/login">Iniciar Sesión</button>
+          <button mat-menu-item routerLink="/register">Regístrate</button>
+        </mat-menu>
+      </div>
+
+    </div>
+
+    <div *ngIf="!deviceXs">
+      <!--<div class="wrapper">
+        <div class="search_wrap search_wrap_3">
+          <div class="search_box">
+            <input type="text" class="input" placeholder="¿Qué cursos te interesan?" />
+            <div class="btn btn_common">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+        </div>
+      </div>-->
       <div *ngIf="!estado">
         <button mat-button color="warn" routerLink="/instructores/pasos-instructor"> <span>Se instructor</span>
         </button>
@@ -48,7 +106,7 @@
         </button>
       </div>
 
-      <div *ngIf="estado">
+      <div fxLayout="row" *ngIf="estado">
         <button mat-button color="warn" *ngIf="datosUsuario.id_rol == 3" routerLink="/estudiante/mis-cursos-adquiridos">
           Mis Cursos
         </button>
@@ -84,40 +142,7 @@
       </div>
     </div>
   </mat-toolbar-row>
-  <!--<mat-toolbar-row>
-    <button mat-button>Nuevos cursos y novedades</button>
-    <button mat-button>Categorias Principales</button>
-    <button mat-button>Nuestros Instructores</button>
-    <button mat-button routerLink="/info/nosotros">Nosotros</button>
-  </mat-toolbar-row> class="categories" sasasas -->
-  <!--Categorias principales-->
-  <!--<div class="col-md-12">
-      <div class="row example-button-row">
-        <a
-          mat-raised-button
-          *ngFor="let item of etiqueta"
-          routerLink="/curso/cursos-categorias/{{ item.id_etiqueta }}"
-          target="_blank"
-          >{{ item.nombre_etiqueta }}</a
-        >
-      </div>
-    </div>-->
 
-  <!--Final de Categorias principales-->
-  <!--</mat-toolbar-row>-->
-
-  <mat-toolbar-row *ngIf="deviceXs">
-    <div class="wrapper">
-      <div class="search_wrap search_wrap_3">
-        <div class="search_box">
-          <input type="text" class="input" placeholder="¿Qué cursos te interesan?" />
-          <div class="btn btn_common">
-            <i class="fas fa-search"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </mat-toolbar-row>
   <mat-toolbar-row *ngIf="deviceXs">
     <button mat-button routerLink="/curso/cursos-general">Novedades</button>
     <button mat-button [matMenuTriggerFor]="menu">Categorias</button>
