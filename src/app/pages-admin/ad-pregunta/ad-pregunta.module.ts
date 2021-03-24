@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdPreguntaRoutingModule } from './ad-pregunta-routing.module';
+import { CrearPreguntaComponent } from './components/crear-pregunta/crear-pregunta.component';
+import { EditarPreguntaComponent } from './components/editar-pregunta/editar-pregunta.component';
+import { CrearRespuestaComponent } from './components/respuestas/crear-respuesta/crear-respuesta.component';
+import { EditarRespuestaComponent } from './components/respuestas/editar-respuesta/editar-respuesta.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { PreguntasComponent } from './components/preguntas/preguntas.component';
@@ -17,10 +22,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { CrearPreguntaComponent } from './components/crear-pregunta/crear-pregunta.component';
-import { EditarPreguntaComponent } from './components/editar-pregunta/editar-pregunta.component';
-import { CrearRespuestaComponent } from './components/respuestas/crear-respuesta/crear-respuesta.component';
-import { EditarRespuestaComponent } from './components/respuestas/editar-respuesta/editar-respuesta.component';
 
 @NgModule({
   declarations: [PreguntasComponent, CrearPreguntaComponent, EditarPreguntaComponent, CrearRespuestaComponent, EditarRespuestaComponent],

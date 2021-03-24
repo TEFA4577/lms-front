@@ -27,7 +27,7 @@ const routes: Routes = [
   {
     path: 'encuestas',
     canActivate: [RolGuard],
-    loadChildren: () => import('./ad-pregunta/ad-pregunta.module').then(m => m.AdPreguntaModule)
+    loadChildren: () => import('./ad-encuestas/ad-encuestas.module').then(m => m.AdEncuestasModule)
   },
   {
     path: '**',
