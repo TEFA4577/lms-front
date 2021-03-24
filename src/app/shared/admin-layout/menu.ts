@@ -62,5 +62,14 @@ export const MENU_ADMIN = [
         link: './preguntas-frecuentes'
       }
     ]
+  },
+  {
+    grupo: 'Encuestas',
+    contenido: [
+      {
+        titulo: 'Realiza tus encuestas',
+        link: './preguntas-frecuentes'
+      }
+    ]
   }
 ];
