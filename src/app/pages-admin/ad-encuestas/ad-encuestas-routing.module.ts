@@ -4,7 +4,7 @@ import { EncuestasComponent } from './components/encuestas/encuestas.component';
 
 const routes: Routes = [
   {
-    path: 'listado-encuestas',
+    path: '',
     component: EncuestasComponent
   }
 ];
