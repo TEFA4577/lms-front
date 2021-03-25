@@ -34,6 +34,15 @@ export const MENU_DOCENTE = [
       }
     ]
   },
+  {
+    grupo: 'Tutoriales y Manuales',
+    contenido: [
+      {
+        titulo: '¿Como subir un curso?',
+        link: './curso/mis-cursos',
+      },
+    ]
+  }
 ];
 export const MENU_ADMIN = [
   {
@@ -81,11 +90,15 @@ export const MENU_ADMIN = [
     ]
   },
   {
-    grupo: 'Preguntas',
+    grupo: 'Preguntas y encuestas',
     contenido: [
       {
         titulo: 'Preguntas Frecuentas',
         link: './preguntas-frecuentes'
+      },
+      {
+        titulo: 'Realiza tus encuestas',
+        link: './encuestas'
       }
     ]
   }

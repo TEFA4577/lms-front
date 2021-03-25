@@ -30,6 +30,11 @@ const routes: Routes = [
     loadChildren: () => import('./ad-membresia/ad-membresia.module').then(m => m.AdMembresiaModule)
   },
   {
+    path: 'encuestas',
+    canActivate: [RolGuard],
+    loadChildren: () => import('./ad-encuestas/ad-encuestas.module').then(m => m.AdEncuestasModule)
+  },
+  {
     path: '**',
     redirectTo: 'cursos'
   }

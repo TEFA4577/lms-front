@@ -34,6 +34,7 @@ import { ComentariosCursoComponent } from './components/curso/comentarios-curso/
 import { ListadoCategoriasComponent } from './components/listado-categorias/listado-categorias.component';
 import { RespuestasCursoComponent } from './components/curso/respuestas-curso/respuestas-curso.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
+import { NgFallimgModule } from 'ng-fallimg';
 
 @NgModule({
   declarations: [CursoComponent, PresentacionCursoComponent, PagoComponent, PagoDepositoComponent, PagoMoneComponent, PagoTarjetaComponent, ListadoCursosComponent, DetallesCategoriasComponent, ComentariosCursoComponent, ListadoCategoriasComponent, RespuestasCursoComponent, BuscadorComponent],
@@ -58,7 +59,8 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
     MatProgressSpinnerModule,
     MatTabsModule,
     MatTableModule,
-    MatChipsModule
+    MatChipsModule,
+    NgFallimgModule
   ],
   providers: [
     DatePipe,
