@@ -30,7 +30,7 @@ export const MENU_DOCENTE = [
     contenido: [
       {
         titulo: 'Adquirir Membresia',
-        link: './membresia'
+        link: './membresia/docente-membresia'
       }
     ]
   },
@@ -42,9 +42,18 @@ export const MENU_ADMIN = [
       {
         titulo: 'Administrar Usuarios',
         link: './cursos/lista',
+      }
+    ]
+  },
+  {
+    grupo: 'Membresia',
+    contenido: [
+      {
+        titulo: 'Administrar Membresia',
+        link: './membresia'
       },
       {
-        titulo: 'Solicitudes de Memnbresia',
+        titulo: 'Solicitud de Membresia',
         link: './membresia/solicitudes',
       }
     ]
