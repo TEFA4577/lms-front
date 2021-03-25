@@ -38,7 +38,6 @@ export class MembresiaComponent implements OnInit {
     });
   }
   applyFilter(event: Event): void {
-    console.log(event);
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
     if (this.dataSource.paginator) {
@@ -46,7 +45,6 @@ export class MembresiaComponent implements OnInit {
     }
   }
   editarMembresia(id: number): void {
-    console.log(id);
     const dialogRef = this.dialog.open(EditarMembresiaComponent, {
       data: id
     });
@@ -58,7 +56,6 @@ export class MembresiaComponent implements OnInit {
   }
   registrarMembresia(): void {
     const dialogRef = this.dialog.open(CrearMembresiaComponent);
-
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.listarMembresia();
@@ -77,7 +74,6 @@ export class MembresiaComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.serMembreia.eliminarMembresia(id).subscribe(res => {
-          console.log(res);
           this.listarMembresia();
         });
       }
@@ -96,14 +92,8 @@ export class MembresiaComponent implements OnInit {
     }).then((result) => {
       if(result.isConfirmed){
         this.serMembreia.hablitarMembresia(id).subscribe(data => {
-          console.log(data);
           this.listarMembresia();
         });
-        Swal.fire(
-          'habilitado',
-          'la membresia está lista para que los usuario vean.',
-          'success'
-        );
       }
     });
   }
