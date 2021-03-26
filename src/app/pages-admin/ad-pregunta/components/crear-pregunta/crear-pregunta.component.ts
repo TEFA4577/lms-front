@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import {PreguntaService } from '../../../../services/pregunta.service';
+import { PreguntaService } from '../../../../services/pregunta.service';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -17,7 +17,7 @@ export class CrearPreguntaComponent implements OnInit {
   formPregunta: FormGroup;
   datos: any;
   id: number;
-  respuesta:any;
+  respuesta: any;
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
