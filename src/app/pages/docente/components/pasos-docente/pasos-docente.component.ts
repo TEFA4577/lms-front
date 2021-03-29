@@ -24,7 +24,7 @@ export class PasosDocenteComponent implements OnInit {
   respuesta: any;
   mobileQuery: MediaQueryList;
   open = false;
-  estado: boolean;
+  estado = false;
   datosUsuario: any;
   isActive = false;
   etiqueta: any;
@@ -40,6 +40,7 @@ export class PasosDocenteComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.comprobarAuth();
   }
 
   openSnackBar(message: string, action: string): void {
@@ -53,11 +54,12 @@ export class PasosDocenteComponent implements OnInit {
     if (this.estado) {
       this.datosUsuario = localStorage.getItem('datosUsuario');
       this.datosUsuario = JSON.parse(localStorage.getItem('datosUsuario'));
+      this.estado = true;
     }
     console.log(this.estado);
   }
 
-  openDialog() {
+ openDialog() {
     const dialogRef = this.dialog.open(RegistroDocenteComponent, {
       width: '1000vh',
     });
