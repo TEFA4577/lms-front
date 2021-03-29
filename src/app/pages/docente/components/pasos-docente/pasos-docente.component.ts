@@ -3,8 +3,6 @@ import { UsuarioService } from '../../../../services/usuario.service';
 // Dialog o modal
 import { MatDialog } from '@angular/material/dialog';
 import { RegistroDocenteComponent } from '../../../../pages/docente/components/registro-docente/registro-docente.component';
-import { AuthService } from '../../../../services/auth.service';
-import { Router } from '@angular/router';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -59,7 +57,7 @@ export class PasosDocenteComponent implements OnInit {
     console.log(this.estado);
   }
 
- openDialog() {
+  openDialog() {
     const dialogRef = this.dialog.open(RegistroDocenteComponent, {
       width: '1000vh',
     });

@@ -13,8 +13,9 @@ import { EditarEstudianteComponent } from './components/editar-estudiante/editar
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgFallimgModule } from 'ng-fallimg';
 
 @NgModule({
   declarations: [EstudianteComponent, MisCursosAdquiridosComponent, EditarEstudianteComponent],
@@ -31,7 +32,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatDialogModule,
     MatChipsModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgFallimgModule
   ]
 })
 export class EstudianteModule { }

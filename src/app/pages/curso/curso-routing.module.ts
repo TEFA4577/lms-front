@@ -6,7 +6,6 @@ import { AuthGuard } from '../../guards/auth.guard';
 import { ListadoCategoriasComponent } from './components/listado-categorias/listado-categorias.component';
 import { ListadoCursosComponent } from './components/listado-cursos/listado-cursos.component';
 import { DetallesCategoriasComponent } from './components/detalles-categorias/detalles-categorias.component';
-import { BuscadorComponent } from './components/buscador/buscador.component';
 
 
 const routes: Routes = [
@@ -30,10 +29,10 @@ const routes: Routes = [
     path: 'categorias',
     component: ListadoCategoriasComponent
   },
-  {
+  /*{
     path: 'search',
     component: BuscadorComponent
-  }
+  }*/
 ];
 
 @NgModule({
