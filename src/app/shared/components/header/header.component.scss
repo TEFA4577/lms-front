@@ -8,12 +8,10 @@
   box-shadow: 0px 0px 11px 4px rgba(0, 0, 0, 0.5);
   outline: none;
 }
-.example-spacer {
-  flex: 1 1 auto;
-}
 a {
   color: #000;
   text-decoration: none;
+  outline: none;
 }
 .avatar {
   object-fit: cover;
@@ -132,11 +130,12 @@ span {
   margin: 8px 8px 8px 0;
   outline: none;
 }
-.categories {
-  background: #673ab7;
-  outline: none;
-}
+
 .btn {
   color: #fff;
+  outline: none;
+}
+
+.mat-button, .mat-menu, .mat-menu-item, .button{
   outline: none;
 }

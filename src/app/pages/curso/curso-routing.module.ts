@@ -28,11 +28,7 @@ const routes: Routes = [
   {
     path: 'categorias',
     component: ListadoCategoriasComponent
-  },
-  /*{
-    path: 'search',
-    component: BuscadorComponent
-  }*/
+  }
 ];
 
 @NgModule({

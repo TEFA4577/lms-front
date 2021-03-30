@@ -48,10 +48,6 @@ const routes: Routes = [
         loadChildren: () => import('./pages/landing/landing.module').then(m =>m.LandingModule)
       },
       {
-        path: 'detalle-curso',
-        loadChildren: () => import('./pages/curso/curso.module').then(m => m.CursoModule)
-      },
-      {
         path: 'instructores',
         loadChildren: () => import('./pages/docente/docente.module').then(m => m.DocenteModule)
       },

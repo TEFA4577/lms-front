@@ -67,7 +67,6 @@ export class CursoComponent implements OnInit, OnDestroy {
       this.clasesModulo = this.datos.modulos;
       this.curso = this.datos.curso;
       this.modulos = this.datos.modulos;
-      this.foro = this.openComentarios;
       this.progreso = JSON.parse(this.datos.cursoUsuario.progreso_curso);
       this.certificado =  this.datos.cursoUsuario.id_usuario_curso;
       console.log(this.certificado);

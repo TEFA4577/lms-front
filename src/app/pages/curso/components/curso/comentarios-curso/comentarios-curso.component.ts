@@ -17,7 +17,6 @@ export class ComentariosCursoComponent implements OnInit {
   datos: any;
   comentarios: any;
   id: number;
-  estadoCargando = false;
   respuesta: any;
 
   constructor(

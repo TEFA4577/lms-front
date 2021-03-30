@@ -20,6 +20,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
+
 import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
 import { ListadoCursoComponent } from './components/listado-curso/listado-curso.component';
 import { AdministrarCursoComponent } from './components/administrar-curso/administrar-curso.component';
