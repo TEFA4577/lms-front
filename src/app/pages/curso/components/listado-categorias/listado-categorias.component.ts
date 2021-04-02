@@ -5,7 +5,8 @@ import { EtiquetaService } from '../../../../services/etiqueta.service';
 @Component({
   selector: 'app-listado-categorias',
   templateUrl: './listado-categorias.component.html',
-  styleUrls: ['./listado-categorias.component.scss']
+  styleUrls: ['./listado-categorias.component.scss'],
+  providers:  [EtiquetaService]
 })
 export class ListadoCategoriasComponent implements OnInit {
 

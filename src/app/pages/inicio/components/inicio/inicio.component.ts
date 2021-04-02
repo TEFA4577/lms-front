@@ -33,23 +33,19 @@ export class InicioComponent implements OnInit {
 
   cargarCursos() {
     this.serCursos.listarCursos().subscribe(data => {
-      console.log(data);
       this.curso = data;
     });
   }
 
   cargarEtiquetas() {
     this.serCursos.etiquetaCurso().subscribe(data => {
-      console.log(data);
       this.etiqueta = data;
     });
   }
 
   cargarDocentes() {
     this.serDocente.listarDocente().subscribe(data => {
-      console.log(data);
       this.docente = data;
-      console.log(this.listadoCursos.length);
       if (this.listadoCursos.length !== 0) {
         this.estado = false;
       }
@@ -58,17 +54,13 @@ export class InicioComponent implements OnInit {
 
   cargarPreguntas(){
     this.serPregunta.mostrarPregunta().subscribe(data => {
-      console.log(data);
       this.pregunta = data;
-      console.log(this.pregunta);
     });
   }
 
   cargarRespuestas(){
     this.serPregunta.mostrarRepuesta().subscribe(data => {
-      console.log(data);
       this.respuesta = data;
-      console.log(this.respuesta);
     });
   }
 }
