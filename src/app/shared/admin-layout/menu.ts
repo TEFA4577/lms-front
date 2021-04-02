@@ -16,6 +16,10 @@ export const MENU_DOCENTE = [
         link: './curso/mis-cursos',
       },
       {
+        titulo: '¿Como subir un curso?',
+        link: 'cursos/tutoriales'
+      },
+      {
         titulo: 'Mis Cursos Adquiridos',
         link: '/estudiante/mis-cursos-adquiridos'
       },
@@ -26,21 +30,12 @@ export const MENU_DOCENTE = [
     ]
   },
   {
-    grupo: 'membresia',
+    grupo: 'Membresias',
     contenido: [
       {
         titulo: 'Adquirir Membresia',
         link: '/membresia/docente-membresia'
       }
-    ]
-  },
-  {
-    grupo: 'Tutoriales y Manuales',
-    contenido: [
-      {
-        titulo: '¿Como subir un curso?',
-        link: './curso/mis-cursos',
-      },
     ]
   }
 ];

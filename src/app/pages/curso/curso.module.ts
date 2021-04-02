@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, DatePipe  } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { CursoRoutingModule } from './curso-routing.module';
 import { CursoComponent } from './components/curso/curso.component';
@@ -33,11 +33,22 @@ import { MatChipsModule } from '@angular/material/chips';
 import { ComentariosCursoComponent } from './components/curso/comentarios-curso/comentarios-curso.component';
 import { ListadoCategoriasComponent } from './components/listado-categorias/listado-categorias.component';
 import { RespuestasCursoComponent } from './components/curso/respuestas-curso/respuestas-curso.component';
-import { BuscadorComponent } from './components/buscador/buscador.component';
 import { NgFallimgModule } from 'ng-fallimg';
 
 @NgModule({
-  declarations: [CursoComponent, PresentacionCursoComponent, PagoComponent, PagoDepositoComponent, PagoMoneComponent, PagoTarjetaComponent, ListadoCursosComponent, DetallesCategoriasComponent, ComentariosCursoComponent, ListadoCategoriasComponent, RespuestasCursoComponent, BuscadorComponent],
+  declarations: [
+    CursoComponent,
+    PresentacionCursoComponent,
+    PagoComponent,
+    PagoDepositoComponent,
+    PagoMoneComponent,
+    PagoTarjetaComponent,
+    ListadoCursosComponent,
+    DetallesCategoriasComponent,
+    ComentariosCursoComponent,
+    ListadoCategoriasComponent,
+    RespuestasCursoComponent
+  ],
   imports: [
     CommonModule,
     CursoRoutingModule,

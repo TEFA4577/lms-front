@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container py-5">
   <div class="row">
     <div class="col-md-7">
       <img src="assets/img/Inicio/11.png" class="image" />
@@ -6,7 +6,12 @@
     <div class="col-md-5 py-5" align="end">
       <h1>Haz un impacto en ti!</h1>
       <h1>Cree un curso de video en línea y gane dinero enseñando a personas de toda Bolivia.</h1>
-      <button mat-raised-button color="warn" (click)="openDialog()">Convierte en instructor</button>
+      <button mat-raised-button color="warn" *ngIf="!estado; else logged" routerLink="/register">Convierte en
+        instructor</button>
+      <ng-template #logged>
+        <button mat-raised-button (click)="openDialog()" class="btn-block py-1" color="primary">Convierte en
+          instructor</button>
+      </ng-template>
       <br>
     </div>
   </div>
@@ -199,6 +204,10 @@
   <div class="col-12 py-4 text-center">
     <h1>Conviértete en instructor hoy</h1>
     <hr>
-    <button mat-raised-button color="warn" (click)="openDialog()">Empieza ahora</button>
+    <button mat-raised-button color="warn" *ngIf="!estado; else logged" routerLink="/register"
+      >Empieza ahora</button>
+      <ng-template #logged>
+        <button mat-raised-button (click)="openDialog()" class="btn-block py-1" color="primary">Empieza ahora</button>
+      </ng-template>
   </div>
 </div>

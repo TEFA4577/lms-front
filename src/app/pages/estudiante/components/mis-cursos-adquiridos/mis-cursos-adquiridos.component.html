@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="container-fluid">
-    <div class="py-4">
+  <div class="container-fluid py-5">
+    <div class="py-5">
       <p class="lead">Mis solicitudes de compra y cursos adquiridos</p>
       <hr />
     </div>
@@ -23,11 +23,11 @@
           <div *ngIf="miCurso.estado_usuario_curso != 'no confirmado'">
             <img mat-card-image
             src="{{ miCurso.curso_solicitado.imagen_curso }}"
-            routerLink="/curso/curso-contenido/{{ miCurso.id_usuario_curso }}" class="imgCurso">
+            routerLink="/curso/curso-contenido/{{ miCurso.id_usuario_curso }}" class="imgCurso" fallimg>
           </div>
           <div *ngIf="miCurso.estado_usuario_curso != 'adquirido'">
             <img mat-card-image
-            src="{{ miCurso.curso_solicitado.imagen_curso }}" class="imgCurso">
+            src="{{ miCurso.curso_solicitado.imagen_curso }}" class="imgCurso" fallimg>
           </div>
           <mat-card-content>
             <hr>

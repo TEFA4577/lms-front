@@ -9,7 +9,6 @@ export class SolicitudesCompraService {
 
   API_BACKEND = environment.urlBackend;
 
-
   constructor(private http: HttpClient) {
 
   }

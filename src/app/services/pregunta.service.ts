@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -21,7 +21,7 @@ export class PreguntaService {
   actualizarPregunta(id: number, datos: any) {
     return this.http.put(this.API_BACKEND + 'pregunta/actualizar/' + id, datos);
   }
-   eliminarPregunta(id) {
+  eliminarPregunta(id) {
     return this.http.get(this.API_BACKEND + 'pregunta/eliminar/' + id);
   }
   mostrarRepuesta() {

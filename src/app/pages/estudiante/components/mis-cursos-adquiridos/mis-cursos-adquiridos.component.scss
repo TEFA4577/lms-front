@@ -8,16 +8,11 @@
   -webkit-box-orient: vertical;
 }
 .mat-card {
+  height: 550px;
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
-}
-
-.mat-card-header {
-  flex-shrink: 0;
-}
-.container {
-  min-height: 40%;
+  outline: none;
 }
 
 .mat-card-title {
@@ -36,6 +31,7 @@ a {
   text-decoration: none;
 }
 
-.img-cards {
-  max-height: 150px;
+.imgCurso{
+  height: 250px;
+  outline: none;
 }

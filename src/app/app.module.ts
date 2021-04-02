@@ -71,7 +71,7 @@ import { NotFoundComponent } from './not-found/not-found/not-found.component';
     FlexLayoutModule,
     FormsModule,
     NgFallimgModule.forRoot({
-      default: '/assets/img/Cursos/sin_imagen.jpg',
+      default: '/assets/img/Cursos/sin_imagen.png',
       avatar: '/assets/img/Profesionales/avatar.jpg'
     })
   ],

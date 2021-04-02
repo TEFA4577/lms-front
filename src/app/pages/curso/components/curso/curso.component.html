@@ -1,5 +1,5 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid py-5">
+  <div class="row py-5">
     <div class="col-md-6 py-4" *ngIf="curso">
       <div *ngIf="!curso">
         <mat-spinner></mat-spinner>
@@ -26,6 +26,7 @@
             Descripción del Curso: {{ curso.descripcion_curso }}
           </mat-card-subtitle>
         </mat-card-header>
+        <hr>
         <!--Fin: Titulo y Descripcion de Curso-->
         <mat-card-content>
 
@@ -49,7 +50,6 @@
           <!--Inicio de la seccion del foro de comentarios-->
           <!--Comentarios-->
           <mat-selection-list *ngIf="dat" [multiple]="false">
-            <div *ngIf="foro">
               <mat-list-item *ngFor=" let item of dat" class="row">
                 <mat-icon mat-list-icon>person</mat-icon>
                 <div mat-line>
@@ -81,7 +81,6 @@
                   </div>
                 </div>
               </mat-list-item>
-            </div>
           </mat-selection-list>
           <!--Comentario del estudiante o docente-->
         </mat-card-content>

@@ -1,1 +1,18 @@
-<p>crear-encuesta works!</p>
+<div mat-dialog-title align="center">
+  <h1>Registra una encuesta</h1>
+</div>
+<form [formGroup]="formCrearEncuesta" (ngSubmit)="submitCrearEncuesta($event)" autocomplete="off">
+  <div mat-dialog-content>
+    <div class="container">
+      <div class="row">
+        <mat-form-field class="col-md-12">
+          <input matInput formControlName="texto_encuesta" type="text" placeholder="Añade un titulo a la encuesta">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" [mat-dialog-close]>Cancelar</button>
+    <button type="submit" color="primary" [disabled]="formCrearEncuesta.invalid" mat-raised-button>Crear Encuesta</button>
+  </div>
+</form>
