@@ -46,6 +46,7 @@ export class MembresiaComponent implements OnInit {
   }
   editarMembresia(id: number): void {
     const dialogRef = this.dialog.open(EditarMembresiaComponent, {
+      disableClose: true,
       data: id
     });
 
@@ -55,7 +56,9 @@ export class MembresiaComponent implements OnInit {
     });
   }
   registrarMembresia(): void {
-    const dialogRef = this.dialog.open(CrearMembresiaComponent);
+    const dialogRef = this.dialog.open(CrearMembresiaComponent, {
+      disableClose: true
+    });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.listarMembresia();
@@ -67,10 +70,12 @@ export class MembresiaComponent implements OnInit {
       text: 'está seguro que desea eliminar la membresia?',
       icon: 'warning',
       showCancelButton: true,
+      showCloseButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si, deseo eliminar',
       cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
     }).then((result) => {
       if (result.isConfirmed) {
         this.serMembreia.eliminarMembresia(id).subscribe(res => {
@@ -80,17 +85,33 @@ export class MembresiaComponent implements OnInit {
     });
   }
   membresiaHD(id): void {
+    let timerInterval;
     Swal.fire({
       title: 'Cambiar estado de membrecia',
-      text: 'seguro que desea cambiar el estado!',
+      text: '¡¿seguro que desea cambiar?!',
       icon: 'warning',
       showCancelButton: true,
+      showCloseButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si deseo cambiarlo',
       cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
     }).then((result) => {
       if(result.isConfirmed){
+        Swal.fire({
+          title: 'Procesando...',
+          timer: 2000,
+          timerProgressBar: true,
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+            timerInterval = setInterval(() => 50)
+          },
+          willClose: () => {
+            clearInterval(timerInterval)
+          }
+        });
         this.serMembreia.hablitarMembresia(id).subscribe(data => {
           this.listarMembresia();
         });
