@@ -18,6 +18,7 @@ export class MembresiaComponent implements OnInit {
   displayedColumns: string[] = ['nombre_membresia', 'texto_membresia', 'precio_membresia', 'membresia', 'id_membresia'];
   dataSource: MatTableDataSource<Membresias>;
   membresias: any;
+  estado = true;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(
@@ -35,6 +36,9 @@ export class MembresiaComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.membresias);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      if(this.membresias.length !== 0){
+        this.estado = false;
+      }
     });
   }
   applyFilter(event: Event): void {

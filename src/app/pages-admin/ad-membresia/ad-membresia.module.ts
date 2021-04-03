@@ -24,7 +24,7 @@ import { SolicitudesMembresiaComponent } from './solicitudes-membresia/solicitud
 import { MatTableModule } from '@angular/material/table';
 import { SolicitudesCompraService } from '../../services/solicitudes-compra.service';
 import { ListadoMembresiaComponent } from './components/listado-membresia/listado-membresia/listado-membresia.component';
-import { PagoComponent } from './components/pago/pago/pago.component';
+import { PagoComponent } from './components/pago/pago.component';
 import { PagoDepositoComponent } from './components/pago/components/pago-deposito/pago-deposito/pago-deposito.component';
 import { PagoMoneComponent } from './components/pago/components/pago-mone/pago-mone/pago-mone.component';
 import { PagoTarjetaComponent } from './components/pago/components/pago-tarjeta/pago-tarjeta/pago-tarjeta.component';
