@@ -108,6 +108,12 @@ a {
   height: 400px;
 }
 
+@media only screen and (max-width: 750px){
+  .mat-card {
+    width: 300px;
+  }
+}
+
 @media only screen and (max-width: 600px){
   .carousel-inner .img {
     width: 100%;

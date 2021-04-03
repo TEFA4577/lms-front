@@ -1,13 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CursosService } from '../../../../services/cursos.service';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+import { Cursos } from 'src/app/models/cursos';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-listado-curso-estudiante',
@@ -15,11 +12,14 @@ export interface PeriodicElement {
   styleUrls: ['./listado-curso-estudiante.component.scss']
 })
 export class ListadoCursoEstudianteComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight'];
-  dataSource: any;
-  misEstudiantes: any = [];
+  displayedColumns: string[] = ['id_curso','nombre_curso', 'usuario_curso'];
+  dataSource: MatTableDataSource<Cursos>;
+  misEstudiantes: any;
+
   estado = true;
 
+  @ViewChild(MatPaginator) paginator:MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(
     public dialog: MatDialog,
     public cursoSrv: CursosService
@@ -36,7 +36,18 @@ export class ListadoCursoEstudianteComponent implements OnInit {
       if (this.misEstudiantes !== 0) {
         this.estado = false;
       }
+      this.dataSource = new MatTableDataSource(this.misEstudiantes);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
+  }
+
+  applyFilter(event: Event):void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator){
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 }

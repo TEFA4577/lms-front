@@ -1,15 +1,19 @@
 <div class="container">
-  <div class="d-flex justify-content-between">
-    <h2>Mis Cursos Creados</h2>
-    <button mat-raised-button matTooltip="Crear un nuevo curso" color="primary" (click)="openDialog()">
-      Crear nuevo <mat-icon>add</mat-icon>
-    </button>
-  </div>
-  <hr>
-
-<hr/>
+  <mat-card>
+    <mat-card-content>
+      <div class="d-flex justify-content-between">
+        <mat-card-title>
+          Mis Cursos Creados
+        </mat-card-title>
+        <button mat-raised-button matTooltip="Crear un nuevo curso" color="primary" (click)="openDialog()">
+          Crear Curso <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <hr/>
   <div *ngIf="estado" class="sinCurso bg-aqua d-flex align-items-center justify-content-center">
-    <p class="mensaje">Aun no tienes cursos creado empieza <a mat-button (click)="openDialog()">aqui</a></p>
+    <p class="mensaje">Aún no creaste ningun curso, ¿¡Qué Esperas!? empieza <button mat-stroked-button color="primary" (click)="openDialog()">aquí</button></p>
   </div>
   <div class="row">
     <div class="col-md-4" *ngFor="let miCurso of misCursos">
