@@ -30,12 +30,6 @@ export class CursosService {
     return this.http.get(this.API_BACKEND + 'cursar-curso/' + id);
   }
 
-  // Categorias o etiquetas en general
-  etiquetaCurso(): any {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.get(this.API_BACKEND + 'etiquetas', { headers });
-  }
-
   cursosEtiquetas(id : any) {
     return this.http.get(this.API_BACKEND + 'etiquetas/cursos/'+ id);
   }

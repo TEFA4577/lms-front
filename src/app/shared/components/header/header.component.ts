@@ -1,9 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef, Input, EventEmitter, Output} from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input, EventEmitter, Output } from '@angular/core';
 import { UsuarioService } from '../../../services/usuario.service';
 import { AuthService } from '../../../services/auth.service';
+import { EtiquetaService } from '../../../services/etiqueta.service';
 import { LoginService } from '../../../services/login.service';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { CursosService } from '../../../services/cursos.service';
 FormsModule
 // Dialog o modal
 import { MatDialog } from '@angular/material/dialog';
@@ -26,13 +26,6 @@ import {
 export class HeaderComponent implements OnInit {
 
   @Input() deviceXs: boolean;
-
-  search = new FormControl('');
-
-  @Output('search') searchEmitter = new EventEmitter<String>();
-  searchThis() {
-    //this.searchcriteria.emit(this.searchClass)
-  }
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
@@ -60,7 +53,7 @@ export class HeaderComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private router: Router,
     private usuarioService: UsuarioService,
-    public serCursos: CursosService,
+    private etiquetaService: EtiquetaService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -70,28 +63,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarEtiquetas();
-    this.getData();
-    this.search.valueChanges.subscribe(value => this.searchEmitter.emit(value))
-
-  }
-
-  handleSearch(value: String) {
-    console.log(value);
-    //this.filtro_valor= value;
-  }
-
-  filtro_valor = ''
-
-  getData() {
-    this.serCursos.listarCursos().subscribe((data: any[]) => this.cursos = data);
-    console.log(this.cursos);
-  }
-
-  searchCurso(datos) {
-    this.serCursos.busquedaCurso(datos).subscribe(data => {
-      console.log(data);
-      this.curso = this.data;
-    });
   }
 
   imagenError(): void {
@@ -122,7 +93,7 @@ export class HeaderComponent implements OnInit {
       this.openSnackBar(this.respuesta.mensaje, 'cerrar');
     });
   }
-  // tslint:disable-next-line: typedef
+
   openDialog() {
     const dialogRef = this.dialog.open(RegistroDocenteComponent, {
       width: '1000vh',
@@ -135,9 +106,8 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  // tslint:disable-next-line: typedef
   cargarEtiquetas() {
-    this.serCursos.etiquetaCurso().subscribe(data => {
+    this.etiquetaService.listarEtiquetas().subscribe(data => {
       console.log(data);
       this.etiqueta = data;
     });
