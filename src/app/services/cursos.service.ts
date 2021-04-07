@@ -20,6 +20,11 @@ export class CursosService {
     return this.http.get(this.API_BACKEND + 'cursos', { headers });
   }
 
+  estadoCursos(): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get(this.API_BACKEND + 'estado-cursos', { headers });
+  }
+
   // Presentacion del curso por su id
   presentacionCurso(id): any {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

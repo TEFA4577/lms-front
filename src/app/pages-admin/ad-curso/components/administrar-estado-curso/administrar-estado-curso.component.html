@@ -1,1 +1,62 @@
-<p>administrar-estado-curso works!</p>
+<div class="container">
+  <h1>Todos los cursos de la Academia</h1>
+  <hr>
+  <mat-card>
+    <mat-card-header>
+      <div class="row col-md-12">
+        <mat-form-field>
+          <mat-label>Buscar</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. tutorial" #input>
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort class="table-responsive-lg table-hover">
+          <!-- Progress Column -->
+          <ng-container matColumnDef="nombre_curso">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Curso </th>
+            <td mat-cell *matCellDef="let row"> {{row.nombre_curso}} </td>
+          </ng-container>
+          <!-- Name Column -->
+          <ng-container matColumnDef="descripcion_curso">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </th>
+            <td mat-cell *matCellDef="let row"> {{row.descripcion_curso}} </td>
+          </ng-container>
+
+          <!-- Color Column -->
+          <ng-container matColumnDef="created_at">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Creado </th>
+            <td mat-cell *matCellDef="let row"> {{row.created_at | date:"medium"}} </td>
+          </ng-container>
+          <ng-container matColumnDef="updated_at">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Actualizado </th>
+            <td mat-cell *matCellDef="let row"> {{row.updated_at | date:"medium"}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="id_curso">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+            <td mat-cell *matCellDef="let row">
+              <div>
+                <button mat-icon-button color="accent" (click)="verDetalle(row.id_curso)">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+                <mat-slide-toggle color="primary"></mat-slide-toggle>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">no hay ningun dato con tu busqueda "{{input.value}}"</td>
+          </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -26,7 +26,7 @@ export class ListadoCursoComponent implements OnInit {
       this.listarMisCursos();
     });
   }
-  // tslint:disable-next-line: typedef
+
   verEtiquetas(curso) {
     console.log(curso);
     const dialogRef = this.dialog.open(EtiquetasComponent,
