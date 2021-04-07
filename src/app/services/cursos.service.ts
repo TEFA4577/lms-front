@@ -79,6 +79,12 @@ export class CursosService {
   eliminarCurso(id) {
     return this.http.get(this.API_BACKEND + 'cursos/eliminar/' + id);
   }
+  habilitarCurso(id) {
+    return this.http.get(this.API_BACKEND + 'cursos/habilitar/' + id);
+  }
+  inhabilitarCurso(id) {
+    return this.http.get(this.API_BACKEND + 'cursos/inhabilitar/' + id);
+  }
   // tslint:disable-next-line: typedef
   cambiarImagenCurso(datos: any) {
     return this.http.post(this.API_BACKEND + 'cursos/cambiar-imagen/', datos);

@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Cursos } from '../../../../models/cursos';
 import { CursosService } from '../../../../services/cursos.service';
 import { DetalleCursoComponent } from '../../components/detalle-curso/detalle-curso.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-administrar-estado-curso',
@@ -14,7 +15,7 @@ import { DetalleCursoComponent } from '../../components/detalle-curso/detalle-cu
 })
 export class AdministrarEstadoCursoComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['nombre_curso', 'descripcion_curso', 'created_at', 'updated_at', 'id_curso'];
+  displayedColumns: string[] = ['nombre_curso', 'descripcion_curso', 'created_at', 'updated_at', 'estado', 'id_curso'];
   dataSource: MatTableDataSource<Cursos>;
   cursos: any;
 
@@ -49,14 +50,52 @@ export class AdministrarEstadoCursoComponent implements OnInit, AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  verDetalle(id: number): void {
-    const dialogRef = this.dialog.open(DetalleCursoComponent, {
-      data: id
-    });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.listarCursos();
+  habilitar(id: number): void {
+    Swal.fire({
+      title: 'Cambiar estado de la Solicitud?',
+      text: '¿seguro que desea habilitar el curso?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si deseo cambiarlo',
+      cancelButtonText: 'No, cancelar!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.serCurso.habilitarCurso(id).subscribe(data => {
+          console.log(data);
+          this.listarCursos();
+        });
+        Swal.fire(
+          'El estado del curso cambio.',
+          'success'
+        );
+      }
+    });
+  }
+
+  inhabilitar(id: number): void {
+    Swal.fire({
+      title: 'Cambiar estado de la Solicitud?',
+      text: '¿seguro que desea inhabilitar el curso?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si deseo cambiarlo',
+      cancelButtonText: 'No, cancelar!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.serCurso.inhabilitarCurso(id).subscribe(data => {
+          console.log(data);
+          this.listarCursos();
+        });
+        Swal.fire(
+          'El estado del curso cambio.',
+          'success'
+        );
+      }
     });
   }
 
