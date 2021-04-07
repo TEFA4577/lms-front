@@ -12,10 +12,10 @@
     </mat-card-content>
   </mat-card>
   <hr/>
-  <div *ngIf="estado" class="sinCurso bg-aqua d-flex align-items-center justify-content-center">
+  <div *ngIf="estado" class="sinDatos d-flex align-items-center justify-content-center">
     <p class="mensaje">Aún no creaste ningun curso, ¿¡Qué Esperas!? empieza <button mat-stroked-button color="primary" (click)="openDialog()">aquí</button></p>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="!estado">
     <div class="col-md-4" *ngFor="let miCurso of misCursos">
       <mat-card>
         <mat-card-header>

@@ -7,19 +7,27 @@
   </button>
   <span class="example-spacer"></span>
   <button mat-button [matMenuTriggerFor]="beforeMenu">
-    <img class="avatar" src="{{datosUsuario.foto_usuario}}" (error)="imagenError()">
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <h3 class="user">{{ datosUsuario.nombre_usuario }}</h3>
+        <mat-card-subtitle class="rol">{{ datosUsuario.rol_usuario.nombre_rol }}</mat-card-subtitle>
+      </div>
+      <div>
+        <img class="avatar" [src]="datosUsuario.foto_usuario" (error)="imagenError()" />
+      </div>
+    </div>
   </button>
   <mat-menu #beforeMenu="matMenu" xPosition="before">
     <button mat-menu-item routerLink="/estudiante/mi-perfil">Mi Perfil</button>
     <button mat-menu-item routerLink="/">volver al inicio</button>
-    <button mat-menu-item (click)="cerrarSesion()">Cerrar Sesion</button>
+    <button mat-raised-button (click)="cerrarSesion()">Cerrar Sesion</button>
   </mat-menu>
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav #sidenav hasBackdrop="false" class="example-sidenav" fixedInViewport="true"
     [mode]="mobileQuery.matches ? 'over' : 'side'" fixedTopGap="56">
     <br>
-    <h4 align="center" mat-subheader>Menu Docente</h4>
+    <!-- <h4 align="center" mat-subheader>Menu Docente</h4> -->
     <mat-list *ngFor="let item of menuDocente">
       <div mat-subheader>{{item.grupo}}</div>
       <mat-list-item *ngFor="let items of item.contenido" [routerLink]="items.link">
@@ -28,7 +36,7 @@
     </mat-list>
     <div *ngIf="datosUsuario.id_rol == 1">
       <hr>
-      <h4 align="center" mat-subheader>Menu Administrador</h4>
+      <h4 align="center" mat-subheader>Administrador</h4>
       <mat-list *ngFor="let item of menuAdmin">
         <div mat-subheader>{{item.grupo}}</div>
         <mat-list-item *ngFor="let items of item.contenido" [routerLink]="items.link">

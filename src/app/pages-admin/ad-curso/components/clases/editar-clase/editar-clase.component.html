@@ -1,32 +1,40 @@
-<h1 mat-dialog-title *ngIf="datos">Actualiza los datos de tu clase</h1>
+<div class="d-flex justify-content-between">
+  <h1 mat-dialog-title *ngIf="datos">Actualiza los datos de tu clase</h1>
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 <form [formGroup]="formClase" (ngSubmit)="submitClases($event)" autocomplete="off">
   <div mat-dialog-content>
     <div class="row">
       <mat-form-field class="col-md-12">
-        <mat-label>Titulo de la clase</mat-label>
+        <mat-label>Título de la clase</mat-label>
         <input matInput formControlName="titulo_clase" type="text" placeholder="">
       </mat-form-field>
       <mat-form-field class="col-md-12">
-        <mat-label>descripcion de la clase </mat-label>
+        <mat-label>descripción de la clase </mat-label>
         <textarea matInput formControlName="descripcion_clase"></textarea>
       </mat-form-field>
-      <button type="submit" class="col-md-12" mat-raised-button [disabled]="formClase.invalid">Guardar Cambios</button>
-      <input type="file" name="video_clase" #imagen hidden accept="video/mp4,video/x-m4v,video/*"
-        (change)="uploadFile($event.target.files)">
-      <button type="button" mat-raised-button color="primary" class="col-md-12" (click)="imagen.click()">Cambiar
-        Video</button>
-      <p *ngIf="files">
-        {{files | json}}
-      </p>
+        <input type="file" name="video_clase" #imagen hidden accept="video/mp4,video/x-m4v,video/*"
+          (change)="uploadFile($event.target.files)">
+        <button type="button" mat-raised-button color="primary" class="col-md-12" (click)="imagen.click()">Cambiar
+          Video</button>
+          <p *ngIf="files">
+            {{files | json}}
+          </p>
       <div *ngIf="estadoVideo">
-        <button mat-raised-button color="primary" type="button" (click)="cambiarVideo()"> guardar
+        <button mat-stroked-button color="primary" (click)="cambiarVideo()">
+          Guardar <mat-icon>check_circle_outline</mat-icon>
         </button>
-        <button mat-raised-button color="warn" type="button" (click)="deleteAttachment(0)"> cancelar
+        <button mat-stroked-button color="warn" (click)="deleteAttachment(0)">
+          Cancelar <mat-icon>error_outline</mat-icon>
         </button>
       </div>
     </div>
   </div>
-  <div mat-dialog-actions>
-    <button mat-button color="warn" type="button" (click)="onNoClick()">cancelar</button>
+  <hr/>
+  <div mat-dialog-actions class="col-md-12 justify-content-center">
+    <button style="width: 40%;" mat-raised-button color="primary" [disabled]="formClase.invalid">Guardar Cambios</button>
+    <button style="width: 40%;" mat-raised-button color="warn" type="button" [mat-dialog-close]="true">Cancelar</button>
   </div>
 </form>

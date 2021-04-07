@@ -57,11 +57,6 @@ const routes: Routes = [
         loadChildren: () => import('./pages/estudiante/estudiante.module').then(m => m.EstudianteModule)
       },
       {
-        path: 'membresia',
-        canActivate: [AuthGuard],
-        loadChildren: () => import('./pages/membresia/membresia.module').then( m => m.MembresiaModule)
-      },
-      {
         path: '**',
         redirectTo: '/inicio'
       }

@@ -25,7 +25,6 @@ export class EtiquetasComponent implements OnInit {
   }
   cargarEtiquetas() {
     this.serEtiqueta.listarEtiquetas().subscribe(data => {
-      console.log(data);
       this.etiquetas = data;
     });
   }

@@ -1,6 +1,11 @@
 <mat-spinner *ngIf="!datos || estadoCargando"></mat-spinner>
 <div *ngIf="datos && !estadoCargando">
-  <h1 mat-dialog-title *ngIf="datos">Sube Recursos</h1>
+  <div class="d-flex justify-content-between">
+    <h1 mat-dialog-title *ngIf="datos">Sube Recursos</h1>
+    <button mat-icon-button [mat-dialog-close]="true">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
   <div mat-dialog-content>
     <form [formGroup]="formRecurso" (ngSubmit)="submitRecurso($event)" autocomplete="off">
       <div class="row">
@@ -9,12 +14,15 @@
           <input matInput formControlName="nombre_recurso" type="text" placeholder="">
         </mat-form-field>
         <input type="file" name="recurso" #imagen hidden (change)="uploadFile($event.target.files)">
-        <button type="button" mat-raised-button color="primary" class="col-md-12" (click)="imagen.click()">Subir un
+        <button type="button" mat-raised-button color="accent" class="col-md-12" (click)="imagen.click()">Subir un
           archivo</button>
         <p *ngIf="files">
           {{files | json}}
         </p>
-        <button type="submit" mat-raised-button color="accent" class="col-md-12">Guardar</button>
+        <div class="col-md-12 justify-content-center">
+          <button style="width: 50%;" type="submit" mat-raised-button color="primary" class="col-md-12">Guardar</button>
+          <button style="width: 50%;" mat-raised-button color="warn" type="button" (click)="onNoClick()">cerrar</button>
+        </div>
       </div>
     </form>
     <hr>
@@ -31,13 +39,10 @@
           <a align="end" mat-icon-button color="accent" matTooltip="descargar recurso"
           target=”_blank”
             href="{{recurso.link_recurso}}">
-            <mat-icon>get_app</mat-icon>
+            <mat-icon>drive_folder_upload</mat-icon>
           </a>
         </mat-list-item>
       </mat-selection-list>
     </div>
-  </div>
-  <div mat-dialog-actions>
-    <button mat-button color="warn" type="button" (click)="onNoClick()">cerrar</button>
   </div>
 </div>

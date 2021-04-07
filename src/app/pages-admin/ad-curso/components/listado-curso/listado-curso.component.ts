@@ -19,8 +19,9 @@ export class ListadoCursoComponent implements OnInit {
     this.listarMisCursos();
   }
   openDialog(): void {
-    const dialogRef = this.dialog.open(CrearCursoComponent);
-
+    const dialogRef = this.dialog.open(CrearCursoComponent, {
+      disableClose: true
+    });
     dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
       this.listarMisCursos();
@@ -29,11 +30,10 @@ export class ListadoCursoComponent implements OnInit {
   // tslint:disable-next-line: typedef
   verEtiquetas(curso) {
     console.log(curso);
-    const dialogRef = this.dialog.open(EtiquetasComponent,
-      {
-        data: curso,
+    const dialogRef = this.dialog.open(EtiquetasComponent, {
+      disableClose: true,
+      data: curso,
       });
-
     dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
       this.listarMisCursos();

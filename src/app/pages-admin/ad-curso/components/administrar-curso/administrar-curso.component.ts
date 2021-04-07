@@ -74,6 +74,7 @@ export class AdministrarCursoComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si',
       cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
     }).then((result) => {
       if (result.isConfirmed) {
         this.imagenCambio = null;
@@ -123,6 +124,7 @@ export class AdministrarCursoComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si',
       cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
     }).then((result) => {
       if (result.isConfirmed) {
         this.serCursos.actualizarCurso(myFormData, this.curso.id_curso).subscribe(res => {
@@ -142,6 +144,7 @@ export class AdministrarCursoComponent implements OnInit {
   }
   crearModulo(id: number): void {
     const dialogRef = this.dialog.open(CrearModuloComponent, {
+      disableClose: true,
       data: id
     });
 
@@ -152,6 +155,7 @@ export class AdministrarCursoComponent implements OnInit {
   }
   editarModulo(id: number): void {
     const dialogRef = this.dialog.open(EditarModuloComponent, {
+      disableClose: true,
       data: id
     });
 
@@ -170,6 +174,7 @@ export class AdministrarCursoComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si deseo eliminar',
       cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
     }).then((result) => {
       if (result.isConfirmed) {
         this.serCursos.eliminarModulo(id).subscribe(res => {
@@ -186,6 +191,7 @@ export class AdministrarCursoComponent implements OnInit {
   }
   crearClase(id: number): void {
     const dialogRef = this.dialog.open(CrearClaseComponent, {
+      disableClose: true,
       data: id
     });
 
@@ -204,6 +210,7 @@ export class AdministrarCursoComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si deseo eliminar',
       cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
     }).then((result) => {
       if (result.isConfirmed) {
         this.serCursos.eliminarClase(id).subscribe(res => {
@@ -220,6 +227,7 @@ export class AdministrarCursoComponent implements OnInit {
   }
   editarClase(id: number): void {
     const dialogRef = this.dialog.open(EditarClaseComponent, {
+      disableClose: true,
       data: id
     });
 
@@ -230,6 +238,7 @@ export class AdministrarCursoComponent implements OnInit {
   }
   abrirRecurso(id: number): void {
     const dialogRef = this.dialog.open(RecursosComponent, {
+      disableClose: true,
       data: id
     });
 
@@ -261,6 +270,7 @@ export class AdministrarCursoComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si deseo eliminar',
       cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
     }).then((result) => {
       if (result.isConfirmed) {
         this.serCursos.eliminarCurso(id).subscribe(res => {
@@ -289,6 +299,7 @@ export class AdministrarCursoComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Si deseo enviar',
       cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
     }).then((result) => {
       if (result.isConfirmed) {
         this.serCursos.cambiarEstadoCurso(datos).subscribe(res => {

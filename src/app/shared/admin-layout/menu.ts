@@ -34,7 +34,7 @@ export const MENU_DOCENTE = [
     contenido: [
       {
         titulo: 'Adquirir Membresia',
-        link: '/membresia/docente-membresia'
+        link: './membresias/docente-membresia'
       }
     ]
   }
