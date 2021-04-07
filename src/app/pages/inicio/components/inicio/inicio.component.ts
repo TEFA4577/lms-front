@@ -40,7 +40,6 @@ export class InicioComponent implements OnInit {
 
   cargarEtiquetas() {
     this.serEtiqueta.listarEtiquetas().subscribe(data => {
-      console.log(data);
       this.etiqueta = data;
     });
   }

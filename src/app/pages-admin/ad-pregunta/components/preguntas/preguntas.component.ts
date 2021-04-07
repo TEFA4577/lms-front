@@ -41,8 +41,6 @@ export class PreguntasComponent implements OnInit {
   cargarPreguntas() {
     this.serPregunta.mostrarPregunta().subscribe(data => {
       this.pregunta = data;
-      console.log(this.pregunta);
-
     });
     //if (this.pregunta.length == 1) {
       //this.estado = false;
@@ -63,7 +61,6 @@ export class PreguntasComponent implements OnInit {
   cargarDatos(): void {
     this.serPregunta.mostrarPregunta().subscribe(res => {
       this.dat = res;
-      console.log(this.dat);
     }, error => {
       console.log(error);
     });
@@ -71,7 +68,6 @@ export class PreguntasComponent implements OnInit {
 
   cargarPreguntasId(res) {
     this.serPregunta.datosPregunta(res).subscribe(data => {
-      console.log(data);
       //console.log(this.pregunta);
     });
   }

@@ -51,7 +51,6 @@ export class EditarMembresiaComponent implements OnInit {
 
   cargarDatos(): void {
     this.serMembresia.datosMembresia(this.id).subscribe(res => {
-      console.log(res);
       this.datos = res;
       this.membresias = this.datos.membresias;
       this.setForm();
@@ -70,7 +69,6 @@ export class EditarMembresiaComponent implements OnInit {
     event.preventDefault();
     console.log(this.formEditarMembresia.value);
     this.serMembresia.actualizarMembresia(this.id, this.formEditarMembresia.value).subscribe(res => {
-      console.log(res);
       this.respuesta = res;
       this.openSnackBar(this.respuesta.mensaje, 'cerrar');
       this.formEditarMembresia.reset();

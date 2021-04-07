@@ -42,7 +42,6 @@ export class ListadoCursoComponent implements OnInit {
 
   listarMisCursos(): void {
     this.cursoSrv.listarCursosCreados().subscribe(data => {
-      console.log(data);
       this.misCursos = data;
       console.log(this.misCursos.length);
       if (this.misCursos.length !== 0) {

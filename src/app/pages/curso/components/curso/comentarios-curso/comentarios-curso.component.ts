@@ -51,7 +51,6 @@ export class ComentariosCursoComponent implements OnInit {
     myFormData.append('id_clase', this.id + '');
     myFormData.append('texto_comentario', this.formRegistrarComentario.get('texto_comentario').value);
     this.serCursos.registarComentario(myFormData).subscribe(res => {
-      console.log(res);
       this.formRegistrarComentario.reset();
       this.cargarDatos();
       this.respuesta = res;

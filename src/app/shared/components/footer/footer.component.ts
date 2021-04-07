@@ -14,7 +14,6 @@ export class FooterComponent implements OnInit {
 
   handleSearch(value: String){
     console.log(value)
-
   }
 
 }

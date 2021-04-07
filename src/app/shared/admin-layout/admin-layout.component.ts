@@ -50,7 +50,6 @@ export class AdminLayoutComponent implements OnInit {
   }
   cerrarSesion(): void {
     this.loginSrv.logoutUsuario().subscribe((res) => {
-      console.log(res);
       localStorage.removeItem('datosUsuario');
       localStorage.removeItem('token');
       this.authSer.logout();
