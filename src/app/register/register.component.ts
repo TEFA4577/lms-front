@@ -42,7 +42,6 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authSrv: AuthService,
-    // tslint:disable-next-line: variable-name
     private _snackBar: MatSnackBar
   ) { }
 
