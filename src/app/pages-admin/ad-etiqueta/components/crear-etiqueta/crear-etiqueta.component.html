@@ -1,5 +1,8 @@
-<div mat-dialog-title>
-  <h1>Registrar una Etiqueta</h1>
+<div class="d-flex justify-content-between">
+  <h1 mat-dialog-title>Registrar una Etiqueta</h1>
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
 </div>
 <form [formGroup]="formEtiqueta" (ngSubmit)="submitEtiqueta($event)" autocomplete="off">
   <div mat-dialog-content>

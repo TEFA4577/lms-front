@@ -4,7 +4,7 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'administrar',
     component: UsuariosComponent
   }
 ];

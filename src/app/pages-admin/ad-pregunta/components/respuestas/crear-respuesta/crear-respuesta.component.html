@@ -1,9 +1,8 @@
-<!-- <mat-spinner *ngIf="!datos || estadoCargando"></mat-spinner>
-{{datos.pregunta.texto_pregunta}}-->
-<div mat-dialog-title>
-  <div *ngIf="datos">
-    <h1>Registrar una Respuesta de: {{datos.texto_pregunta}}</h1>
-  </div>
+<div class="d-flex justify-content-between" *ngIf="datos">
+  <h1 mat-dialog-title>Registrar una Respuesta de: {{datos.texto_pregunta}}</h1>
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
 </div>
 <form [formGroup]="formRespuesta" (ngSubmit)="submitRespuestas($event)" autocomplete="off">
   <div mat-dialog-content>
@@ -16,8 +15,8 @@
       </div>
     </div>
   </div>
-  <div mat-dialog-actions>
-    <button mat-raised-button color="warn" [mat-dialog-close]>Cancelar</button>
-    <button type="submit" color="primary" [disabled]="formRespuesta.invalid" mat-raised-button>Guardar Cambios</button>
-  </div>
+  <mat-dialog-actions class="col-md-12 justify-content-center">
+    <button style="width: 40%" color="primary" [disabled]="formRespuesta.invalid" mat-raised-button>Guardar Cambios</button>
+    <button style="width: 40%" mat-raised-button color="warn" [mat-dialog-close]="true">Cancelar</button>
+  </mat-dialog-actions>
 </form>

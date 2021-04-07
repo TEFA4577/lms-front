@@ -40,6 +40,7 @@ import { LandingModule } from './pages/landing/landing.module';
 import { MembresiaModule } from './pages/membresia/membresia.module';
 import { PagesAdminModule} from './pages-admin/pages-admin.module';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { NotFoundComponent } from './not-found/not-found/not-found.component';
     RouterModule,
     AppRoutingModule,
     SharedModule,
+    ComponentsModule,
     PagesAdminModule,
     CursoModule,
     DocenteModule,

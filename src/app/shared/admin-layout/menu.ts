@@ -45,7 +45,7 @@ export const MENU_ADMIN = [
     contenido: [
       {
         titulo: 'Administrar Usuarios',
-        link: './cursos/lista',
+        link: './usuarios/administrar',
       }
     ]
   },

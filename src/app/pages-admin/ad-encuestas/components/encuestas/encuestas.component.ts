@@ -65,6 +65,7 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
 
   crearEncuesta(): void {
     const dialogRef = this.dialog.open(CrearEncuestaComponent, {
+      disableClose: true,
       width: '100vh'
     });
     dialogRef.afterClosed().subscribe(result => {

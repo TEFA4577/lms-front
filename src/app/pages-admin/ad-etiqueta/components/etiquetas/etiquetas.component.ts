@@ -49,6 +49,7 @@ export class EtiquetasComponent implements OnInit {
   verDetalle(id: number): void {
     console.log(id);
     const dialogRef = this.dialog.open(EditarEtiquetaComponent, {
+      disableClose: true,
       data: id
     });
 
@@ -59,7 +60,9 @@ export class EtiquetasComponent implements OnInit {
   }
 
   registrarEtiqueta(): void {
-    const dialogRef = this.dialog.open(CrearEtiquetaComponent);
+    const dialogRef = this.dialog.open(CrearEtiquetaComponent, {
+      disableClose: true
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
