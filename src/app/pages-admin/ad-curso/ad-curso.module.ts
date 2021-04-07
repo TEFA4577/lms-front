@@ -20,6 +20,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
 import { ListadoCursoComponent } from './components/listado-curso/listado-curso.component';
@@ -76,6 +77,7 @@ import { AdministrarEstadoCursoComponent } from './components/administrar-estado
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatDividerModule,
+    MatSlideToggleModule
   ]
 })
 export class AdCursoModule { }

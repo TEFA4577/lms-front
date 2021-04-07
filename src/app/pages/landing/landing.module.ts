@@ -5,12 +5,25 @@ import { CommonModule } from '@angular/common';
 import { LandingRoutingModule } from './landing-routing.module';
 import { LandingComponent } from './components/landing/landing.component';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [LandingComponent],
   imports: [
     CommonModule,
-    LandingRoutingModule
+    LandingRoutingModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatListModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule
   ]
 })
 export class LandingModule { }

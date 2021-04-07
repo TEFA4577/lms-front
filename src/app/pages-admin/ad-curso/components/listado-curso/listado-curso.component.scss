@@ -4,11 +4,16 @@
   flex-direction: column;
 }
 
+.mat-card-image{
+  height: 250px;
+}
+
 .mat-card-header {
   flex-shrink: 0;
 }
 .mat-card-content {
   flex-grow: 1;
+  height: auto;
   overflow: auto;
 }
 

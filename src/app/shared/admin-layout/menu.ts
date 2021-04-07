@@ -67,6 +67,10 @@ export const MENU_ADMIN = [
     contenido: [
       {
         titulo: 'Administrar Cursos',
+        link: './cursos/administar-cursos',
+      },
+      {
+        titulo: 'Solicitudes de Cursos',
         link: './cursos/lista',
       },
       {

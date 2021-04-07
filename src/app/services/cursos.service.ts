@@ -20,6 +20,11 @@ export class CursosService {
     return this.http.get(this.API_BACKEND + 'cursos', { headers });
   }
 
+  estadoCursos(): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get(this.API_BACKEND + 'estado-cursos', { headers });
+  }
+
   // Presentacion del curso por su id
   presentacionCurso(id): any {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -28,12 +33,6 @@ export class CursosService {
 
   cursarCurso(id): any {
     return this.http.get(this.API_BACKEND + 'cursar-curso/' + id);
-  }
-
-  // Categorias o etiquetas en general
-  etiquetaCurso(): any {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.get(this.API_BACKEND + 'etiquetas', { headers });
   }
 
   cursosEtiquetas(id : any) {

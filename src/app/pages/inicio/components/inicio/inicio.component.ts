@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { threadId } from 'worker_threads';
 import { CursosService } from '../../../../services/cursos.service';
 import { DocentesService } from '../../../../services/docentes.service';
-import {PreguntaService } from '../../../../services/pregunta.service';
+import { PreguntaService } from '../../../../services/pregunta.service';
+import { EtiquetaService } from '../../../../services/etiqueta.service';
 
 @Component({
   selector: 'app-inicio',
@@ -13,14 +14,15 @@ export class InicioComponent implements OnInit {
   curso: any;
   etiqueta: any;
   docente: any;
-  listadoCursos: any = [];
-  estado = true;
-  texto = true;
   pregunta: any;
   panelOpenState = false;
-  respuesta: any;
 
-  constructor(public serCursos: CursosService, public serDocente: DocentesService, public serPregunta: PreguntaService) {
+  constructor(
+    public serCursos: CursosService,
+    public serDocente: DocentesService,
+    public serPregunta: PreguntaService,
+    public serEtiqueta: EtiquetaService
+  ) {
   }
 
   ngOnInit(): void {
@@ -28,7 +30,6 @@ export class InicioComponent implements OnInit {
     this.cargarEtiquetas();
     this.cargarDocentes();
     this.cargarPreguntas();
-    this.cargarRespuestas();
   }
 
   cargarCursos() {
@@ -38,7 +39,8 @@ export class InicioComponent implements OnInit {
   }
 
   cargarEtiquetas() {
-    this.serCursos.etiquetaCurso().subscribe(data => {
+    this.serEtiqueta.listarEtiquetas().subscribe(data => {
+      console.log(data);
       this.etiqueta = data;
     });
   }
@@ -46,21 +48,12 @@ export class InicioComponent implements OnInit {
   cargarDocentes() {
     this.serDocente.listarDocente().subscribe(data => {
       this.docente = data;
-      if (this.listadoCursos.length !== 0) {
-        this.estado = false;
-      }
     });
   }
 
-  cargarPreguntas(){
+  cargarPreguntas() {
     this.serPregunta.mostrarPregunta().subscribe(data => {
       this.pregunta = data;
-    });
-  }
-
-  cargarRespuestas(){
-    this.serPregunta.mostrarRepuesta().subscribe(data => {
-      this.respuesta = data;
     });
   }
 }
