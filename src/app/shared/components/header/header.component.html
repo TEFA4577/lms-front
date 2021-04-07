@@ -2,9 +2,10 @@
   <mat-toolbar-row fxLayoutAlign="space-between center">
     <div fxLayout="row">
       <!--Boton y logo de la academia que redirecciona al inicio-->
-      <a mat-button routerLink="/inicio">
+      <button mat-button routerLink="/inicio">
         <img src="assets/img/Iconos/logoAcademia.png" height="45px" alt="" />
-      </a>
+      </button>
+
       <!--<app-filter-cursos (search)="handleSearch($event)"></app-filter-cursos>
       <div *ngIf="!deviceXs">
         <div class="search_wrap search_wrap_3">
@@ -69,10 +70,10 @@
       </div>
 
       <div *ngIf="!estado">
-        <button mat-button color="warn" routerLink="/instructores/pasos-instructor">Se instructor
+        <button mat-button color="warn" routerLink="/instructores/pasos-instructor"> <span>Se instructor</span>
         </button>
         <button mat-button [matMenuTriggerFor]="menu">
-          <mat-icon aria-hidden="false" aria-label="Example home icon" color="primary">more_vert</mat-icon>
+          <mat-icon aria-hidden="false" aria-label="Example home icon" color="primary">menu_open</mat-icon>
         </button>
         <mat-menu #menu="matMenu" xPosition="before">
           <button mat-menu-item routerLink="/login">Iniciar Sesión</button>

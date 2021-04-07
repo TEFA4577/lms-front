@@ -87,8 +87,7 @@ export class HeaderComponent implements OnInit {
       localStorage.removeItem('datosUsuario');
       localStorage.removeItem('token');
       this.authSer.logout();
-      window.location.reload();
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('');
       this.respuesta = res;
       this.openSnackBar(this.respuesta.mensaje, 'cerrar');
     });
@@ -97,6 +96,7 @@ export class HeaderComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(RegistroDocenteComponent, {
       width: '1000vh',
+      disableClose: true
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

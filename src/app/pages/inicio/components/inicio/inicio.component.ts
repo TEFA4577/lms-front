@@ -34,7 +34,6 @@ export class InicioComponent implements OnInit {
 
   cargarCursos() {
     this.serCursos.listarCursos().subscribe(data => {
-      console.log(data);
       this.curso = data;
     });
   }
@@ -48,14 +47,12 @@ export class InicioComponent implements OnInit {
 
   cargarDocentes() {
     this.serDocente.listarDocente().subscribe(data => {
-      console.log(data);
       this.docente = data;
     });
   }
 
   cargarPreguntas() {
     this.serPregunta.mostrarPregunta().subscribe(data => {
-      console.log(data);
       this.pregunta = data;
     });
   }

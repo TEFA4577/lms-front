@@ -1,4 +1,9 @@
-<h1 mat-dialog-title>Editar Membresia</h1>
+<div class="d-flex justify-content-between">
+  <h1 mat-dialog-title>Editar Membresia</h1>
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 <form [formGroup]="formEditarMembresia" (ngSubmit)="submitEditarMembresia($event)" autocomplete="off">
   <div mat-dialog-content>
     <div class="row">
@@ -18,8 +23,8 @@
       </mat-form-field>
     </div>
   </div>
-  <div mat-dialog-actions>
-    <button mat-button color="warn" type="button" [mat-dialog-close]>Cancelar</button>
-    <button mat-button color="primary" type="submit" [disabled]="formEditarMembresia.invalid">Guardar Cambios</button>
-  </div>
+  <mat-dialog-actions class="col-md-12 justify-content-center">
+    <button style="width: 40%;" mat-raised-button color="primary" [disabled]="formEditarMembresia.invalid">Guardar Cambios</button>
+    <button style="width: 40%;" mat-raised-button color="warn" [mat-dialog-close]="true">Cancelar</button>
+  </mat-dialog-actions>
 </form>

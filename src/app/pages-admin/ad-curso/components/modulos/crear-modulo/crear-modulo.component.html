@@ -1,4 +1,9 @@
-<h1 mat-dialog-title>Crea un modulo para tu curso</h1>
+<div class="d-flex justify-content-between">
+  <h1 mat-dialog-title>Crea módulo para tu curso</h1>
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 <form [formGroup]="formModulo" (ngSubmit)="sumitModulos($event)" autocomplete="off">
   <div mat-dialog-content>
     <div class="row">
@@ -7,15 +12,13 @@
         <input matInput formControlName="nombre_modulo" type="text" placeholder="">
       </mat-form-field>
       <mat-form-field class="col-md-12">
-        <mat-label>descripcion del curso</mat-label>
+        <mat-label>descripción del curso</mat-label>
         <textarea matInput formControlName="descripcion_modulo"></textarea>
       </mat-form-field>
-      <div class="col-md-4">
-      </div>
     </div>
   </div>
-  <div mat-dialog-actions>
-    <button mat-button color="warn" type="button" (click)="onNoClick()">cancelar</button>
-    <button mat-button color="primary" type="submit" [disabled]="formModulo.invalid">crear modulo</button>
-  </div>
+  <mat-dialog-actions class="col-md-12 justify-content-center">
+    <button style="width: 40%;" mat-raised-button [disabled]="formModulo.invalid">crear modulo</button>
+    <button style="width: 40%;" mat-raised-button color="warn" [mat-dialog-close]="true">cancelar</button>
+  </mat-dialog-actions>
 </form>

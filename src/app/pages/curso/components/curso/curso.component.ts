@@ -10,7 +10,10 @@ import { RespuestasCursoComponent } from './respuestas-curso/respuestas-curso.co
 @Component({
   selector: 'app-curso',
   templateUrl: './curso.component.html',
-  styleUrls: ['./curso.component.scss']
+  styleUrls: ['./curso.component.scss'],
+  providers: [
+    CursosService
+  ]
 })
 export class CursoComponent implements OnInit, OnDestroy {
   API_BACKEND = environment.urlBackend + 'certificado/';

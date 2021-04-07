@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import { MENU_ADMIN, MENU_DOCENTE } from './menu';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-admin-layout',
   templateUrl: './admin-layout.component.html',
@@ -15,12 +16,14 @@ export class AdminLayoutComponent implements OnInit {
   mobileQuery: MediaQueryList;
   open = false;
   datosUsuario: any;
+  respuesta: any;
   private mobileQueryListener: () => void;
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     private loginSrv: LoginService,
     private authSer: AuthService,
+    private _snackBar: MatSnackBar,
     public route: Router,
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -40,7 +43,11 @@ export class AdminLayoutComponent implements OnInit {
       this.datosUsuario = JSON.parse(localStorage.getItem('datosUsuario'));
     }
   }
-
+  openSnackBar(message: string, action: string): void {
+    this._snackBar.open(message, action, {
+      duration: 4000,
+    });
+  }
   cerrarSesion(): void {
     this.loginSrv.logoutUsuario().subscribe((res) => {
       console.log(res);
@@ -48,6 +55,8 @@ export class AdminLayoutComponent implements OnInit {
       localStorage.removeItem('token');
       this.authSer.logout();
       this.route.navigateByUrl('');
+      this.respuesta = res;
+      this.openSnackBar(this.respuesta.mensaje, 'cerrar');
     });
   }
 }

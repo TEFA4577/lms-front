@@ -22,9 +22,6 @@ export class CrearCursoComponent implements OnInit {
   ngOnInit(): void {
     this.buildForm();
   }
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
   buildForm(): void {
     this.formCrearCurso = this.formBuilder.group({
       nombre_curso: ['', Validators.required],

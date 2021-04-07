@@ -43,16 +43,28 @@
 }
 
 //Cards de los cursos
+.content-card{
+  border: none;
+  display: flex;
+  overflow-x: auto;
+}
+.content-card::-webkit-scrollbar{
+  width: 0;
+}
+//-------------
 .mat-card {
   min-height: 200px;
-  max-height: 400px;
+  max-height: 350px;
+  height: 300px;
   margin-bottom: 15px;
+  text-align: center;
+  cursor: pointer;
 }
 
 .mat-card-title {
   text-align: center;
+  text-transform: uppercase;
 }
-
 .mat-card-content {
   flex-grow: 1;
   overflow: auto;
@@ -66,7 +78,7 @@ a {
 }
 
 .img-cards {
-  max-height: 150px;
+  height: 150px;
 }
 
 .portafolio {
@@ -94,6 +106,12 @@ a {
 .carousel-inner .img {
   width: auto;
   height: 400px;
+}
+
+@media only screen and (max-width: 750px){
+  .mat-card {
+    width: 300px;
+  }
 }
 
 @media only screen and (max-width: 600px){

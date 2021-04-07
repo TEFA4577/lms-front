@@ -2,7 +2,6 @@
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
-  height: 580px;
 }
 
 .mat-card-image{
@@ -14,6 +13,7 @@
 }
 .mat-card-content {
   flex-grow: 1;
+  height: auto;
   overflow: auto;
 }
 
@@ -21,7 +21,7 @@
   min-height: 40%;
 }
 
-.sinCurso {
+.sinDatos {
   margin-top: 10%;
   margin-bottom: 10%;
 }
@@ -29,8 +29,7 @@
 .mensaje {
   font-size: large;
   text-align: center;
-
-  a {
+  button {
     font-size: large;
   }
 }

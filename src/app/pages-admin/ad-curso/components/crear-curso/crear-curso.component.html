@@ -1,11 +1,15 @@
-<h2 mat-dialog-title>Registra un curso</h2>
+<div class="d-flex justify-content-between">
+  <h1 mat-dialog-title>Registra un curso</h1>
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 <form [formGroup]="formCrearCurso" (ngSubmit)="submitRegistrarCurso($event)" autocomplete="off">
   <div mat-dialog-content>
     <div class="container">
       <div class="row">
         <div class="col-md-8">
           <div class="row">
-
           <mat-form-field class="col-md-12">
             <mat-label>nombre del curso</mat-label>
             <input matInput formControlName="nombre_curso" type="text" placeholder="">
@@ -23,18 +27,18 @@
           </div>
         </div>
         <div class="col-md-4">
-          <input type="file" name="imagen_curso" #imagen hidden accept="image/*" (change)="uploadFile($event.target.files)">
-          <button type="button" mat-raised-button color="primary" class="btn-block" (click)="imagen.click()">Subir una
-            imagen</button>
           <div class="contenidoImagen">
             <img [src]="imgURL" class="imagenR" *ngIf="imgURL">
           </div>
+          <input type="file" name="imagen_curso" #imagen hidden accept="image/*" (change)="uploadFile($event.target.files)">
+          <button type="button" mat-raised-button color="primary" class="btn-block" (click)="imagen.click()">Subir una
+            imagen</button>
         </div>
       </div>
     </div>
   </div>
-  <div mat-dialog-actions>
-    <button mat-button color="warn" type="button" (click)="onNoClick()">Cancelar</button>
-    <button mat-button color="primary" type="submit" [disabled]="formCrearCurso.invalid">Crear</button>
-  </div>
+  <mat-dialog-actions class="col-md-12 justify-content-center">
+    <button style="width: 40%;" mat-raised-button color="primary" [disabled]="formCrearCurso.invalid">Crear Curso</button>
+    <button style="width: 40%;" mat-raised-button color="warn" [mat-dialog-close]="true">Cancelar</button>
+  </mat-dialog-actions>
 </form>

@@ -34,7 +34,7 @@ export const MENU_DOCENTE = [
     contenido: [
       {
         titulo: 'Adquirir Membresia',
-        link: './membresia/docente-membresia'
+        link: './membresias/docente-membresia'
       }
     ]
   }
@@ -54,11 +54,11 @@ export const MENU_ADMIN = [
     contenido: [
       {
         titulo: 'Administrar Membresia',
-        link: './membresia'
+        link: './membresias'
       },
       {
         titulo: 'Solicitud de Membresia',
-        link: './membresia/solicitudes',
+        link: './membresias/solicitudes',
       }
     ]
   },

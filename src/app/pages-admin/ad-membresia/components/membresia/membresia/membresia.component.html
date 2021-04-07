@@ -1,24 +1,27 @@
 <div class="container">
   <mat-card>
     <mat-card-content>
-      <mat-card-title>
-        Lista de Membresias
-      </mat-card-title>
-      <div class="d-flex flex-row-reverse">
-        <button color="accent" mat-mini-fab (click)="registrarMembresia()">
-          <mat-icon>plus_one</mat-icon>
+      <div class="d-flex justify-content-between">
+        <mat-card-title>
+          Lista de Membresias
+        </mat-card-title>
+        <button mat-raised-button matTooltip="Crear una membresia" color="primary" (click)="registrarMembresia()">
+          Nueva Membresia <mat-icon>add</mat-icon>
         </button>
       </div>
     </mat-card-content>
   </mat-card>
   <hr>
-  <mat-card>
+  <div *ngIf="estado" class="sinDatos d-flex align-items-center justify-content-center">
+    <p class="mensaje">Aún no creaste ningun membresia, ¿¡Qué Esperas!?... presiona <button mat-stroked-button color="primary" (click)="registrarMembresia()">aquí</button></p>
+  </div>
+  <mat-card *ngIf="!estado">
     <mat-card-header>
       <div class="row col-md-12">
         <mat-form-field>
           <mat-label>Buscar</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. tutorial" #input>
-          <mat-icon matSuffix>search</mat-icon>
+          <input matInput (keyup)="applyFilter($event)" #input>
+          <mat-icon matSuffix>buscar</mat-icon>
         </mat-form-field>
       </div>
     </mat-card-header>
@@ -48,7 +51,7 @@
                 matTooltip="la membresia esta activa">
                 <mat-icon>check_circle_outline</mat-icon>
               </button>
-              <button *ngIf="row.membresia == 0" (click)="membresiaHD(row.id_membresia)" mat-icon-button color="warn"
+              <button *ngIf="row.membresia == 0" (click)="membresiaHD(row.id_membresia)" mat-icon-button style="color: #f09053;"
                 matTooltip="la membresia esta desactivada">
                 <mat-icon>error_outline</mat-icon>
               </button>
@@ -56,13 +59,13 @@
           </ng-container>
 
           <ng-container matColumnDef="id_membresia">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Opciones</th>
+            <th mat-header-cell *matHeaderCellDef>Opciones</th>
             <td mat-cell *matCellDef="let row">
               <div>
-                <button mat-icon-button color="accent" (click)="editarMembresia(row.id_membresia)">
+                <button mat-icon-button color="accent" matTooltip="Editar Membresia" (click)="editarMembresia(row.id_membresia)">
                   <mat-icon>create</mat-icon>
                 </button>
-                <button mat-icon-button color="warn" (click)="eliminarMembresia(row.id_membresia)">
+                <button mat-icon-button color="warn" matTooltip="Eliminar Membresia" (click)="eliminarMembresia(row.id_membresia)">
                   <mat-icon>delete_forever</mat-icon>
                 </button>
               </div>

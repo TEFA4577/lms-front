@@ -1,4 +1,9 @@
-<h1 mat-dialog-title>Actualizar datos del modulo</h1>
+<div class="d-flex justify-content-between">
+  <h1 mat-dialog-title>Actualizar datos de módulo</h1>
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 <form [formGroup]="formModulo" (ngSubmit)="sumitModulos($event)" autocomplete="off">
   <div mat-dialog-content>
     <div class="row">
@@ -10,12 +15,10 @@
         <mat-label>descripcion del curso</mat-label>
         <textarea matInput formControlName="descripcion_modulo"></textarea>
       </mat-form-field>
-      <div class="col-md-4">
-      </div>
     </div>
   </div>
-  <div mat-dialog-actions>
-    <button mat-button color="warn" type="button" (click)="onNoClick()">cancelar</button>
-    <button mat-button color="primary" type="submit" [disabled]="formModulo.invalid">Guardar Cambios</button>
-  </div>
+  <mat-dialog-actions class="col-md-12 justify-content-center">
+    <button style="width: 40%;" mat-raised-button color="primary" [disabled]="formModulo.invalid">Guardar Cambios</button>
+    <button style="width: 40%;" mat-raised-button color="warn" type="button"[mat-dialog-close]="true">Cancelar</button>
+  </mat-dialog-actions>
 </form>
