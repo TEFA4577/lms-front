@@ -53,7 +53,7 @@
     <hr/>
     <div class="row justify-content-center py-3">
       <div class="col-6">
-        <p class="lead">Cursos y novedades</p>
+        <p class="lead">Nuestros Cursos</p>
       </div>
       <div class="col-6" align="end">
         <button mat-raised-button routerLink="/curso/cursos-general" matTooltip="Descubre nuevos cursos" align="end"
@@ -70,8 +70,8 @@
           </div>
           <div class="col-12 content-card">
             <div class="col-md-3" *ngFor="let item of curso;">
-              <mat-card class="categorie-card" routerLink="/curso/curso-detalle/{{ item.id_curso }}">
-                <img src="{{ item.imagen_curso }}" class="img-cards" alt=" " />
+              <mat-card class="mat-card-curso" routerLink="/curso/curso-detalle/{{ item.id_curso }}">
+                <img src="{{ item.imagen_curso }}" class="cat-img-cards-curso" alt=" " />
                 <hr/>
                 <mat-card-header>
                   <mat-card-title>
@@ -79,6 +79,16 @@
                   </mat-card-title>
                   <mat-card-subtitle>Precio: Bs. {{ item.precio}}</mat-card-subtitle>
                 </mat-card-header>
+                <div class="col-md-12 mat-chip-etiqueta">
+                  <mat-chip-list align="center"aria-label="Fish selection">
+                    <mat-chip-list aria-label="Color selection"
+                      *ngFor="let etiqueta of item.etiquetas_curso">
+                      <mat-chip selected>
+                        {{etiqueta.nombre_etiqueta}}
+                      </mat-chip>
+                    </mat-chip-list>
+                  </mat-chip-list>
+                </div>
               </mat-card>
             </div>
           </div>
@@ -120,7 +130,7 @@
     <hr/>
     <div class="row justify-content-center py-3">
       <div class="col-6">
-        <p class="lead">Categorías Principales</p>
+        <p class="lead">Categorías</p>
       </div>
       <div class="col-6" align="end">
         <button mat-raised-button routerLink="/curso/categorias" matTooltip="Descubre todas las categorias" align="end"
@@ -137,7 +147,7 @@
           <mat-spinner></mat-spinner>
         </div>
         <div class="col-12 content-card">
-          <div class="col-3" *ngFor="let item of etiqueta">
+          <div class="col-md-3" *ngFor="let item of etiqueta">
             <!--; let i = index *ngIf="i < 5" -->
             <mat-card class="categorie-card" routerLink="/curso/cursos-categorias/{{item.id_etiqueta}}">
               <img src="{{ item.imagen_etiqueta }}" class="cat-img-cards" alt=" " />

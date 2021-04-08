@@ -34,11 +34,15 @@
 //Cards de las categorias
 .mat-card {
   width: 100%;
-  height: 100%;
+  height: 80%;
 }
 
 .cat-img-cards {
   height: 70%;
+  width: 100%;
+}
+.cat-img-cards-curso {
+  height: 50%;
   width: 100%;
 }
 
@@ -61,10 +65,22 @@
   cursor: pointer;
 }
 
+.mat-card-curso {
+  min-height: 200px;
+  max-height: 400px;
+  width: 250px;
+  margin-bottom: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
 .mat-card-title {
   text-align: center;
   text-transform: uppercase;
   font-size: initial;
+}
+.mat-card-subtitle {
+  text-align: center;
 }
 .mat-card-content {
   flex-grow: 1;
@@ -80,6 +96,11 @@ a {
 
 .img-cards {
   height: 150px;
+}
+
+.mat-chip-etiqueta {
+  overflow-y: scroll;
+  height: 50px;
 }
 
 .portafolio {
@@ -99,20 +120,22 @@ a {
   width: 100%;
   height: 80%;
 }
-.mat-chip {
-  max-width: 200px;
-  margin-left: 40px;
-}
-
 .carousel-inner .img {
   width: auto;
   height: 400px;
 }
-
+@media only screen and (max-width: 1000px){
+  .col-md-3 {
+    max-width: 40%;
+  }
+}
 @media only screen and (max-width: 750px){
   .mat-card {
     width: 300px;
   }
+  .col-md-3 {
+    max-width: 70%;
+}
 }
 
 @media only screen and (max-width: 600px){
@@ -126,5 +149,8 @@ a {
   .carousel-inner .img{
     width: auto;
     height: 200px;
+  }
+  .col-md-3 {
+    max-width: 100%;
   }
 }

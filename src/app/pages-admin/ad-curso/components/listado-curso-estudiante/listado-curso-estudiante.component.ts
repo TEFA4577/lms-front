@@ -12,7 +12,7 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./listado-curso-estudiante.component.scss']
 })
 export class ListadoCursoEstudianteComponent implements OnInit {
-  displayedColumns: string[] = ['id_curso','nombre_curso', 'usuario_curso'];
+  displayedColumns: string[] = ['nombre_curso', 'usuario_curso'];
   dataSource: MatTableDataSource<Cursos>;
   misEstudiantes: any;
 
