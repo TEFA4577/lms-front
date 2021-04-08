@@ -62,7 +62,7 @@ export class LandingComponent implements OnInit {
   }
 
   listarEncuestas(){
-    this.SerEncuestas.listarPreguntasEncuestas().subscribe(data => {
+    this.SerEncuestas.listarEncuestas().subscribe(data => {
       console.log(data);
       this.encuesta = data;
     });
