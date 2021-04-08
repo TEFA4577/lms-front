@@ -25,7 +25,11 @@
           </mat-card-title>
           <mat-card-subtitle>Estado: {{miCurso.estado_curso}}</mat-card-subtitle>
           <button mat-fab color="warn" *ngIf="miCurso.estado_curso == 'aprobado'"
-            (click)="inhabilitar(miCurso.id_curso)" matTooltip="Deshabilitar el curso">
+            (click)="inhabilitarCurso(miCurso.id_curso)" matTooltip="Deshabilitar el curso">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-fab color="warn" *ngIf="miCurso.estado_curso != 'aprobado'"
+            (click)="eliminarCurso(miCurso.id_curso)" matTooltip="Eliminar el curso">
             <mat-icon>delete</mat-icon>
           </button>
         </mat-card-header>

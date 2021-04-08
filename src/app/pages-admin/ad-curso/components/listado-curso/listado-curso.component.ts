@@ -51,7 +51,7 @@ export class ListadoCursoComponent implements OnInit {
     });
   }
 
-  inhabilitar(id: number): void {
+  inhabilitarCurso(id: number): void {
     Swal.fire({
       title: 'Cambiar estado de la Solicitud?',
       text: '¿seguro que desea inhabilitar el curso?',
@@ -64,6 +64,30 @@ export class ListadoCursoComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.cursoSrv.inhabilitarCurso(id).subscribe(data => {
+          console.log(data);
+          this.listarMisCursos();
+        });
+        Swal.fire(
+          'El estado del curso cambio.',
+          'success'
+        );
+      }
+    });
+  }
+
+  eliminarCurso(id: number): void {
+    Swal.fire({
+      title: 'Cambiar estado de la Solicitud?',
+      text: '¿seguro que desea inhabilitar el curso?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si deseo cambiarlo',
+      cancelButtonText: 'No, cancelar!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cursoSrv.eliminarCurso(id).subscribe(data => {
           console.log(data);
           this.listarMisCursos();
         });
