@@ -25,6 +25,9 @@ export class EncuestasService {
   listarPreguntasEncuestas(){
     return this.http.get(this.API_BACKEND + 'encuesta-preguntas/list');
   }
+  datosPregunta() {
+    return this.http.get(this.API_BACKEND + 'encuesta-preguntas/list');
+  }
   registrarPregunta(datos: any): any {
     return this.http.post(this.API_BACKEND + 'encuesta/registrar-pregunta', datos);
   }

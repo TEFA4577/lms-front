@@ -5,6 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { CrearEncuestaComponent } from '../../components/crear-encuesta/crear-encuesta.component';
 import { EditarEncuestaComponent } from '../../components/editar-encuesta/editar-encuesta.component';
+import { CrearPreguntasComponent } from '../../components/crear-preguntas/crear-preguntas.component';
+
 import { EncuestasService } from '../../../../services/encuestas.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Encuestas } from '../../../../models/encuestas';
@@ -23,7 +25,7 @@ import { Encuestas } from '../../../../models/encuestas';
 })
 export class EncuestasComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['id_rol', 'texto_encuesta', 'updated_at', 'created_at'];
+  displayedColumns: string[] = ['id_encuesta', 'id_rol', 'texto_encuesta', 'updated_at', 'created_at'];
   dataSource: MatTableDataSource<Encuestas>;
   expandedElement: Encuestas | null;
   encuestas: any;
@@ -69,14 +71,23 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.cargarEncuestas();
+      this.listarEncuestas();
     });
   }
 
-  cargarEncuestas(){
-    this.serEncuesta.listarEncuestas().subscribe(data => {
-      //this.pregunta = data;
-      console.log(data);
+  editarTitulo(): void {
+
+  }
+
+  registrarPregunta(idP: number): void {
+    const dialogRef = this.dialog.open(CrearPreguntasComponent, {
+      data: idP,
+      width: '100vh'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(idP);
+      this.listarEncuestas();
     });
   }
 

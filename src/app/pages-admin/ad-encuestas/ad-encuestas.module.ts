@@ -6,6 +6,7 @@ import { AdEncuestasRoutingModule } from './ad-encuestas-routing.module';
 import { CrearEncuestaComponent } from './components/crear-encuesta/crear-encuesta.component';
 import { EncuestasComponent } from './components/encuestas/encuestas.component';
 import { EditarEncuestaComponent } from './components/editar-encuesta/editar-encuesta.component';
+import { CrearPreguntasComponent } from './components/crear-preguntas/crear-preguntas.component';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,11 +19,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 
+
 @NgModule({
   declarations: [
     CrearEncuestaComponent,
     EncuestasComponent,
-    EditarEncuestaComponent
+    EditarEncuestaComponent,
+    CrearPreguntasComponent
   ],
   imports: [
     CommonModule,
