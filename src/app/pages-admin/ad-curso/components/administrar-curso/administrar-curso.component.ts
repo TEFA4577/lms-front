@@ -303,6 +303,7 @@ export class AdministrarCursoComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.serCursos.cambiarEstadoCurso(datos).subscribe(res => {
+          this.router.navigateByUrl('admin/cursos/mis-cursos');
           console.log(res);
           this.cargarDatosCurso();
         }, error => {

@@ -11,22 +11,29 @@
       </div>
     </mat-card-content>
   </mat-card>
-  <hr/>
+  <hr />
   <div *ngIf="estado" class="sinDatos d-flex align-items-center justify-content-center">
-    <p class="mensaje">Aún no creaste ningun curso, ¿¡Qué Esperas!? empieza <button mat-stroked-button color="primary" (click)="openDialog()">aquí</button></p>
+    <p class="mensaje">Aún no creaste ningun curso, ¿¡Qué Esperas!? empieza <button mat-stroked-button color="primary"
+        (click)="openDialog()">aquí</button></p>
   </div>
   <div class="row" *ngIf="!estado">
     <div class="col-md-4" *ngFor="let miCurso of misCursos">
       <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{miCurso.nombre_curso }}<hr></mat-card-title>
+        <mat-card-header class="row">
+          <mat-card-title>{{miCurso.nombre_curso }}
+            <hr>
+          </mat-card-title>
           <mat-card-subtitle>Estado: {{miCurso.estado_curso}}</mat-card-subtitle>
+          <button mat-fab color="warn" *ngIf="miCurso.estado_curso == 'aprobado'"
+            (click)="inhabilitar(miCurso.id_curso)" matTooltip="Deshabilitar el curso">
+            <mat-icon>delete</mat-icon>
+          </button>
         </mat-card-header>
         <img mat-card-image src="{{ miCurso.imagen_curso }}" alt="{{miCurso.nombre_curso}}" class="imgCurso">
         <mat-card-subtitle>Mensaje del revisor: {{miCurso.mensaje}}
         </mat-card-subtitle>
         <mat-card-content>
-        <h3>Etiquetas Curso</h3>
+          <h3>Etiquetas Curso</h3>
           <div class="container">
             <mat-chip-list aria-label="eltiquetas" class="row">
               <mat-chip *ngFor="let item of miCurso.etiquetas_curso" class="col-md">{{item.nombre_etiqueta}}</mat-chip>
@@ -37,7 +44,8 @@
         <mat-card-footer>
           <mat-card-actions align="center">
             <button mat-raised-button color="accent" (click)="verEtiquetas(miCurso)">Cambiar Etiquetas</button>
-            <button *ngIf="miCurso.estado_curso != 'aprobado'"  mat-raised-button color="primary" routerLink="../administrar/{{miCurso.id_curso}}">Administrar Curso</button>
+            <button *ngIf="miCurso.estado_curso != 'aprobado'" mat-raised-button color="primary"
+              routerLink="../administrar/{{miCurso.id_curso}}">Administrar Curso</button>
           </mat-card-actions>
         </mat-card-footer>
       </mat-card>

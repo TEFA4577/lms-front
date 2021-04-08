@@ -66,8 +66,10 @@
                 [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
 
                 <div class="example-element-description">
-                  <div *ngFor="let item of element.encuesta_pregunta">
-                    {{item.texto_encuesta_pregunta}}
+                  <div *ngFor="let item of element.encuesta_pregunta; let i = index">
+                    <mat-list role="list">
+                      <mat-list-item role="listitem">{{ i + 1 }}. {{item.texto_encuesta_pregunta}}</mat-list-item>
+                    </mat-list>
                   </div>
                 </div>
               </div>
