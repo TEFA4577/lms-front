@@ -43,7 +43,7 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
     this.listarEncuestas();
   }
 
-  listarEncuestas(){
+  listarEncuestas() {
     this.serEncuesta.listarEncuestas().subscribe(data => {
       console.log(data);
       this.encuestas = data;
@@ -76,9 +76,18 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
     });
   }
 
-  editarTitulo(): void {
+  editarTitulo(id: number): void {
+    const dialogRef = this.dialog.open(EditarEncuestaComponent, {
+      disableClose: true,
+      data: id
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.listarEncuestas();
+    });
   }
+
 
   registrarPregunta(idP: number): void {
     const dialogRef = this.dialog.open(CrearPreguntasComponent, {

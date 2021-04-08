@@ -160,25 +160,24 @@
     </div>
   </div>
 </div>
-  <!--CONTACTS-->
-  <div class="container-fluid bg-dark text-white py-5">
-    <form>
-      <div class="row">
-        <div class="col-md-4">
-          <h3 class="lead text-center">¿Necesitas más información?
-            <br> Comunícate con nosotros.
-          </h3>
-        </div>
-        <div class="col-md-4">
-          <input type="email" id="email" class="form-control form-control-lg"
-            placeholder="Ingresa tu correo electrónico">
-        </div>
-        <div class="col-md-4">
-          <button onclick="myFunction()" class="btn btn-info btn-lg btn-block">Enviar</button>
-        </div>
+<!--CONTACTS-->
+<div class="container-fluid bg-dark text-white py-5">
+  <form>
+    <div class="row">
+      <div class="col-md-4">
+        <h3 class="lead text-center">¿Necesitas más información?
+          <br> Comunícate con nosotros.
+        </h3>
       </div>
-    </form>
-  </div>
+      <div class="col-md-4">
+        <input type="email" id="email" class="form-control form-control-lg" placeholder="Ingresa tu correo electrónico">
+      </div>
+      <div class="col-md-4">
+        <button onclick="myFunction()" class="btn btn-info btn-lg btn-block">Enviar</button>
+      </div>
+    </div>
+  </form>
+</div>
 <!--END CONTACTS-->
 
 <!--END FORMULARIO-->
@@ -187,15 +186,29 @@
     <div class="card">
       <h3 class="card-header text-center">Realiza esta pequeña encuesta: {{item.texto_encuesta}}</h3>
       <div class="card-body justify-content-center align-self-center">
-          <form [formGroup]="formRegistrarRespuesta" (ngSubmit)="submitRegistrarRespuesta($event)" autocomplete="off">
-                  <div>
-                      <!-- ID que recibimos de firebase-->
-                      <mat-list *ngFor="let pregunta of item.encuesta_pregunta; let i = index">
-                        <mat-list-item>{{ i + 1 }}. {{pregunta.texto_encuesta_pregunta}}</mat-list-item>
-                        <!--<mat-form-field appearance="outline" class="col-12">
+        <form [formGroup]="formRegistrarRespuesta" (ngSubmit)="submitRegistrarRespuesta($event)" autocomplete="off">
+          <div class="row">
+            <!-- ID que recibimos de firebase-->
+            <mat-list *ngFor="let pregunta of item.encuesta_pregunta; let i = index">
+              <div class="col">
+                <mat-list-item>{{ i + 1 }}. {{pregunta.texto_encuesta_pregunta}}
+                </mat-list-item>
+              </div>
+              <div class="col">
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+                  <mat-radio-button class="example-radio-button">
+                    Si
+                  </mat-radio-button>
+                  <mat-radio-button class="example-radio-button">
+                    No
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+
+              <!--<mat-form-field appearance="outline" class="col-12">
                           <input matInput placeholder="Escribe tu Nombre" formControlName="texto_respuesta_encuesta">
                         </mat-form-field>-->
-                        <div class="col-sm-4">
+              <!--<div class="col-sm-4">
                           <div class="form-check">
                               <input class="form-check-input" type="radio" name="educacion_distancia" id="educacion_distancia" value="Si" checked>
                               <label class="form-check-label" for="gridRadios1">
@@ -208,13 +221,13 @@
                                   No
                               </label>
                           </div>
-                      </div>
-                       </mat-list>
-                  </div>
-          </form>
+                      </div>-->
+            </mat-list>
+          </div>
+        </form>
       </div>
-  </div>
+    </div>
     <br>
   </div>
 </div>
-  <!--END FORMULARIO-->
+<!--END FORMULARIO-->
