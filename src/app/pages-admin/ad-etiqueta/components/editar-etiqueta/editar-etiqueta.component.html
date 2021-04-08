@@ -1,4 +1,9 @@
-<h1 mat-dialog-title>Datos de la Etiqueta</h1>
+<div class="d-flex justify-content-between">
+  <h1 mat-dialog-title>Datos de la Etiqueta</h1>
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 <form [formGroup]="formEtiqueta" (ngSubmit)="submitEtiqueta($event)" autocomplete="off">
   <div mat-dialog-content>
     <div class="container">
@@ -13,14 +18,14 @@
             <input matInput formControlName="nombre_etiqueta" type="text" placeholder="">
           </mat-form-field>
           <mat-form-field class="col">
-            <mat-label>descripcion de la etiqueta </mat-label>
+            <mat-label>descripción de la etiqueta </mat-label>
             <textarea matInput formControlName="descripcion_etiqueta"></textarea>
           </mat-form-field>
           <button type="submit" class="col" mat-raised-button>Guardar Cambios</button>
-          <input type="file" name="video_etiqueta" #imagen hidden accept="video/mp4,video/x-m4v,video/*"
+          <input type="file" name="imagenCambio" #imagenCambio hidden accept="image/*"
             (change)="uploadFile($event.target.files)">
-          <button type="button" mat-raised-button color="primary" class="col-md-12" (click)="imagen.click()">Cambiar
-            Video</button>
+          <button type="button" mat-raised-button color="primary" class="col-md-12" (click)="imagenCambio.click()">Cambiar
+            Imagen</button>
           <button mat-raised-button color="primary" type="button" (click)="cambiarVideo()"> guardar
           </button>
           <button mat-raised-button color="warn" type="button" (click)="deleteAttachment(0)"> cancelar
@@ -32,5 +37,5 @@
 </form>
 
 <mat-dialog-actions>
-  <button mat-raised-button color="warn" [mat-dialog-close]>cancelar</button>
+  <button mat-raised-button color="warn" [mat-dialog-close]="true">cancelar</button>
 </mat-dialog-actions>

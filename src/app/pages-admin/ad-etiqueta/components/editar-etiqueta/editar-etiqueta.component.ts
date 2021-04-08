@@ -10,7 +10,7 @@ import { EtiquetaService } from '../../../../services/etiqueta.service';
 })
 export class EditarEtiquetaComponent implements OnInit {
   formEtiqueta: FormGroup;
-  estadoVideo = false;
+  imagenCambio: any;
   datos: any;
   id: number;
   files: any = [];
@@ -75,15 +75,19 @@ export class EditarEtiquetaComponent implements OnInit {
       const element = event[index];
       this.files.push(element.name);
       this.filedata = element;
-      this.estadoVideo = true;
       console.log(element);
+      const reader = new FileReader();
+      reader.readAsDataURL(event[index]);
+      reader.onload = (_event) => {
+        this.imagenCambio = reader.result;
+      }
     }
     console.log(this.files);
   }
 
   deleteAttachment(index): void {
     this.files.splice(index, 1);
-    this.estadoVideo = false;
+    this.imagenCambio = false;
   }
 
 }

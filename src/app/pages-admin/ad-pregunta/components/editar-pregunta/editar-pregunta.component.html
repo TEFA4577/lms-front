@@ -1,4 +1,9 @@
-<h1 mat-dialog-title>Actualizar Pregunta</h1>
+<div class="d-flex justify-content-between">
+  <h1 mat-dialog-title>Actualizar Pregunta</h1>
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 <form [formGroup]="formEditarPregunta" (ngSubmit)="submitEditarPregunta($event)" autocomplete="off">
   <div mat-dialog-content>
     <div class="row">
@@ -8,8 +13,8 @@
       </mat-form-field>
     </div>
   </div>
-  <div mat-dialog-actions>
-    <button mat-button color="warn" type="button" [mat-dialog-close]>cancelar</button>
-    <button mat-button color="primary" type="submit" [disabled]="formEditarPregunta.invalid">Guardar Cambios</button>
-  </div>
+  <mat-dialog-actions class="col-md-12 justify-content-center">
+    <button style="width: 40%;" mat-raised-button color="primary" [disabled]="formEditarPregunta.invalid">Guardar Cambios</button>
+    <button style="width: 40%;" mat-raised-button color="warn" type="button" [mat-dialog-close]="true">cancelar</button>
+  </mat-dialog-actions>
 </form>

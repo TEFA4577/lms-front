@@ -37,7 +37,6 @@ export class CrearMembresiaComponent implements OnInit {
     myFormData.append('texto_membresia', this.formCrearMembresia.get('texto_membresia').value);
     myFormData.append('precio_membresia', this.formCrearMembresia.get('precio_membresia').value);
     this.membresiaSrv.registrarMembresia(myFormData).subscribe(res =>{
-      console.log(res);
       this.dialogRef.close();
     }, error => {
       console.log(error);

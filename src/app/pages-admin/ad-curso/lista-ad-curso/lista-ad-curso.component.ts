@@ -49,6 +49,7 @@ export class ListaAdCursoComponent implements OnInit, AfterViewInit {
   }
   verDetalle(id: number): void {
     const dialogRef = this.dialog.open(DetalleCursoComponent, {
+      disableClose: true,
       data: id
     });
 

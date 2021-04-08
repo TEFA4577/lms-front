@@ -41,8 +41,6 @@ export class PreguntasComponent implements OnInit {
   cargarPreguntas() {
     this.serPregunta.mostrarPregunta().subscribe(data => {
       this.pregunta = data;
-      console.log(this.pregunta);
-
     });
     //if (this.pregunta.length == 1) {
       //this.estado = false;
@@ -63,7 +61,6 @@ export class PreguntasComponent implements OnInit {
   cargarDatos(): void {
     this.serPregunta.mostrarPregunta().subscribe(res => {
       this.dat = res;
-      console.log(this.dat);
     }, error => {
       console.log(error);
     });
@@ -71,13 +68,13 @@ export class PreguntasComponent implements OnInit {
 
   cargarPreguntasId(res) {
     this.serPregunta.datosPregunta(res).subscribe(data => {
-      console.log(data);
       //console.log(this.pregunta);
     });
   }
 
   registrarPregunta(): void {
     const dialogRef = this.dialog.open(CrearPreguntaComponent, {
+      disableClose: true,
       width: '100vh'
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -88,6 +85,7 @@ export class PreguntasComponent implements OnInit {
 
   editarPregunta(id: number): void {
     const dialogRef = this.dialog.open(EditarPreguntaComponent, {
+      disableClose: true,
       data: id,
       width: '100vh'
     });
@@ -100,6 +98,7 @@ export class PreguntasComponent implements OnInit {
 
   editarRespuesta(idR: number): void {
     const dialogRef = this.dialog.open(EditarRespuestaComponent, {
+      disableClose: true,
       data: idR,
       width: '100vh'
     });
@@ -111,6 +110,7 @@ export class PreguntasComponent implements OnInit {
   }
   registrarRespuesta(idP: number): void {
     const dialogRef = this.dialog.open(CrearRespuestaComponent, {
+      disableClose: true,
       data: idP,
       width: '100vh'
     });
