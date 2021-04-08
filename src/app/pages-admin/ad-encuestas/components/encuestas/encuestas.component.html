@@ -24,14 +24,16 @@
     </mat-card-header>
     <mat-card-content>
       <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort class="table-responsive-lg table-hover">
-          <!-- Progress Column -->
+        <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort
+          class="table-responsive-lg table-hover">
+          <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
           <ng-container matColumnDef="id_rol">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Destino de encuesta</th>
             <td mat-cell *matCellDef="let row">
               {{row.id_rol}}
             </td>
           </ng-container>
+
           <ng-container matColumnDef="id_encuesta">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Opciones</th>
             <td mat-cell *matCellDef="let row">
@@ -43,6 +45,7 @@
               </button>
             </td>
           </ng-container>
+
           <ng-container matColumnDef="texto_encuesta">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo de la encuesta </th>
             <td mat-cell *matCellDef="let row"> {{row.texto_encuesta}} </td>
@@ -56,14 +59,29 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Actualizado </th>
             <td mat-cell *matCellDef="let row"> {{row.updated_at | date:"medium"}} </td>
           </ng-container>
+
+          <ng-container matColumnDef="expandedDetail">
+            <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+              <div class="example-element-detail"
+                [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+
+                <div class="example-element-description">
+                  <div *ngFor="let item of element.encuesta_pregunta">
+                    {{item.texto_encuesta_pregunta}}
+                  </div>
+                </div>
+              </div>
+            </td>
+          </ng-container>
+
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-            (click)="expandedElement = expandedElement === row ? null : row"></tr>
-          <!-- Row shown when there is no matching data. -->
-          <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4">no hay ningun dato con tu busqueda "{{input.value}}"</td>
+          <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="example-element-row"
+            [class.example-expanded-row]="expandedElement === element"
+            (click)="expandedElement = expandedElement === element ? null : element">
           </tr>
+          <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
         </table>
+
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
       </div>
     </mat-card-content>
