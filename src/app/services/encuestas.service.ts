@@ -16,11 +16,17 @@ export class EncuestasService {
   listarEncuestas(){
     return this.http.get(this.API_BACKEND + 'encuestas/list');
   }
+  mostrarEncuesta(id){
+    return this.http.get(this.API_BACKEND + 'encuesta/mostrar/' + id);
+  }
   actualizarEncuesta(id: number, datos: any) {
     return this.http.put(this.API_BACKEND + 'encuesta/actualizar/' + id, datos);
   }
   eliminarEncuesta(id) {
     return this.http.get(this.API_BACKEND + 'encuesta/eliminar/' + id);
+  }
+  mostrarPregunta(id){
+    return this.http.get(this.API_BACKEND + 'encuesta-preguntas/mostrar/' + id);
   }
   listarPreguntasEncuestas(){
     return this.http.get(this.API_BACKEND + 'encuesta-preguntas/list');

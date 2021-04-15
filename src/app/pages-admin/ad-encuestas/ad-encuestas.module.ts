@@ -19,6 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
+import { EditarPreguntaComponent } from './components/editar-pregunta/editar-pregunta.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MatListModule } from '@angular/material/list';
     CrearEncuestaComponent,
     EncuestasComponent,
     EditarEncuestaComponent,
-    CrearPreguntasComponent
+    CrearPreguntasComponent,
+    EditarPreguntaComponent
   ],
   imports: [
     CommonModule,

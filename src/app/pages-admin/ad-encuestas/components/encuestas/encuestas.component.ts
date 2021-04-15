@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import Swal from 'sweetalert2';
 import { CrearEncuestaComponent } from '../../components/crear-encuesta/crear-encuesta.component';
 import { EditarEncuestaComponent } from '../../components/editar-encuesta/editar-encuesta.component';
 import { CrearPreguntasComponent } from '../../components/crear-preguntas/crear-preguntas.component';
@@ -10,6 +11,7 @@ import { CrearPreguntasComponent } from '../../components/crear-preguntas/crear-
 import { EncuestasService } from '../../../../services/encuestas.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Encuestas } from '../../../../models/encuestas';
+import { EditarPreguntaComponent } from '../editar-pregunta/editar-pregunta.component';
 
 @Component({
   selector: 'app-encuestas',
@@ -76,6 +78,7 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
     });
   }
 
+  //edicion del titulo de la encuesta
   editarTitulo(id: number): void {
     const dialogRef = this.dialog.open(EditarEncuestaComponent, {
       disableClose: true,
@@ -85,6 +88,31 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.listarEncuestas();
+    });
+  }
+
+  eliminarEncuesta(id: number): void{
+    Swal.fire({
+      title: 'Eliminar clase?',
+      text: 'seguro que desea eliminar la clase!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si deseo eliminar',
+      cancelButtonText: 'No, cancelar!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.serEncuesta.eliminarEncuesta(id).subscribe(res => {
+          console.log(res);
+          this.listarEncuestas();
+        });
+        Swal.fire(
+          'Eliminado!',
+          'La encuesta se elimino correctamente.',
+          'success'
+        );
+      }
     });
   }
 
@@ -98,6 +126,43 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
       console.log('The dialog was closed');
       console.log(idP);
       this.listarEncuestas();
+    });
+  }
+
+  editarPregunta(idPE: number): void{
+    const dialogRef = this.dialog.open(EditarPreguntaComponent, {
+      data: idPE,
+      width: '100vh'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(idPE);
+      this.listarEncuestas();
+    });
+  }
+
+  eliminarPregunta(id: number): void{
+    Swal.fire({
+      title: 'Eliminar clase?',
+      text: 'seguro que desea eliminar la clase!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si deseo eliminar',
+      cancelButtonText: 'No, cancelar!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.serEncuesta.eliminarPregunta(id).subscribe(res => {
+          console.log(res);
+          this.listarEncuestas();
+        });
+        Swal.fire(
+          'Eliminado!',
+          'La Clase se elimino correctamente.',
+          'success'
+        );
+      }
     });
   }
 
