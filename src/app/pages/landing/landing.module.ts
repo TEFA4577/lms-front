@@ -11,6 +11,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [LandingComponent],
@@ -23,7 +24,8 @@ import { MatCardModule } from '@angular/material/card';
     MatListModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule
   ]
 })
 export class LandingModule { }

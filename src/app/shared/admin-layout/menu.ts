@@ -92,7 +92,7 @@ export const MENU_ADMIN = [
     grupo: 'Preguntas y encuestas',
     contenido: [
       {
-        titulo: 'Preguntas Frecuentas',
+        titulo: 'Preguntas Frecuentes',
         link: './preguntas-frecuentes'
       },
       {

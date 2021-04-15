@@ -65,12 +65,12 @@
                 <mat-slide-toggle color="primary"></mat-slide-toggle>
               </div>-->
               <div *ngIf="row.estado == 1">
-                <button mat-icon-button (click)="inhabilitar(row.id_curso)" matTooltip="eliminar respuesta">
+                <button mat-icon-button (click)="inhabilitar(row.id_curso)" matTooltip="Deshabilitar curso">
                   <mat-icon color="primary">toggle_on</mat-icon>
                 </button>
               </div>
               <div *ngIf="row.estado == 0">
-                <button mat-icon-button (click)="habilitar(row.id_curso)" matTooltip="eliminar respuesta">
+                <button mat-icon-button (click)="habilitar(row.id_curso)" matTooltip="Habilitar curso">
                   <mat-icon color="warn">toggle_off</mat-icon>
                 </button>
               </div>
