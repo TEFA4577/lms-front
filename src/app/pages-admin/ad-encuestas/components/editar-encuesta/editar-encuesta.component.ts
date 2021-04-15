@@ -36,6 +36,7 @@ export class EditarEncuestaComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
+    this.cargarEncuesta();
   }
 
   openSnackBar(message: string, action: string): void {
@@ -54,18 +55,29 @@ export class EditarEncuestaComponent implements OnInit {
     });
   }
   setForm(): void {
-    this.formTitulo.get('texto_encuesta').setValue(this.encuesta.texto_encuesta);
+    this.formTitulo.get('texto_encuesta').setValue(this.datos.texto_encuesta);
   }
 
   submitTitulo(event): void {
     event.preventDefault();
     console.log(this.formTitulo.value);
-    this.serEncuesta.actualizarEncuesta(this.formTitulo.value, this.id).subscribe(res => {
+    this.serEncuesta.actualizarEncuesta(this.id, this.formTitulo.value).subscribe(res => {
       this.respuesta = res;
       this.openSnackBar(this.respuesta.mensaje, 'cerrar');
       console.log(res);
       this.formTitulo.reset();
       this.onNoClick();
+    });
+  }
+
+  cargarEncuesta(): void{
+    this.serEncuesta.mostrarEncuesta(this.id).subscribe(res => {
+      console.log(res);
+      this.datos = res;
+      this.encuesta = this.datos.encuesta;
+      this.setForm();
+    }, error => {
+      console.log(error);
     });
   }
 
