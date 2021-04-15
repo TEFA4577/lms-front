@@ -65,6 +65,9 @@ export class UsuarioService {
   adquirirCurso(datos: any) {
     return this.http.post(this.API_BACKEND + 'adquirir-curso', datos);
   }
+  adquirirMembresia(datos: any, id) {
+    return this.http.post(this.API_BACKEND + 'membresias/adquirir/' +id, datos);
+  }
   // tslint:disable-next-line: typedef
   misCursos() {
     const datos = JSON.parse(localStorage.getItem('datosUsuario'));

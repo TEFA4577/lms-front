@@ -37,7 +37,6 @@ import { DocenteModule } from './pages/docente/docente.module';
 import { EstudianteModule } from './pages/estudiante/estudiante.module';
 import { InicioModule } from './pages/inicio/inicio.module';
 import { LandingModule } from './pages/landing/landing.module';
-import { MembresiaModule } from './pages/membresia/membresia.module';
 import { PagesAdminModule} from './pages-admin/pages-admin.module';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
 import { ComponentsModule } from './components/components.module';
@@ -60,7 +59,6 @@ import { ComponentsModule } from './components/components.module';
     EstudianteModule,
     InicioModule,
     LandingModule,
-    MembresiaModule,
     MatStepperModule,
     MatDialogModule,
     BrowserAnimationsModule,

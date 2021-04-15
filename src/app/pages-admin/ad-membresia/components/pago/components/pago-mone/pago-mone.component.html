@@ -1,0 +1,16 @@
+<mat-dialog-content class="mat-typography">
+  <mat-card-header>
+    <mat-card-title>Codigo QR</mat-card-title>
+  </mat-card-header>
+  <hr>
+  <mat-card-content>
+    <mat-card-subtitle>URL de Confirmacion</mat-card-subtitle>
+    <form (ngSubmit)="submitAdquirirMembresia($event)">
+      <button mat-raised-button color="primary" type="submit">Enlace de QR</button>
+    </form>
+
+  </mat-card-content>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

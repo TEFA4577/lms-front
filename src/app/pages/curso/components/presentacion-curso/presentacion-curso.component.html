@@ -26,8 +26,12 @@
             <!--<a href="/register" style="color: white;">Registrate y compra el curso!</a>-->
           </button>
           <ng-template #logged>
-            <button mat-raised-button (click)="openCompra();" class="btn-block py-1" color="primary">Compra el curso
-              ahora!</button>
+            <button mat-raised-button *ngIf="curso.precio == 0" (click)="metodoDeposito()" class="btn-block py-1" color="accent">
+              Adquiere el Curso, GRATIS
+            </button>
+            <button mat-raised-button *ngIf="curso.precio != 0" (click)="openCompra();" class="btn-block py-1" color="primary">
+              ¡Compra el curso ahora!, por {{ curso.precio }} Bs.
+            </button>
           </ng-template>
         </mat-card-content>
       </mat-card>

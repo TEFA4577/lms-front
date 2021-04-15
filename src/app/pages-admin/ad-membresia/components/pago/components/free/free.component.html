@@ -1,0 +1,23 @@
+<div  class="d-flex justify-content-between">
+  <h1 mat-dialog-title>
+    Curso Gratuito!!
+  </h1>
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+  <mat-card>
+    <!--Card del comprobante de pago-->
+    <mat-card-actions>
+      <!--Formulario para subir la imagen del comprobante-->
+      <form (ngSubmit)="submitAdquirirCurso($event)">
+          <button mat-raised-button class="col-10" color="primary" type="submit">
+           ¡Adquiere el Curso!
+          </button>
+      </form>
+      <!--Final del formulario-->
+    </mat-card-actions>
+    <!--Final del card de comprobante de pago-->
+  </mat-card>
+<mat-dialog-content class="mat-typography">
+

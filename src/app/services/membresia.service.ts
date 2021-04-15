@@ -21,6 +21,9 @@ export class MembresiaService {
   listarMembresia(){
     return this.http.get(this.API_BACKEND + 'membresias');
   }
+  admMembresia(){
+    return this.http.get(this.API_BACKEND + 'membresias-administrar');
+  }
   hablitarMembresia(id){
     return this.http.get(this.API_BACKEND + 'membresias/activar-desactivar/' + id);
   }

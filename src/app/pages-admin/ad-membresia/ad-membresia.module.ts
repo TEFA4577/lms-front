@@ -17,18 +17,23 @@ import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MembresiaComponent } from './components/membresia/membresia/membresia.component';
-import { CrearMembresiaComponent } from './components/crear-membresia/crear-membresia/crear-membresia.component';
-import { EditarMembresiaComponent } from './components/editar-membresia/editar-membresia/editar-membresia.component';
-import { SolicitudesMembresiaComponent } from './solicitudes-membresia/solicitudes-membresia/solicitudes-membresia.component';
+import { MembresiaComponent } from './components/membresia/membresia.component';
+import { CrearMembresiaComponent } from './components/crear-membresia/crear-membresia.component';
+import { EditarMembresiaComponent } from './components/editar-membresia/editar-membresia.component';
+import { SolicitudesMembresiaComponent } from './solicitudes-membresia/solicitudes-membresia.component';
 import { MatTableModule } from '@angular/material/table';
 import { SolicitudesCompraService } from '../../services/solicitudes-compra.service';
-import { ListadoMembresiaComponent } from './components/listado-membresia/listado-membresia/listado-membresia.component';
+import { ListadoMembresiaComponent } from './components/listado-membresia/listado-membresia.component';
 import { PagoComponent } from './components/pago/pago.component';
-import { PagoDepositoComponent } from './components/pago/components/pago-deposito/pago-deposito/pago-deposito.component';
-import { PagoMoneComponent } from './components/pago/components/pago-mone/pago-mone/pago-mone.component';
-import { PagoTarjetaComponent } from './components/pago/components/pago-tarjeta/pago-tarjeta/pago-tarjeta.component';
-
+import { PagoDepositoComponent } from './components/pago/components/pago-deposito/pago-deposito.component';
+import { PagoMoneComponent } from './components/pago/components/pago-mone/pago-mone.component';
+import { PagoTarjetaComponent } from './components/pago/components/pago-tarjeta/pago-tarjeta.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatTabsModule } from '@angular/material/tabs';
+import { NgFallimgModule } from 'ng-fallimg';
+import { FreeComponent } from './components/pago/components/free/free.component';
 
 @NgModule({
   declarations: [
@@ -40,9 +45,15 @@ import { PagoTarjetaComponent } from './components/pago/components/pago-tarjeta/
     PagoComponent,
     PagoDepositoComponent,
     PagoMoneComponent,
-    PagoTarjetaComponent],
+    PagoTarjetaComponent,
+    FreeComponent],
   imports: [
     CommonModule,
+    MatStepperModule,
+    NgFallimgModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatProgressBarModule,
     AdMembresiaRoutingModule,
     CommonModule,
     MatDividerModule,
@@ -66,6 +77,9 @@ import { PagoTarjetaComponent } from './components/pago/components/pago-tarjeta/
   ],
   providers: [
     SolicitudesCompraService
-  ]
+  ],
+  exports: [
+    MatInputModule, PagoDepositoComponent, PagoMoneComponent, PagoTarjetaComponent,
+  ],
 })
 export class AdMembresiaModule { }

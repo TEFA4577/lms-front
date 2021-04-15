@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PagoComponent } from '../pago/pago.component';
 import { PagoTarjetaComponent } from '../pago/components/pago-tarjeta/pago-tarjeta.component';
 import { PagoMoneComponent } from '../pago/components/pago-mone/pago-mone.component';
+import { FreeComponent } from '../pago/components/free/free.component';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -106,6 +107,17 @@ export class PresentacionCursoComponent implements OnInit {
       width: '120vh',
       data: {
         id: this.id,
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  metodoFree(){
+    const dialogRef = this.dialog.open(FreeComponent, {
+      width: '120vh',
+      data: {
+        id: this.id
       }
     });
     dialogRef.afterClosed().subscribe(result => {

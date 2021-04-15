@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA  } from '@angular/material/dialog';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-pago',
@@ -24,14 +24,6 @@ export class PagoComponent implements OnInit {
   isLinear = false;
   respuesta: any;
   step = 0;
-  metodo: string;
-  constructor(
-    public srvEstudiante: UsuarioService,
-    private formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar,
-    public dialogRef: MatDialogRef<PagoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
   setStep(index: number) {
     this.step = index;
   }
@@ -43,6 +35,16 @@ export class PagoComponent implements OnInit {
   prevStep() {
     this.step--;
   }
+
+    constructor(
+    public srvEstudiante: UsuarioService,
+    private formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar,
+    public dialogRef: MatDialogRef<PagoComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) { }
+  metodo: string;
+
   ngOnInit(): void {
     this.comprobarAuth();
     this.buildForm();

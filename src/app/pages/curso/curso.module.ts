@@ -34,6 +34,7 @@ import { ComentariosCursoComponent } from './components/curso/comentarios-curso/
 import { ListadoCategoriasComponent } from './components/listado-categorias/listado-categorias.component';
 import { RespuestasCursoComponent } from './components/curso/respuestas-curso/respuestas-curso.component';
 import { NgFallimgModule } from 'ng-fallimg';
+import { FreeComponent } from './components/pago/components/free/free.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { NgFallimgModule } from 'ng-fallimg';
     DetallesCategoriasComponent,
     ComentariosCursoComponent,
     ListadoCategoriasComponent,
-    RespuestasCursoComponent
+    RespuestasCursoComponent,
+    FreeComponent
   ],
   imports: [
     CommonModule,
@@ -77,7 +79,7 @@ import { NgFallimgModule } from 'ng-fallimg';
     DatePipe,
   ],
   exports:
-    [MatInputModule, PagoDepositoComponent, PagoMoneComponent, PagoTarjetaComponent,
+    [MatInputModule, PagoDepositoComponent, PagoMoneComponent, PagoTarjetaComponent, FreeComponent
     ],
 })
 export class CursoModule { }
