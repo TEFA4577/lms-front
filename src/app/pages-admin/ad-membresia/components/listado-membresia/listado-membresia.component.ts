@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MembresiaService } from 'src/app/services/membresia.service';
 import { PagoComponent } from '../pago/pago.component';
+import { PagoTarjetaComponent } from '../pago/components/pago-tarjeta/pago-tarjeta.component';
+import { PagoMoneComponent } from '../pago/components/pago-mone/pago-mone.component';
 
 @Component({
   selector: 'app-listado-membresia',
@@ -38,30 +40,29 @@ export class ListadoMembresiaComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+  metodoTarjeta() {
+    const dialogRef = this.dialog.open(PagoTarjetaComponent, {
+      width: '120vh',
+      data: {
+        id: this.id,
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
   // tslint:disable-next-line: typedef
-  // metodoTarjeta() {
-  //   const dialogRef = this.dialog.open(PagoTarjetaComponent, {
-  //     width: '120vh',
-  //     data: {
-  //       id: this.id,
-  //     }
-  //   });
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log(`Dialog result: ${result}`);
-  //   });
-  // }
-  // // tslint:disable-next-line: typedef
-  // metodoMone() {
-  //   const dialogRef = this.dialog.open(PagoMoneComponent, {
-  //     width: '120vh',
-  //     data: {
-  //       id: this.id,
-  //     }
-  //   });
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log(`Dialog result: ${result}`);
-  //   });
-  // }
+  metodoMone() {
+    const dialogRef = this.dialog.open(PagoMoneComponent, {
+      width: '120vh',
+      data: {
+        id: this.id,
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
   openCompra() {
     this.mostrarMetodo = !this.mostrarMetodo;
   }
