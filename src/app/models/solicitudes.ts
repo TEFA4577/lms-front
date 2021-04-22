@@ -31,6 +31,9 @@ export interface SolicitudesMembresia {
   id_membresia: number;
   estado_membresia_usuario: string;
   comprobante: null;
+  estado: number;
+  inicio_membresia_usuario: Date;
+  fin_membresia_usuario: Date;
   membresia_solicitada: MembresiaSolicitada;
   usuario: Usuarios;
 }
@@ -42,6 +45,7 @@ export interface MembresiaSolicitada {
   imagen_membresia: string;
   estado_membresia: string;
   precio_membresia: string;
+  duracion_membresia: number;
   created_at: Date;
   updated_at: Date;
 }

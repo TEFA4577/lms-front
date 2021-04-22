@@ -6,5 +6,6 @@
   nombre_membresia: string;
   texto_membresia: string;
   precio_membresia: string;
-  membresia: number;
+  imagen_membresia: string;
+  duracion_membresia: number;
 }
