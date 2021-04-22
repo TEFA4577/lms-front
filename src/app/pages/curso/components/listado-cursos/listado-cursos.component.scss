@@ -57,7 +57,7 @@ a {
 }
 
 .img-cards {
-  max-height: 150px;
+  max-height: 200px;
 }
 
 .card-doc {
@@ -72,4 +72,10 @@ a {
 .mat-chip {
   max-width: 200px;
   margin-left: 40px;
+}
+
+@media only screen and (max-width: 767px){
+  .img-cards {
+    max-height: 300px;
+  }
 }

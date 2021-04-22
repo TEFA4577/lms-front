@@ -23,7 +23,7 @@
           <mat-card-title>{{miCurso.nombre_curso }}
             <hr>
           </mat-card-title>
-          <mat-card-subtitle>Estado: {{miCurso.estado_curso}}</mat-card-subtitle>
+          <mat-card-subtitle>Curso: {{miCurso.estado_curso}}</mat-card-subtitle>
           <button mat-fab color="warn" *ngIf="miCurso.estado_curso == 'aprobado'"
             (click)="inhabilitarCurso(miCurso.id_curso)" matTooltip="Deshabilitar el curso">
             <mat-icon>delete</mat-icon>
@@ -34,7 +34,7 @@
           </button>
         </mat-card-header>
         <img mat-card-image src="{{ miCurso.imagen_curso }}" alt="{{miCurso.nombre_curso}}" class="imgCurso">
-        <mat-card-subtitle>Mensaje del revisor: {{miCurso.mensaje}}
+        <mat-card-subtitle>Mensaje: {{miCurso.mensaje}}
         </mat-card-subtitle>
         <mat-card-content>
           <h3>Etiquetas Curso</h3>
@@ -48,7 +48,7 @@
         <mat-card-footer>
           <mat-card-actions align="center">
             <button mat-raised-button color="accent" (click)="verEtiquetas(miCurso)">Cambiar Etiquetas</button>
-            <button *ngIf="miCurso.estado_curso != 'aprobado'" mat-raised-button color="primary"
+            <button mat-raised-button color="primary"
               routerLink="../administrar/{{miCurso.id_curso}}">Administrar Curso</button>
           </mat-card-actions>
         </mat-card-footer>
