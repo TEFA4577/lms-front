@@ -21,6 +21,13 @@
             <th mat-header-cell *matHeaderCellDef> Membresia </th>
             <td mat-cell *matCellDef="let element"> {{element.membresia_solicitada.nombre_membresia}} </td>
           </ng-container>
+          <ng-container matColumnDef="imagen_membresia">
+            <th mat-header-cell *matHeaderCellDef> Sobre la Membresia  </th>
+            <td class="comprobante" mat-cell *matCellDef="let element" (click)="openDialog(element.membresia_solicitada.imagen_membresia)">
+              <img class="comprobanteImagen" src="{{element.membresia_solicitada.imagen_membresia}}" alt="imagen comprobate"
+                srcset="{{element.membresia}}">
+            </td>
+          </ng-container>
           <ng-container matColumnDef="comprobante">
             <th mat-header-cell *matHeaderCellDef> Comprobante </th>
             <td class="comprobante" mat-cell *matCellDef="let element" (click)="openDialog(element.comprobante)">
@@ -30,16 +37,25 @@
           </ng-container>
           <ng-container matColumnDef="estado_membresia_usuario">
             <th mat-header-cell *matHeaderCellDef>Estado Actual</th>
-            <td mat-cell *matCellDef="let element"> <h3 color="primary">{{ element.estado_membresia_usuario }}</h3> </td>
+            <td mat-cell *matCellDef="let element"> <h3 color="accent">{{ element.estado_membresia_usuario }}</h3> </td>
+          </ng-container>
+          <ng-container matColumnDef="inicio_membresia_usuario">
+            <th mat-header-cell *matHeaderCellDef>Fecha de Inicio</th>
+            <td mat-cell *matCellDef="let element"> <h3 color="primary">{{ element.inicio_membresia_usuario }}</h3> </td>
+          </ng-container>
+          <ng-container matColumnDef="fin_membresia_usuario">
+            <th mat-header-cell *matHeaderCellDef>Fecha Final</th>
+            <td mat-cell *matCellDef="let element"> <h3 color="warn">{{ element.fin_membresia_usuario }}</h3> </td>
           </ng-container>
           <ng-container matColumnDef="id_membresia_usuario">
             <th mat-header-cell *matHeaderCellDef> Opciones </th>
             <td mat-cell *matCellDef="let element">
               <button *ngIf="element.estado_membresia_usuario == 'no confirmado' || element.estado_membresia_usuario == 'rechazado'" mat-raised-button color="accent" class="btn-block"
-                (click)="habilitar(element.id_membresia_usuario , 'aprobado')">Habilitar
-                Solicitud</button>
-              <button *ngIf="element.estado_membresia_usuario == 'no confirmado' || element.estado_membresia_usuario == 'adquirido' " mat-raised-button color="warn" class="btn-block"
-                (click)="habilitar(element.id_membresia_usuario , 'rechazado')">Rechazar Solicitud</button>
+                (click)="habilitar(element.id_membresia_usuario , 'aprobado')">Habilitar</button>
+              <button *ngIf="element.estado_membresia_usuario == 'no confirmado'" mat-raised-button color="warn" class="btn-block"
+                (click)="habilitar(element.id_membresia_usuario , 'rechazado')">Rechazar</button>
+              <button *ngIf="element.estado_membresia_usuario == 'adquirido' " mat-raised-button color="warn" class="btn-block"
+                (click)="habilitar(element.id_membresia_usuario , 'finalizar')">Finalizar</button>
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

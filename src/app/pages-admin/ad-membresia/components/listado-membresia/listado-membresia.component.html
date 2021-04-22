@@ -10,7 +10,7 @@
   <div *ngIf="!membresias" class="sinDatos d-flex justify-content-center">
     <p class="mensaje">Aún no se tienen membresias disponibles</p>
   </div>
-  <div class="row" *ngIf="membresias && membresias.estado_membresia != 0">
+  <div class="row" *ngIf="membresias">
     <div class="col-md-4" *ngFor="let item of membresias">
       <mat-card>
         <mat-card-header>

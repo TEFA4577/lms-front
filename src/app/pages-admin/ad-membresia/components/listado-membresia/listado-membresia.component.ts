@@ -12,6 +12,7 @@ import { PagoMoneComponent } from '../pago/components/pago-mone/pago-mone.compon
 })
 export class ListadoMembresiaComponent implements OnInit {
   membresias: any;
+  solicitudes: any;
   mostrarMetodo = false;
   id: any;
   constructor(

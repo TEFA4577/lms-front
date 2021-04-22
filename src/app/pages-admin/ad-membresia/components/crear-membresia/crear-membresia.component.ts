@@ -29,7 +29,8 @@ export class CrearMembresiaComponent implements OnInit {
       nombre_membresia: ['', Validators.required],
       texto_membresia: ['', Validators.required],
       precio_membresia: ['', Validators.required],
-      imagen_membresia: ['', Validators.required]
+      imagen_membresia: ['', Validators.required],
+      duracion_membresia: ['', Validators.required]
     });
   }
   uploadFile(event): void {
@@ -38,7 +39,6 @@ export class CrearMembresiaComponent implements OnInit {
       const element = event[index];
       this.files.push(element.name);
       this.filedata = element;
-      console.log(element);
       const reader = new FileReader();
       reader.readAsDataURL(event[index]);
       reader.onload = (_event) => {
@@ -60,6 +60,7 @@ export class CrearMembresiaComponent implements OnInit {
     myFormData.append('imagen_membresia', this.filedata);
     myFormData.append('texto_membresia', this.formCrearMembresia.get('texto_membresia').value);
     myFormData.append('precio_membresia', this.formCrearMembresia.get('precio_membresia').value);
+    myFormData.append('duracion_membresia', this.formCrearMembresia.get('duracion_membresia').value);
     this.membresiaSrv.registrarMembresia(myFormData).subscribe(res =>{
       this.dialogRef.close();
     }, error => {

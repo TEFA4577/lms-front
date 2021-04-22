@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./solicitudes-membresia.component.scss']
 })
 export class SolicitudesMembresiaComponent implements OnInit {
-  displayedColumns: string[]= ['usuario', 'membresia', 'comprobante', 'estado_membresia_usuario', 'id_membresia_usuario'];
+  displayedColumns: string[]= ['usuario', 'membresia', 'imagen_membresia', 'comprobante', 'estado_membresia_usuario', 'inicio_membresia_usuario', 'fin_membresia_usuario', 'id_membresia_usuario'];
   dataSource: MatTableDataSource<SolicitudesMembresia>;
   solicitudes: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -46,12 +46,12 @@ export class SolicitudesMembresiaComponent implements OnInit {
   habilitar(id, estado): void {
     Swal.fire({
       title: estado+' solicitud',
-      text: '¿seguro que '+ estado+' la solicitud?',
+      text: '¿seguro que desea '+ estado+' solicitud?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si deseo cambiarlo',
+      confirmButtonText: 'Si deseo',
       cancelButtonText: 'No, cancelar!',
     }).then((result) =>{
       if (result.isConfirmed) {
@@ -60,7 +60,7 @@ export class SolicitudesMembresiaComponent implements OnInit {
         });
         Swal.fire(
           estado,
-          'Membresia'+estado+' para el usuario',
+          estado+' membresia para el usuario',
           'success'
         )
       }
