@@ -21,8 +21,8 @@
         <mat-card-content align="center">
           <div class="container py-2" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
             <mat-card-subtitle>
-              <h3>{{item.correo_usuario}}</h3>
-              <h3>{{item.datos_docente.descripcion_docente}}</h3>
+              <h3>Correo: {{item.correo_usuario}}</h3>
+              <h3>Descripción: {{item.datos_docente.descripcion_docente}}</h3>
             </mat-card-subtitle>
           </div>
         </mat-card-content>
