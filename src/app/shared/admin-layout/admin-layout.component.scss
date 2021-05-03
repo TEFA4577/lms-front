@@ -1,10 +1,17 @@
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 $app-primary: mat-palette($mat-indigo);
-
-.navbar {
+.mat-toolbar {
   position: fixed;
   top: 0;
   z-index: 1000;
+  outline: none;
+  background-color: #f3f3f3;
+}
+
+.mat-icon-button,
+.mat-button,
+.mat-menu-item {
+  outline: none;
 }
 
 .contenido {
@@ -48,6 +55,7 @@ $app-primary: mat-palette($mat-indigo);
 .mat-icon {
   height: auto;
   width: auto;
+  outline: none;
 }
 
 .example-is-mobile .example-sidenav-container {
@@ -58,17 +66,47 @@ $app-primary: mat-palette($mat-indigo);
 
 .mat-list-item:hover {
   width: 100%;
-  background-color: mat-color($app-primary, 100) !important;
+  background-color: #f1c40f;
+  //mat-color($app-primary, 100) !important;
+  outline: none;
 }
+
 
 div.mat-expansion-panel-body {
   padding-right: 0px;
   padding-left: 0px;
+
 }
 
 .example-headers-align .mat-expansion-panel-header-title,
 .example-headers-align .mat-expansion-panel-header-description {
   flex-basis: 0;
+}
+
+.img {
+  margin-top: 5%;
+}
+
+a {
+  color: #2c3e50;
+}
+
+.menu-footer {
+  background-color: #03a6a6;
+
+  h4 {
+    font-weight: bold;
+  }
+
+  .mat-list-item:hover {
+    cursor: pointer;
+  }
+}
+
+
+.body{
+  min-height: 400px;
+  background-color: #2c3e50;
 }
 
 .col-derecha {
@@ -84,23 +122,6 @@ div.mat-expansion-panel-body {
 }
 
 a {
-  color: #2c3e50;
-}
-
-.w {
-  position: absolute;
-  bottom: 5px;
-  right: 15px;
-}
-
-.menu-footer {
-  background-color: #ff8d24;
-
-  h4 {
-    font-weight: bold;
-  }
-
-  .mat-list-item:hover {
-    cursor: pointer;
-  }
+  //color: #2c3e50;
+  color: #f3f3f3;
 }

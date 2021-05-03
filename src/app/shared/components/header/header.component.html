@@ -1,10 +1,10 @@
-<mat-toolbar>
+<mat-toolbar class="navbar">
   <mat-toolbar-row fxLayoutAlign="space-between center">
     <div fxLayout="row">
       <!--Boton y logo de la academia que redirecciona al inicio-->
-      <button mat-button routerLink="/inicio">
-        <img src="assets/img/Iconos/logoAcademia.png" height="45px" alt="" />
-      </button>
+      <a mat-button routerLink="/inicio">
+        <img src="assets/img/Iconos/logoAcademia.png" height="40px" alt="" />
+      </a>
 
       <!--<app-filter-cursos (search)="handleSearch($event)"></app-filter-cursos>
       <div *ngIf="!deviceXs">
@@ -18,20 +18,20 @@
         </div>
       </div>-->
       <div fxLayout="row" *ngIf="!deviceXs">
-        <button mat-button color="warn" routerLink="/curso/cursos-general">
-          Nuestros Cursos
-        </button>
-        <button mat-button [matMenuTriggerFor]="menu" color="warn">Categorias</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item *ngFor="let item of etiqueta"
-            routerLink="/curso/cursos-categorias/{{ item.id_etiqueta }}" color="warn">
+        <a mat-button [matMenuTriggerFor]="menu">Categorias</a>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <a mat-menu-item *ngFor="let item of etiqueta" routerLink="/curso/cursos-categorias/{{ item.id_etiqueta }}">
             {{ item.nombre_etiqueta }}
-          </button>
+          </a>
         </mat-menu>
-        <button mat-button color="warn" routerLink="/instructores/listado-instructores">
-          Nuestros Instructores
-        </button>
-        <button mat-button color="warn" routerLink="/info/nosotros">Nosotros</button>
+
+        <a mat-button routerLink="/curso/cursos-general">
+          Cursos
+        </a>
+        <a mat-button routerLink="/instructores/listado-instructores">
+          Instructores
+        </a>
+        <a mat-button routerLink="/info/nosotros">Nosotros</a>
       </div>
     </div>
 
@@ -70,14 +70,14 @@
       </div>
 
       <div *ngIf="!estado">
-        <button mat-button color="warn" routerLink="/instructores/pasos-instructor"> <span>Se instructor</span>
-        </button>
-        <button mat-button [matMenuTriggerFor]="menu">
+        <a mat-button color="warn" routerLink="/instructores/pasos-instructor">Se instructor
+        </a>
+        <a mat-button [matMenuTriggerFor]="menu">
           <mat-icon aria-hidden="false" aria-label="Example home icon" color="primary">menu_open</mat-icon>
-        </button>
+        </a>
         <mat-menu #menu="matMenu" xPosition="before">
-          <button mat-menu-item routerLink="/login">Iniciar Sesión</button>
-          <button mat-menu-item routerLink="/register">Regístrate</button>
+          <a mat-menu-item routerLink="/login">Iniciar Sesión</a>
+          <a mat-menu-item routerLink="/register">Regístrate</a>
         </mat-menu>
       </div>
 
@@ -95,14 +95,10 @@
         </div>
       </div>-->
       <div *ngIf="!estado">
-        <button mat-button color="warn" routerLink="/instructores/pasos-instructor"> <span>Se instructor</span>
-        </button>
-        <button mat-button color="accent" routerLink="/login">
-          <span>Iniciar Sesión</span>
-        </button>
-        <button mat-button color="primary" routerLink="/register">
-          <span>Regístrate</span>
-        </button>
+        <a mat-button color="warn" routerLink="/instructores/pasos-instructor">Se instructor
+        </a>
+        <a mat-button color="accent" routerLink="/login">Iniciar Sesión</a>
+        <a mat-button color="primary" routerLink="/register">Regístrate</a>
       </div>
 
       <div fxLayout="row" *ngIf="estado">
@@ -124,18 +120,19 @@
           </div>
         </button>
         <mat-menu #menu="matMenu" xPosition="before">
-          <button mat-menu-item routerLink="/estudiante/mi-perfil">
+          <a mat-menu-item routerLink="/estudiante/mi-perfil">
             Mi Perfil
-          </button>
-          <button mat-menu-item *ngIf="datosUsuario.id_rol == 1" routerLink="admin">
+          </a>
+          <a mat-menu-item *ngIf="datosUsuario.id_rol == 1" routerLink="admin">
             Panel Administrativo
-          </button>
-          <button mat-menu-item *ngIf="datosUsuario.id_rol == 2" routerLink="admin">
+          </a>
+          <a mat-menu-item *ngIf="datosUsuario.id_rol == 2" routerLink="admin">
             Panel del Instructor
-          </button>
-          <button mat-menu-item *ngIf="datosUsuario.id_rol == 3" routerLink="/instructores/pasos-instructor">
+          </a>
+          <a mat-menu-item *ngIf="datosUsuario.id_rol == 3" routerLink="/instructores/pasos-instructor">
             Quiero Ser Instructor
-          </button>
+          </a>
+          <hr>
           <button mat-menu-item (click)="cerrarSesion()">Cerrar Session</button>
         </mat-menu>
       </div>
@@ -143,16 +140,16 @@
   </mat-toolbar-row>
 
   <mat-toolbar-row *ngIf="deviceXs">
-    <button mat-button routerLink="/curso/cursos-general">Novedades</button>
+    <a mat-button routerLink="/curso/cursos-general">Novedades</a>
     <button mat-button [matMenuTriggerFor]="menu">Categorias</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item *ngFor="let item of etiqueta" routerLink="/curso/cursos-categorias/{{ item.id_etiqueta }}">
         {{ item.nombre_etiqueta }}
       </button>
     </mat-menu>
-    <button mat-button routerLink="/instructores/listado-instructores">
+    <a mat-button routerLink="/instructores/listado-instructores">
       Instructores
-    </button>
-    <button mat-button routerLink="/info/nosotros">Nosotros</button>
+    </a>
+    <a mat-button routerLink="/info/nosotros">Nosotros</a>
   </mat-toolbar-row>
 </mat-toolbar>

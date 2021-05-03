@@ -1,24 +1,35 @@
-<div class="container py-3">
-  <div class="row justify-content-center py-3">
-      <p class="lead">Cursos pertenecientes a la categoria</p>
+<div class="container-fluid body">
+  <div class="row justify-content-center text-align-center title-content">
+    <div class="col-md-12 py-5 text-white text-center">
+      <p class="text-white text-align-center lead">Cursos pertenecientes a la categoria</p>
+    </div>
   </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-4" *ngFor="let miCurso of categorias">
+</div>
+<hr>
+<div class="container">
+  <div class="row justify-content-center" role="status">
+    <div *ngIf="!categorias" class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden"></span>
+      </div>
+    </div>
+    <div class="col-md-3" *ngFor="let miCurso of categorias">
       <mat-card class="example-card">
-        <img src="{{ miCurso.imagen_curso }}" routerLink="/curso/curso-detalle/{{ miCurso.id_curso }}" class="img-cards"
-          fallimg />
-        <hr />
+        <img mat-card-image src="{{ miCurso.imagen_curso }}" routerLink="/curso/curso-detalle/{{ miCurso.id_curso }}"
+          class="img-cards" fallimg />
+        <div>
+          <hr>
+        </div>
         <mat-card-header>
           <mat-card-title>
-            <a class="lead" routerLink="/curso/curso-detalle/{{ miCurso.id_curso }}">{{ miCurso.nombre_curso }}</a>
+            <a mat-button class="lead" routerLink="/curso/curso-detalle/{{ miCurso.id_curso }}">{{ miCurso.nombre_curso }}</a>
           </mat-card-title>
           <br>
           <mat-card-subtitle>Precio: Bs. {{ miCurso.precio}}</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-subtitle>Descripcion: </mat-card-subtitle>
+        <!--<mat-card-subtitle>Descripcion: </mat-card-subtitle>-->
         <mat-card-content>
-          <div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
+          <div class="container" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
             {{ miCurso.descripcion_curso }}
           </div>
         </mat-card-content>

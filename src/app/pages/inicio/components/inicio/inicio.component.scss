@@ -1,15 +1,107 @@
-.menu {
-  background-color: #673AB7;
+.body {
+  background-color: #f3f3f3;
+  margin-top: 50px;
+  height: auto;
+  /*min-height: 680px;
+  height: auto;*/
+  //background-color: #29285D;
+  //background-color: #283747;
 }
 
-.ventajas {
-  margin: 0 0;
-  width: 100%;
+.mat-card-title {
+  color: #153259;
 }
 
-.mat-raised-button {
-  border-radius: 800px;
+.mat-card-subtitle {
+  color: #f25e3d;
 }
+
+.mat-chip {
+  background-color: #f29c6b;
+  color: #f3f3f3;
+  border-radius: 0.03;
+}
+
+.descripcion {
+  color: #abb2b9;
+  flex-grow: 1;
+  overflow: auto;
+  align-content: justify;
+  text-align: justify;
+  height: auto;
+}
+
+p {
+  font-size: 25px;
+  color: #f25e3d;
+  align-content: center;
+}
+
+.sec1 {
+  //background: url(../../../../../assets/img/inicio.png) left;
+  background: linear-gradient(to left, #153259, #03738c);
+  background-size: 100% 100%, 100% 100%, 100% 100%;
+  //background: linear-gradient(to bottom, #f29c6b, #f25e3d);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 80px;
+}
+
+.sec-img {
+  //background: url(../../../../../assets/img/pexels-julia-m-cameron-4144294.jpg) left;
+  background: linear-gradient(to left, #153259, #03738c);
+  //background: linear-gradient(to left,#f25e3d, #f29c6b);
+  background-size: 100% 100%, 100% 100%, 100% 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  height: 680px;
+}
+
+.sec3 {
+  background: linear-gradient(to right, #153259, #03738c);
+  margin-top: 50px;
+  height: 600px;
+}
+
+.sec31 {
+  margin-top: 70px;
+}
+
+.secp {
+  background: #153259;
+  height: auto;
+}
+
+.img {
+  background: url(../../../../../assets/img/pexels-julia-m-cameron-4144294.jpg)
+    left;
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.a {
+  color: #f3f3f3;
+}
+
+.preguntas {
+  //background: linear-gradient(to left,#D35400, #F39C12 );
+  ///background: #09738c;
+  .pr {
+    background: #f3f3f3;
+  }
+}
+
+.mat-accordion,
+.mat-expansion-panel,
+.mat-list {
+  background-color: #f3f3f3;
+}
+
+/*.mat-expansion-panel-header, .mat-panel-title, .mat-list, .mat-list-item {
+  color: #f3f3f3;
+}*/
 
 .col {
   margin-left: 5%;
@@ -24,10 +116,10 @@
 .text {
   color: #2e3d4b;
 }
-.long-text{
+.long-text {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
 }
 
@@ -35,43 +127,124 @@
 .mat-card {
   width: 100%;
   height: 80%;
+  outline: none;
 }
 
 .cat-img-cards {
-  height: 70%;
+  height: 80%;
   width: 100%;
 }
-.cat-img-cards-curso {
-  height: 50%;
+
+.doc-card {
   width: 100%;
 }
 
 //Cards de los cursos
-.content-card{
+.content-card {
   border: none;
   display: flex;
   overflow-x: auto;
 }
-.content-card::-webkit-scrollbar{
+.content-card::-webkit-scrollbar {
   width: 0;
 }
-//-------------
-.mat-card {
-  min-height: 200px;
-  max-height: 350px;
-  width: 250px;
-  margin-bottom: 15px;
-  text-align: center;
-  cursor: pointer;
+
+.content-card {
+  -webkit-overflow-scrolling: touch;
+}
+
+.custom-slider-main {
+  display: flex;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.content-card::-webkit-scrollbar-button:start:decrement {
+  height: 20px;
+  width: 20px;
+  display: block;
+  background-repeat: no-repeat;
+}
+
+.content-card::-webkit-scrollbar-button:end:increment {
+  height: 20px;
+  width: 20px;
+  display: block;
+  background-repeat: no-repeat;
+}
+
+.content-card::-webkit-scrollbar-track-piece:horizontal {
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, #292929),
+    color-stop(100%, #3b3b3b)
+  );
+  -webkit-border-radius: 6px;
+}
+
+.content-card::-webkit-scrollbar-track-piece:vertical {
+  background: #191919;
+  -webkit-border-radius: 6px;
+}
+
+.content-card::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 6px;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, #153259),
+    color-stop(100%, #03738c)
+  );
+  border: 1px solid #12325c;
+  border-top: 1px solid #03738c;
+  border-left: 1px solid #03738c;
 }
 
 .mat-card-curso {
-  min-height: 200px;
-  max-height: 400px;
-  width: 250px;
+  //width: 200px;
+  height: 480px;
   margin-bottom: 15px;
   text-align: center;
   cursor: pointer;
+  box-shadow: 8px 8px 20px #c3cbd3;
+  margin-right: 150px;
+  display: flex;
+  flex-direction: column;
+
+  .hr {
+    border: 0.2px solid #d5d8dc;
+    border-radius: 3px;
+    width: auto;
+    /*border-top: 1px solid #D5D8DC;
+    height: 2px;
+    padding: 0;
+    margin: 20px auto 0 auto;*/
+  }
+}
+
+.mat-card-cat {
+  height: 90%;
+  box-shadow: 8px 8px 20px #c3cbd3;
+}
+
+.img-cards {
+  height: 150px;
+}
+
+.example-card {
+  align-content: center;
+  text-align: center;
+  width: 100%;
+  justify-content: center;
+  box-shadow: 8px 8px 20px #c3cbd3;
+  height: 90%;
+}
+
+.title1 {
+  color: #f25e3d;
 }
 
 .mat-card-title {
@@ -79,9 +252,11 @@
   text-transform: uppercase;
   font-size: initial;
 }
+
 .mat-card-subtitle {
   text-align: center;
 }
+
 .mat-card-content {
   flex-grow: 1;
   overflow: auto;
@@ -99,7 +274,7 @@ a {
 }
 
 .mat-chip-etiqueta {
-  overflow-y: scroll;
+  //overflow-y: scroll;
   height: 50px;
 }
 
@@ -112,41 +287,40 @@ a {
 }
 
 .card-doc {
-  width: 100%;
-  height: 90%;
+  height: 300px;
+  box-shadow: 8px 8px 20px #c3cbd3;
 }
 
 .img-cards-testimonios {
-  width: 100%;
   height: 80%;
 }
 .carousel-inner .img {
   width: auto;
   height: 400px;
 }
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 1000px) {
   .col-md-3 {
     max-width: 40%;
   }
 }
-@media only screen and (max-width: 750px){
+@media only screen and (max-width: 750px) {
   .mat-card {
     width: 300px;
   }
   .col-md-3 {
     max-width: 70%;
-}
+  }
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 600px) {
   .carousel-inner .img {
     width: 100%;
     height: 300px;
   }
 }
 
-@media only screen and (max-width: 500px){
-  .carousel-inner .img{
+@media only screen and (max-width: 500px) {
+  .carousel-inner .img {
     width: auto;
     height: 200px;
   }
@@ -154,3 +328,5 @@ a {
     max-width: 100%;
   }
 }
+
+//#F1C40F

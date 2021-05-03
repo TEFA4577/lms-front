@@ -1,12 +1,12 @@
-<mat-toolbar class="navbar">
+<mat-toolbar>
   <button mat-icon-button (click)="sidenav.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <button mat-button routerLink="/">
-    <img src="assets/img/Iconos/logoAcademia.png" height="40px" alt="">
-  </button>
+  <a mat-button routerLink="/">
+    <img src="assets/img/Iconos/logoAcademia.png" height="40px" alt="" />
+  </a>
   <span class="example-spacer"></span>
-  <button mat-button [matMenuTriggerFor]="beforeMenu">
+  <button mat-button [matMenuTriggerFor]="beforeMenu" class="rol">
     <div fxLayout="row" fxLayoutAlign="end center">
       <div fxLayout="column" fxLayoutAlign="center center">
         <h3 class="user">{{ datosUsuario.nombre_usuario }}</h3>
@@ -20,7 +20,7 @@
   <mat-menu #beforeMenu="matMenu" xPosition="before">
     <button mat-menu-item routerLink="/estudiante/mi-perfil">Mi Perfil</button>
     <button mat-menu-item routerLink="/">volver al inicio</button>
-    <button mat-raised-button (click)="cerrarSesion()">Cerrar Sesion</button>
+    <button mat-menu-item (click)="cerrarSesion()">Cerrar Sesion</button>
   </mat-menu>
 </mat-toolbar>
 <mat-sidenav-container>
@@ -31,6 +31,7 @@
     <mat-list *ngFor="let item of menuDocente">
       <div mat-subheader>{{item.grupo}}</div>
       <mat-list-item *ngFor="let items of item.contenido" [routerLink]="items.link">
+        <!--<a mat-button [routerLink]="items.link">{{items.titulo}}</a>-->
         {{items.titulo}}
       </mat-list-item>
     </mat-list>
@@ -54,45 +55,39 @@
       <router-outlet></router-outlet>
     </div>
     <br>
-    <div class="container-fluid">
-      <div class="row menu-footer text-white">
-        <div class="col-md-4">
-          <div class="py-5">
-            <p class="lead text-center">De emprendedores para emprendedores.
-            </p>
+    <footer class="body">
+      <div class="container-fluid">
+        <div class="row menu-footer text-white">
+          <div class="col-md-4">
+            <div class="py-5">
+              <p class="lead text-center">De emprendedores para emprendedores.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="col">
-            <div class="row">
+        <hr>
+        <div class="container py-5 text-white text-center ">
+          <div class="row">
+            <div class="col-md-4">
               <a class="nav-link" href="#">Ponte en contacto con nosotros</a>
               <a class="nav-link" href="#">Politica de privacidad</a>
-              <a class="nav-link active" href="#">Ayuda y asistencia</a>
             </div>
-            <div class="row">
-
-              <a class="nav-link active" href="#">¿Quienes somos?</a>
+            <div class="col-md-4">
+              <a class="nav-link" href="#">Ayuda y asistencia</a>
+              <a class="nav-link" href="#">¿Quienes somos?</a>
+            </div>
+            <div class="col-md-4">
               <a class="nav-link" href="#">Condiciones</a>
               <a class="nav-link" href="#">Blog</a>
             </div>
-          </div>
-          <div class="row img">
-            <img src=" ../../../../assets/img/Iconos/logo_alta_resolucion.png " width="220 " height="95"
-              class="d-inline-block align-top " alt=" " loading="lazy ">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="row w">
-            <div class="col">
-              <img src="../../../../assets/img/Iconos/facebook.png " width="55"><br>
-              <img src="../../../../assets/img/Iconos/twitter.png " width="55"><br>
-              <img src="../../../../assets/img/Iconos/instagram.jpg " width="55"></div>
+          </div><br><br>
+          <div class="row">
+            <img src="../../../../assets/img/Iconos/facebook.png " width="55"><br>
+            <img src="../../../../assets/img/Iconos/twitter.png " width="55"><br>
+            <img src="../../../../assets/img/Iconos/instagram.jpg " width="55">
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

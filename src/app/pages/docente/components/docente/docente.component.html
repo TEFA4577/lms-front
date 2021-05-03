@@ -1,38 +1,44 @@
-<div class="container py-5">
-  <div class="row bg-info justify-content-center">
-    <div class="col-md-12 py-4 text-white">
-      <p class="lead">Conoce a nuestros instructores</p>
+<div class="container-fluid body">
+  <div class="row justify-content-center text-align-center title-content">
+    <div class="col-md-12 py-5 text-white text-center">
+      <p class="text-white text-align-center lead">Conoce a nuestros instructores</p>
     </div>
   </div>
-  <hr />
+</div>
+<hr>
+<div class="container">
   <!--Presentacion del usuario-->
-  <div class="row justify-content-center">
+  <div class="row justify-content-center" role="status">
+    <div *ngIf="!docente" class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden"></span>
+      </div>
+    </div>
     <div class="col-md-3" *ngFor="let item of docente">
       <!--Cards de los nuevos cursos-->
       <mat-card class="example-card">
         <mat-card-header>
-          <mat-card-title align="center">
+          <mat-card-title>
             <a class="lead" routerLink="/instructores/presentacion-docente/{{ item.id_usuario }}">{{ item.nombre_usuario
               }}</a>
           </mat-card-title>
         </mat-card-header>
-        <hr>
-        <!--  style="height: 150px; width:auto;"-->
-        <img src="{{item.foto_usuario}}" routerLink="/instructores/presentacion-docente/{{ item.id_usuario }}"
-          class="img-cards" fallimg="avatar" />
-        <mat-card-content align="center">
-          <div class="container py-2" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
-            <mat-card-subtitle>
-              <h3>{{item.correo_usuario}}</h3>
-              <h3>{{item.datos_docente.descripcion_docente}}</h3>
-            </mat-card-subtitle>
+        <div>
+          <hr>
+        </div>
+        <img mat-card-image src="{{item.foto_usuario}}"
+          routerLink="/instructores/presentacion-docente/{{ item.id_usuario }}" class="img-cards" fallimg="avatar" />
+        <mat-card-subtitle>{{item.correo_usuario}}</mat-card-subtitle>
+        <mat-card-content>
+          <div class="container" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
+            {{item.datos_docente.descripcion_docente}}
           </div>
         </mat-card-content>
       </mat-card>
+
+
       <br>
       <!--Final de los Cards - nuevos cursos-->
     </div>
-    <br>
   </div>
-  <br>
 </div>

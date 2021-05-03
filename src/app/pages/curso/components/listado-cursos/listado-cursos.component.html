@@ -1,41 +1,63 @@
-<div class="container py-5">
-  <div class="row justify-content-center py-5">
-    <p class="lead">Nuestros Cursos</p>
+<div class="container-fluid body">
+  <div class="row justify-content-center text-align-center title-content">
+    <div class="col-md-12 py-5 text-white text-center">
+      <p class="text-white text-align-center lead">Nuestros Cursos</p>
+    </div>
   </div>
-  <div *ngIf="!curso">
-    <mat-spinner></mat-spinner>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-4 py-2" *ngFor="let item of curso">
-      <mat-card class="example-card" routerLink="/curso/curso-detalle/{{ item.id_curso }}">
-        <img src="{{ item.imagen_curso }}" class="img-cards" fallimg />
-        <hr />
+</div>
+<hr>
+<div class="container">
+  <div class="row justify-content-center" role="status">
+    <div *ngIf="!curso" class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden"></span>
+      </div>
+    </div>
+    <div class="col-md-3" *ngFor="let item of curso">
+      <mat-card class="example-card">
+        <!--routerLink="/curso/curso-detalle/{{ item.id_curso }}"-->
+        <img mat-card-image routerLink="/curso/curso-detalle/{{ item.id_curso }}" src="{{ item.imagen_curso }}"
+          class="img-cards" fallimg />
+        <!--Linea debajo de la imagen-->
+        <div>
+          <hr>
+        </div>
+        <!--Cabecera del card: Nombre y Precio del Curso -->
         <mat-card-header>
           <mat-card-title>
-            <a class="lead" routerLink="/curso/curso-detalle/{{ item.id_curso }}">{{ item.nombre_curso }}</a>
+            <a mat-button class="lead" routerLink="/curso/curso-detalle/{{ item.id_curso }}">{{ item.nombre_curso }}</a>
           </mat-card-title>
           <br>
           <mat-card-subtitle>Precio: Bs. {{ item.precio}}</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-subtitle>Descripción: </mat-card-subtitle>
+        <!--<mat-card-subtitle>Descripción: </mat-card-subtitle>-->
+        <!--Cabecera del card: Nombre y Precio del Curso -->
+        <!--Contenido del card: Descripcion del Curso -->
         <mat-card-content>
-          <div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
+          <div class="container" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
             {{ item.descripcion_curso }}
           </div>
         </mat-card-content>
-        <mat-card-subtitle>Categorias pertenecientes:</mat-card-subtitle>
-        <mat-chip-list align="center" aria-label="Fish selection">
+        <!--Contenido del card: Descripcion del Curso -->
+        <div class="container">
+          <div class="row" *ngIf="item.etiquetas_curso">
+            <!--<mat-card-subtitle>Categorias pertenecientes:</mat-card-subtitle>-->
+            <div *ngFor="let etiqueta of item.etiquetas_curso" class="col-md">
+              <button routerLink="/curso/cursos-categorias/{{etiqueta.id_etiqueta}}" mat-stroked-button
+                color="warn">{{etiqueta.nombre_etiqueta}}</button>
+            </div>
+          </div>
+        </div>
+        <!--<mat-chip-list align="center" aria-label="Fish selection">
           <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection"
             *ngFor="let etiqueta of item.etiquetas_curso">
             <mat-chip routerLink="/curso/cursos-categorias/{{etiqueta.id_etiqueta}}" class="mat-chip" selected>
               {{etiqueta.nombre_etiqueta}}
             </mat-chip>
           </mat-chip-list>
-        </mat-chip-list>
+        </mat-chip-list>-->
       </mat-card>
       <br>
     </div>
   </div>
 </div>
-<!--Final Cursos en general-->

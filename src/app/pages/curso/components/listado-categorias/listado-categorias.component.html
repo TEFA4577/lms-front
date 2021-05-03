@@ -1,27 +1,35 @@
-<div class="container py-5">
-  <div class="row bg-dark">
-    <div class="col-md-12 py-3 text-white text-center">
-      <h3>Categorias Principales</h3>
+<div class="container-fluid body">
+  <div class="row justify-content-center text-align-center title-content">
+    <div class="col-md-12 py-5 text-white text-center">
+      <p class="text-white text-align-center lead">Categorias de la Academia</p>
     </div>
   </div>
-  <hr />
-  <!--Presentacion del usuario-->
-  <div class="row justify-content-center">
+</div>
+<hr>
+<div class="container">
+  <!--Presentacion de categorias-->
+  <div class="row justify-content-center" role="status">
+    <div *ngIf="!etiquetas" class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden"></span>
+      </div>
+    </div>
     <div class="col-md-3" *ngFor="let item of etiquetas">
       <!--Cards de los nuevos cursos-->
       <mat-card class="example-card">
-        <img src="{{item.imagen_etiqueta}}" class="img-cards" fallimg="avatar" />
+        <img mat-card-image src="{{item.imagen_etiqueta}}" routerLink="/curso/cursos-categorias/{{item.id_etiqueta}}"
+          class="img-cards" fallimg="avatar" />
         <hr>
         <mat-card-header>
           <mat-card-title>
-            <p class="lead center" routerLink="/curso/cursos-categorias/{{item.id_etiqueta}}">{{item.nombre_etiqueta}}
-            </p>
+            <a mat-button class="lead center"
+              routerLink="/curso/cursos-categorias/{{item.id_etiqueta}}">{{item.nombre_etiqueta}}</a>
           </mat-card-title>
           <mat-card-subtitle>Descripcion: {{item.descripcion_etiqueta}}</mat-card-subtitle>
         </mat-card-header>
       </mat-card>
       <br>
-      <!--Final de los Cards - nuevos cursos-->
+      <!--Final de los Cards - Categorias-->
     </div>
   </div>
 </div>

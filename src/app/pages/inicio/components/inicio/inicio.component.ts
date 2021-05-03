@@ -10,12 +10,14 @@ import { EtiquetaService } from '../../../../services/etiqueta.service';
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss']
 })
+
 export class InicioComponent implements OnInit {
   curso: any;
   etiqueta: any;
   docente: any;
   pregunta: any;
   panelOpenState = false;
+  texto = true;
 
   constructor(
     public serCursos: CursosService,

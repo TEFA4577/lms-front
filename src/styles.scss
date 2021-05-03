@@ -1,10 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; outline: none; }
+body { margin: 0; font-family: 'Antonio', sans-serif; outline: none; }
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
 
 /* Importando Variables de Estilos */
 @import "./src/assets/styles/shared";
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+background-color: #153259;
+outline: 1px solid slategrey;
+}
+
+//#D4AC0D
+//#F1C40F

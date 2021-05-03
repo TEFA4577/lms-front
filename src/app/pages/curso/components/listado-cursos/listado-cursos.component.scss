@@ -1,54 +1,55 @@
-.mat-raised-button {
-  border-radius: 800px;
-}
-
-.col {
-  margin-left: 5%;
-  margin-right: 5%;
+.body {
+  //min-height: auto;
+  background: #03a6a6;
 }
 
 .text {
   color: #2e3d4b;
 }
-.long-text{
+
+p {
+  font-size: xx-large;
+}
+
+.hr {
+  border: 0.2px solid #03738c;
+  border-radius: 3px;
+  width: auto;
+}
+
+.long-text {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 
+.mat-stroked-button {
+  outline: none;
+}
+
 //Cards de las categorias
 .mat-card {
-  width: 100%;
-  height: 100%;
-}
-
-.cat-img-cards {
-
-  height: 70%;
-  width: 100%;
-  /*min-width: 100%;
-  min-height: 50%;*/
-}
-
-//Cards de los cursos
-.mat-card {
-  min-height: 400px;
-  max-height: 550px;
+  height: 420px;
+  box-shadow: 8px 8px 20px #c3cbd3;
+  outline: none;
   margin-bottom: 15px;
+  text-align: center;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
 }
 
-.mat-card-title {
-  text-align: center;
-}
-
 .mat-card-content {
+  color: #abb2b9;
   flex-grow: 1;
   overflow: auto;
   align-content: justify;
   text-align: justify;
+}
+
+.mat-card-title {
+  text-align: center;
 }
 
 a {
@@ -57,18 +58,14 @@ a {
 }
 
 .img-cards {
-  max-height: 150px;
+  height: 150px;
+  outline: none;
 }
 
-.card-doc {
-  width: 100%;
-  height: 90%;
+.img-svg path {
+  fill: #fff;
 }
 
-.img-cards-testimonios {
-  width: 100%;
-  height: 80%;
-}
 .mat-chip {
   max-width: 200px;
   margin-left: 40px;

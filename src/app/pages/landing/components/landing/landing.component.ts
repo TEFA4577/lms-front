@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EncuestasService } from '../../../../services/encuestas.service';
+import { UsuarioService } from '../../../../services/usuario.service';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -18,19 +19,22 @@ export class LandingComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   respuesta: any;
+  datosUsuario: any;
+  estado: boolean;
+  encuesta: any;
 
   constructor(
     public SerEncuestas: EncuestasService,
     private formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private usuarioService: UsuarioService,
 
-    ) { }
-
-  encuesta: any;
+  ) { }
 
   ngOnInit(): void {
     this.listarEncuestas();
     this.buildForm();
+    this.comprobarAuth();
   }
 
   openSnackBar(message: string, action: string): void {
@@ -41,11 +45,10 @@ export class LandingComponent implements OnInit {
 
   private buildForm(): void {
     this.formRegistrarRespuesta = this.formBuilder.group({
-      texto_respuesta_encuesta: ['', [Validators.required]],
     });
   }
 
-  submitRegistrarRespuesta(event: Event): void {
+  submitRegistrar(event: Event): void {
     event.preventDefault();
     console.log(this.formRegistrarRespuesta.value);
     this.registrarDatos(this.formRegistrarRespuesta.value);
@@ -61,7 +64,16 @@ export class LandingComponent implements OnInit {
     });
   }
 
-  listarEncuestas(){
+  comprobarAuth(): void {
+    this.estado = this.usuarioService.estadoSession();
+    if (this.estado) {
+      this.datosUsuario = localStorage.getItem('datosUsuario');
+      this.datosUsuario = JSON.parse(localStorage.getItem('datosUsuario'));
+    }
+    console.log(this.estado);
+  }
+
+  listarEncuestas() {
     this.SerEncuestas.listarEncuestas().subscribe(data => {
       console.log(data);
       this.encuesta = data;

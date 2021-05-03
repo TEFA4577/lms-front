@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate {
       Swal.fire({
         icon: 'error',
         title: 'Usuario no Identificado',
-        text: 'inicia sesion para poder acceder!',
+        text: 'Inicia sesion para poder acceder!',
       });
       this.router.navigate(['/inicio']);
     }
