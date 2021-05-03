@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -24,9 +25,6 @@ export class FreeComponent implements OnInit {
   filedata: any;
   imgURL: any;
   isActive = false;
-
-  @Input()
-  // tslint:disable-next-line: no-unused-expression
   id: any;
 
   constructor(
@@ -35,22 +33,17 @@ export class FreeComponent implements OnInit {
     // tslint:disable-next-line: variable-name
     private _snackBar: MatSnackBar,
     private usuarioService: UsuarioService,
+    public route: ActivatedRoute,
     public dialogRef: MatDialogRef<FreeComponent>,
   ) { }
+
     // tslint:disable-next-line: typedef
     ngOnInit(): void {
-      this.buildForm();
+      this.id = this.route.snapshot.params.id;
     }
 
     onNoClick(): void {
       this.dialogRef.close();
-    }
-
-    buildForm(): void {
-      this.formAdquirirCurso = this.formBuilder.group({
-        id_curso: [''],
-        id_usuario: [''],
-      });
     }
 
     openSnackBar(message: string, action: string): void {
@@ -60,37 +53,36 @@ export class FreeComponent implements OnInit {
     }
 
   submitAdquirirCurso(event: Event): void {
-      event.preventDefault();
-      console.log(this.formAdquirirCurso.value);
-      const myFormData = new FormData();
-      const datos = JSON.parse(localStorage.getItem('datosUsuario'));
-      const id = datos.id_usuario;
-      myFormData.append('id_usuario', id);
-      myFormData.append('id_curso', this.id);
-      console.log(this.id);
-      Swal.fire({
-        title: 'Seguro que desea adquirir el curso?',
-        showDenyButton: true,
-        confirmButtonText: `Enviar`,
-        denyButtonText: `No enviar`,
-      }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-          this.cursoAd.adquirirCurso(myFormData).subscribe(res => {
-            const estad = this.usuarioService.estadoSession;
-            console.log(res);
-            this.respuesta = res;
-            Swal.fire('Enviado!', '', 'success').finally(() => {
-              this.onNoClick();
-              this.isActive = false;
-            });
-            this.openSnackBar(this.respuesta.mensaje, 'cerrar');
-          }, error => {
-            console.log(error);
+    event.preventDefault();
+    const myFormData = new FormData();
+    const datos = JSON.parse(localStorage.getItem('datosUsuario'));
+    const id = datos.id_usuario;
+    myFormData.append('id_usuario', id);
+    myFormData.append('id_curso', this.id);
+    console.log(this.id);
+    Swal.fire({
+      title: 'Seguro que desea adquirir el curso?',
+      showDenyButton: true,
+      confirmButtonText: `Enviar`,
+      denyButtonText: `No enviar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.cursoAd.adquirirCurso(myFormData).subscribe(res => {
+          const estad = this.usuarioService.estadoSession;
+          console.log(res);
+          this.respuesta = res;
+          Swal.fire('Enviado!', '', 'success').finally(() => {
+            this.onNoClick();
+            this.isActive = false;
           });
-        } else if (result.isDenied) {
-          Swal.fire('No se envió su solicitud', '', 'info').finally(() => this.isActive = false);
-        }
-      });
-    }
+          this.openSnackBar(this.respuesta.mensaje, 'cerrar');
+        }, error => {
+          console.log(error);
+        });
+      } else if (result.isDenied) {
+        Swal.fire('No se envió su solicitud', '', 'info').finally(() => this.isActive = false);
+      }
+    });
+  }
 }

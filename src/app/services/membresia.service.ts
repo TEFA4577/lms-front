@@ -30,4 +30,7 @@ export class MembresiaService {
   eliminarMembresia(id){
     return this.http.get(this.API_BACKEND + 'membresias/eliminar/' + id);
   }
+  membresiaUsuario(id){
+    return this.http.get(this.API_BACKEND + 'membresias-solicitada/mostrar/' + id);
+  }
 }

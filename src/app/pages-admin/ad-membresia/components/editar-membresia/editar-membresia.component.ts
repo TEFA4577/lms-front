@@ -42,7 +42,8 @@ export class EditarMembresiaComponent implements OnInit {
     this.formEditarMembresia = this.formBuilder.group({
       nombre_membresia: ['', Validators.required],
       texto_membresia: ['', Validators.required],
-      precio_membresia: ['', Validators.required]
+      precio_membresia: ['', Validators.required],
+      duracion_membresia: ['', Validators.required]
     });
   }
 
@@ -50,6 +51,7 @@ export class EditarMembresiaComponent implements OnInit {
     this.formEditarMembresia.get('nombre_membresia').setValue(this.datos.nombre_membresia);
     this.formEditarMembresia.get('texto_membresia').setValue(this.datos.texto_membresia);
     this.formEditarMembresia.get('precio_membresia').setValue(this.datos.precio_membresia);
+    this.formEditarMembresia.get('duracion_membresia').setValue(this.datos.duracion_membresia);
     this.formEditarMembresia.get('imagen_membresia').setValue(this.datos.imagen_membresia);
   }
 

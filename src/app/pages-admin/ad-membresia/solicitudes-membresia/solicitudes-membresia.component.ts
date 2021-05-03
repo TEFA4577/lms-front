@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./solicitudes-membresia.component.scss']
 })
 export class SolicitudesMembresiaComponent implements OnInit {
-  displayedColumns: string[]= ['usuario', 'membresia', 'comprobante', 'id_membresia_usuario'];
+  displayedColumns: string[]= ['usuario', 'membresia', 'imagen_membresia', 'comprobante', 'estado_membresia_usuario', 'inicio_membresia_usuario', 'fin_membresia_usuario', 'id_membresia_usuario'];
   dataSource: MatTableDataSource<SolicitudesMembresia>;
   solicitudes: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -45,23 +45,22 @@ export class SolicitudesMembresiaComponent implements OnInit {
   }
   habilitar(id, estado): void {
     Swal.fire({
-      title: 'Cambiar estado de la solicitud',
-      text: 'seguro que desea cambiar el estado a '+ estado+'?!',
+      title: estado+' solicitud',
+      text: '¿seguro que desea '+ estado+' solicitud?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si deseo cambiarlo',
+      confirmButtonText: 'Si deseo',
       cancelButtonText: 'No, cancelar!',
     }).then((result) =>{
       if (result.isConfirmed) {
         this.serSoli.habilitarMembresia(id, estado).subscribe(data => {
-          console.log(data);
           this.listarSolicitudes();
         });
         Swal.fire(
-          'Habilitado',
-          'Membresia habilitada para el usuario',
+          estado,
+          estado+' membresia para el usuario',
           'success'
         )
       }

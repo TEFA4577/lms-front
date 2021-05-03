@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./membresia.component.scss']
 })
 export class MembresiaComponent implements OnInit {
-  displayedColumns: string[] = ['nombre_membresia', 'texto_membresia', 'precio_membresia', 'id_membresia'];
+  displayedColumns: string[] = ['nombre_membresia', 'texto_membresia', 'precio_membresia', 'duracion_membresia', 'id_membresia'];
   dataSource: MatTableDataSource<Membresias>;
   membresias: any;
   estado = true;

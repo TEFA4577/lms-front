@@ -7,6 +7,11 @@
   width: 50%;
 }
 
-.alcance{
-  height: 100%;
+.mat-card-image {
+  height: 350px;
+}
+
+.mat-card-content{
+  height: 100px;
+  overflow-y: auto;
 }
