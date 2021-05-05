@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EncuestasService } from '../../../../services/encuestas.service';
 import { UsuarioService } from '../../../../services/usuario.service';
 import {
@@ -7,6 +7,8 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { elementAt } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-landing',
@@ -22,6 +24,9 @@ export class LandingComponent implements OnInit {
   datosUsuario: any;
   estado: boolean;
   encuesta: any;
+  resEleccion: string;
+  //misRespuestas: string[] = ['Si', 'No'];
+  misRespuestas: any = [];
 
   constructor(
     public SerEncuestas: EncuestasService,
@@ -37,33 +42,6 @@ export class LandingComponent implements OnInit {
     this.comprobarAuth();
   }
 
-  openSnackBar(message: string, action: string): void {
-    this._snackBar.open(message, action, {
-      duration: 3000,
-    });
-  }
-
-  private buildForm(): void {
-    this.formRegistrarRespuesta = this.formBuilder.group({
-    });
-  }
-
-  submitRegistrar(event: Event): void {
-    event.preventDefault();
-    console.log(this.formRegistrarRespuesta.value);
-    this.registrarDatos(this.formRegistrarRespuesta.value);
-  }
-
-  registrarDatos(datos: any) {
-    this.SerEncuestas.registrarRespuesta(datos).subscribe(data => {
-      console.log(data);
-      this.respuesta = data;
-      this.openSnackBar(this.respuesta.mensaje, 'cerrar');
-    }, error => {
-      console.log(error);
-    });
-  }
-
   comprobarAuth(): void {
     this.estado = this.usuarioService.estadoSession();
     if (this.estado) {
@@ -71,6 +49,41 @@ export class LandingComponent implements OnInit {
       this.datosUsuario = JSON.parse(localStorage.getItem('datosUsuario'));
     }
     console.log(this.estado);
+  }
+
+  openSnackBar(message: string, action: string): void {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
+
+  buildForm(): void {
+    this.formRegistrarRespuesta = this.formBuilder.group({
+      texto_encuesta_respuesta: ['', Validators.required]
+    });
+    this.setForm();
+  }
+
+  setForm(): void {
+    this.formRegistrarRespuesta.get('texto_encuesta_respuesta');
+  }
+
+  submitRegistrar(event: Event): void {
+    event.preventDefault();
+    console.log(this.formRegistrarRespuesta.value);
+    const myFormData = new FormData();
+    const datos = JSON.parse(localStorage.getItem('datosUsuario'));
+    const id = datos.id_usuario;
+    myFormData.append('id_usuario', id);
+    myFormData.append('id_encuesta_pregunta', '2');
+    myFormData.append('texto_encuesta_respuesta', this.formRegistrarRespuesta.get('texto_encuesta_respuesta').value);
+    this.SerEncuestas.registrarRespuesta(myFormData).subscribe(res =>{
+      const obj: any = res;
+      localStorage.setItem('datosUsuario', JSON.stringify(obj.datosUsuario));
+      this.respuesta = res;
+      this.openSnackBar(this.respuesta.mensaje, 'cerrar');
+      console.log(res);
+    });
   }
 
   listarEncuestas() {

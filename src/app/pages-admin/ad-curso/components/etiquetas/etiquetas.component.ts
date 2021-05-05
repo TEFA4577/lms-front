@@ -48,7 +48,7 @@ export class EtiquetasComponent implements OnInit {
     }
     else {
       //De lo contrario
-      console.log("Ese ya está");
+      console.log("Ya fue seleccionado");
     }
   }
   guardar() {

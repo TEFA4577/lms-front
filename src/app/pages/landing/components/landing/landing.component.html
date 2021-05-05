@@ -193,16 +193,24 @@
       <div class="card-body justify-content-center align-self-center">
         <!--Formulario de registro-->
         <form [formGroup]="formRegistrarRespuesta" (ngSubmit)="submitRegistrar($event)" autocomplete="off">
-          <div class="row justify-content-center text-align-justify" *ngFor="let preguntas of item.encuesta_pregunta; let i = index">
+          <div class="row justify-content-center text-align-justify"
+            *ngFor="let preguntas of item.encuesta_pregunta; let i = index">
             <!-- ID que recibimos de firebase-->
             <legend class="col-form-label col-7">
               {{ i + 1 }}. {{preguntas.texto_encuesta_pregunta}}</legend>
             <div class="col-5">
-              <mat-radio-group aria-label="Select an option">
-                <mat-radio-button formControlName="radioExample" value="Si">Si</mat-radio-button>
-                <mat-radio-button formControlName="radioExample" value="No">No</mat-radio-button>
+              <!--<div class="form-group">
+                <input id="si" type="radio" value="si" name="texto_encuesta_respuesta"
+                  formControlName="texto_encuesta_respuesta">
+                <input id="no" type="radio" value="no" name="texto_encuesta_respuesta"
+                  formControlName="texto_encuesta_respuesta">
+              </div>-->
+              <mat-radio-group aria-label="Select an option" formControlName="texto_encuesta_respuesta">
+                <mat-radio-button type="radio" name="texto_encuesta_respuesta" value="si">
+                  Si</mat-radio-button>
+                <mat-radio-button type="radio" name="texto_encuesta_respuesta" value="no">
+                  No</mat-radio-button>
               </mat-radio-group>
-
             </div>
           </div>
           <button type="submit" mat-raised-button class="btn btn-info col-12">Envia tu respuesta!</button>
