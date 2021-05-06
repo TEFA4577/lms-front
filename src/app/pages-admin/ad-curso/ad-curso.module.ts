@@ -37,6 +37,8 @@ import { SolicitudesCursoComponent } from './solicitudes-curso/solicitudes-curso
 import { ListadoCursoEstudianteComponent } from './components/listado-curso-estudiante/listado-curso-estudiante.component';
 import { TutorialCursoComponent } from './components/tutorial-curso/tutorial-curso.component';
 import { AdministrarEstadoCursoComponent } from './components/administrar-estado-curso/administrar-estado-curso.component';
+import { CrearEvaluacionComponent } from './components/evaluaciones/crear-evaluacion/crear-evaluacion.component';
+import { EditarEvaluacionComponent } from './components/evaluaciones/editar-evaluacion/editar-evaluacion.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { AdministrarEstadoCursoComponent } from './components/administrar-estado
     ListadoCursoEstudianteComponent,
     TutorialCursoComponent,
     AdministrarEstadoCursoComponent,
+    CrearEvaluacionComponent,
+    EditarEvaluacionComponent,
   ],
   imports: [
     CommonModule,

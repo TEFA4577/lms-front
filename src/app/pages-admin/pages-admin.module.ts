@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PagesAdminRoutingModule } from './pages-admin-routing.module';
-import { AdEvaluacionesComponent } from './ad-evaluaciones/ad-evaluaciones.component';
 
 
 @NgModule({
@@ -10,6 +9,6 @@ import { AdEvaluacionesComponent } from './ad-evaluaciones/ad-evaluaciones.compo
     CommonModule,
     PagesAdminRoutingModule
   ],
-  declarations: [AdEvaluacionesComponent]
+  declarations: []
 })
 export class PagesAdminModule { }
