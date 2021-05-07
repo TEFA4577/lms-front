@@ -36,24 +36,28 @@ export class InicioComponent implements OnInit {
 
   cargarCursos() {
     this.serCursos.listarCursos().subscribe(data => {
+      console.log(data);
       this.curso = data;
     });
   }
 
   cargarEtiquetas() {
     this.serEtiqueta.listarEtiquetas().subscribe(data => {
+      console.log(data);
       this.etiqueta = data;
     });
   }
 
   cargarDocentes() {
     this.serDocente.listarDocente().subscribe(data => {
+      console.log(data);
       this.docente = data;
     });
   }
 
   cargarPreguntas() {
     this.serPregunta.mostrarPregunta().subscribe(data => {
+      console.log(data);
       this.pregunta = data;
     });
   }

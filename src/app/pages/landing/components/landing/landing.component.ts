@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EncuestasService } from '../../../../services/encuestas.service';
 import { UsuarioService } from '../../../../services/usuario.service';
+import { elementAt } from 'rxjs/operators';
+
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
-import { elementAt } from 'rxjs/operators';
-
 
 @Component({
   selector: 'app-landing',
@@ -27,6 +27,21 @@ export class LandingComponent implements OnInit {
   resEleccion: string;
   //misRespuestas: string[] = ['Si', 'No'];
   misRespuestas: any = [];
+  pId: any
+  isActive = false;
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
 
   constructor(
     public SerEncuestas: EncuestasService,
@@ -57,6 +72,12 @@ export class LandingComponent implements OnInit {
     });
   }
 
+  getIdP(idP: any) {
+    this.pId = idP;
+    console.log(this.pId);
+    //his.openComentarios(idClase);
+  }
+
   buildForm(): void {
     this.formRegistrarRespuesta = this.formBuilder.group({
       texto_encuesta_respuesta: ['', Validators.required]
@@ -70,16 +91,16 @@ export class LandingComponent implements OnInit {
 
   submitRegistrar(event: Event): void {
     event.preventDefault();
+    this.isActive = true;
     console.log(this.formRegistrarRespuesta.value);
     const myFormData = new FormData();
     const datos = JSON.parse(localStorage.getItem('datosUsuario'));
     const id = datos.id_usuario;
     myFormData.append('id_usuario', id);
-    myFormData.append('id_encuesta_pregunta', '2');
+    myFormData.append('id_encuesta_pregunta', this.pId);
     myFormData.append('texto_encuesta_respuesta', this.formRegistrarRespuesta.get('texto_encuesta_respuesta').value);
-    this.SerEncuestas.registrarRespuesta(myFormData).subscribe(res =>{
+    this.SerEncuestas.registrarRespuesta(myFormData).subscribe(res => {
       const obj: any = res;
-      localStorage.setItem('datosUsuario', JSON.stringify(obj.datosUsuario));
       this.respuesta = res;
       this.openSnackBar(this.respuesta.mensaje, 'cerrar');
       console.log(res);

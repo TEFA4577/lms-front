@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CursosService } from 'src/app/services/cursos.service';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import {CdkStepper} from '@angular/cdk/stepper';
+import { Router } from '@angular/router';
 
 // Dialog o modal
 import { MatDialog } from '@angular/material/dialog';
@@ -39,7 +40,8 @@ export class PresentacionCursoComponent implements OnInit {
   constructor(public route: ActivatedRoute,
               public serCursos: CursosService,
               public dialog: MatDialog,
-              public datepipe: DatePipe ) { }
+              public datepipe: DatePipe,
+              private router: Router ) { }
   // tslint:disable-next-line: typedef
   ngOnInit(): void {
     this.comprobarAuth();
@@ -87,6 +89,7 @@ export class PresentacionCursoComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
     });
   }
   // tslint:disable-next-line: typedef

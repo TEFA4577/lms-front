@@ -7,7 +7,8 @@
 <div class="container-lg cuerpo" *ngIf="curso">
   <div class="row">
     <div class="col-md-6">
-        <a class="cr-paso">1</a><h2>Añade los datos generales del Curso</h2>
+      <a class="cr-paso">1</a>
+      <h2>Añade los datos generales del Curso</h2>
       <form [formGroup]="formCurso" (ngSubmit)="actualizarCurso($event)" autocomplete="off">
         <mat-card class=" contenidoCurso">
           <mat-card-header>
@@ -55,8 +56,10 @@
             </div>
           </mat-card-content>
           <mat-card-actions align="end" class="col-md-12 justify-content-center">
-            <button style="width: 40%;" mat-raised-button color="primary" [disabled]="formCurso.invalid">Guardar cambios</button>
-            <button style="width: 40%;" mat-raised-button color="warn" type="button" (click)="resetForm()">Descartar Cambios</button>
+            <button style="width: 40%;" mat-raised-button color="primary" [disabled]="formCurso.invalid">Guardar
+              cambios</button>
+            <button style="width: 40%;" mat-raised-button color="warn" type="button" (click)="resetForm()">Descartar
+              Cambios</button>
           </mat-card-actions>
         </mat-card>
       </form>
@@ -67,7 +70,7 @@
       <div *ngIf="rutaVideo">
         <h3>Vista Previa del Video</h3>
         <video [src]="rutaVideo" class="videoPreview" controls></video>
-        <button mat-raised-button class="btn-block"color="warn"(click)="verVideo('')">cerrar</button>
+        <button mat-raised-button class="btn-block" color="warn" (click)="verVideo('')">cerrar</button>
       </div>
       <mat-card>
         <mat-card-header>
@@ -126,7 +129,8 @@
                               (click)="abrirRecurso(clase.id_clase)">
                               <mat-icon>drive_folder_upload</mat-icon>
                             </button>
-                            <button mat-icon-button matTooltip="ver el video de la clase" type="button" (click)="verVideo(clase.video_clase)">
+                            <button mat-icon-button matTooltip="ver el video de la clase" type="button"
+                              (click)="verVideo(clase.video_clase)">
                               <mat-icon>video_settings</mat-icon>
                             </button>
                             <button mat-icon-button color="warn" matTooltip="eliminar la clase"
@@ -144,27 +148,108 @@
           </mat-accordion>
         </mat-card-content>
       </mat-card>
-    </div>
-    <hr/>
-    <div class="col-md-12"><br/>
+
+      <br>
       <a class="cr-paso">3</a>
+      <h2>Añade la evaluacion general de tu curso</h2>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title></mat-card-title>
+          <hr>
+          <div class="d-flex flex-row-reverse">
+            <button mat-raised-button color="primary" type="button" (click)="crearModulo(curso.id_curso)"
+              matTooltip="Crear módulo"> Crear Preguntas
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </mat-card-header>
+        <hr>
+        <mat-card-content>
+          <mat-accordion multi>
+            <div *ngFor="let modulo of modulos" class="row">
+              <div class="col">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      {{modulo.nombre_modulo}}
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <mat-panel-description>
+                    {{modulo.descripcion_modulo}}
+                  </mat-panel-description>
+                  <div>
+                    <div class="d-flex flex-row-reverse">
+                      <button mat-icon-button color="warn" matTooltip="eliminar el modulo"
+                        (click)="borrarModulo(modulo.id_modulo)">
+                        <mat-icon>delete_forever</mat-icon>
+                      </button>
+                      <button mat-icon-button color="accent" matTooltip="cambiar datos del modulo"
+                        (click)="editarModulo(modulo.id_modulo)">
+                        <mat-icon>create</mat-icon>
+                      </button>
+                      <button mat-icon-button color="primary" matTooltip="crear una clase"
+                        (click)="crearClase(modulo.id_modulo)">
+                        <mat-icon>add_box</mat-icon>
+                      </button>
+                    </div>
+                    <div>
+                      <mat-selection-list [multiple]="false">
+                        <mat-list-item *ngFor="let clase of modulo.clases_modulo" class="row">
+                          <mat-icon mat-list-icon>school</mat-icon>
+                          <div mat-line (click)="verVideo(clase.video_clase)">
+                            <div mat-line>Titulo: {{clase.titulo_clase}}</div>
+                            <div mat-line>Descripcion: {{clase.descripcion_clase}}</div>
+                          </div>
+                          <div mat-line align="end">
+                            <button mat-icon-button color="accent" matTooltip="cambiar datos de la clase"
+                              (click)="editarClase(clase.id_clase)">
+                              <mat-icon>create</mat-icon>
+                            </button>
+                            <button mat-icon-button color="primary" matTooltip="subir un recurso para el curso"
+                              (click)="abrirRecurso(clase.id_clase)">
+                              <mat-icon>drive_folder_upload</mat-icon>
+                            </button>
+                            <button mat-icon-button matTooltip="ver el video de la clase" type="button"
+                              (click)="verVideo(clase.video_clase)">
+                              <mat-icon>video_settings</mat-icon>
+                            </button>
+                            <button mat-icon-button color="warn" matTooltip="eliminar la clase"
+                              (click)="borrarClase(clase.id_clase)">
+                              <mat-icon>delete_forever</mat-icon>
+                            </button>
+                          </div>
+                        </mat-list-item>
+                      </mat-selection-list>
+                    </div>
+                  </div>
+                </mat-expansion-panel>
+              </div>
+            </div>
+          </mat-accordion>
+        </mat-card-content>
+      </mat-card>
+
+
+
+    </div>
+    <hr />
+    <div class="col-md-12"><br />
+      <a class="cr-paso">4</a>
       <h2>Elimina o envia tu Curso para su revision</h2>
       <div class="btns row">
         <div class="col-md-6">
           <button mat-raised-button color="warn" type="button" (click)="borrarCurso(curso.id_curso)"
-          matTooltip="borrar el curso"
-          matTooltipPosition="right">
-          <mat-icon align="start">delete</mat-icon>
-          <span class="texto">Borrar Curso</span>
-        </button>
+            matTooltip="borrar el curso" matTooltipPosition="right">
+            <mat-icon align="start">delete</mat-icon>
+            <span class="texto">Borrar Curso</span>
+          </button>
         </div>
         <div class="col-md-6">
-        <button mat-raised-button color="primary" type="button" (click)="enviarARevision()"
-        matTooltip="enviar el curso a revision"
-        matTooltipPosition="right">
-        <mat-icon align="start">send</mat-icon>
-        <span class="texto">Enviar a Revison</span>
-      </button>
+          <button mat-raised-button color="primary" type="button" (click)="enviarARevision()"
+            matTooltip="enviar el curso a revision" matTooltipPosition="right">
+            <mat-icon align="start">send</mat-icon>
+            <span class="texto">Enviar a Revison</span>
+          </button>
         </div>
         <!-- <button mat-raised-button color="accent" type="button" (click)="imagenCurso.click()"
           matTooltip="cambiar imagen del curso"

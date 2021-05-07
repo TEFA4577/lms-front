@@ -186,38 +186,75 @@
 <!--END CONTACTS-->
 
 <!--END FORMULARIO-->
-<div *ngIf="datosUsuario">
-  <div class="container py-3" *ngFor="let item of encuesta">
-    <div class="card" *ngIf="datosUsuario.id_rol == item.id_rol">
-      <h3 class="card-header text-center">Realiza esta pequeña encuesta: {{item.texto_encuesta}}</h3>
-      <div class="card-body justify-content-center align-self-center">
-        <!--Formulario de registro-->
-        <form [formGroup]="formRegistrarRespuesta" (ngSubmit)="submitRegistrar($event)" autocomplete="off">
-          <div class="row justify-content-center text-align-justify"
-            *ngFor="let preguntas of item.encuesta_pregunta; let i = index">
-            <!-- ID que recibimos de firebase-->
-            <legend class="col-form-label col-7">
-              {{ i + 1 }}. {{preguntas.texto_encuesta_pregunta}}</legend>
-            <div class="col-5">
-              <!--<div class="form-group">
-                <input id="si" type="radio" value="si" name="texto_encuesta_respuesta"
-                  formControlName="texto_encuesta_respuesta">
-                <input id="no" type="radio" value="no" name="texto_encuesta_respuesta"
-                  formControlName="texto_encuesta_respuesta">
-              </div>-->
-              <mat-radio-group aria-label="Select an option" formControlName="texto_encuesta_respuesta">
-                <mat-radio-button type="radio" name="texto_encuesta_respuesta" value="si">
-                  Si</mat-radio-button>
-                <mat-radio-button type="radio" name="texto_encuesta_respuesta" value="no">
-                  No</mat-radio-button>
-              </mat-radio-group>
+<div class="container py-3" *ngFor="let item of encuesta">
+  <div class="card" *ngIf="datosUsuario.id_rol == item.id_rol">
+    <h3 class="card-header text-center">Realiza esta pequeña encuesta: {{item.texto_encuesta}}</h3>
+    <div class="card-body justify-content-center align-self-center">
+      <!--Formulario de registro-->
+      <form [formGroup]="formRegistrarRespuesta" (ngSubmit)="submitRegistrar($event)" autocomplete="off">
+        <div class="row justify-content-center text-align-justify"
+          *ngFor="let preguntas of item.encuesta_pregunta; let i = index">
+          <legend class="col-form-label col-7">
+            {{ i + 1 }}. {{preguntas.texto_encuesta_pregunta}}</legend>
+          <div class="col-5">
+            <mat-radio-group aria-label="Select an option" formControlName="texto_encuesta_respuesta">
+              <mat-radio-button type="radio" name="texto_encuesta_respuesta" value="si"
+                (click)="getIdP(preguntas.id_encuesta_pregunta)">
+                Si</mat-radio-button>
+              <mat-radio-button type="radio" name="texto_encuesta_respuesta" value="no"
+                (click)="getIdP(preguntas.id_encuesta_pregunta)">
+                No</mat-radio-button>
+            </mat-radio-group>
+            <div class="row justify-content-end" align="end">
+              <button mat-icon-button color="primary" type="submit" [disabled]="formRegistrarRespuesta.invalid">
+                <mat-icon>send</mat-icon>
+              </button>
             </div>
           </div>
-          <button type="submit" mat-raised-button class="btn btn-info col-12">Envia tu respuesta!</button>
-        </form>
-        <!--Final del Formulario de registro-->
-      </div>
+
+        </div>
+
+      </form>
     </div>
+
+    <!--<mat-accordion class="example-headers-align" *ngFor="let preguntas of item.encuesta_pregunta; let i = index">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ i + 1 }}. {{preguntas.texto_encuesta_pregunta}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="container-fluid">
+          <form [formGroup]="formRegistrarRespuesta" (ngSubmit)="submitRegistrar($event)" autocomplete="off">
+            <div class="row justify-content-center text-align-justify">-->
+    <!-- ID que recibimos de firebase-->
+    <!--<div class="col-5">-->
+    <!--<div class="form-group">
+                    <input id="si" type="radio" value="si" name="texto_encuesta_respuesta"
+                      formControlName="texto_encuesta_respuesta">
+                    <input id="no" type="radio" value="no" name="texto_encuesta_respuesta"
+                      formControlName="texto_encuesta_respuesta">
+                  </div>-->
+    <!-- <mat-radio-group aria-label="Select an option" formControlName="texto_encuesta_respuesta">
+                <mat-radio-button type="radio" name="texto_encuesta_respuesta" value="si"
+                  (click)="getIdP(preguntas.id_encuesta_pregunta)">
+                  Si</mat-radio-button>
+                <mat-radio-button type="radio" name="texto_encuesta_respuesta" value="no"
+                  (click)="getIdP(preguntas.id_encuesta_pregunta)">
+                  No</mat-radio-button>
+              </mat-radio-group>
+            </div>-->
+    <!--</div>-->
+    <!-- <button type="submit" mat-raised-button class="btn btn-info col-12">Envia tu respuesta!</button>
+          </form>
+        </div>
+        <mat-action-row>
+          <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>-->
+
+
   </div>
-</div>
-<!--END FORMULARIO-->
+  <!--</div>-->
+  <!--END FORMULARIO-->
