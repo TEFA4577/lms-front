@@ -12,6 +12,7 @@ import { EncuestasService } from '../../../../services/encuestas.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Encuestas } from '../../../../models/encuestas';
 import { EditarPreguntaComponent } from '../editar-pregunta/editar-pregunta.component';
+import { UsuariosComponent } from '../usuarios/usuarios.component';
 
 @Component({
   selector: 'app-encuestas',
@@ -77,6 +78,19 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
       this.listarEncuestas();
     });
   }
+
+  destinoEncuesta(curso) {
+    console.log(curso);
+    const dialogRef = this.dialog.open(UsuariosComponent, {
+      //disableClose: true,
+      //data: curso,
+      });
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('The dialog was closed');
+      this.listarEncuestas();
+    });
+  }
+
 
   //edicion del titulo de la encuesta
   editarTitulo(id: number): void {

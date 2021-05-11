@@ -34,7 +34,7 @@ export class ListadoCursoComponent implements OnInit {
     const dialogRef = this.dialog.open(EtiquetasComponent, {
       disableClose: true,
       data: curso,
-      });
+    });
     dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
       this.listarMisCursos();
@@ -44,6 +44,7 @@ export class ListadoCursoComponent implements OnInit {
   listarMisCursos(): void {
     this.cursoSrv.listarCursosCreados().subscribe(data => {
       this.misCursos = data;
+      console.log(this.misCursos);
       console.log(this.misCursos.length);
       if (this.misCursos.length !== 0) {
         this.estado = false;

@@ -82,4 +82,7 @@ export class UsuarioService {
   cambiarImagenPerfil(datos: any) {
     return this.http.post(this.API_BACKEND + 'usuario/cambiar-foto', datos);
   }
+  usuarioRoles(){
+    return this.http.get(this.API_BACKEND + 'usuario/roles');
+  }
 }
