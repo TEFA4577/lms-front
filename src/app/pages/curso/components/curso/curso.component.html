@@ -103,6 +103,9 @@
           <p class="card-text">
             <mat-progress-bar mode="determinate" [value]="count">Tu progreso</mat-progress-bar>
           </p>
+          <div *ngIf="evaluacionButton" mat-line>
+            <button mat-button color="accent" type="button" (click)="openEvaluacion(curso.id_curso);">Evaluación</button>
+          </div>
           <a *ngIf="certificadoBoton" href="{{API_BACKEND + certificado}}" target="_blank"> Ver
             certificado</a>
         </div>

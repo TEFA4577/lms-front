@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CursosService } from 'src/app/services/cursos.service';
+import { EvaluacionService } from 'src/app/services/evaluacion.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { ComentariosCursoComponent } from './comentarios-curso/comentarios-curso.component';
 import { RespuestasCursoComponent } from './respuestas-curso/respuestas-curso.component';
+import { EvaluacionCursoComponent } from './evaluacion-curso/evaluacion-curso.component';
 
 @Component({
   selector: 'app-curso',
@@ -42,13 +44,16 @@ export class CursoComponent implements OnInit, OnDestroy {
   dat: any;
   data: any;
   certificadoBoton = false;
+  evaluacionButton = false;
   idRes: any;
+  idCurso: any;
   estadoCargando = false;
   respuesta: any;
   panelOpenState = false;
 
   constructor(
     public serCursos: CursosService,
+    public postEvaluacion: EvaluacionService,
     private formBuilder: FormBuilder,
     public route: ActivatedRoute,
     public dialog: MatDialog,
@@ -92,7 +97,7 @@ export class CursoComponent implements OnInit, OnDestroy {
     this.count = (conteo.length * 100) / this.progreso.length;
     console.log(this.count);
     if (this.count == 100) {
-      this.certificadoBoton = true;
+      this.evaluacionButton = true;
     }
   }
 
@@ -158,6 +163,25 @@ export class CursoComponent implements OnInit, OnDestroy {
       console.log('The dialog was closed');
       console.log(idR);
       this.cargarDatos();
+    });
+  }
+
+  openEvaluacion( idCurso: number):void {
+    const myFormData = new FormData();
+    const datos = JSON.parse(localStorage.getItem('datosUsuario'));
+    const id = datos.id_usuario;
+    myFormData.append('id_usuario', id);
+    myFormData.append('id_curso', this.idCurso);
+    this.postEvaluacion.postExamen(myFormData).subscribe(result => {
+      console.log(result);
+    });
+    const dialogRef = this.dialog.open(EvaluacionCursoComponent,{
+      data: idCurso,
+      width: '100vh'
+    });
+    console.log(idCurso);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
 

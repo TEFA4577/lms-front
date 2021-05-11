@@ -35,7 +35,7 @@ import { ListadoCategoriasComponent } from './components/listado-categorias/list
 import { RespuestasCursoComponent } from './components/curso/respuestas-curso/respuestas-curso.component';
 import { NgFallimgModule } from 'ng-fallimg';
 import { FreeComponent } from './components/pago/components/free/free.component';
-
+import { EvaluacionCursoComponent } from './components/curso/evaluacion-curso/evaluacion-curso.component';
 @NgModule({
   declarations: [
     CursoComponent,
@@ -49,7 +49,8 @@ import { FreeComponent } from './components/pago/components/free/free.component'
     ComentariosCursoComponent,
     ListadoCategoriasComponent,
     RespuestasCursoComponent,
-    FreeComponent
+    FreeComponent,
+    EvaluacionCursoComponent
   ],
   imports: [
     CommonModule,

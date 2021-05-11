@@ -1,0 +1,28 @@
+<mat-dialog-content>
+  <div class="container py-3" *ngFor="let item of prueba">
+    <div class="card">
+      <h3 class="card-header text-center">{{item.texto_prueba}}</h3>
+      <div class="card-body justify-content-center align-self-center">
+        <!--Formulario de registro-->
+        <form [formGroup]="formRegistrar" (ngSubmit)="submitRegistrar($event)" autocomplete="off">
+          <div class="row justify-content-center text-align-justify"
+            *ngFor="let opcion of item.prueba_opcion; let i = index">
+            <div class="col-5">
+              <mat-radio-group aria-label="Select an option" formControlName="texto_prueba_opcion">
+                <mat-radio-button type="radio" name="texto_prueba_opcion" value="{{opcion.id_prueba_pregunta}}"
+                  (click)="getIdP(opcion.id_prueba_pregunta)">
+                  {{ i + 1 }}.{{opcion.texto_prueba_opcion}}</mat-radio-button>
+              </mat-radio-group>
+              <div class="row justify-content-end" align="end">
+                <button mat-icon-button color="primary" type="submit" [disabled]="formRegistrar.invalid">
+                  <mat-icon>send</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+
+</mat-dialog-content>
