@@ -21,7 +21,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
 import { CrearCursoComponent } from './components/crear-curso/crear-curso.component';
 import { ListadoCursoComponent } from './components/listado-curso/listado-curso.component';
 import { AdministrarCursoComponent } from './components/administrar-curso/administrar-curso.component';
@@ -39,6 +38,8 @@ import { TutorialCursoComponent } from './components/tutorial-curso/tutorial-cur
 import { AdministrarEstadoCursoComponent } from './components/administrar-estado-curso/administrar-estado-curso.component';
 import { CrearEvaluacionComponent } from './components/evaluaciones/crear-evaluacion/crear-evaluacion.component';
 import { EditarEvaluacionComponent } from './components/evaluaciones/editar-evaluacion/editar-evaluacion.component';
+import { CrearEvaluacionOpcionComponent } from './components/evaluacion-opciones/crear-evaluacion-opcion/crear-evaluacion-opcion.component';
+import { EditarEvaluacionOpcionComponent } from './components/evaluacion-opciones/editar-evaluacion-opcion/editar-evaluacion-opcion.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,8 @@ import { EditarEvaluacionComponent } from './components/evaluaciones/editar-eval
     AdministrarEstadoCursoComponent,
     CrearEvaluacionComponent,
     EditarEvaluacionComponent,
+    CrearEvaluacionOpcionComponent,
+    EditarEvaluacionOpcionComponent
   ],
   imports: [
     CommonModule,

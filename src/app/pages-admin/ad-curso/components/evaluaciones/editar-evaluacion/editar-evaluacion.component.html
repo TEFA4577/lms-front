@@ -1,1 +1,20 @@
-<p>editar-evaluacion works!</p>
+<div class="d-flex justify-content-between">
+  <h1 mat-dialog-title>Actualizar datos de la prueba</h1>
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<form [formGroup]="formPrueba" (ngSubmit)="sumitPrueba($event)" autocomplete="off">
+  <div mat-dialog-content>
+    <div class="row">
+      <mat-form-field class="col-md-12">
+        <mat-label>Prueba</mat-label>
+        <textarea matInput formControlName="texto_prueba"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-dialog-actions class="col-md-12 justify-content-center">
+    <button style="width: 40%;" mat-raised-button color="primary" [disabled]="formPrueba.invalid">Guardar Cambios</button>
+    <button style="width: 40%;" mat-raised-button color="warn" type="button"[mat-dialog-close]="true">Cancelar</button>
+  </mat-dialog-actions>
+</form>
