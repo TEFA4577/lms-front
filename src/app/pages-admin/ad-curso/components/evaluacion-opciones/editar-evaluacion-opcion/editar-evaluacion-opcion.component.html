@@ -14,7 +14,7 @@
             <textarea matInput formControlName="texto_prueba_opcion"></textarea>
           </mat-form-field>
           <mat-form-field class="col-md-12">
-            <mat-slide-toggle formControlName="respuesta_opcion">Es correcto: {{isChecked}}</mat-slide-toggle>
+            <mat-slide-toggle [(ngModel)]="isChecked" formControlName="respuesta_opcion">Es correcto: {{isChecked}}</mat-slide-toggle>
           </mat-form-field>
         </div>
       </mat-form-field>
