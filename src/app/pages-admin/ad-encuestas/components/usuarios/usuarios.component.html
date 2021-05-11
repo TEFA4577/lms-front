@@ -1,0 +1,37 @@
+<div class="d-flex justify-content-between">
+  <h1 mat-dialog-title>Lista de Usuarios:</h1>
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div mat-dialog-content>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 cardEtiqueta">
+        <h3>Usuarios Destinados en Tu Encuesta</h3>
+        <!--<h5 *ngIf="misRoles.length == 0">no tienes etiquetas seleccionadas en este curso</h5>-->
+        <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip color="accent" selected *ngFor="let miRol of misRoles;let i=index" [removable]="true"
+            (removed)="remove(i)">
+            <!--{{miRol.nombre_rol}}-->
+            <mat-icon matChipRemove color="danger">cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+      <div class="col-md-6 cardEtiqueta">
+        <h3>Usuarios Disponibles</h3>
+        <!--<mat-spinner *ngIf="!etiquetas"></mat-spinner>-->
+        <mat-chip-list>
+          <mat-chip *ngFor="let rol of roles;let i=index" (click)="add(rol)">
+            {{rol.nombre_rol}}
+            <mat-icon matChipRemove (click)="add(rol)" color="accent">add_circle_outline</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
+  </div>
+</div>
+<mat-dialog-actions class="col-md-12 justify-content-center">
+  <button style="width: 40%" mat-raised-button color="primary">Guardar Cambios</button>
+  <button style="width: 40%" mat-raised-button color="warn" [mat-dialog-close]="true">Cancelar</button>
+</mat-dialog-actions>

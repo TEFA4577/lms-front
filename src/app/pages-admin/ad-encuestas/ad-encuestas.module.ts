@@ -20,7 +20,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { EditarPreguntaComponent } from './components/editar-pregunta/editar-pregunta.component';
-
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EditarPreguntaComponent } from './components/editar-pregunta/editar-pre
     EncuestasComponent,
     EditarEncuestaComponent,
     CrearPreguntasComponent,
-    EditarPreguntaComponent
+    EditarPreguntaComponent,
+    UsuariosComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { EditarPreguntaComponent } from './components/editar-pregunta/editar-pre
     MatButtonModule,
     MatTooltipModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    MatChipsModule
   ]
 })
 export class AdEncuestasModule { }

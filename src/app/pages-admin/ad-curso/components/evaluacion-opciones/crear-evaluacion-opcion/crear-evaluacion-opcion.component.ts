@@ -42,7 +42,7 @@ export class CrearEvaluacionOpcionComponent implements OnInit {
   buildForm(): void {
     this.formOpcion = this.formBuilder.group({
       texto_prueba_opcion: ['', Validators.required],
-      respuesta_opcion: ['']
+      respuesta_opcion: ''
     });
   }
   openSnackBar(message: string, action: string): void {
@@ -53,23 +53,23 @@ export class CrearEvaluacionOpcionComponent implements OnInit {
 
   submitOpcion(event): void {
     event.preventDefault();
-    console.log(this.formOpcion.value);
+    //console.log(this.formOpcion.value);
     const myFormData = new FormData();
     myFormData.append('id_prueba', this.id + '');
     myFormData.append('texto_prueba_opcion', this.formOpcion.get('texto_prueba_opcion').value);
     myFormData.append('respuesta_opcion', this.formOpcion.get('respuesta_opcion').value);
-//myFormData.append('respuesta_opcion', JSON.stringify(this.formOpcion.value));
+    //myFormData.append('respuesta_opcion', JSON.stringify(this.formOpcion.value));
     this.serOpcion.registrarOpcion(myFormData).subscribe(res => {
+
       this.opcion = res;
-      this.openSnackBar(this.opcion.mensaje, 'cerrar');
       console.log(res);
+     // this.openSnackBar(this.opcion.mensaje, 'cerrar');
       this.formOpcion.reset();
       this.onNoClick();
     });
   }
   cargarDatos(): void {
     this.serOpcion.datosPrueba(this.id).subscribe(res => {
-      console.log(res);
       this.datos = res;
     });
   }

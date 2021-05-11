@@ -53,9 +53,6 @@ export class CrearEncuestaComponent implements OnInit {
     event.preventDefault();
     console.log(this.formCrearEncuesta.value);
     const myFormData = new FormData();
-    const datos = JSON.parse(localStorage.getItem('datosUsuario'));
-    const id = datos.id_rol;
-    myFormData.append('id_rol', id);
     myFormData.append('texto_encuesta', this.formCrearEncuesta.get('texto_encuesta').value);
 
 
