@@ -4,11 +4,16 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CursosService } from 'src/app/services/cursos.service';
+import { EvaluacionService } from 'src/app/services/evaluacion.service';
 import { CrearModuloComponent } from '../modulos/crear-modulo/crear-modulo.component';
 import { CrearClaseComponent } from '../clases/crear-clase/crear-clase.component';
 import { RecursosComponent } from '../recursos/recursos.component';
 import { EditarModuloComponent } from '../modulos/editar-modulo/editar-modulo.component';
 import { EditarClaseComponent } from '../clases/editar-clase/editar-clase.component';
+import { CrearEvaluacionComponent } from '../evaluaciones/crear-evaluacion/crear-evaluacion.component';
+import { EditarEvaluacionComponent } from '../evaluaciones/editar-evaluacion/editar-evaluacion.component';
+import { CrearEvaluacionOpcionComponent } from '../evaluacion-opciones/crear-evaluacion-opcion/crear-evaluacion-opcion.component';
+import { EditarEvaluacionOpcionComponent } from '../evaluacion-opciones/editar-evaluacion-opcion/editar-evaluacion-opcion.component';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -22,6 +27,7 @@ export class AdministrarCursoComponent implements OnInit {
   datos: any;
   curso: any;
   modulos: any;
+  pruebas: any;
   files: any = [];
   filedata: any;
   formCurso: FormGroup;
@@ -29,6 +35,7 @@ export class AdministrarCursoComponent implements OnInit {
   rutaVideo: any;
   constructor(
     public serCursos: CursosService,
+    public serEvaluacion: EvaluacionService,
     public activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
@@ -46,6 +53,7 @@ export class AdministrarCursoComponent implements OnInit {
       this.datos = data;
       this.curso = this.datos.curso;
       this.modulos = this.datos.modulos;
+      this.pruebas = this.datos.prueba;
       this.setForm();
       console.log(data);
     }, error => {
@@ -260,6 +268,102 @@ export class AdministrarCursoComponent implements OnInit {
   verVideo(ruta): void {
     this.rutaVideo = ruta;
   }
+
+  crearPrueba(id: number):void{
+    const dialogRef = this.dialog.open(CrearEvaluacionComponent, {
+      disableClose: true,
+      data: id
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.cargarDatosCurso();
+    });
+  }
+  editarPrueba(id: number): void {
+    const dialogRef = this.dialog.open(EditarEvaluacionComponent, {
+      disableClose: true,
+      data: id
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.cargarDatosCurso();
+    });
+  }
+  borrarPrueba(id: number): void {
+    Swal.fire({
+      title: 'Eliminar el Prueba?',
+      text: 'seguro que desea eliminar el Prueba!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si deseo eliminar',
+      cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.serEvaluacion.eliminarPrueba(id).subscribe(res => {
+          console.log(res);
+          this.cargarDatosCurso();
+        });
+        Swal.fire(
+          'Eliminado!',
+          'La prueba y su contenido se elimino correctamente.',
+          'success'
+        );
+      }
+    });
+  }
+  crearOpcion(id: number): void {
+    const dialogRef = this.dialog.open(CrearEvaluacionOpcionComponent, {
+      disableClose: true,
+      data: id
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.cargarDatosCurso();
+    });
+  }
+  editarOpcion(id: number): void {
+    const dialogRef = this.dialog.open(EditarEvaluacionOpcionComponent, {
+      disableClose: true,
+      data: id
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.cargarDatosCurso();
+    });
+  }
+  borrarOpcion(id: number): void {
+    Swal.fire({
+      title: 'Eliminar opcion?',
+      text: 'seguro que desea eliminar la opcion!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si deseo eliminar',
+      cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.serEvaluacion.eliminarOpcion(id).subscribe(res => {
+          console.log(res);
+          this.cargarDatosCurso();
+        });
+        Swal.fire(
+          'Eliminado!',
+          'La opcion se elimino correctamente.',
+          'success'
+        );
+      }
+    });
+  }
+
+
   borrarCurso(id: number): void {
     Swal.fire({
       title: 'Eliminar Curso?',

@@ -1,0 +1,23 @@
+  <div class="d-flex justify-content-between">
+    <h1 mat-dialog-title>Crea una respuesta a {{datos.prueba.texto_prueba}}</h1>
+    <button mat-icon-button [mat-dialog-close]="true">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <form [formGroup]="formOpcion" (ngSubmit)="submitOpcion($event)" autocomplete="off">
+    <div mat-dialog-content>
+      <div class="container">
+        <div class="row">
+            <mat-form-field class="col-md-12">
+              <mat-label>Respuesta </mat-label>
+              <input matInput formControlName="texto_prueba_opcion" type="text" placeholder="">
+            </mat-form-field>
+              <mat-slide-toggle formControlName="respuesta_opcion">Es correcto: {{isChecked}}</mat-slide-toggle>
+        </div>
+      </div>
+    </div>
+    <mat-dialog-actions class="col-md-12 justify-content-center">
+      <button style="width: 40%;" mat-raised-button color="primary" [disabled]="formOpcion.invalid">crear respuesta</button>
+      <button style="width: 40%;" mat-raised-button color="warn" [mat-dialog-close]="true">cancelar</button>
+    </mat-dialog-actions>
+  </form>

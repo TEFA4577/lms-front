@@ -16,10 +16,8 @@ import { InterceptorInterceptor } from './interceptors/interceptor.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatStepperModule } from '@angular/material/stepper';
 import { MatDialogModule } from '@angular/material/dialog';
-import { NgFallimgModule } from 'ng-fallimg';
-
+import { NgFallimgModule } from 'ng-fallimg'
 import { AuthService } from './services/auth.service';
 import { CursosService } from './services/cursos.service';
 import { DocentesService } from './services/docentes.service';
@@ -30,7 +28,7 @@ import { PreguntaService } from './services/pregunta.service';
 import { RegistroService } from './services/registro.service';
 import { SolicitudesCompraService } from './services/solicitudes-compra.service';
 import { UsuarioService } from './services/usuario.service';
-
+import { EvaluacionService } from './services/evaluacion.service';
 //...
 import { CursoModule } from './pages/curso/curso.module';
 import { DocenteModule } from './pages/docente/docente.module';
@@ -59,7 +57,6 @@ import { ComponentsModule } from './components/components.module';
     EstudianteModule,
     InicioModule,
     LandingModule,
-    MatStepperModule,
     MatDialogModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -88,7 +85,8 @@ import { ComponentsModule } from './components/components.module';
      PreguntaService,
      RegistroService,
      SolicitudesCompraService,
-     UsuarioService
+     UsuarioService,
+     EvaluacionService
   ],
   bootstrap: [AppComponent]
 })
