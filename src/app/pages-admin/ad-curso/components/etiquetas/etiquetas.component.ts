@@ -20,7 +20,6 @@ export class EtiquetasComponent implements OnInit {
     this.misEtiquetas = data.etiquetas_curso;
     console.log(data);
   }
-
   ngOnInit(): void {
     this.cargarEtiquetas();
   }
@@ -44,8 +43,6 @@ export class EtiquetasComponent implements OnInit {
       //Si no está un, entonces lo insertamos
       this.misEtiquetas = this.misEtiquetas.filter(m => m.nombre_etiqueta != etiqueta.nombre_etiqueta)
       this.misEtiquetas.push(etiqueta);
-
-
     }
     else {
       //De lo contrario

@@ -14,11 +14,11 @@ export class RolService {
   }
 
   eliminarRolEncuesta(id) {
-    return this.http.get(this.API_BACKEND + 'encuestas/eliminar-rol/' + id);
+    return this.http.get(this.API_BACKEND + 'encuesta/eliminar-rol/' + id);
   }
 
   registrarRolEncuesta(id, datos) {
-    return this.http.put(this.API_BACKEND + 'encuestas/registrar-rol/' + id, datos);
+    return this.http.put(this.API_BACKEND + 'encuesta/registrar-rol/' + id, datos);
   }
   mostrarRolEncuesta(id: number): any{
     return this.http.get(this.API_BACKEND + 'roles/encuesta/' + id);

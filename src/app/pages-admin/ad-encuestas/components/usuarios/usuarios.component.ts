@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { UsuarioService } from 'src/app/services/usuario.service';
 import { RolService } from '../../../../services/rol.service';
 import { element } from 'protractor';
 
@@ -12,16 +11,14 @@ import { element } from 'protractor';
 export class UsuariosComponent implements OnInit {
   roles: any;
   misRoles: any = [];
-
   constructor(
     public dialogRef: MatDialogRef<UsuariosComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public setUsuarios: RolService,
   ) {
-    this.misRoles = data.nombre_rol;
+    this.misRoles = data.encuesta_rol;
     console.log(data);
   }
-
   ngOnInit(): void {
     this.cargarRoles();
   }
@@ -40,6 +37,7 @@ export class UsuariosComponent implements OnInit {
     }
   }
   add(rol) {
+    console.log(this.misRoles);
     if (!this.misRoles.includes(rol)) {
       //Si no está un, entonces lo insertamos
       console.log(this.misRoles);

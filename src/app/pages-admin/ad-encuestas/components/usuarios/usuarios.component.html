@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-md-6 cardEtiqueta">
         <h3>Usuarios Destinados en Tu Encuesta</h3>
-        <!--<h5 *ngIf="misRoles.length == 0">no tienes etiquetas seleccionadas en este curso</h5>-->
+        <h5 *ngIf="misRoles.length == 0">no tienes etiquetas seleccionadas en este curso</h5>
         <mat-chip-list #chipList aria-label="Fruit selection">
           <mat-chip color="accent" selected *ngFor="let miRol of misRoles ;let i=index" [removable]="true"
             (removed)="remove(i)">
@@ -20,7 +20,7 @@
       </div>
       <div class="col-md-6 cardEtiqueta">
         <h3>Usuarios Disponibles</h3>
-        <mat-spinner *ngIf="misRoles"></mat-spinner>
+        <mat-spinner *ngIf="!misRoles"></mat-spinner>
         <mat-chip-list>
           <mat-chip *ngFor="let rol of roles;let i=index" (click)="add(rol)">
             {{rol.nombre_rol}}
