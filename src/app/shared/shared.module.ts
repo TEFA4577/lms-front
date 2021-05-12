@@ -21,6 +21,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterCursosComponent } from './components/filter-cursos/filter-cursos.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatTreeModule
   ],
   exports: [
     HeaderComponent,

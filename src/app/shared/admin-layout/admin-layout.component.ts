@@ -5,6 +5,9 @@ import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import { MENU_ADMIN, MENU_DOCENTE } from './menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FlatTreeControl } from '@angular/cdk/tree';
+import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
+
 @Component({
   selector: 'app-admin-layout',
   templateUrl: './admin-layout.component.html',
@@ -17,6 +20,7 @@ export class AdminLayoutComponent implements OnInit {
   open = false;
   datosUsuario: any;
   respuesta: any;
+  panelOpenState = false;
   private mobileQueryListener: () => void;
   constructor(
     changeDetectorRef: ChangeDetectorRef,
