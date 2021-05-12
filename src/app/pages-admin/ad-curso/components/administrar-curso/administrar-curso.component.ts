@@ -328,6 +328,7 @@ export class AdministrarCursoComponent implements OnInit {
   }
   editarOpcion(id: number): void {
     const dialogRef = this.dialog.open(EditarEvaluacionOpcionComponent, {
+
       disableClose: true,
       data: id
     });

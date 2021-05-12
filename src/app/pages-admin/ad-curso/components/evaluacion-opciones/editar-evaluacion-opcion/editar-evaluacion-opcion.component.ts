@@ -1,3 +1,4 @@
+import { CloseScrollStrategy } from '@angular/cdk/overlay';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -9,7 +10,6 @@ import { EvaluacionService } from 'src/app/services/evaluacion.service';
 })
 export class EditarEvaluacionOpcionComponent implements OnInit {
   formOpcion: FormGroup;
-  estadoVideo = false;
   datos: any;
   isChecked = false;
   id: number;
@@ -31,19 +31,21 @@ export class EditarEvaluacionOpcionComponent implements OnInit {
   }
   buildForm(): void {
     this.formOpcion = this.formBuilder.group({
-      texto_prueba_opcion: ['', Validators.required]
+      texto_prueba_opcion: ['', Validators.required],
+      respuesta_opcion: ''
     });
   }
   setForm(): void {
-    this.formOpcion.get('texto_prueba_opcion').setValue(this.datos.clase.texto_prueba_opcion);
-    this.formOpcion.get('respuesta_opcion').setValue(this.datos.clase.respuesta_opcion);
+    this.formOpcion.get('texto_prueba_opcion').setValue(this.datos.texto_prueba_opcion);
+    this.formOpcion.get('respuesta_opcion').setValue(this.datos.respuesta_opcion);
   }
   submitOpcion(event): void {
     event.preventDefault();
     console.log(this.formOpcion.value);
-    this.serOpcion.actualizarOpcion(this.formOpcion, this.id).subscribe(res => {
+    this.serOpcion.actualizarOpcion(this.formOpcion.value, this.id).subscribe(res => {
       console.log(res);
       this.formOpcion.reset();
+      this.onNoClick();
       this.cargarDatos();
     });
   }

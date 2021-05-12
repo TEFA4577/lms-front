@@ -79,11 +79,11 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
     });
   }
 
-  destinoEncuesta(curso) {
-    console.log(curso);
+  destinoEncuesta(encu) {
+    console.log(encu);
     const dialogRef = this.dialog.open(UsuariosComponent, {
-      //disableClose: true,
-      //data: curso,
+      disableClose: true,
+      data: encu,
       });
     dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');

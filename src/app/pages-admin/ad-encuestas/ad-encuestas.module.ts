@@ -22,6 +22,7 @@ import { MatListModule } from '@angular/material/list';
 import { EditarPreguntaComponent } from './components/editar-pregunta/editar-pregunta.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatTooltipModule,
     MatDialogModule,
     MatListModule,
-    MatChipsModule
+    MatChipsModule,
+    MatProgressSpinnerModule
   ]
 })
 export class AdEncuestasModule { }

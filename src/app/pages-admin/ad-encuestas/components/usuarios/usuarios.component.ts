@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { RolService } from '../../../../services/rol.service';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-usuarios',
@@ -10,14 +11,14 @@ import { RolService } from '../../../../services/rol.service';
 })
 export class UsuariosComponent implements OnInit {
   roles: any;
-  misRoles: any[];
+  misRoles: any = [];
 
   constructor(
     public dialogRef: MatDialogRef<UsuariosComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public serEtiqueta: RolService,
+    public setUsuarios: RolService,
   ) {
-    //this.misRoles = data.nombre_rol;
+    this.misRoles = data.nombre_rol;
     console.log(data);
   }
 
@@ -25,7 +26,7 @@ export class UsuariosComponent implements OnInit {
     this.cargarRoles();
   }
   cargarRoles() {
-    this.serEtiqueta.listarRoles().subscribe(data => {
+    this.setUsuarios.listarRoles().subscribe(data => {
       this.roles = data;
     });
   }
@@ -39,29 +40,27 @@ export class UsuariosComponent implements OnInit {
     }
   }
   add(rol) {
-    console.log(this.misRoles);
     if (!this.misRoles.includes(rol)) {
       //Si no está un, entonces lo insertamos
-      this.misRoles = this.misRoles.filter(m => m.nombre_etiqueta != rol.nombre_rol)
+      console.log(this.misRoles);
+      this.misRoles = this.misRoles.filter(m => m.nombre_rol != rol.nombre_rol)
       this.misRoles.push(rol);
-
-
     }
     else {
       //De lo contrario
       console.log("Ya fue seleccionado");
     }
   }
-  /*guardar() {
-    this.serEtiqueta.eliminarEtiquetasCurso(this.data.id_curso).subscribe(res => {
-      this.misEtiquetas.forEach(element => {
+  guardar() {
+    this.setUsuarios.eliminarRolEncuesta(this.data.id_encuesta).subscribe(res => {
+      this.misRoles.forEach(element => {
         const registro = {
-          id_etiqueta: element.id_etiqueta
+          id_rol: element.id_rol
         }
-        this.serEtiqueta.registrarEtiquetaCurso(this.data.id_curso, registro).subscribe(res => console.log(res));
+        this.setUsuarios.registrarRolEncuesta(this.data.id_encuesta, registro).subscribe(res => console.log(res));
       });
       this.onNoClick();
     })
-  }*/
+  }
 
 }

@@ -18,6 +18,7 @@ export class EtiquetasComponent implements OnInit {
   ) {
     // this.misEtiquetas=this.misEtiquetas.concat(data.etiquetas_curso);
     this.misEtiquetas = data.etiquetas_curso;
+    console.log(data);
   }
 
   ngOnInit(): void {

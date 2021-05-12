@@ -27,23 +27,6 @@ export class EvaluacionCursoComponent implements OnInit {
   encuesta: any;
   prueba: any;
   resEleccion: string;
-  //misRespuestas: string[] = ['Si', 'No'];
-  misRespuestas: any = [];
-  pId: any
-  isActive = false;
-  step = 0;
-
-  setStep(index: number) {
-    this.step = index;
-  }
-
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
-  }
 
   constructor(
     public dialogRef: MatDialogRef<EvaluacionCursoComponent>,
@@ -55,16 +38,19 @@ export class EvaluacionCursoComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: number
     ) { this.id = data;}
 
-  getIdP(idP: any) {
-    this.pId = idP;
-    console.log(this.pId);
-    //his.openComentarios(idClase);
-  }
-  openSnackBar(message: string, action: string): void {
-    this._snackBar.open(message, action, {
-      duration: 3000,
-    });
-  }
+    step = 0;
+
+    setStep(index: number) {
+      this.step = index;
+    }
+
+    nextStep() {
+      this.step++;
+    }
+
+    prevStep() {
+      this.step--;
+    }
 
   buildForm(): void {
     this.formRegistrar = this.formBuilder.group({
@@ -85,7 +71,6 @@ export class EvaluacionCursoComponent implements OnInit {
     this.serEvaluacion.evaluarExamen(myFormData).subscribe(res => {
       const obj: any = res;
       this.respuesta = res;
-      this.openSnackBar(this.respuesta.mensaje, 'cerrar');
       console.log(res);
     });
   }
