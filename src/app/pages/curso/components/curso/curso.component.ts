@@ -172,9 +172,7 @@ export class CursoComponent implements OnInit, OnDestroy {
     const datos = JSON.parse(localStorage.getItem('datosUsuario'));
     myFormData.append('id_usuario', datos.id_usuario);
     myFormData.append('id_curso', this.idCurso);
-    console.log(this.idCurso);
     this.postEvaluacion.postExamen(myFormData).subscribe(result => {
-      console.log(result);
       const dialogRef = this.dialog.open(EvaluacionCursoComponent,{
         data: idCurso,
         width: '100vh'

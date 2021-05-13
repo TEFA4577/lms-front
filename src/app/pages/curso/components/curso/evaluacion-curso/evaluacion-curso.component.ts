@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EncuestasService } from 'src/app/services/encuestas.service';
 import { EvaluacionService } from 'src/app/services/evaluacion.service';
-import { UsuarioService } from 'src/app/services/usuario.service';
+// import { CursosService } from 'src/app/services/cursos.service';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -20,22 +20,26 @@ export class EvaluacionCursoComponent implements OnInit {
   formRegistrar: FormGroup;
   id: number;
   respuesta: any;
+  message: string;
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   datosUsuario: any;
   estado: boolean;
   encuesta: any;
+  count: any;
   prueba: any;
   resEleccion: string;
   isActive = false;
-  step = 1;
+  step = 0;
+  pId: any;
+  certificadoBoton = true;
   constructor(
     public dialogRef: MatDialogRef<EvaluacionCursoComponent>,
     public SerEncuestas: EncuestasService,
     public serEvaluacion: EvaluacionService,
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
-    private usuarioService: UsuarioService,
+    // public serCursos: CursosService,
     @Inject(MAT_DIALOG_DATA) public data: number
   ) { this.id = data;}
 
@@ -43,39 +47,29 @@ export class EvaluacionCursoComponent implements OnInit {
     this.step = index;
   }
 
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
-  }
-
   buildForm(): void {
     this.formRegistrar = this.formBuilder.group({
       texto_prueba_opcion: ['', Validators.required]
     });
-    this.setForm();
   }
-
-  setForm(): void {
-    this.formRegistrar.get('texto_prueba_opcion');
+  getIdP(idP: any) {
+    this.pId = idP;
+    console.log(this.pId);
+    //his.openComentarios(idClase);
   }
-
   submitRegistrar(event: Event): void {
-    event.preventDefault();
     this.isActive = true;
-    const myFormData = new FormData();
-    myFormData.append('texto_prueba_opcion', this.formRegistrar.get('texto_prueba_opcion').value);
-    this.serEvaluacion.evaluarExamen(myFormData).subscribe(res => {
-      const obj: any = res;
+    this.serEvaluacion.evaluarExamen(this.pId).subscribe(res => {
       this.respuesta = res;
-      console.log(res);
-      this.onNoClick();
+      this.message = this.respuesta.mensaje;
+      if(this.respuesta.mensaje === "correcta"){
+        this.step++;
+      }
+      this.formRegistrar.reset();
     });
   }
 
-mostrarExamen(): void {
+  mostrarExamen(): void {
     this.serEvaluacion.darExamen(this.id).subscribe(res => {
       console.log(res);
       console.log(this.id);
@@ -86,9 +80,16 @@ mostrarExamen(): void {
   }
   ngOnInit(): void {
     this.mostrarExamen();
+    this.buildForm();
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
+  // verCertificado() {
+  //   console.log(this.id);
+  //   this.serCursos.certificado(this.id).subscribe(res => {
+  //     console.log(res);
+  //   }, error => console.log(error))
+  // }
 }
