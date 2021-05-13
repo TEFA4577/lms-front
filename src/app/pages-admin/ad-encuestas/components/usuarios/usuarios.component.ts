@@ -16,7 +16,7 @@ export class UsuariosComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public setUsuarios: RolService,
   ) {
-    this.misRoles = data.encuesta_rol;
+    this.misRoles = data.roles;
     console.log(data);
   }
   ngOnInit(): void {
