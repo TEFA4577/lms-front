@@ -187,7 +187,8 @@
 
 <!--END FORMULARIO-->
 <div class="container py-3" *ngFor="let item of encuesta">
-  <div class="card" *ngIf="datosUsuario.id_rol == item.id_rol">
+<div class="card" *ngFor="let rol of item.roles">
+  <div *ngIf="datosUsuario.id_rol == rol.id_rol">
     <h3 class="card-header text-center">Realiza esta pequeña encuesta: {{item.texto_encuesta}}</h3>
     <div class="card-body justify-content-center align-self-center">
       <!--Formulario de registro-->
@@ -256,5 +257,6 @@
 
 
   </div>
-  <!--</div>-->
+</div>
+</div>
   <!--END FORMULARIO-->
