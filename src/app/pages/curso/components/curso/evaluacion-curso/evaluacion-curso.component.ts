@@ -27,7 +27,8 @@ export class EvaluacionCursoComponent implements OnInit {
   encuesta: any;
   prueba: any;
   resEleccion: string;
-
+  isActive = false;
+  step = 1;
   constructor(
     public dialogRef: MatDialogRef<EvaluacionCursoComponent>,
     public SerEncuestas: EncuestasService,
@@ -36,21 +37,19 @@ export class EvaluacionCursoComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private usuarioService: UsuarioService,
     @Inject(MAT_DIALOG_DATA) public data: number
-    ) { this.id = data;}
+  ) { this.id = data;}
 
-    step = 0;
+  setStep(index: number) {
+    this.step = index;
+  }
 
-    setStep(index: number) {
-      this.step = index;
-    }
+  nextStep() {
+    this.step++;
+  }
 
-    nextStep() {
-      this.step++;
-    }
-
-    prevStep() {
-      this.step--;
-    }
+  prevStep() {
+    this.step--;
+  }
 
   buildForm(): void {
     this.formRegistrar = this.formBuilder.group({
@@ -65,13 +64,14 @@ export class EvaluacionCursoComponent implements OnInit {
 
   submitRegistrar(event: Event): void {
     event.preventDefault();
-    console.log(this.formRegistrar.value);
+    this.isActive = true;
     const myFormData = new FormData();
     myFormData.append('texto_prueba_opcion', this.formRegistrar.get('texto_prueba_opcion').value);
     this.serEvaluacion.evaluarExamen(myFormData).subscribe(res => {
       const obj: any = res;
       this.respuesta = res;
       console.log(res);
+      this.onNoClick();
     });
   }
 
