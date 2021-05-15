@@ -43,9 +43,11 @@ export class CursoComponent implements OnInit, OnDestroy {
   showComments = false;
   dat: any;
   data: any;
+  progresoP: any;
   certificadoBoton = false;
   evaluacionButton = false;
-  idRes: any;
+  evaluacion: any;
+  idRes: number;
   idCurso: any;
   estadoCargando = false;
   respuesta: any;
@@ -70,16 +72,14 @@ export class CursoComponent implements OnInit, OnDestroy {
 
   getData() {
     this.serCursos.cursarCurso(this.id).subscribe(data => {
-      console.log(data);
       this.datos = data;
       this.clasesModulo = this.datos.modulos;
       this.curso = this.datos.curso;
       this.modulos = this.datos.modulos;
+      this.evaluacion = this.datos.evaluacion;
       this.progreso = JSON.parse(this.datos.cursoUsuario.progreso_curso);
       this.certificado =  this.datos.cursoUsuario.id_usuario_curso;
-      console.log(this.certificado);
-      console.log(this.progreso);
-      console.log(this.clasesModulo);
+      this.progresoP = JSON.parse(this.evaluacion[0].progreso_evaluacion);
       this.estado = false;
       this.progresoBarra();
     });
@@ -98,13 +98,16 @@ export class CursoComponent implements OnInit, OnDestroy {
     console.log(this.count);
     if (this.count == 100) {
       this.evaluacionButton = true;
+      if(this.progresoP == 100){
+        this.certificadoBoton = true;
+        this.evaluacionButton = false;
+      }
     }
   }
 
   // esta funcion abre y muestra los recursos de la clase
   getClase(identificador) {
     this.serCursos.presentacionClase(identificador).subscribe(data => {
-      console.log(data);
       this.datos = data;
       this.recursos = this.datos.recursos;
       console.log(this.recursos);
@@ -129,7 +132,6 @@ export class CursoComponent implements OnInit, OnDestroy {
   //obtengo el id de la clase
   getIdClase(idClase: any) {
     this.clasesId = idClase;
-    console.log(this.clasesId);
     this.openComentarios(idClase);
   }
 
@@ -137,7 +139,6 @@ export class CursoComponent implements OnInit, OnDestroy {
   openComentarios(comments){
     this.serCursos.mostrarComentario(comments).subscribe(res => {
       this.dat = res;
-      console.log(this.dat);
     }, error => {
       console.log(error);
     });
@@ -161,20 +162,23 @@ export class CursoComponent implements OnInit, OnDestroy {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      console.log(idR);
       this.cargarDatos();
     });
   }
 
   openEvaluacion( idCurso: number):void {
     this.idCurso = idCurso;
+
     const myFormData = new FormData();
     const datos = JSON.parse(localStorage.getItem('datosUsuario'));
     myFormData.append('id_usuario', datos.id_usuario);
     myFormData.append('id_curso', this.idCurso);
+
+    this.idRes = this.evaluacion[0].id_usuario_evaluacion;
+    console.log(this.idRes);
     this.postEvaluacion.postExamen(myFormData).subscribe(result => {
       const dialogRef = this.dialog.open(EvaluacionCursoComponent,{
-        data: idCurso,
+        data: [idCurso, this.idRes],
         width: '100vh'
       });
       console.log(idCurso);

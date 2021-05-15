@@ -19,6 +19,7 @@ import {
 export class EvaluacionCursoComponent implements OnInit {
   formRegistrar: FormGroup;
   id: number;
+  idE: number;
   respuesta: any;
   message: string;
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
@@ -29,8 +30,8 @@ export class EvaluacionCursoComponent implements OnInit {
   count: any;
   prueba: any;
   resEleccion: string;
-  isActive = false;
-  step = 0;
+  progreso: any;
+  step = 1;
   pId: any;
   certificadoBoton = true;
   constructor(
@@ -41,7 +42,10 @@ export class EvaluacionCursoComponent implements OnInit {
     private _snackBar: MatSnackBar,
     // public serCursos: CursosService,
     @Inject(MAT_DIALOG_DATA) public data: number
-  ) { this.id = data;}
+  ) {
+    this.id = data[0];
+    this.idE = data[1];
+  }
 
   setStep(index: number) {
     this.step = index;
@@ -49,30 +53,43 @@ export class EvaluacionCursoComponent implements OnInit {
 
   buildForm(): void {
     this.formRegistrar = this.formBuilder.group({
-      texto_prueba_opcion: ['', Validators.required]
+      texto_prueba_opcion: [false, Validators.requiredTrue]
     });
+    // this.setForm();
   }
-  getIdP(idP: any) {
+
+// setForm(): void {
+//   this.formRegistrar.get(' texto_prueba_opcion');
+// }
+  getId(idP: any) {
     this.pId = idP;
     console.log(this.pId);
-    //his.openComentarios(idClase);
   }
   submitRegistrar(event: Event): void {
-    this.isActive = true;
     this.serEvaluacion.evaluarExamen(this.pId).subscribe(res => {
       this.respuesta = res;
       this.message = this.respuesta.mensaje;
       if(this.respuesta.mensaje === "correcta"){
         this.step++;
+        this.message = "";
+        this.putData();
+      }else{
+        this.message = "incorrecto";
       }
-      this.formRegistrar.reset();
     });
+  }
+
+  putData(){
+    this.progreso = 100;
+    const progres = {
+      'progreso_evaluacion': JSON.stringify(this.progreso),
+    };
+    this.serEvaluacion.progresoEvaluacion(progres, this.idE).subscribe(resp => {
+    })
   }
 
   mostrarExamen(): void {
     this.serEvaluacion.darExamen(this.id).subscribe(res => {
-      console.log(res);
-      console.log(this.id);
       this.prueba = res;
     }, error => {
       console.log(error);
@@ -84,6 +101,7 @@ export class EvaluacionCursoComponent implements OnInit {
   }
 
   onNoClick(): void {
+    this.buildForm();
     this.dialogRef.close();
   }
   // verCertificado() {

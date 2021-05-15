@@ -6,14 +6,14 @@
         <!--Formulario de registro-->
           <mat-accordion class="example-headers-align col-md-12" *ngFor="let item of prueba; let i = index">
             <form [formGroup]="formRegistrar" autocomplete="off">
-            <mat-expansion-panel [expanded]="step === i+1" (opened)="setStep(item.id_prueba)" hideToggle>
+            <mat-expansion-panel [expanded]="step === i+1" (opened)="setStep(i+1)" hideToggle>
               <mat-expansion-panel-header>
                 <mat-panel-title>{{item.texto_prueba}}
                 </mat-panel-title>
               </mat-expansion-panel-header>
                 <mat-radio-group aria-label="Select an option" formControlName="texto_prueba_opcion">
                   <div  *ngFor="let opcion of item.prueba_opcion">
-                    <mat-radio-button name="texto_prueba_opcion" (click)="getIdP(opcion.id_prueba_opcion)">
+                    <mat-radio-button (click)="getId(opcion.id_prueba_opcion)">
                       {{opcion.texto_prueba_opcion}}
                     </mat-radio-button>
                   </div>

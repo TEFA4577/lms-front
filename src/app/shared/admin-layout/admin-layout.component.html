@@ -28,9 +28,8 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav hasBackdrop="false" class="example-sidenav" fixedInViewport="true"
     [mode]="mobileQuery.matches ? 'over' : 'side'" fixedTopGap="56">
-    <br>
 
-    <!-- <h4 align="center" mat-subheader>Menu Docente</h4> -->
+    <h4 align="center" mat-subheader>Menu Docente</h4>
     <mat-list *ngFor="let item of menuDocente">
       <mat-accordion>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
