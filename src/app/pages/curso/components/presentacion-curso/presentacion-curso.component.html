@@ -12,7 +12,7 @@
                   * Secciones-->
       <mat-card class="example-card" *ngIf="curso">
         <!--Fotografia de referencia al curso-->
-        <img mat-card-image src="{{ curso.imagen_curso }}" fallimg/>
+        <img mat-card-image src="{{ curso.imagen_curso }}" fallimg />
         <!--Informacion del curso-->
         <mat-card-header>
           <mat-card-title class="py-3">{{ curso.nombre_curso }}
@@ -25,14 +25,69 @@
             routerLink="/register">Registrate y compra el curso!
             <!--<a href="/register" style="color: white;">Registrate y compra el curso!</a>-->
           </button>
+
           <ng-template #logged>
-            <button mat-raised-button *ngIf="curso.precio == 0" (click)="metodoFree()" class="btn-block py-1" color="accent">
-              Adquiere el Curso, GRATIS
-            </button>
-            <button mat-raised-button *ngIf="curso.precio != 0" (click)="openCompra();" class="btn-block py-1" color="primary">
-              ¡Compra el curso ahora!, por {{ curso.precio }} Bs.
-            </button>
+            <button mat-raised-button *ngIf="curso.precio == 0" (click)="metodoFree()" class="btn-block py-1"
+            color="accent">
+            Adquiere el Curso, GRATIS
+          </button>
+          <button mat-raised-button *ngIf="curso.precio != 0" (click)="openCompra();" class="btn-block py-1"
+            color="primary">
+            ¡Compra el curso ahora!, por {{ curso.precio }} Bs.
+          </button>
+
+            <br>
+            <!--<div *ngIf="datosUsuario">
+              <div *ngFor="let item of misCursos">
+                <div *ngIf="curso.id_curso == item.id_curso">
+
+                  <div *ngIf="item.estado_usuario_curso != 'no confirmado'">
+                    <button mat-raised-button disabled *ngIf="curso.precio != 0" (click)="openCompra();"
+                      class="btn-block py-1" color="primary">
+                      Ya adquiriste este curso!
+                    </button>
+                  </div>
+                  <div *ngIf="item.estado_usuario_curso != 'adquirido'">
+                    <button mat-raised-button disabled *ngIf="curso.precio != 0" (click)="openCompra();"
+                      class="btn-block py-1" color="primary">
+                      Aun no se aprobo la solicitud de tu Compra
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+            <!--<div *ngIf="misCursos">
+              <div *ngIf="datosUsuario">
+                <div *ngFor="let item of misCursos">
+                  <div *ngIf="datosUsuario.id_usuario == item.id_usuario">
+                    <div *ngIf="curso.id_curso == item.id_curso">
+                      <br>
+                      <div class="alert alert-warning" role="alert" *ngIf="item.estado_usuario_curso != 'adquirido'">
+                        Aun no se aprobo la solicitud de tu Compra
+                      </div>
+                      <div class="alert alert-success" role="alert" *ngIf="item.estado_usuario_curso != 'no confirmado'">
+                        Ya adquiriste el curso
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+            <div *ngIf="datosUsuario">
+              <div *ngFor="let item of misCursos">
+                <div *ngIf="curso.id_curso == item.id_curso">
+                  <br>
+                  <div class="alert alert-warning" role="alert" *ngIf="item.estado_usuario_curso != 'adquirido'">
+                    Aun no se aprobo la solicitud de tu Compra
+                  </div>
+                  <div class="alert alert-success" role="alert" *ngIf="item.estado_usuario_curso != 'no confirmado'">
+                    Ya adquiriste este curso
+                  </div>
+                </div>
+              </div>
+            </div>
           </ng-template>
+
         </mat-card-content>
       </mat-card>
       <br>
@@ -70,7 +125,7 @@
             <mat-card-content>
               <p align="justify">
                 Número de Secciones:
-                 <a class="sub-seccion">{{ modulos.length }}</a>
+                <a class="sub-seccion">{{ modulos.length }}</a>
               </p>
               <p> Precio del Curso: <a class="sub-seccion">{{ curso.precio }} Bs.</a></p>
               <p> Fecha de Publicación: <a class="sub-seccion">{{curso.created_at | date:"MM/dd/yy"}}</a></p>
@@ -86,13 +141,13 @@
             </mat-card-title>
             <hr />
             <p align="justify" class="descript">
-             {{ curso.descripcion_curso }}
+              {{ curso.descripcion_curso }}
             </p>
             <!--Contenido del Curso-->
             <mat-card-title class="py-2">
               Contenido del curso
             </mat-card-title>
-            <hr/>
+            <hr />
             <mat-accordion *ngFor="let item of modulos; let i = index">
               <mat-expansion-panel hideToggle>
                 <mat-expansion-panel-header>

@@ -28,14 +28,12 @@ export class PresentacionDocenteComponent implements OnInit {
   // tslint:disable-next-line: typedef
   mostrarDocente() {
     this.serDocente.mostrarDocente(this.id).subscribe(data => {
-      console.log(data);
       this.docente = data;
     });
   }
 
   cursoDeDocente() {
     this.serDocente.cursoDeDocente(this.id).subscribe(data => {
-      console.log(data);
       this.curso = data;
     });
   }

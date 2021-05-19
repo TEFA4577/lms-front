@@ -65,8 +65,8 @@ export class UsuarioService {
   adquirirCurso(datos: any) {
     return this.http.post(this.API_BACKEND + 'adquirir-curso', datos);
   }
-  adquirirMembresia(datos: any, id) {
-    return this.http.post(this.API_BACKEND + 'membresias/adquirir/' +id, datos);
+  adquirirMembresia(datos: any) {
+    return this.http.post(this.API_BACKEND + 'membresias/adquirir', datos);
   }
   // tslint:disable-next-line: typedef
   misCursos() {
@@ -74,6 +74,11 @@ export class UsuarioService {
     const id = datos.id_usuario;
     return this.http.get(this.API_BACKEND + 'usuario/mis-cursos/' + id);
   }
+  /*misSolicitudes(){
+    const datos = JSON.parse(localStorage.getItem('datosUsuario'));
+    const id = datos.id_usuario;
+    return this.http.get(this.API_BACKEND + 'usuario/mis-solicitudes/' + id);
+  }*/
   // tslint:disable-next-line: typedef
   actualizarUsuario(datos, id) {
     return this.http.post(this.API_BACKEND + 'usuario/actualizar/' + id, datos);

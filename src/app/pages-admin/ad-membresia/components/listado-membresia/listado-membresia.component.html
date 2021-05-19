@@ -10,7 +10,10 @@
   <div *ngIf="!membresias" class="sinDatos d-flex justify-content-center">
     <p class="mensaje">Aún no se tienen membresias disponibles</p>
   </div>
-  <div class="row" *ngIf="membresias">
+  <div *ngIf="miMemb.length != 0">
+    <p class="mensaje">Usted cuenta con una membresia Activa</p>
+  </div>
+  <div class="row" *ngIf="membresias && miMemb.length == 0">
     <div class="col-md-4" *ngFor="let item of membresias">
       <mat-card>
         <mat-card-header>
@@ -18,7 +21,10 @@
         </mat-card-header>
         <img mat-card-image src="{{ item.imagen_membresia}}" class="imgMembresia"/>
         <mat-card-content>
-          <mat-accordion>
+          <p *ngIf="item.precio_membresia == 0">
+            <button color="accent" mat-raised-button (click)="metodoFree(item.id_membresia)">¡GRATIS!</button>
+          </p>
+          <mat-accordion *ngIf="item.precio_membresia != 0">
             <mat-expansion-panel hideToggle>
               <mat-expansion-panel-header background="black">
                 <mat-panel-title>

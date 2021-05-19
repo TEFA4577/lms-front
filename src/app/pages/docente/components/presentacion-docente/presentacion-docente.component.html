@@ -1,13 +1,13 @@
 <div class="container body py-5">
-  <div class="row">
+  <div class="row" *ngIf="docente">
     <div class="col-md-4">
-      <mat-card *ngIf="docente">
+      <mat-card>
         <mat-card-header>
           <mat-card-title>Instructor/a: {{ docente.nombre_usuario }}</mat-card-title>
         </mat-card-header>
         <img mat-card-image src="{{docente.foto_usuario}}" alt="{{docente.usurio_nombre}}" fallimg="avatar">
         <hr>
-        <mat-card-content>
+        <mat-card-content *ngIf="docente.datos_docente">
           <mat-card-title align="center">
             <h2>Información del Instructor</h2>
           </mat-card-title>

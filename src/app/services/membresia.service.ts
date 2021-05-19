@@ -9,6 +9,11 @@ export class MembresiaService {
   API_BACKEND = environment.urlBackend;
   constructor(public http: HttpClient) { }
 
+  docenteMembresia(){
+    const datos = JSON.parse(localStorage.getItem('datosUsuario'));
+    const id = datos.id_usuario;
+    return this.http.get(this.API_BACKEND + 'membresia/docente/' +id);
+  }
   registrarMembresia(datos) {
     return this.http.post(this.API_BACKEND + 'membresias/registrar', datos);
   }
@@ -19,7 +24,9 @@ export class MembresiaService {
     return this.http.get(this.API_BACKEND + 'membresias/' + id);
   }
   listarMembresia(){
-    return this.http.get(this.API_BACKEND + 'membresias');
+    const datos = JSON.parse(localStorage.getItem('datosUsuario'));
+    const id = datos.id_usuario;
+    return this.http.get(this.API_BACKEND + 'membresias/' +id);
   }
   admMembresia(){
     return this.http.get(this.API_BACKEND + 'membresias-administrar');

@@ -1,3 +1,9 @@
+<div *ngIf="miMemb.length != 0" class="alert alert-success" role="alert">
+  Usted dispone de una membresia que se encuentra activa.
+</div>
+<div  *ngIf="miMemb.length === 0" class="alert alert-danger" role="alert">
+  Debes adquirir una Membresia<a mat-stroked-button color="primary" href="#/admin/membresias/docente-membresia" class="alert-link">(click Aquí)</a> para vender tus cursos.
+</div>
 <div class="container">
   <mat-card>
     <mat-card-content>
