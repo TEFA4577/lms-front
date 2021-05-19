@@ -89,6 +89,8 @@ export class RegisterComponent implements OnInit {
       this.usuario.correo_usuario = datos.user.email;
       this.usuario.foto = datos.user.photoURL;
       this.usuario.password = datos.user.uid;
+      console.log(this.usuario);
+
       this.registrarDatos(this.usuario);
     });
   }

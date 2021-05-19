@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LayoutComponent } from './layout/layout.component';
 import { SharedModule } from './shared/shared.module';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage'; //storage
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { InterceptorInterceptor } from './interceptors/interceptor.interceptor';
@@ -62,6 +63,7 @@ import { ComponentsModule } from './components/components.module';
     HttpClientModule,
     NgbModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule, //storage
     AngularFireAuthModule,
     ReactiveFormsModule,
     MatSnackBarModule,
