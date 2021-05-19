@@ -28,6 +28,9 @@ export class EncuestasService {
   mostrarPregunta(id){
     return this.http.get(this.API_BACKEND + 'encuesta-preguntas/mostrar/' + id);
   }
+  cantidadRes(id){
+    return this.http.get(this.API_BACKEND + 'encuesta-respuestas/cantidad/' + id);
+  }
   listarPreguntasEncuestas(){
     return this.http.get(this.API_BACKEND + 'encuesta-preguntas/list');
   }

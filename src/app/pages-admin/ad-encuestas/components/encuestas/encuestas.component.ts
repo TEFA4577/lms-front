@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { CrearEncuestaComponent } from '../../components/crear-encuesta/crear-encuesta.component';
 import { EditarEncuestaComponent } from '../../components/editar-encuesta/editar-encuesta.component';
 import { CrearPreguntasComponent } from '../../components/crear-preguntas/crear-preguntas.component';
+import { ResultadosEncuestasComponent } from '../resultados-encuestas/resultados-encuestas.component';
 
 import { EncuestasService } from '../../../../services/encuestas.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -51,10 +52,10 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
 
   listarEncuestas() {
     this.serEncuesta.listarEncuestas().subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.encuestas = data;
       this.resulEncuesta = this.encuestas;
-      console.log(this.resulEncuesta.length);
+      //console.log(this.resulEncuesta.length);
       this.encuestas = data;
       this.dataSource = new MatTableDataSource(this.encuestas);
       this.dataSource.paginator = this.paginator;
@@ -64,9 +65,9 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
 
   listarPreguntas(){
     this.serEncuesta.listarPreguntasEncuestas().subscribe( data => {
-      console.log(data);
+      //console.log(data);
       this.preguntas = data;
-      console.log(this.preguntas.length);
+      //console.log(this.preguntas.length);
     });
   }
 
@@ -152,7 +153,7 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      console.log(idP);
+      //console.log(idP);
       this.listarEncuestas();
     });
   }
@@ -164,7 +165,7 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      console.log(idPE);
+      //console.log(idPE);
       this.listarEncuestas();
     });
   }
@@ -182,7 +183,7 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.serEncuesta.eliminarPregunta(id).subscribe(res => {
-          console.log(res);
+          //console.log(res);
           this.listarEncuestas();
         });
         Swal.fire(
@@ -191,6 +192,19 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
           'success'
         );
       }
+    });
+  }
+
+
+  resultadosPreguntas(idR: number): void {
+    const dialogRef = this.dialog.open(ResultadosEncuestasComponent, {
+      data: idR,
+      width: '200vh'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(idR);
+      this.listarEncuestas();
     });
   }
 

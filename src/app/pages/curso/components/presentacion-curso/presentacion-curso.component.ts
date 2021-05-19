@@ -60,7 +60,6 @@ export class PresentacionCursoComponent implements OnInit {
     *Descripcion: La funcion lista todas los detalles de la presentacion del curso
     * Tipo: obtencion de evento por su ID
   */
-
   comprobarAuth(): void {
     this.estado = this.miscursosSrv.estadoSession();
     if (this.estado) {
