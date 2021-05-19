@@ -32,6 +32,8 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<Encuestas>;
   expandedElement: Encuestas | null;
   encuestas: any;
+  resulEncuesta: any;
+  preguntas: any;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   // obtener el orden de la tabla
@@ -44,15 +46,27 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.listarEncuestas();
+    this.listarPreguntas();
   }
 
   listarEncuestas() {
     this.serEncuesta.listarEncuestas().subscribe(data => {
       console.log(data);
       this.encuestas = data;
+      this.resulEncuesta = this.encuestas;
+      console.log(this.resulEncuesta.length);
+      this.encuestas = data;
       this.dataSource = new MatTableDataSource(this.encuestas);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+    });
+  }
+
+  listarPreguntas(){
+    this.serEncuesta.listarPreguntasEncuestas().subscribe( data => {
+      console.log(data);
+      this.preguntas = data;
+      console.log(this.preguntas.length);
     });
   }
 

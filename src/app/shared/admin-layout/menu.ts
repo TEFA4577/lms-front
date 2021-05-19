@@ -1,13 +1,13 @@
 export const MENU_DOCENTE = [
-  {
-    grupo: 'Incio',
-    contenido: [
-      {
-        titulo: 'Volver a Inicio',
-        link: ''
-      }
-    ]
-  },
+  /*{
+     grupo: 'Incio',
+     contenido: [
+       {
+         titulo: 'Volver a Inicio',
+         link: ''
+       }
+     ]
+   },*/
   {
     grupo: 'Cursos',
     contenido: [
@@ -41,25 +41,12 @@ export const MENU_DOCENTE = [
 ];
 export const MENU_ADMIN = [
   {
-    grupo: 'Usuarios',
+    grupo: 'Reportes y Graficas',
     contenido: [
       {
-        titulo: 'Administrar Usuarios',
-        link: './usuarios/administrar',
-      }
-    ]
-  },
-  {
-    grupo: 'Membresia',
-    contenido: [
-      {
-        titulo: 'Administrar Membresia',
-        link: './membresias'
+        titulo: 'Encuestas',
+        link: './preguntas-frecuentes'
       },
-      {
-        titulo: 'Solicitud de Membresia',
-        link: './membresias/solicitudes',
-      }
     ]
   },
   {
@@ -80,11 +67,15 @@ export const MENU_ADMIN = [
     ]
   },
   {
-    grupo: 'Etiquetas',
+    grupo: 'Membresias',
     contenido: [
       {
-        titulo: 'Administrar Etiquetas',
-        link: './etiquetas'
+        titulo: 'Administrar Membresia',
+        link: './membresias'
+      },
+      {
+        titulo: 'Solicitud de Membresia',
+        link: './membresias/solicitudes',
       }
     ]
   },
@@ -98,6 +89,27 @@ export const MENU_ADMIN = [
       {
         titulo: 'Realiza tus encuestas',
         link: './encuestas'
+      },
+      {
+        titulo: 'Resultados de encuestas',
+        link: './encuestas/resultados'
+      }
+    ]
+  }, {
+    grupo: 'Usuarios',
+    contenido: [
+      {
+        titulo: 'Administrar Usuarios',
+        link: './usuarios/administrar',
+      }
+    ]
+  },
+  {
+    grupo: 'Etiquetas',
+    contenido: [
+      {
+        titulo: 'Administrar Etiquetas',
+        link: './etiquetas'
       }
     ]
   }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CursosService } from 'src/app/services/cursos.service';
+import { UsuarioService } from '../../../../services/usuario.service';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import {CdkStepper} from '@angular/cdk/stepper';
+import { CdkStepper } from '@angular/cdk/stepper';
 import { Router } from '@angular/router';
 
 // Dialog o modal
@@ -18,14 +19,17 @@ import { DatePipe } from '@angular/common';
   templateUrl: './presentacion-curso.component.html',
   styleUrls: ['./presentacion-curso.component.scss'],
   providers: [{
-    provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false,
-      provide: CdkStepper, useExisting: PresentacionCursoComponent}
+    provide: STEPPER_GLOBAL_OPTIONS, useValue: {
+      displayDefaultIndicatorType: false,
+      provide: CdkStepper, useExisting: PresentacionCursoComponent
+    }
   }],
 })
 
 export class PresentacionCursoComponent implements OnInit {
 
   estado = false;
+  misCursos: any = [];
   isActive = false;
   id: any;
   curso: any;
@@ -34,19 +38,25 @@ export class PresentacionCursoComponent implements OnInit {
   usuario: any;
   usuarioCurso: [];
   modulos: [];
+  compra: any;
   datosDocente: any;
   mostrarMetodo = false;
   rutaVideo: string;
+  datosUsuario: any;
   // tslint:disable-next-line: max-line-length
   constructor(public route: ActivatedRoute,
-              public serCursos: CursosService,
-              public dialog: MatDialog,
-              public datepipe: DatePipe,
-              private router: Router ) { }
+    public serCursos: CursosService,
+    public miscursosSrv: UsuarioService,
+    public dialog: MatDialog,
+    public datepipe: DatePipe,
+    private router: Router) { }
   // tslint:disable-next-line: typedef
   ngOnInit(): void {
     this.comprobarAuth();
+    this.id = this.route.snapshot.params.id;
     this.getData();
+    //this.cursosAdquiridos();
+    this.comprobarAuth();
   }
   /*
     *Descripcion: La funcion lista todas los detalles de la presentacion del curso
@@ -54,12 +64,26 @@ export class PresentacionCursoComponent implements OnInit {
   */
 
   comprobarAuth(): void {
-    if (localStorage.getItem('datosUsuario') !== null) {
-      this.id = this.route.snapshot.params.id;
-      this.estado = true;
+    this.estado = this.miscursosSrv.estadoSession();
+    if (this.estado) {
+      this.datosUsuario = localStorage.getItem('datosUsuario');
+      this.datosUsuario = JSON.parse(localStorage.getItem('datosUsuario'));
+      this.miscursosSrv.misCursos().subscribe(data => {
+        console.log(data);
+        this.misCursos = data;
+        console.log(this.misCursos);
+      });
     }
+    console.log(this.estado);
   }
 
+  /*cursosAdquiridos(): void {
+    this.miscursosSrv.misCursos().subscribe(data => {
+      console.log(data);
+      this.misCursos = data;
+      console.log(this.misCursos);
+    });
+  }*/
   // tslint:disable-next-line: typedef
   getData() {
     this.serCursos.presentacionCurso(this.id).subscribe(data => {
@@ -69,8 +93,11 @@ export class PresentacionCursoComponent implements OnInit {
       this.datosDocente = this.docente.datos_docente;
       this.modulos = this.datos.modulos;
       this.usuarioCurso = this.datos.usuarioCurso;
+      console.log(this.datosDocente);
+      console.log(this.modulos);
     });
   }
+
   verVideo(ruta): void {
     this.rutaVideo = ruta;
   }
@@ -114,7 +141,7 @@ export class PresentacionCursoComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-  metodoFree(){
+  metodoFree() {
     const dialogRef = this.dialog.open(FreeComponent, {
       width: '120vh',
       data: this.id

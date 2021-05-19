@@ -28,15 +28,6 @@ export class AdministrarEstadoCursoComponent implements OnInit, AfterViewInit {
     public dialog: MatDialog,
   ) { }
 
-  listarCursos(): void {
-    this.serCurso.estadoCursos().subscribe(data => {
-      console.log(data);
-      this.cursos = data;
-      this.dataSource = new MatTableDataSource(this.cursos);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
-  }
   ngAfterViewInit(): void {
   }
   ngOnInit(): void {
@@ -49,6 +40,16 @@ export class AdministrarEstadoCursoComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  listarCursos(): void {
+    this.serCurso.estadoCursos().subscribe(data => {
+      console.log(data);
+      this.cursos = data;
+      this.dataSource = new MatTableDataSource(this.cursos);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
 
   habilitar(id: number): void {
