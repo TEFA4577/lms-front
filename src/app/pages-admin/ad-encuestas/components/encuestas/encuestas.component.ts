@@ -52,10 +52,10 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
 
   listarEncuestas() {
     this.serEncuesta.listarEncuestas().subscribe(data => {
-      //console.log(data);
+      console.log(data);
       this.encuestas = data;
       this.resulEncuesta = this.encuestas;
-      //console.log(this.resulEncuesta.length);
+      console.log(this.resulEncuesta.length);
       this.encuestas = data;
       this.dataSource = new MatTableDataSource(this.encuestas);
       this.dataSource.paginator = this.paginator;
@@ -65,7 +65,7 @@ export class EncuestasComponent implements OnInit, AfterViewInit {
 
   listarPreguntas(){
     this.serEncuesta.listarPreguntasEncuestas().subscribe( data => {
-      //console.log(data);
+      console.log(data);
       this.preguntas = data;
       //console.log(this.preguntas.length);
     });

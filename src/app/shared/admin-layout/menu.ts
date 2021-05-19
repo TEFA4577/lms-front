@@ -87,12 +87,8 @@ export const MENU_ADMIN = [
         link: './preguntas-frecuentes'
       },
       {
-        titulo: 'Realiza tus encuestas',
+        titulo: 'Encuestas',
         link: './encuestas'
-      },
-      {
-        titulo: 'Resultados de encuestas',
-        link: './encuestas/resultados'
       }
     ]
   }, {
