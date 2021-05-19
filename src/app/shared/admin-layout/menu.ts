@@ -24,7 +24,7 @@ export const MENU_DOCENTE = [
         link: '/estudiante/mis-cursos-adquiridos'
       },
       {
-        titulo: 'Mis Estudiantes',
+        titulo: 'Sobre Mis Cursos',
         link: 'cursos/estudiantes'
       }
     ]

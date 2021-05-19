@@ -33,7 +33,7 @@ export class EditarEvaluacionOpcionComponent implements OnInit {
     this.formOpcion = this.formBuilder.group({
       texto_prueba_opcion: ['', Validators.required],
       respuesta_opcion: ''
-    });
+    }, error => console.log(error));
   }
   setForm(): void {
     this.formOpcion.get('texto_prueba_opcion').setValue(this.datos.texto_prueba_opcion);
