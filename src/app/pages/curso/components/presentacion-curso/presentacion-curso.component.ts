@@ -36,6 +36,7 @@ export class PresentacionCursoComponent implements OnInit {
   datos: any;
   docente: any;
   usuario: any;
+  usuarioCurso: [];
   modulos: [];
   compra: any;
   datosDocente: any;
@@ -51,6 +52,7 @@ export class PresentacionCursoComponent implements OnInit {
     private router: Router) { }
   // tslint:disable-next-line: typedef
   ngOnInit(): void {
+    this.comprobarAuth();
     this.id = this.route.snapshot.params.id;
     this.getData();
     //this.cursosAdquiridos();
@@ -84,12 +86,12 @@ export class PresentacionCursoComponent implements OnInit {
   // tslint:disable-next-line: typedef
   getData() {
     this.serCursos.presentacionCurso(this.id).subscribe(data => {
-      console.log(data);
       this.datos = data;
       this.curso = this.datos.curso;
       this.docente = this.datos.docente;
       this.datosDocente = this.docente.datos_docente;
       this.modulos = this.datos.modulos;
+      this.usuarioCurso = this.datos.usuarioCurso;
       console.log(this.datosDocente);
       console.log(this.modulos);
     });
@@ -97,11 +99,9 @@ export class PresentacionCursoComponent implements OnInit {
 
   verVideo(ruta): void {
     this.rutaVideo = ruta;
-    console.log(this.rutaVideo);
   }
   setVideo(ruta: string) {
     this.rutaVideo = ruta;
-    console.log(this.rutaVideo);
   }
   // tslint:disable-next-line: typedef
   metodoDeposito() {
@@ -143,9 +143,7 @@ export class PresentacionCursoComponent implements OnInit {
   metodoFree() {
     const dialogRef = this.dialog.open(FreeComponent, {
       width: '120vh',
-      data: {
-        id: this.id
-      }
+      data: this.id
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

@@ -26,6 +26,10 @@ export class DocentesService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get(this.API_BACKEND + 'docentes', { headers });
   }
+  listDocente(){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get(this.API_BACKEND + 'docentes-adm', { headers });
+  }
   // tslint:disable-next-line: typedef
   registrarDocente(datos: any) {
     return this.http.post(this.API_BACKEND + 'docentes/registrar', datos);
@@ -37,5 +41,8 @@ export class DocentesService {
   cursoDeDocente(id){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get(this.API_BACKEND + 'cursos-de-docente/' + id, { headers })
+  }
+  habilitarDocente(id){
+    return this.http.get(this.API_BACKEND + 'docente/habilitar/' + id);
   }
 }

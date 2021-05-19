@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import {
   MatSnackBar,
@@ -21,9 +21,6 @@ export class FreeComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   panelOpenState = false;
   formAdquirirCurso: FormGroup;
-  files: any = [];
-  filedata: any;
-  imgURL: any;
   isActive = false;
   id: any;
 
@@ -35,11 +32,14 @@ export class FreeComponent implements OnInit {
     private usuarioService: UsuarioService,
     public route: ActivatedRoute,
     public dialogRef: MatDialogRef<FreeComponent>,
-  ) { }
+    @Inject(MAT_DIALOG_DATA)public data:number
+    ) {
+      this.id = data;
+    }
 
     // tslint:disable-next-line: typedef
     ngOnInit(): void {
-      this.id = this.route.snapshot.params.id;
+
     }
 
     onNoClick(): void {
@@ -54,12 +54,11 @@ export class FreeComponent implements OnInit {
 
   submitAdquirirCurso(event: Event): void {
     event.preventDefault();
-    const myFormData = new FormData();
     const datos = JSON.parse(localStorage.getItem('datosUsuario'));
     const id = datos.id_usuario;
+    const myFormData = new FormData();
     myFormData.append('id_usuario', id);
     myFormData.append('id_curso', this.id);
-    console.log(this.id);
     Swal.fire({
       title: 'Seguro que desea adquirir el curso?',
       showDenyButton: true,
@@ -69,8 +68,6 @@ export class FreeComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.cursoAd.adquirirCurso(myFormData).subscribe(res => {
-          const estad = this.usuarioService.estadoSession;
-          console.log(res);
           this.respuesta = res;
           Swal.fire('Enviado!', '', 'success').finally(() => {
             this.onNoClick();
