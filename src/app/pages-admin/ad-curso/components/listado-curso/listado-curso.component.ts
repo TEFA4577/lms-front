@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CrearCursoComponent } from '../crear-curso/crear-curso.component';
 import { CursosService } from '../../../../services/cursos.service';
+import { MembresiaService } from 'src/app/services/membresia.service';
 import { EtiquetasComponent } from '../etiquetas/etiquetas.component';
 import Swal from 'sweetalert2';
 
@@ -12,12 +13,17 @@ import Swal from 'sweetalert2';
 })
 export class ListadoCursoComponent implements OnInit {
   misCursos: any = [];
+  miMemb: any = [];
   estado = true;
   texto = true;
-  constructor(public dialog: MatDialog, public cursoSrv: CursosService) { }
+  constructor(
+    public dialog: MatDialog,
+    public cursoSrv: CursosService,
+    public membSrv: MembresiaService,) { }
 
   ngOnInit(): void {
     this.listarMisCursos();
+    this.miMembresia();
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(CrearCursoComponent, {
@@ -41,11 +47,16 @@ export class ListadoCursoComponent implements OnInit {
     });
   }
 
+  miMembresia(): void {
+    this.membSrv.docenteMembresia().subscribe(res => {
+      this.miMemb = res;
+      console.log(this.miMemb);
+    });
+  }
+
   listarMisCursos(): void {
     this.cursoSrv.listarCursosCreados().subscribe(data => {
       this.misCursos = data;
-      console.log(this.misCursos);
-      console.log(this.misCursos.length);
       if (this.misCursos.length !== 0) {
         this.estado = false;
       }
@@ -65,7 +76,6 @@ export class ListadoCursoComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.cursoSrv.inhabilitarCurso(id).subscribe(data => {
-          console.log(data);
           this.listarMisCursos();
         });
         Swal.fire(
@@ -89,7 +99,6 @@ export class ListadoCursoComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.cursoSrv.eliminarCurso(id).subscribe(data => {
-          console.log(data);
           this.listarMisCursos();
         });
         Swal.fire(

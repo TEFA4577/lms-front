@@ -113,50 +113,51 @@
       <!--Fin Progress bar de progreso-->
       <mat-accordion multi>
         <mat-expansion-panel *ngFor="let modulo of modulos; let i = index, first as isFirst" [expanded]="isFirst">
-          <mat-expansion-panel-header>
-            Sección {{ i + 1 }}: &nbsp;{{ modulo.nombre_modulo }}
-          </mat-expansion-panel-header>
-          <!--Contenido de la clase-->
-          <mat-selection-list #shoes [multiple]="false">
-            <mat-list-item *ngFor="let clases of modulo.clases_modulo; let i = index; let prog = pro">
-              <div mat-line>
-                <div mat-line>
-                  <!--clases.id_clase-->
-                  <button mat-icon-button color="primary" type="button"
-                    (click)="setVideo(clases.video_clase, clases.id_clase)" matTooltip="Reproducir video">
-                    <mat-icon>play_circle_filled</mat-icon>
-                  </button>Capítulo {{ i + 1 }}: {{ clases.titulo_clase }}
+            <mat-expansion-panel-header>
+              Sección {{ i + 1 }}: &nbsp;{{ modulo.nombre_modulo }}
+            </mat-expansion-panel-header>
+            <!--Contenido de la clase-->
+            <!-- <div *ngIf="modulo.clases_modulo.length != 0"> -->
+              <mat-selection-list #shoes [multiple]="false">
+                <mat-list-item *ngFor="let clases of modulo.clases_modulo; let i = index; let prog = pro">
+                    <div mat-line>
+                      <div mat-line>
+                        <!--clases.id_clase-->
+                        <button mat-icon-button color="primary" type="button"
+                          (click)="setVideo(clases.video_clase, clases.id_clase)" matTooltip="Reproducir video">
+                          <mat-icon>play_circle_filled</mat-icon>
+                        </button>Capítulo {{ i + 1 }}: {{ clases.titulo_clase }}
+                      </div>
+                      <div mat-line>
+                        <button mat-icon-button color="primary" matTooltip="Descripcion de la clase" color="accent">
+                          <mat-icon>description</mat-icon>
+                        </button>
+                        Descripcion de la clase: {{ clases.descripcion_clase }}
+                      </div>
+                      <!--Nueva seccion para los recursos-->
+                    </div>
+                    <div mat-line align="end">
+                      <button mat-icon-button color="basic" type="button" (click)="getClase(clases.id_clase)"
+                        matTooltip="Mostrar recursos de la clase">
+                        <mat-icon>assignment</mat-icon>
+                      </button>
+                      <button mat-icon-button color="primary" type="button" (click)="getIdClase(clases.id_clase)"
+                        matTooltip="Mostrar el foro de la clase">
+                        <mat-icon>forum</mat-icon>
+                      </button>
+                      <button mat-icon-button color="warn" type="button" (click)="openDialog(clases.id_clase)"
+                        matTooltip="Agrega un comentario de la clase">
+                        <mat-icon>insert_comment</mat-icon>
+                      </button>
+                    </div>
+                </mat-list-item>
+                <div>
+                  <mat-checkbox class="example-margin" matTooltip="Sección terminada!" [(ngModel)]="progreso[i].estado"
+                    (change)="cambios(i, !progreso[i].estado)">Seccion completada</mat-checkbox>
                 </div>
-                <div mat-line>
-                  <button mat-icon-button color="primary" matTooltip="Descripcion de la clase" color="accent">
-                    <mat-icon>description</mat-icon>
-                  </button>
-                  Descripcion de la clase: {{ clases.descripcion_clase }}
-                </div>
-                <!--Nueva seccion para los recursos-->
-              </div>
-              <div mat-line align="end">
-                <button mat-icon-button color="basic" type="button" (click)="getClase(clases.id_clase)"
-                  matTooltip="Mostrar recursos de la clase">
-                  <mat-icon>assignment</mat-icon>
-                </button>
-                <button mat-icon-button color="primary" type="button" (click)="getIdClase(clases.id_clase)"
-                  matTooltip="Mostrar el foro de la clase">
-                  <mat-icon>forum</mat-icon>
-                </button>
-                <button mat-icon-button color="warn" type="button" (click)="openDialog(clases.id_clase)"
-                  matTooltip="Agrega un comentario de la clase">
-                  <mat-icon>insert_comment</mat-icon>
-                </button>
-              </div>
-            </mat-list-item>
-            <div>
-              <mat-checkbox class="example-margin" matTooltip="Sección terminada!" [(ngModel)]="progreso[i].estado"
-                (change)="cambios(i, !progreso[i].estado)">Seccion completada</mat-checkbox>
-            </div>
-          </mat-selection-list>
+              </mat-selection-list>
+            <!-- </div> -->
         </mat-expansion-panel>
-        <br />
       </mat-accordion>
       <!--Capitulos del Curso-->
     </div>

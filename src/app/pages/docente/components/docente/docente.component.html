@@ -29,7 +29,7 @@
         <img mat-card-image src="{{item.foto_usuario}}"
           routerLink="/instructores/presentacion-docente/{{ item.id_usuario }}" class="img-cards" fallimg="avatar" />
         <mat-card-subtitle>{{item.correo_usuario}}</mat-card-subtitle>
-        <mat-card-content>
+        <mat-card-content *ngIf="item.datos_docente">
           <div class="container" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
             {{item.datos_docente.descripcion_docente}}
           </div>

@@ -1,3 +1,4 @@
+import { Usuarios } from './usuarios';
 /**
  * interface para tipado de docentes
  */
@@ -12,4 +13,9 @@ export interface Docentes {
   experiencia_docente: null | string;
   created_at: Date;
   updated_at: Date;
+}
+
+export interface DocentesUsuarios {
+  usuario: Usuarios;
+  docente: Docentes;
 }

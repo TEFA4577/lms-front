@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -19,78 +20,61 @@ export class FreeComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   panelOpenState = false;
-  formAdquirirCurso: FormGroup;
-  files: any = [];
-  filedata: any;
-  imgURL: any;
+  formAdquirirMemb: FormGroup;
   isActive = false;
-
-  @Input()
-  // tslint:disable-next-line: no-unused-expression
   id: any;
 
   constructor(
-    private formBuilder: FormBuilder,
-    public cursoAd: UsuarioService,
+    public membresiaAd: UsuarioService,
     // tslint:disable-next-line: variable-name
     private _snackBar: MatSnackBar,
     private usuarioService: UsuarioService,
     public dialogRef: MatDialogRef<FreeComponent>,
-  ) { }
-    // tslint:disable-next-line: typedef
-    ngOnInit(): void {
-      this.buildForm();
-    }
+    @Inject(MAT_DIALOG_DATA)public data:number
+  ) {
+    this.id = data;
+  }
+  ngOnInit(): void {
+  }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
-    onNoClick(): void {
-      this.dialogRef.close();
-    }
+  openSnackBar(message: string, action: string): void {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
 
-    buildForm(): void {
-      this.formAdquirirCurso = this.formBuilder.group({
-        id_curso: [''],
-        id_usuario: [''],
-      });
-    }
+  submitAdquirirMemb(event: Event): void {
+    event.preventDefault();
+    const myFormData = new FormData();
+    const datos = JSON.parse(localStorage.getItem('datosUsuario'));
+    const id = datos.id_usuario;
+    myFormData.append('id_usuario', id);
+    myFormData.append('id_membresia', this.id);
 
-    openSnackBar(message: string, action: string): void {
-      this._snackBar.open(message, action, {
-        duration: 3000,
-      });
-    }
-
-  submitAdquirirCurso(event: Event): void {
-      event.preventDefault();
-      console.log(this.formAdquirirCurso.value);
-      const myFormData = new FormData();
-      const datos = JSON.parse(localStorage.getItem('datosUsuario'));
-      const id = datos.id_usuario;
-      myFormData.append('id_usuario', id);
-      myFormData.append('id_curso', this.id);
-      console.log(this.id);
-      Swal.fire({
-        title: 'Seguro que desea adquirir el curso?',
-        showDenyButton: true,
-        confirmButtonText: `Enviar`,
-        denyButtonText: `No enviar`,
-      }).then((result) => {
+    Swal.fire({
+      title: 'Seguro que desea adquirir la membresia?',
+      showDenyButton: true,
+      confirmButtonText: `Enviar`,
+      denyButtonText: `No enviar`,
+    }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-          this.cursoAd.adquirirCurso(myFormData).subscribe(res => {
-            const estad = this.usuarioService.estadoSession;
-            console.log(res);
-            this.respuesta = res;
-            Swal.fire('Enviado!', '', 'success').finally(() => {
-              this.onNoClick();
-              this.isActive = false;
-            });
-            this.openSnackBar(this.respuesta.mensaje, 'cerrar');
-          }, error => {
-            console.log(error);
+      if (result.isConfirmed) {
+        this.membresiaAd.adquirirMembresia(myFormData).subscribe(res => {
+          this.respuesta = res;
+          Swal.fire('Enviado!', '', 'success').finally(() => {
+            this.onNoClick();
+            this.isActive = false;
           });
-        } else if (result.isDenied) {
-          Swal.fire('No se envió su solicitud', '', 'info').finally(() => this.isActive = false);
-        }
+          this.openSnackBar(this.respuesta.mensaje, 'cerrar');
+        }, error => {
+        console.log(error);
       });
-    }
+      } else if (result.isDenied) {
+        Swal.fire('No se envió su solicitud', '', 'info').finally(() => this.isActive = false);
+      }
+    });
+  }
 }
