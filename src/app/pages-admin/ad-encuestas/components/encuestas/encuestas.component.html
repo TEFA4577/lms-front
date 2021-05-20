@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image">
@@ -11,7 +11,7 @@
         </mat-card-header>
       </mat-card>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image">
@@ -22,7 +22,7 @@
         </mat-card-header>
       </mat-card>
     </div>
-    <div class="col-md-4">
+    <!--<div class="col-md-4">
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image">
@@ -32,7 +32,7 @@
           <mat-card-subtitle>200</mat-card-subtitle>
         </mat-card-header>
       </mat-card>
-    </div>
+    </div>-->
   </div>
   <br>
   <mat-card>
@@ -108,7 +108,7 @@
               <div class="example-element-detail"
                 [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
                 <div class="example-element-description">
-                  <mat-selection-list #shoes [multiple]="false" class="col-md-12">
+                  <mat-selection-list #shoes [multiple]="false" class="example-element-description">
                     <mat-list-item *ngFor="let item of element.encuesta_pregunta; let i = index">
                       <div mat-line>
                         <div mat-line>
@@ -128,7 +128,8 @@
                           <mat-icon color="warn">
                             clear</mat-icon>
                         </button>
-                        <button mat-icon-button matTooltip="Verificar respuestas">
+                        <button mat-icon-button (click)="resultadosPreguntas(item.id_encuesta_pregunta)"
+                          matTooltip="Verificar respuestas">
                           <mat-icon color="accent">
                             visibility</mat-icon>
                         </button>
