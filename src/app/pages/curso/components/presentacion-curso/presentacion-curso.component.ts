@@ -70,8 +70,6 @@ export class PresentacionCursoComponent implements OnInit {
       this.miscursosSrv.misCursos().subscribe(data => {
         console.log(data);
         this.misCursos = data;
-        this.estado_usuario_curso = this.misCursos.estado_usuario_curso;
-        console.log(this.estado_usuario_curso);
       });
     }
     console.log(this.estado);

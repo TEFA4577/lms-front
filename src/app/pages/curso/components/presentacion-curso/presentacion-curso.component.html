@@ -27,7 +27,6 @@
           </button>
 
           <ng-template #logged>
-            <div *ngIf="datosUsuario">
               <ng-template #sinComprar>
                 <button mat-raised-button *ngIf="curso.precio == 0" (click)="metodoFree()" class="btn-block py-1"
                   color="accent">
@@ -49,7 +48,6 @@
                   </div>
                 </div>
               </div>
-            </div>
           </ng-template>
 
         </mat-card-content>
