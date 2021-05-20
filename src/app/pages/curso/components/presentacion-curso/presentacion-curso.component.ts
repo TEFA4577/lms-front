@@ -43,6 +43,7 @@ export class PresentacionCursoComponent implements OnInit {
   mostrarMetodo = false;
   rutaVideo: string;
   datosUsuario: any;
+  estado_usuario_curso: any;
   // tslint:disable-next-line: max-line-length
   constructor(public route: ActivatedRoute,
     public serCursos: CursosService,
@@ -55,7 +56,6 @@ export class PresentacionCursoComponent implements OnInit {
     this.comprobarAuth();
     this.id = this.route.snapshot.params.id;
     this.getData();
-    //this.cursosAdquiridos();
     this.comprobarAuth();
   }
   /*
@@ -70,20 +70,14 @@ export class PresentacionCursoComponent implements OnInit {
       this.miscursosSrv.misCursos().subscribe(data => {
         console.log(data);
         this.misCursos = data;
-        console.log(this.misCursos);
+        this.estado_usuario_curso = this.misCursos.estado_usuario_curso;
+        console.log(this.estado_usuario_curso);
       });
     }
     console.log(this.estado);
   }
 
-  /*cursosAdquiridos(): void {
-    this.miscursosSrv.misCursos().subscribe(data => {
-      console.log(data);
-      this.misCursos = data;
-      console.log(this.misCursos);
-    });
-  }*/
-  // tslint:disable-next-line: typedef
+
   getData() {
     this.serCursos.presentacionCurso(this.id).subscribe(data => {
       this.datos = data;
