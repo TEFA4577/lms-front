@@ -15,6 +15,7 @@ import { EditarEvaluacionComponent } from '../evaluaciones/editar-evaluacion/edi
 import { CrearEvaluacionOpcionComponent } from '../evaluacion-opciones/crear-evaluacion-opcion/crear-evaluacion-opcion.component';
 import { EditarEvaluacionOpcionComponent } from '../evaluacion-opciones/editar-evaluacion-opcion/editar-evaluacion-opcion.component';
 import Swal from 'sweetalert2';
+import { title } from 'process';
 
 @Component({
   selector: 'app-administrar-curso',
@@ -33,6 +34,7 @@ export class AdministrarCursoComponent implements OnInit {
   formCurso: FormGroup;
   imagenCambio: any;
   rutaVideo: any;
+  enviar: any;
   constructor(
     public serCursos: CursosService,
     public serEvaluacion: EvaluacionService,
@@ -364,7 +366,6 @@ export class AdministrarCursoComponent implements OnInit {
     });
   }
 
-
   borrarCurso(id: number): void {
     Swal.fire({
       title: 'Eliminar Curso?',
@@ -408,17 +409,18 @@ export class AdministrarCursoComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.serCursos.cambiarEstadoCurso(datos).subscribe(res => {
-          this.router.navigateByUrl('admin/cursos/mis-cursos');
-          console.log(res);
           this.cargarDatosCurso();
+          this.enviar = res
+          Swal.fire({
+            title:this.enviar.mensaje,
+            icon: this.enviar.estado
+          });
+          if(this.enviar.estado == "success"){
+            this.router.navigateByUrl('admin/cursos/mis-cursos');
+          }
         }, error => {
           console.log(error);
         });
-        Swal.fire(
-          'Enviado!',
-          'El Curso se envio a revision correctamente.',
-          'success'
-        );
       }
     });
   }
