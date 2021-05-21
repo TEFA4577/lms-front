@@ -96,7 +96,6 @@ export class CursoComponent implements OnInit, OnDestroy {
   progresoBarra() {
     const conteo = this.progreso.filter(res => res.estado === true);
     this.count = (conteo.length * 100) / this.progreso.length;
-    console.log(this.count);
     if (this.count == 100) {
       this.evaluacionButton = true;
       if(this.progresoP == 100){
@@ -111,7 +110,6 @@ export class CursoComponent implements OnInit, OnDestroy {
     this.serCursos.presentacionClase(identificador).subscribe(data => {
       this.datos = data;
       this.recursos = this.datos.recursos;
-      console.log(this.recursos);
       if (this.recursos.length !== 0) {
         this.estado = false;
       }
@@ -184,6 +182,7 @@ export class CursoComponent implements OnInit, OnDestroy {
       });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
+        this.cargarDatos();
       });
   }
 

@@ -108,10 +108,7 @@ export class PresentacionCursoComponent implements OnInit {
       this.datosDocente = this.docente.datos_docente;
       this.modulos = this.datos.modulos;
       this.usuarioCurso = this.datos.usuarioCurso;
-      this.idD = this.docente.id_docente;
-      console.log(this.idD);
-      console.log(this.datosDocente);
-      console.log(this.modulos);
+      this.idD = this.docente.id_usuario;
     });
   }
 
@@ -130,12 +127,10 @@ export class PresentacionCursoComponent implements OnInit {
   }
   // tslint:disable-next-line: typedef
   metodoDeposito() {
-    console.log(this.idD);
     const dialogRef = this.dialog.open(PagoComponent, {
       width: '140vh',
       data: {
         id: this.id,
-        idD: this.idD
       }
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -170,7 +165,10 @@ export class PresentacionCursoComponent implements OnInit {
   metodoFree() {
     const dialogRef = this.dialog.open(FreeComponent, {
       width: '120vh',
-      data: this.id
+      data:[
+        this.id,
+        this.idD,
+      ]
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

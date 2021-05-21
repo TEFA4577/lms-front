@@ -36,6 +36,7 @@ export class FreeComponent implements OnInit {
     ) {
       this.id = data[0];
       this.idD = data[1];
+      console.log(this.idD);
     }
 
     // tslint:disable-next-line: typedef
