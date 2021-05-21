@@ -11,7 +11,6 @@ import { EvaluacionService } from 'src/app/services/evaluacion.service';
 export class EditarEvaluacionOpcionComponent implements OnInit {
   formOpcion: FormGroup;
   datos: any;
-  isChecked = false;
   id: number;
   constructor(
     public dialogRef: MatDialogRef<EditarEvaluacionOpcionComponent>,

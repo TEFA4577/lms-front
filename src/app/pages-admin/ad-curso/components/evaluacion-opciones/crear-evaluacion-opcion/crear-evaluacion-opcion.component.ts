@@ -19,7 +19,6 @@ export class CrearEvaluacionOpcionComponent implements OnInit {
   id: number;
   opcion: any;
   estadoCargando = false;
-  isChecked = false;
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   constructor(

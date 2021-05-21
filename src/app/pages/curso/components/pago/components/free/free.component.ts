@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -23,18 +23,19 @@ export class FreeComponent implements OnInit {
   formAdquirirCurso: FormGroup;
   isActive = false;
   id: any;
-
+  idD: any;
   constructor(
     private formBuilder: FormBuilder,
     public cursoAd: UsuarioService,
     // tslint:disable-next-line: variable-name
     private _snackBar: MatSnackBar,
     private usuarioService: UsuarioService,
-    public route: ActivatedRoute,
+    public router: Router,
     public dialogRef: MatDialogRef<FreeComponent>,
     @Inject(MAT_DIALOG_DATA)public data:number
     ) {
-      this.id = data;
+      this.id = data[0];
+      this.idD = data[1];
     }
 
     // tslint:disable-next-line: typedef
@@ -44,6 +45,7 @@ export class FreeComponent implements OnInit {
 
     onNoClick(): void {
       this.dialogRef.close();
+      this.router.navigateByUrl('/instructores/presentacion-docente/'+this.idD);
     }
 
     openSnackBar(message: string, action: string): void {

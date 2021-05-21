@@ -127,6 +127,37 @@
           </div>
         </mat-card-content>
       </mat-card>
+      <hr/>
+      <mat-card>
+        <mat-card-content>
+          <mat-accordion multi>
+            <div *ngFor="let prueba of pruebas" class="row">
+              <div class="col-12">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      {{prueba.texto_prueba}}
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div>
+                    <div>
+                      <mat-selection-list [multiple]="false" *ngFor="let opcion of prueba.prueba_opcion">
+                        <mat-list-item class="row">
+                          <div mat-line>
+                            {{opcion.texto_prueba_opcion}}
+                            <span *ngIf="opcion.respuesta_opcion > 0">Correcta</span>
+                            <span *ngIf="opcion.respuesta_opcion < 1">Incorrecta</span>
+                          </div>
+                        </mat-list-item>
+                      </mat-selection-list>
+                    </div>
+                  </div>
+                </mat-expansion-panel>
+              </div>
+            </div>
+          </mat-accordion>
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
   <div mat-dialog-actions>

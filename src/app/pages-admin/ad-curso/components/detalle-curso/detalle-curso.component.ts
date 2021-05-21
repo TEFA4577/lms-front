@@ -13,6 +13,7 @@ export class DetalleCursoComponent implements OnInit {
   datos: any;
   curso: any;
   modulos: [];
+  pruebas: any;
   carga = true;
   docente: any;
   rutaVideo: any;
@@ -55,6 +56,7 @@ export class DetalleCursoComponent implements OnInit {
       this.curso = this.datos.curso;
       this.modulos = this.datos.modulos;
       this.docente = this.datos.docente;
+      this.pruebas = this.datos.prueba;
       this.carga = false;
       console.log(data);
     }, error => {

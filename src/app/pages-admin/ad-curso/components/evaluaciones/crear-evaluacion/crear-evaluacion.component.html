@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between">
-  <h1 mat-dialog-title>Crea prueba para tu curso</h1>
+  <h1 mat-dialog-title>Crea pregunta para su exámen</h1>
   <button mat-icon-button [mat-dialog-close]="true">
     <mat-icon>close</mat-icon>
   </button>
@@ -8,13 +8,13 @@
   <div mat-dialog-content>
     <div class="row">
       <mat-form-field class="col-md-12">
-        <mat-label>Prueba</mat-label>
+        <mat-label>Pregunta</mat-label>
         <textarea matInput formControlName="texto_prueba"></textarea>
       </mat-form-field>
     </div>
   </div>
   <mat-dialog-actions class="col-md-12 justify-content-center">
-    <button style="width: 40%;" mat-raised-button color="primary" [disabled]="formPrueba.invalid">crear prueba</button>
+    <button style="width: 40%;" mat-raised-button color="primary" [disabled]="formPrueba.invalid">crear pregunta</button>
     <button style="width: 40%;" mat-raised-button color="warn" [mat-dialog-close]="true">cancelar</button>
   </mat-dialog-actions>
 </form>

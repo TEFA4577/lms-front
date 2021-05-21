@@ -19,7 +19,7 @@ import {
 export class EvaluacionCursoComponent implements OnInit {
   formRegistrar: FormGroup;
   id: number;
-  idE: number;
+  idC: any;
   respuesta: any;
   message: string;
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
@@ -43,8 +43,7 @@ export class EvaluacionCursoComponent implements OnInit {
     // public serCursos: CursosService,
     @Inject(MAT_DIALOG_DATA) public data: number
   ) {
-    this.id = data[0];
-    this.idE = data[1];
+    this.id = data;
   }
 
   setStep(index: number) {
@@ -71,8 +70,6 @@ export class EvaluacionCursoComponent implements OnInit {
       this.message = this.respuesta.mensaje;
       if(this.respuesta.mensaje === "correcta"){
         this.step++;
-        this.message = "";
-        this.putData();
       }else{
         this.message = "incorrecto";
       }
@@ -80,12 +77,12 @@ export class EvaluacionCursoComponent implements OnInit {
   }
 
   putData(){
-    this.progreso = 100;
-    const progres = {
-      'progreso_evaluacion': JSON.stringify(this.progreso),
-    };
-    this.serEvaluacion.progresoEvaluacion(progres, this.idE).subscribe(resp => {
-    })
+    // this.progreso = 100 / this.prueba.length;
+    // const progres = {
+    //   'progreso_evaluacion': JSON.stringify(this.progreso),
+    // };
+    // this.serEvaluacion.progresoEvaluacion(progres, this.idE).subscribe(resp => {
+    // })
   }
 
   mostrarExamen(): void {

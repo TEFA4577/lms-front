@@ -151,8 +151,11 @@
 
       <br>
       <a class="cr-paso">3</a>
-      <h2>Añade la evaluacion general de tu curso</h2>
+      <h2>Crea la evaluación para tu curso</h2>
       <mat-card>
+        <div class="alert alert-success" role="alert">
+          Test de selección múltiple
+        </div>
         <mat-card-header>
           <mat-card-title></mat-card-title>
           <hr>
@@ -194,6 +197,8 @@
                         <mat-list-item class="row">
                           <div mat-line>
                             {{opcion.texto_prueba_opcion}}
+                            <span *ngIf="opcion.respuesta_opcion > 0">Correcta</span>
+                            <span *ngIf="opcion.respuesta_opcion < 1">Incorrecta</span>
                           </div>
                           <div mat-line align="end">
                             <button mat-icon-button color="accent" matTooltip="cambiar datos de la opcion"

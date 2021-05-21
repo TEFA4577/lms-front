@@ -32,6 +32,7 @@ export class PresentacionCursoComponent implements OnInit {
   misCursos: any = [];
   isActive = false;
   id: any;
+  idD: any;
   curso: any;
   datos: any;
   docente: any;
@@ -84,6 +85,8 @@ export class PresentacionCursoComponent implements OnInit {
       this.datosDocente = this.docente.datos_docente;
       this.modulos = this.datos.modulos;
       this.usuarioCurso = this.datos.usuarioCurso;
+      this.idD = this.docente.id_docente;
+      console.log(this.idD);
       console.log(this.datosDocente);
       console.log(this.modulos);
     });
@@ -97,10 +100,12 @@ export class PresentacionCursoComponent implements OnInit {
   }
   // tslint:disable-next-line: typedef
   metodoDeposito() {
+    console.log(this.idD);
     const dialogRef = this.dialog.open(PagoComponent, {
       width: '140vh',
       data: {
         id: this.id,
+        idD: this.idD
       }
     });
     dialogRef.afterClosed().subscribe(result => {

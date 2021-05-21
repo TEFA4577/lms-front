@@ -174,18 +174,16 @@ export class CursoComponent implements OnInit, OnDestroy {
     myFormData.append('id_usuario', datos.id_usuario);
     myFormData.append('id_curso', this.idCurso);
 
-    this.idRes = this.evaluacion[0].id_usuario_evaluacion;
-    console.log(this.idRes);
     this.postEvaluacion.postExamen(myFormData).subscribe(result => {
+
+    });
       const dialogRef = this.dialog.open(EvaluacionCursoComponent,{
-        data: [idCurso, this.idRes],
+        data: idCurso,
         width: '100vh'
       });
-      console.log(idCurso);
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
       });
-    });
   }
 
   cargarDatos(): void {
