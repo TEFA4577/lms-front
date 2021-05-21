@@ -29,6 +29,7 @@ import { DatePipe } from '@angular/common';
 export class PresentacionCursoComponent implements OnInit {
 
   estado = false;
+  state = false;
   misCursos: any = [];
   isActive = false;
   id: any;
@@ -56,8 +57,10 @@ export class PresentacionCursoComponent implements OnInit {
   ngOnInit(): void {
     this.comprobarAuth();
     this.id = this.route.snapshot.params.id;
+    this.setCurso();
     this.getData();
     this.comprobarAuth();
+    this.misCursosAd();
   }
   /*
     *Descripcion: La funcion lista todas los detalles de la presentacion del curso
@@ -68,12 +71,32 @@ export class PresentacionCursoComponent implements OnInit {
     if (this.estado) {
       this.datosUsuario = localStorage.getItem('datosUsuario');
       this.datosUsuario = JSON.parse(localStorage.getItem('datosUsuario'));
-      this.miscursosSrv.misCursos().subscribe(data => {
-        console.log(data);
-        this.misCursos = data;
-      });
     }
     console.log(this.estado);
+  }
+
+  /*misCursosAd(): void {
+    this.miscursosSrv.misCursos().subscribe(data => {
+      this.misCursos = data;
+      console.log(this.misCursos);
+      if (this.state = this.misCursos.length !== 0) {
+        console.log(this.misCursos.length);
+        console.log(this.state);
+      }
+    });
+  }*/
+
+
+
+  misCursosAd(): void {
+    this.miscursosSrv.misCursos().subscribe(data => {
+      this.misCursos = data;
+      console.log(this.misCursos);
+      if (this.state) {
+        this.misCursos.length !== 0
+        this.state = false;
+      }
+    });
   }
 
 
@@ -89,6 +112,13 @@ export class PresentacionCursoComponent implements OnInit {
       console.log(this.idD);
       console.log(this.datosDocente);
       console.log(this.modulos);
+    });
+  }
+
+  setCurso() {
+    this.serCursos.cursarCurso(this.id).subscribe(data => {
+      this.datos = data;
+      console.log(this.datos);
     });
   }
 

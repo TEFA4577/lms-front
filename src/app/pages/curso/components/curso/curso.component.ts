@@ -73,6 +73,7 @@ export class CursoComponent implements OnInit, OnDestroy {
   getData() {
     this.serCursos.cursarCurso(this.id).subscribe(data => {
       this.datos = data;
+      console.log(this.datos);
       this.clasesModulo = this.datos.modulos;
       this.curso = this.datos.curso;
       this.modulos = this.datos.modulos;

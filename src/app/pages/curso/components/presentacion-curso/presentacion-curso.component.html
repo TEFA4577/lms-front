@@ -26,29 +26,30 @@
             <!--<a href="/register" style="color: white;">Registrate y compra el curso!</a>-->
           </button>
 
+
           <ng-template #logged>
-              <ng-template #sinComprar>
-                <button mat-raised-button *ngIf="curso.precio == 0" (click)="metodoFree()" class="btn-block py-1"
-                  color="accent">
-                  Adquiere el Curso, GRATIS
-                </button>
-                <button mat-raised-button *ngIf="curso.precio != 0" (click)="openCompra();" class="btn-block py-1"
-                  color="primary">
-                  ¡Compra el curso ahora!, por {{ curso.precio }} Bs.
-                </button>
-              </ng-template>
-              <div *ngFor="let item of misCursos">
-                <div *ngIf="curso.id_curso == item.id_curso; else sinComprar">
-                  <br>
-                  <div class="alert alert-warning" role="alert" *ngIf="item.estado_usuario_curso != 'adquirido'">
-                    Aun no se aprobo la solicitud de tu Compra
-                  </div>
-                  <div class="alert alert-success" role="alert" *ngIf="item.estado_usuario_curso != 'no confirmado'">
-                    Ya adquiriste este curso
-                  </div>
-                </div>
-              </div>
+            <button mat-raised-button *ngIf="curso.precio == 0" (click)="metodoFree()" class="btn-block py-1"
+              color="accent">
+              Adquiere el Curso, GRATIS
+            </button>
+            <button mat-raised-button *ngIf="curso.precio != 0" (click)="openCompra();" class="btn-block py-1"
+              color="primary">
+              ¡Compra el curso ahora!, por {{ curso.precio }} Bs.
+            </button>
           </ng-template>
+
+          <div *ngFor="let item of misCursos">
+            <div *ngIf="curso.id_curso == item.id_curso; else sinComprar">
+              <br>
+              <div class="alert alert-warning" role="alert" *ngIf="item.estado_usuario_curso != 'adquirido'; else st">
+                Aun no se aprobo la solicitud de tu Compra
+              </div>
+              <div class="alert alert-success" role="alert"
+                *ngIf="item.estado_usuario_curso != 'no confirmado'; else st">
+                Ya adquiriste este curso
+              </div>
+            </div>
+          </div>
 
         </mat-card-content>
       </mat-card>
