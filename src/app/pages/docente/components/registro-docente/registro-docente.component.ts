@@ -43,11 +43,13 @@ export class RegistroDocenteComponent implements OnInit {
     private _snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<RegistroDocenteComponent>,
     private usuarioService: UsuarioService,
+    private firebaseStorage: FirebaseStorageService, //CODIGO PARA FIREBASE STORAGE
     public route: ActivatedRoute) { }
-    private firebaseStorage: FirebaseStorageService //CODIGO PARA FIREBASE STORAGE
+
 
   // tslint:disable-next-line: typedef
 
+  //CODIGO PARA FIREBASE STORAGE
   public archivoForm = new FormGroup({
     archivo: new FormControl('', Validators.required),
   });
@@ -68,6 +70,8 @@ export class RegistroDocenteComponent implements OnInit {
         this.datosFormulario.delete('archivo');
         this.datosFormulario.append('archivo', event.target.files[i], event.target.files[i].name);
         }
+        console.log('nombreArchivo: ',this.nombreArchivo );
+
   } else {
       this.mensajeArchivo = 'No hay un archivo seleccionado';
     }

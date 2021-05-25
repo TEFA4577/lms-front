@@ -4,22 +4,34 @@
   <h1 mat-dialog-title>Formulario de solicitud para instructores</h1>
   <mat-dialog-content class="mat-typography">
     <div class="container">
-      <form [formGroup]="formDocente" (ngSubmit)="submitRegistrarDocente($event)" class="example-form">
+      <form
+        [formGroup]="formDocente"
+        (ngSubmit)="submitRegistrarDocente($event)"
+        class="example-form"
+      >
         <div class="col-md-12">
           <h3>Tus datos de Usuario</h3>
           <div class="row">
             <!--Informacion del usuario-->
             <mat-form-field class="col-md-6" appearance="outline">
               <mat-label>Tu nombre completo:</mat-label>
-              <input matInput value="{{datosUsuario.nombre_usuario}}" [readonly]="true" />
+              <input
+                matInput
+                value="{{ datosUsuario.nombre_usuario }}"
+                [readonly]="true"
+              />
             </mat-form-field>
             <mat-form-field class="col-md-6" appearance="outline">
               <mat-label>Correo electronico:</mat-label>
-              <input matInput value="{{datosUsuario.correo_usuario}}" [readonly]="true" />
+              <input
+                matInput
+                value="{{ datosUsuario.correo_usuario }}"
+                [readonly]="true"
+              />
             </mat-form-field>
             <!--Informacion del usuario-->
           </div>
-          <hr>
+          <hr />
           <h3>Agrega tus Datos de Instructor</h3>
           <div class="row">
             <!--Datos del Docente-->
@@ -32,13 +44,19 @@
               <input matInput formControlName="experiencia_docente" required />
             </mat-form-field>
           </div>
-          <hr>
+          <hr />
           <h3>Información adicional</h3>
           <div class="row">
             <mat-form-field class="col-md-12" appearance="outline">
-              <mat-label>Hablanos acerca de ti (Descripción del instructor):</mat-label>
-              <textarea matInput formControlName="descripcion_docente" placeholder="Ex. Soy una persona..."
-                required></textarea>
+              <mat-label
+                >Hablanos acerca de ti (Descripción del instructor):</mat-label
+              >
+              <textarea
+                matInput
+                formControlName="descripcion_docente"
+                placeholder="Ex. Soy una persona..."
+                required
+              ></textarea>
             </mat-form-field>
             <div class="col-md-6">
               <!--<input type="file" #imagen hidden accept="video/mp4,video/x-m4v,video/*"
@@ -50,43 +68,103 @@
               </div>-->
 
               <h1 class="is-size-1">Subir archivos a Cloud Storage</h1>
-              <p class="download" *ngIf="finalizado">URL de descarga: <a href="{{ URLPublica }}" target="_blank">Descargar</a></p>
+              <p class="download" *ngIf="finalizado">
+                URL de descarga:
+                <a href="{{ URLPublica }}" target="_blank">Descargar</a>
+              </p>
               <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
                 <div class="file has-name is-boxed">
                   <label class="file-label">
                     <div class="contenidoVideo">
-                      <video [src]="videoURL" *ngIf="videoURL" class="videoR" controls></video>
+                      <video
+                        [src]="videoURL"
+                        *ngIf="videoURL"
+                        class="videoR"
+                        controls
+                      ></video>
                     </div>
-                    <input class="file-input" type="file" formControlName="archivo" #imagen hidden accept="video/mp4,video/x-m4v,video/*" (change)="cambioArchivo($event) " name="video_clase">
+                    <input
+                      class="file-input"
+                      type="file"
+                      formControlName="archivo"
+                      #imagen
+                      hidden
+                      accept="video/mp4,video/x-m4v,video/*"
+                      (change)="cambioArchivo($event)"
+                      name="video_clase"
+                    />
                     <span class="file-cta">
-                      <span class="file-label">
-                        Elegir un archivo…
-                      </span>
+                      <span class="file-label"> Elegir un archivo… </span>
                     </span>
                     <span class="file-name">
                       {{ mensajeArchivo }}
                     </span>
                   </label>
-                  <button type="button" mat-raised-button color="primary" class="col-md-12" (click)="imagen.click()">
+                  <button
+                    type="button"
+                    mat-raised-button
+                    color="primary"
+                    class="col-md-12"
+                    (click)="imagen.click()"
+                  >
                     Seleccionar Video
                   </button>
                 </div>
-                <hr>
-                <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success" value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
-                <button [ngClass]="{'button': true, 'is-success': true, 'is-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}" [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir video</button>
+                <hr />
+                <progress
+                  *ngIf="porcentaje > 0 && porcentaje < 100"
+                  class="progress is-large is-success"
+                  value="{{ porcentaje }}"
+                  max="100"
+                >
+                  {{ porcentaje }}%
+                </progress>
+                <button
+                  [ngClass]="{
+                    button: true,
+                    'is-success': true,
+                    'is-large': true,
+                    'is-loading': porcentaje > 0 && porcentaje < 100
+                  }"
+                  [disabled]="
+                    !archivoForm.valid && porcentaje > 0 && porcentaje < 100
+                  "
+                >
+                  Subir video
+                </button>
               </form>
             </div>
+
             <div class="col-md-6">
-              <input type="file" name="CV" #imagen2 hidden (change)="uploadFileCV($event.target.files)">
-              <button mat-raised-button class="button-width" type="button" color="warn" (click)="imagen2.click()">Sube
-                tu CV</button>
+              <input
+                type="file"
+                name="CV"
+                #imagen2
+                hidden
+                (change)="uploadFileCV($event.target.files)"
+              />
+              <button
+                mat-raised-button
+                class="button-width"
+                type="button"
+                color="warn"
+                (click)="imagen2.click()"
+              >
+                Sube tu CV
+              </button>
               <p *ngIf="filesCV">
-                {{filesCV | json}}
+                {{ filesCV | json }}
               </p>
             </div>
             <!--Datos del Docente-->
           </div>
-          <button mat-raised-button class="col-md-12" color="primary" type="submit" [disabled]="formDocente.invalid">
+          <button
+            mat-raised-button
+            class="col-md-12"
+            color="primary"
+            type="submit"
+            [disabled]="formDocente.invalid"
+          >
             Enviar mi solicitud de docencia
           </button>
         </div>
@@ -96,5 +174,4 @@
   <mat-dialog-actions align="end">
     <button mat-button [mat-dialog-close]>Cancelar</button>
   </mat-dialog-actions>
-
 </div>
