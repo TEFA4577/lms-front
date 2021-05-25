@@ -81,7 +81,13 @@ export class CrearClaseComponent implements OnInit {
     });
 
     referencia.getDownloadURL().subscribe((URL) => {
-      this.filedata = URL;
+      if (this.filedata!= '') {
+        this.filedata='';
+        this.filedata = URL;
+      }else{
+        this.filedata = URL;
+      }
+
     });
     this.formClase.get('video_clase').setValue('listo');
         //console.log('files:', this.files);
