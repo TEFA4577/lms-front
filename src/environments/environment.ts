@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlBackend: 'http://127.0.0.1:8000/api/',
+  urlBackend: 'http://back.academiacomarca.com/api/'/*'http://127.0.0.1:8000/api/'*/,
   firebaseConfig: {
     /*apiKey: 'AIzaSyAGZh27gXIgs3L2nQieygZZ2j099o1Tbk4',
     authDomain: 'lms-proyect.firebaseapp.com',
@@ -23,6 +23,9 @@ export const environment = {
     appId: "1:906083958185:web:f85f66b156f9b4834858b8",
     measurementId: "G-VTLLWP484Y"
   },
+
+
+
 };
 
 /*
