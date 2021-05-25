@@ -39,8 +39,8 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-list-item *ngFor="let items of item.contenido" [routerLink]="items.link">
-            <!--<a mat-button [routerLink]="items.link">{{items.titulo}}</a>-->
-            {{items.titulo}}
+            <a [routerLink]="items.link">{{items.titulo}}</a>
+            <!---{{items.titulo}}-->
           </mat-list-item>
         </mat-expansion-panel>
       </mat-accordion>
@@ -58,8 +58,8 @@
               </mat-panel-title>
             </mat-expansion-panel-header>
             <mat-list-item *ngFor="let items of item.contenido" [routerLink]="items.link">
-              <!--<a mat-button [routerLink]="items.link">{{items.titulo}}</a>-->
-              {{items.titulo}}
+              <a [routerLink]="items.link">{{items.titulo}}</a>
+              <!--{{items.titulo}}-->
             </mat-list-item>
           </mat-expansion-panel>
         </mat-accordion>
