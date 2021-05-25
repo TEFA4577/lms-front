@@ -47,21 +47,6 @@ export class CrearClaseComponent implements OnInit {
         this.datosFormulario.delete('archivo');
         this.datosFormulario.append('archivo', event.target.files[i], event.target.files[i].name);
         }
-        /*for (let index = 0; index < event.length; index++) {
-          this.deleteAttachment(index);
-          const element = event[index];
-          console.log(element.size * 1e-9);
-          this.files.push(element.name);
-          this.filedata = element;
-          var reader = new FileReader();
-          reader.readAsDataURL(event[index]);
-          reader.onload = (_event) => {
-            this.videoURL = reader.result;
-          }
-          console.log(element);
-        }
-        this.formClase.get('video_clase').setValue('listo');
-        console.log(this.files);*/
   } else {
       this.mensajeArchivo = 'No hay un archivo seleccionado';
     }
