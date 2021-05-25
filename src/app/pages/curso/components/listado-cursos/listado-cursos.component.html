@@ -25,7 +25,7 @@
         <!--Cabecera del card: Nombre y Precio del Curso -->
         <mat-card-header>
           <mat-card-title>
-            <a class="lead" routerLink="/curso/curso-detalle/{{ item.id_curso }}">{{ item.nombre_curso }}</a>
+            <a class="lead titulo" routerLink="/curso/curso-detalle/{{ item.id_curso }}">{{ item.nombre_curso }}</a>
           </mat-card-title>
           <br>
           <mat-card-subtitle>Precio: Bs. {{ item.precio}}</mat-card-subtitle>
@@ -43,8 +43,7 @@
           <div class="row" *ngIf="item.etiquetas_curso">
             <!--<mat-card-subtitle>Categorias pertenecientes:</mat-card-subtitle>-->
             <div *ngFor="let etiqueta of item.etiquetas_curso" class="col-md">
-              <button routerLink="/curso/cursos-categorias/{{etiqueta.id_etiqueta}}" mat-stroked-button
-                color="warn">{{etiqueta.nombre_etiqueta}}</button>
+              <a routerLink="/curso/cursos-categorias/{{etiqueta.id_etiqueta}}">{{etiqueta.nombre_etiqueta}}</a>
             </div>
           </div>
         </div>
