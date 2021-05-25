@@ -61,7 +61,7 @@
             </div>
             <mat-card-header>
               <mat-card-title>
-                <a mat-button href="/curso/curso-detalle/{{ item.id_curso }}">{{ item.nombre_curso }}</a>
+                <a routerLink="/curso/curso-detalle/{{ item.id_curso }}">{{ item.nombre_curso }}</a>
               </mat-card-title>
               <mat-card-subtitle>Precio: Bs. {{ item.precio}}</mat-card-subtitle>
             </mat-card-header>
@@ -290,18 +290,19 @@
       <div *ngIf="!docente">
         <mat-spinner></mat-spinner>
       </div>
-        <div class="col-md-3" *ngFor="let doc of docente;">
-          <mat-card class="card-doc" routerLink="/docente/presentacion-docente/{{ doc.id_usuario }}">
-            <img mat-card-image src="{{ doc.foto_usuario }} " routerLink="/instructores/presentacion-docente/{{ doc.id_usuario }}"
-              class="img-cards-testimonios" alt="{{ doc.nombre_usuario }}" fallimg="avatar" />
-            <hr class="hr">
-            <mat-card-header>
-              <mat-card-title>
-                {{ doc.nombre_usuario }}
-              </mat-card-title>
-            </mat-card-header>
-          </mat-card>
-        </div>
+      <div class="col-md-3" *ngFor="let doc of docente;">
+        <mat-card class="card-doc" routerLink="/docente/presentacion-docente/{{ doc.id_usuario }}">
+          <img mat-card-image src="{{ doc.foto_usuario }} "
+            routerLink="/instructores/presentacion-docente/{{ doc.id_usuario }}" class="img-cards-testimonios"
+            alt="{{ doc.nombre_usuario }}" fallimg="avatar" />
+          <hr class="hr">
+          <mat-card-header>
+            <mat-card-title>
+              {{ doc.nombre_usuario }}
+            </mat-card-title>
+          </mat-card-header>
+        </mat-card>
+      </div>
     </div>
   </div>
   <!--Fin Profesionales y testimonios-->
