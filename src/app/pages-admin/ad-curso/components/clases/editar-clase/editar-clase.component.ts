@@ -21,6 +21,8 @@ export class EditarClaseComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: number
   ) {
     this.id = data;
+    console.log(this.id);
+
   }
 
   ngOnInit(): void {
@@ -32,21 +34,23 @@ export class EditarClaseComponent implements OnInit {
   }
   buildForm(): void {
     this.formClase = this.formBuilder.group({
+      id_clase: [this.id],
       titulo_clase: ['', Validators.required],
       descripcion_clase: ['', Validators.required],
     });
   }
   setForm(): void {
-    this.formClase.get('titulo_cltase').setValue(this.datos.clase.titulo_clase);
+    this.formClase.get('titulo_clase').setValue(this.datos.clase.titulo_clase);
     this.formClase.get('descripcion_clase').setValue(this.datos.clase.descripcion_clase);
   }
   submitClases(event): void {
     event.preventDefault();
     console.log(this.formClase.value);
-    this.serCurso.actualizarClase(this.formClase, this.id).subscribe(res => {
+    this.serCurso.actualizarClase(this.formClase.value, this.id).subscribe(res => {
       console.log(res);
       this.formClase.reset();
       this.cargarDatos();
+      this.onNoClick();
     });
   }
 
@@ -65,6 +69,8 @@ export class EditarClaseComponent implements OnInit {
       console.log(res);
       this.datos = res;
       this.setForm();
+    }, error => {
+      console.log(error);
     });
   }
   uploadFile(event): void {
