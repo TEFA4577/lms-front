@@ -5,7 +5,8 @@
         <mat-card-header>
           <mat-card-title>Instructor/a: {{ docente.nombre_usuario }}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image src="{{docente.foto_usuario}}" alt="{{docente.usurio_nombre}}" fallimg="avatar">
+        <video mat-card-image src="{{docente.datos_docente.video_presentacion}}" autoplay controls></video>
+        <!--<img mat-card-image src="{{docente.foto_usuario}}" alt="{{docente.usurio_nombre}}" fallimg="avatar">-->
         <hr>
         <mat-card-content *ngIf="docente.datos_docente">
           <mat-card-title align="center">

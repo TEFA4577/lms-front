@@ -3,6 +3,17 @@
   display: flex;
   flex-direction: column;
 }
+.mat-fab{
+  outline: none;
+}
+
+.mat-button{
+  outline: none;
+}
+
+.mat-raised-button{
+  outline: none;
+}
 
 .card-body{
   margin-bottom: 15px;
