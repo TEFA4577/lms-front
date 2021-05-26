@@ -3,6 +3,7 @@ import { UsuarioService } from '../../../../services/usuario.service';
 import { DocentesService } from '../../../../services/docentes.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -28,7 +29,7 @@ export class EstudianteComponent implements OnInit {
   formDocente: FormGroup;
   files: any = [];
   filedata: any;
-  imagenPerfilCambio = false;
+  imagenPerfilCambio: any;
   isActive = false;
   estado = false;
 
@@ -80,11 +81,17 @@ export class EstudianteComponent implements OnInit {
       this.files.push(element.name);
       this.filedata = element;
       console.log(element);
+      const reader = new FileReader();
+      reader.readAsDataURL(event[index]);
+      reader.onload = (_event) => {
+        this.imagenPerfilCambio = reader.result;
+      };
     }
     console.log(this.files);
   }
   deleteAttachment(index): void {
     this.files.splice(index, 1);
+    this.imagenPerfilCambio = false;
   }
   setForm(): void {
     this.formUsuario.get('nombre_usuario').setValue(this.datosUsuario.nombre_usuario);
@@ -106,14 +113,33 @@ export class EstudianteComponent implements OnInit {
     myFormData.append('_method', 'put');
     myFormData.append('nombre_usuario', this.formUsuario.get('nombre_usuario').value);
     myFormData.append('correo_usuario', this.formUsuario.get('correo_usuario').value);
-    this.srvEstudiante.actualizarUsuario(myFormData, id).subscribe(res =>{
-      const obj: any = res;
-      localStorage.setItem('datosUsuario', JSON.stringify(obj.datosUsuario));
-      this.respuesta = res;
-      this.openSnackBar(this.respuesta.mensaje, 'cerrar');
-      console.log(res);
+    Swal.fire({
+      title: 'Datos de Perfil',
+      text: 'seguro que desea actualizar los cambios realizados!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.srvEstudiante.actualizarUsuario(myFormData, id).subscribe(res => {
+          const obj: any = res;
+          localStorage.setItem('datosUsuario', JSON.stringify(obj.datosUsuario));
+          console.log(res);
+          this.imagenPerfilCambio = null;
+          window.location.reload();
+          this.respuesta = res;
+          this.openSnackBar(this.respuesta.mensaje, 'cerrar');
+        }, error => {
+          console.log(error);
+        });
+      }
     });
   }
+
   actualizarPerfilDocente(event): void {
     event.preventDefault();
     console.log(this.formDocente.value);
