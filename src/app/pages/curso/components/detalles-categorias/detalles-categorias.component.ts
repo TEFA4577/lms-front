@@ -18,6 +18,7 @@ export class DetallesCategoriasComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
+
     this.mostrarCursoCategoria();
   }
 
@@ -27,7 +28,6 @@ export class DetallesCategoriasComponent implements OnInit {
       if (this.categorias.length !== 0) {
         this.estado = false;
       }
-      window.location.reload();
     })
   }
 }
