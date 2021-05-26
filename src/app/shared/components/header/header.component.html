@@ -18,16 +18,15 @@
         </div>
       </div>-->
       <div fxLayout="row" *ngIf="!deviceXs">
+        <a mat-button routerLink="/curso/cursos-general">
+          Cursos
+        </a>
         <a mat-button [matMenuTriggerFor]="menu">Categorias</a>
         <mat-menu #menu="matMenu" xPosition="before">
           <a mat-menu-item *ngFor="let item of etiqueta" routerLink="/curso/cursos-categorias/{{ item.id_etiqueta }}">
             {{ item.nombre_etiqueta }}
           </a>
         </mat-menu>
-
-        <a mat-button routerLink="/curso/cursos-general">
-          Cursos
-        </a>
         <a mat-button routerLink="/instructores/listado-instructores">
           Instructores
         </a>

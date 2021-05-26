@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./usuarios.component.scss']
 })
 export class UsuariosComponent implements OnInit {
-  displayedColumns: string[]= ['nombre_usuario','telefono_docente', 'descripcion_docente', 'estado_docente', 'id_docente'];
+  displayedColumns: string[]= ['nombre_usuario','telefono_docente', 'descripcion_docente', 'experiencia_docente', 'video_presentacion', 'estado_docente', 'id_docente'];
   dataSource: MatTableDataSource<DocentesUsuarios>;
   solicitudes: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -38,6 +38,7 @@ export class UsuariosComponent implements OnInit {
   listarSolicitudes(): void {
     this.serSoli.listDocente().subscribe(data =>{
       this.solicitudes = data;
+      console.log(this.solicitudes);
       this.dataSource = new MatTableDataSource(this.solicitudes);
       this.dataSource.paginator = this.paginator;
     });

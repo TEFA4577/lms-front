@@ -29,13 +29,23 @@
             <td mat-cell *matCellDef="let element"> <h3 color="accent">{{ element.telefono_docente }}</h3> </td>
           </ng-container>
           <ng-container matColumnDef="descripcion_docente">
-            <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+            <th mat-header-cell *matHeaderCellDef>Descripción</th>
             <td mat-cell *matCellDef="let element"> <h3 color="primary">{{ element.descripcion_docente }}</h3> </td>
+          </ng-container>
+          <ng-container matColumnDef="experiencia_docente">
+            <th mat-header-cell *matHeaderCellDef>Experiencia</th>
+            <td mat-cell *matCellDef="let element"> <h3 color="primary">{{ element.experiencia_docente }}</h3> </td>
+          </ng-container>
+          <ng-container matColumnDef="video_presentacion">
+            <th mat-header-cell *matHeaderCellDef>Presentación</th>
+            <td mat-cell *matCellDef="let element">
+              <video src="{{element.video_presentacion}}" class="videoPreview" controls controlslist="nodownload"></video>
+            </td>
           </ng-container>
           <ng-container matColumnDef="estado_docente">
             <th mat-header-cell *matHeaderCellDef>Estado</th>
             <td mat-cell *matCellDef="let element">
-              <h3 *ngIf="element.estado_docente == 1" color="warn">Habilitado</h3>
+              <h3 *ngIf="element.estado_docente == 1" color="accent">Habilitado</h3>
               <h3 *ngIf="element.estado_docente == 0" color="warn">Deshabilitado</h3>
             </td>
           </ng-container>

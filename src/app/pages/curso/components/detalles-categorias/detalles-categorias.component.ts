@@ -23,12 +23,11 @@ export class DetallesCategoriasComponent implements OnInit {
 
   mostrarCursoCategoria() {
     this.cursoCategoria.mostrarEtiquetaCurso(this.id).subscribe(data => {
-      console.log(data);
       this.categorias = data;
-      console.log(this.categorias.length);
       if (this.categorias.length !== 0) {
         this.estado = false;
       }
+      window.location.reload();
     })
   }
 }

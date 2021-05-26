@@ -92,10 +92,10 @@ export const MENU_ADMIN = [
       }
     ]
   }, {
-    grupo: 'Usuarios',
+    grupo: 'Docentes',
     contenido: [
       {
-        titulo: 'Administrar Usuarios',
+        titulo: 'Solicitud Docente',
         link: './usuarios/administrar',
       }
     ]

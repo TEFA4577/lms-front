@@ -1,11 +1,11 @@
 <div class="container">
-  <mat-card>
-    <mat-card-content>
+  <div mat-card>
+    <div mat-card-content>
       <div class="d-flex">
-        <mat-card-title>Membresias</mat-card-title>
+        <div mat-card-title>Membresias</div>
       </div>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </div>
   <hr/>
   <div *ngIf="!membresias" class="sinDatos d-flex justify-content-center">
     <p class="mensaje">Aún no se tienen membresias disponibles</p>
@@ -18,6 +18,7 @@
       <mat-card>
         <mat-card-header>
           <mat-card-title>{{ item.nombre_membresia }}<hr></mat-card-title>
+          <mat-card-subtitle>{{ item.precio_membresia }} .Bs</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src="{{ item.imagen_membresia}}" class="imgMembresia"/>
         <mat-card-content>

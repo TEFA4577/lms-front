@@ -16,6 +16,7 @@ export class SolicitudesMembresiaComponent implements OnInit {
   displayedColumns: string[]= ['usuario', 'membresia', 'imagen_membresia', 'comprobante', 'estado_membresia_usuario', 'inicio_membresia_usuario', 'fin_membresia_usuario', 'id_membresia_usuario'];
   dataSource: MatTableDataSource<SolicitudesMembresia>;
   solicitudes: any;
+  membresia: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
@@ -45,8 +46,8 @@ export class SolicitudesMembresiaComponent implements OnInit {
   }
   habilitar(id, estado): void {
     Swal.fire({
-      title: estado+' solicitud',
-      text: '¿seguro que desea '+ estado+' solicitud?',
+      title: estado+' membresia',
+      text: '¿seguro que desea '+ estado+'?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -57,13 +58,15 @@ export class SolicitudesMembresiaComponent implements OnInit {
       if (result.isConfirmed) {
         this.serSoli.habilitarMembresia(id, estado).subscribe(data => {
           this.listarSolicitudes();
+          this.membresia = data;
+          Swal.fire({
+            title: this.membresia.mensaje,
+            icon: this.membresia.state
+          });
+        }, error => {
+          console.log(error);
         });
-        Swal.fire(
-          estado,
-          estado+' membresia para el usuario',
-          'success'
-        )
       }
-    })
+    });
   }
 }

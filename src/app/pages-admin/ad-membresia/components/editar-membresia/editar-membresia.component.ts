@@ -40,6 +40,7 @@ export class EditarMembresiaComponent implements OnInit {
 
   buildForm(): void {
     this.formEditarMembresia = this.formBuilder.group({
+      id_membresia: [this.id],
       nombre_membresia: ['', Validators.required],
       texto_membresia: ['', Validators.required],
       precio_membresia: ['', Validators.required],
@@ -48,11 +49,11 @@ export class EditarMembresiaComponent implements OnInit {
   }
 
   setForm(): void {
-    this.formEditarMembresia.get('nombre_membresia').setValue(this.datos.nombre_membresia);
-    this.formEditarMembresia.get('texto_membresia').setValue(this.datos.texto_membresia);
-    this.formEditarMembresia.get('precio_membresia').setValue(this.datos.precio_membresia);
-    this.formEditarMembresia.get('duracion_membresia').setValue(this.datos.duracion_membresia);
-    this.formEditarMembresia.get('imagen_membresia').setValue(this.datos.imagen_membresia);
+    this.formEditarMembresia.get('nombre_membresia').setValue(this.membresias.nombre_membresia);
+    this.formEditarMembresia.get('texto_membresia').setValue(this.membresias.texto_membresia);
+    this.formEditarMembresia.get('precio_membresia').setValue(this.membresias.precio_membresia);
+    this.formEditarMembresia.get('duracion_membresia').setValue(this.membresias.duracion_membresia);
+    // this.formEditarMembresia.get('imagen_membresia').setValue(this.membresias.imagen_membresia);
   }
 
   cambiarImagen(): void {
@@ -84,7 +85,10 @@ export class EditarMembresiaComponent implements OnInit {
   cargarDatos(): void {
     this.serMembresia.datosMembresia(this.id).subscribe(res => {
       this.datos = res;
-      this.membresias = this.datos.membresias;
+      console.log(res);
+      this.membresias = this.datos.membresias[0];
+      console.log(this.datos, 'datos');
+      console.log(this.membresias, 'membresias');
       this.setForm();
     }, error => {
       console.log(error);
