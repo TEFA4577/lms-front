@@ -43,7 +43,6 @@ export class CursoComponent implements OnInit, OnDestroy {
   showComments = false;
   dat: any;
   data: any;
-  progresoP: any;
   certificadoBoton = false;
   evaluacionButton = false;
   evaluacion: any;
@@ -65,6 +64,7 @@ export class CursoComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
+
     this.getData();
     this.buildForm();
     this.respuestaForm();
@@ -77,9 +77,7 @@ export class CursoComponent implements OnInit, OnDestroy {
       this.clasesModulo = this.datos.modulos;
       this.curso = this.datos.curso;
       this.modulos = this.datos.modulos;
-      this.evaluacion = this.datos.evaluacion;
       this.progreso = JSON.parse(this.datos.cursoUsuario.progreso_curso);
-      this.progresoP = JSON.parse(this.evaluacion[0].progreso_evaluacion);
       this.certificado =  this.datos.cursoUsuario.id_usuario_curso;
       this.estado = false;
       this.progresoBarra();
@@ -98,10 +96,7 @@ export class CursoComponent implements OnInit, OnDestroy {
     this.count = (conteo.length * 100) / this.progreso.length;
     if (this.count == 100) {
       this.evaluacionButton = true;
-      if(this.progresoP == 100){
-        this.certificadoBoton = true;
-        this.evaluacionButton = false;
-      }
+       this.certificadoBoton = true;
     }
   }
 
@@ -168,14 +163,6 @@ export class CursoComponent implements OnInit, OnDestroy {
   openEvaluacion( idCurso: number):void {
     this.idCurso = idCurso;
 
-    const myFormData = new FormData();
-    const datos = JSON.parse(localStorage.getItem('datosUsuario'));
-    myFormData.append('id_usuario', datos.id_usuario);
-    myFormData.append('id_curso', this.idCurso);
-
-    this.postEvaluacion.postExamen(myFormData).subscribe(result => {
-
-    });
       const dialogRef = this.dialog.open(EvaluacionCursoComponent,{
         data: idCurso,
         width: '100vh'
