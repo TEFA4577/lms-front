@@ -81,7 +81,7 @@
                   </div>
                   <img class="img-usuario" mat-card-image [src]="imagenPerfilCambio">
                 </div>
-                <img class="img-usuario" *ngIf="!imagenPerfilCambio" mat-card-image src="{{datosUsuario.foto_usuario}}">
+                <img class="img-usuario" *ngIf="!imagenPerfilCambio" mat-card-image src="{{datosUsuario.foto_usuario}}" fallimg="avatar">
                 <hr>
                 <mat-card-actions align="end">
                   <input type="file" name="foto_usuario" #imagen hidden accept="image/*"
