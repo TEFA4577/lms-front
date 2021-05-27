@@ -32,6 +32,7 @@ export class EstudianteComponent implements OnInit {
   imagenPerfilCambio: any;
   isActive = false;
   estado = false;
+  rutaVideo: string;
 
   constructor(
     public srvEstudiante: UsuarioService,
@@ -53,6 +54,12 @@ export class EstudianteComponent implements OnInit {
       console.log(this.datosUsuario);
       this.estado = true;
     }
+  }
+  verVideo(ruta): void {
+    this.rutaVideo = ruta;
+  }
+  setVideo(ruta: string) {
+    this.rutaVideo = ruta;
   }
   openSnackBar(message: string, action: string): void {
     this._snackBar.open(message, action, {
@@ -143,7 +150,31 @@ export class EstudianteComponent implements OnInit {
   actualizarPerfilDocente(event): void {
     event.preventDefault();
     console.log(this.formDocente.value);
-    this.srvDocente.actualizarDocente(this.formDocente.value, this.datosUsuario.id_usuario).subscribe(res => {
+    Swal.fire({
+      title: 'Datos de Perfil',
+      text: 'seguro que desea actualizar los cambios realizados!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.srvDocente.actualizarDocente(this.formDocente.value, this.datosUsuario.id_usuario).subscribe(res => {
+          const obj: any = res;
+          localStorage.setItem('datosUsuario', JSON.stringify(obj.datosUsuario));
+          console.log(res);
+          window.location.reload();
+          this.respuesta = res;
+          this.openSnackBar(this.respuesta.mensaje, 'cerrar');
+        }, error => {
+          console.log(error);
+        });
+      }
+    });
+    /*this.srvDocente.actualizarDocente(this.formDocente.value, this.datosUsuario.id_usuario).subscribe(res => {
       console.log(res);
       const obj: any = res;
       localStorage.setItem('datosUsuario', JSON.stringify(obj.datosUsuario));
@@ -151,6 +182,6 @@ export class EstudianteComponent implements OnInit {
       this.openSnackBar(this.respuesta.mensaje, 'cerrar');
     }, error => {
       console.log(error);
-    });
+    });*/
   }
 }

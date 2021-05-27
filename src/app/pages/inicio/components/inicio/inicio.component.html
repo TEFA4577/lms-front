@@ -61,7 +61,7 @@
             </div>
             <mat-card-header>
               <mat-card-title>
-                <a routerLink="/curso/curso-detalle/{{ item.id_curso }}">{{ item.nombre_curso }}</a>
+                <a class="lead" routerLink="/curso/curso-detalle/{{ item.id_curso }}">{{ item.nombre_curso }}</a>
               </mat-card-title>
               <mat-card-subtitle>Precio: Bs. {{ item.precio}}</mat-card-subtitle>
             </mat-card-header>
@@ -213,7 +213,7 @@
           <hr>
           <mat-card-header>
             <mat-card-title>
-              <a mat-button class="lead center"
+              <a class="lead center"
                 routerLink="/curso/cursos-categorias/{{item.id_etiqueta}}">{{item.nombre_etiqueta}}</a>
             </mat-card-title>
           </mat-card-header>

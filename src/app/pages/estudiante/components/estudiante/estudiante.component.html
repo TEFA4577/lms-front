@@ -1,36 +1,17 @@
-<div class="container py-5">
+<div class="container">
   <div class="row py-3">
     <div class="col-md-12">
+      <mat-card>
+        <h1>Tu información básica</h1>
+      </mat-card>
       <div class="container py-4">
-        <!--Card de foto y datos de usuario-->
+        <!--Card de foto y datos de usuario (estudiante)-->
         <form [formGroup]="formUsuario" (ngSubmit)="submitEditarUsuario($event)" class="example-form">
           <div class="row">
-            <!--Fotografia del usuario-->
-            <div class="col-md-4 py-2">
+            <div class="col-md-8 py-2">
+              <!--Datos del estudiante-->
               <mat-card>
-                <mat-card-header class="py-2">
-                  <mat-card-title>{{ datosUsuario.nombre_usuario }}</mat-card-title>
-                </mat-card-header>
-                <div *ngIf="imagenPerfilCambio">
-                  <h3>Nueva foto de perfil</h3>
-                  <img mat-card-image [src]="imagenPerfilCambio">
-                </div>
-                <img *ngIf="!imagenPerfilCambio" mat-card-image src="{{datosUsuario.foto_usuario}}">
-                <hr>
-                <mat-card-actions>
-                  <input type="file" name="foto_usuario" #imagen hidden accept="image/*"
-                    (change)="uploadFile($event.target.files)">
-                  <button type="button" mat-mini-fab matTooltip="Cambia tu foto de perfil" (click)="imagen.click()"
-                    class="example-button" color="warn">
-                    <mat-icon>mode_edit</mat-icon>
-                  </button>
-                </mat-card-actions>
-              </mat-card>
-            </div>
-            <!--Fotografia del usuario-->
-            <div class="col-md-4 py-2">
-              <mat-card>
-                <mat-card-header>
+                <mat-card-header class="py-3">
                   <mat-card-title>Datos de Usuario</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
@@ -45,36 +26,89 @@
                   </mat-form-field>
                 </mat-card-content>
                 <mat-card-actions align="end">
-                  <button mat-raised-button color="accent" type="submit">Guardar cambios</button>
+                  <button mat-button type="submit">Guardar cambios</button>
                 </mat-card-actions>
               </mat-card>
-            </div>
-            <div class="col-md-4 py-2">
+              <!--Datos del estudiante-->
+              <br>
+              <!--Informacion del Docente-->
               <div *ngIf="datosUsuario.id_rol == 2">
+                <mat-card>
+                  <h1>Tu información de Instructor</h1>
+                </mat-card>
+                <br>
                 <form [formGroup]="formDocente" (ngSubmit)="actualizarPerfilDocente($event)" class="example-form">
                   <mat-card>
-                    <mat-card-header>
+                    <mat-card-header class="py-3">
                       <mat-card-title>Datos de Instructor</mat-card-title>
                     </mat-card-header>
-                    <mat-form-field class="col-md-12">
-                      <mat-label>Número de Celular:</mat-label>
-                      <input matInput formControlName="telefono_docente" type="number">
-                    </mat-form-field>
-                    <mat-form-field class="col-md-12">
-                      <mat-label>Descripcion profesional:</mat-label>
-                      <textarea matInput formControlName="descripcion_docente" type="text"></textarea>
-                    </mat-form-field>
-                    <mat-form-field class="col-md-12">
-                      <mat-label>Experiencia profesional:</mat-label>
-                      <textarea matInput formControlName="experiencia_docente" type="text"></textarea>
-                    </mat-form-field>
+                    <mat-card-content>
+                      <hr>
+                      <mat-form-field class="col-md-12">
+                        <mat-label>Número de Celular:</mat-label>
+                        <input matInput formControlName="telefono_docente" type="number">
+                      </mat-form-field>
+                      <mat-form-field class="col-md-12">
+                        <mat-label>Descripcion profesional:</mat-label>
+                        <textarea matInput formControlName="descripcion_docente" type="text"></textarea>
+                      </mat-form-field>
+                      <mat-form-field class="col-md-12">
+                        <mat-label>Experiencia profesional:</mat-label>
+                        <textarea matInput formControlName="experiencia_docente" type="text"></textarea>
+                      </mat-form-field>
+                        <a mat-stroked-button color="primary" matTooltip="mira tu CV" target=”_blank”
+                        href="{{datosUsuario.datos_docente.cv_docente}}">
+                        Mira tu Curriculum
+                      </a>
+                    </mat-card-content>
                     <mat-card-actions align="end">
-                      <button mat-raised-button color="accent" type="submit">Guardar cambios</button>
+                      <button mat-button type="submit">Guardar cambios</button>
                     </mat-card-actions>
                   </mat-card>
                 </form>
               </div>
+              <!--Informacion del Docente-->
             </div>
+            <!--Fotografia del usuario-->
+            <div class="col-md-4 py-2">
+              <mat-card class="foto-usu">
+                <mat-card-header class="py-2">
+                  <mat-card-title>{{ datosUsuario.nombre_usuario }}</mat-card-title>
+                </mat-card-header>
+                <div *ngIf="imagenPerfilCambio">
+                  <div class="alert alert-danger" role="alert">
+                    Haga click en "Guardar cambios" para cambiar su foto de perfil
+                  </div>
+                  <img class="img-usuario" mat-card-image [src]="imagenPerfilCambio">
+                </div>
+                <img class="img-usuario" *ngIf="!imagenPerfilCambio" mat-card-image src="{{datosUsuario.foto_usuario}}">
+                <hr>
+                <mat-card-actions align="end">
+                  <input type="file" name="foto_usuario" #imagen hidden accept="image/*"
+                    (change)="uploadFile($event.target.files)">
+                  <button type="button" mat-mini-fab matTooltip="Cambia tu foto de perfil" (click)="imagen.click()"
+                    class="example-button" color="accent">
+                    <mat-icon>mode_edit</mat-icon>
+                  </button>
+                </mat-card-actions>
+              </mat-card>
+              <br>
+              <mat-card *ngIf="datosUsuario.id_rol == 2" class="info-ins">
+                <video class="video" mat-card-image [src]="rutaVideo"
+                  (click)="verVideo(datosUsuario.video_presentacion)" controls muted controlslist="nodownload"
+                  autoplay></video>
+                <hr>
+                <mat-card-actions align="end">
+                  <input type="file" name="foto_usuario" #imagen hidden accept="image/*"
+                    (change)="uploadFile($event.target.files)">
+                  <button type="button" mat-mini-fab matTooltip="Cambia tu video de presentacion" class="example-button"
+                    color="primary">
+                    <mat-icon>mode_edit</mat-icon>
+                  </button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+            <!--Fotografia del usuario-->
           </div>
         </form>
       </div>

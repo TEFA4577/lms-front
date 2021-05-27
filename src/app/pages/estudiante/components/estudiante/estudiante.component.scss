@@ -1,9 +1,20 @@
-.img-usuario{
-  height: 450px;
-  max-width: 318px;
+.img-usuario {
+  height: 340px;
+}
+.info-ins {
+  height: 400px;
+}
+.video{
+  height: 280px;
+}
+.mat-card {
+  box-shadow: 0.5px 0.5px 20px #c3cbd3;
+}
+.a{
+  text-decoration: none;
 }
 .example-button {
-  margin-left: 290px;
+  outline: none;
 }
 .example-tooltip-red {
   background: #b71c1c;
@@ -11,18 +22,9 @@
 .example-button-row {
   margin: 0 20px 1px 290px;
 }
-
-.mat-stepper-horizontal {
-  margin-top: 8px;
-}
-
 .mat-form-field {
   margin-top: 16px;
 }
-.mat-stepper-horizontal {
-  margin-top: 8px;
-}
-
 .mat-form-field {
   margin-top: 16px;
 }
