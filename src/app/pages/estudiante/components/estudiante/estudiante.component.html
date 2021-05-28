@@ -56,7 +56,7 @@
                         <mat-label>Experiencia profesional:</mat-label>
                         <textarea matInput formControlName="experiencia_docente" type="text"></textarea>
                       </mat-form-field>
-                        <a mat-stroked-button color="primary" matTooltip="mira tu CV" target=”_blank”
+                      <a mat-stroked-button color="primary" matTooltip="mira tu CV" target=”_blank”
                         href="{{datosUsuario.datos_docente.cv_docente}}">
                         Mira tu Curriculum
                       </a>
@@ -81,7 +81,8 @@
                   </div>
                   <img class="img-usuario" mat-card-image [src]="imagenPerfilCambio">
                 </div>
-                <img class="img-usuario" *ngIf="!imagenPerfilCambio" mat-card-image src="{{datosUsuario.foto_usuario}}" fallimg="avatar">
+                <img class="img-usuario" *ngIf="!imagenPerfilCambio" mat-card-image src="{{datosUsuario.foto_usuario}}"
+                  fallimg="avatar">
                 <hr>
                 <mat-card-actions align="end">
                   <input type="file" name="foto_usuario" #imagen hidden accept="image/*"

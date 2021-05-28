@@ -1,7 +1,10 @@
+.body {
+  min-height: 680px;
+}
 .text {
   color: #2e3d4b;
 }
-.long-text{
+.long-text {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -31,7 +34,7 @@ a {
   text-decoration: none;
 }
 
-.imgCurso{
+.imgCurso {
   height: 250px;
   outline: none;
 }
