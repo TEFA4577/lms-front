@@ -3,7 +3,7 @@
     <div fxLayout="row">
       <!--Boton y logo de la academia que redirecciona al inicio-->
       <a mat-button routerLink="/inicio">
-        <img src="assets/img/Iconos/logoAcademia.png" height="40px" alt="" />
+        <img src="assets/img/nuevo_logo_Academia.png" height="75px" alt="" class="img" />
       </a>
 
       <!--<app-filter-cursos (search)="handleSearch($event)"></app-filter-cursos>
@@ -18,19 +18,19 @@
         </div>
       </div>-->
       <div fxLayout="row" *ngIf="!deviceXs">
-        <a mat-button routerLink="/curso/cursos-general">
+        <a mat-button class="menu1" routerLink="/curso/cursos-general">
           Cursos
         </a>
-        <a mat-button [matMenuTriggerFor]="menu">Categorias</a>
+        <a mat-button class="menu1" [matMenuTriggerFor]="menu">Categorias</a>
         <mat-menu #menu="matMenu" xPosition="before">
           <a mat-menu-item *ngFor="let item of etiqueta" routerLink="/curso/cursos-categorias/{{ item.id_etiqueta }}">
             {{ item.nombre_etiqueta }}
           </a>
         </mat-menu>
-        <a mat-button routerLink="/instructores/listado-instructores">
+        <a mat-button class="menu1" routerLink="/instructores/listado-instructores">
           Instructores
         </a>
-        <a mat-button routerLink="/info/nosotros">Nosotros</a>
+        <a mat-button class="menu1" routerLink="/info/nosotros">Nosotros</a>
       </div>
     </div>
 
@@ -101,12 +101,12 @@
       </div>
 
       <div fxLayout="row" *ngIf="estado">
-        <button mat-button color="warn" *ngIf="datosUsuario.id_rol == 3" routerLink="/estudiante/mis-cursos-adquiridos">
+        <a mat-button *ngIf="datosUsuario.id_rol == 3" class="itemsperfil" routerLink="/estudiante/mis-cursos-adquiridos">
           Mis Cursos
-        </button>
-        <button mat-button color="warn" *ngIf="datosUsuario.id_rol == 3" routerLink="/instructores/pasos-instructor">
+        </a>
+        <a mat-button *ngIf="datosUsuario.id_rol == 3" class="itemsperfil" routerLink="/instructores/pasos-instructor">
           Quiero Ser Instructor
-        </button>
+        </a>
         <button mat-button [matMenuTriggerFor]="menu">
           <div fxLayout="row" fxLayoutAlign="end center">
             <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!deviceXs">
