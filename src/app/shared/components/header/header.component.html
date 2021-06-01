@@ -69,7 +69,7 @@
       </div>
 
       <div *ngIf="!estado">
-        <a mat-button color="warn" routerLink="/instructores/pasos-instructor">Se instructor
+        <a mat-button routerLink="/instructores/pasos-instructor">Se instructor
         </a>
         <a mat-button [matMenuTriggerFor]="menu">
           <mat-icon aria-hidden="false" aria-label="Example home icon" color="primary">menu_open</mat-icon>
@@ -94,10 +94,10 @@
         </div>
       </div>-->
       <div *ngIf="!estado">
-        <a mat-button color="warn" routerLink="/instructores/pasos-instructor">Se instructor
+        <a mat-button class="itemsperfil" routerLink="/instructores/pasos-instructor">Se instructor
         </a>
-        <a mat-button color="accent" routerLink="/login">Iniciar Sesión</a>
-        <a mat-button color="primary" routerLink="/register">Regístrate</a>
+        <a mat-button class="itemsperfil" routerLink="/login">Iniciar Sesión</a>
+        <a mat-button class="itemsperfil" routerLink="/register">Regístrate</a>
       </div>
 
       <div fxLayout="row" *ngIf="estado">

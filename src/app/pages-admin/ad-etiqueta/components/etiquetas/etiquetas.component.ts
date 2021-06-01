@@ -70,7 +70,7 @@ export class EtiquetasComponent implements OnInit {
     });
   }
   cambiarEstado(id: number): void{
-    if (confirm('seguro que quieres eliminar')) {
+    if (confirm('¿Seguro que quieres eliminar la categoría?')) {
       this.serEtiqueta.cambiarEstado(id).subscribe(res => {
         console.log(res);
       });

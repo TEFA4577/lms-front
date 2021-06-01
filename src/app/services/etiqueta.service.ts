@@ -19,7 +19,7 @@ export class EtiquetaService {
     return this.http.get(this.API_BACKEND + 'etiquetas/mostrar/' + id);
   }
   actualizarEtiqueta(id: number, datos: any): any {
-    return this.http.put(this.API_BACKEND + 'etiquetas/actualizar/' + id, datos);
+    return this.http.post(this.API_BACKEND + 'etiquetas/actualizar/' + id, datos);
   }
   cambiarImagenEtiqueta(datos: any): any {
     return this.http.post(this.API_BACKEND + 'etiquetas/cambiar-imagen', datos);

@@ -101,10 +101,10 @@ export const MENU_ADMIN = [
     ]
   },
   {
-    grupo: 'Etiquetas',
+    grupo: 'Categorias',
     contenido: [
       {
-        titulo: 'Administrar Etiquetas',
+        titulo: 'Administrar Categorias',
         link: './etiquetas'
       }
     ]

@@ -22,20 +22,22 @@
             <textarea matInput formControlName="descripcion_etiqueta"></textarea>
           </mat-form-field>
           <button type="submit" class="col" mat-raised-button>Guardar Cambios</button>
+          <br>
           <input type="file" name="imagenCambio" #imagenCambio hidden accept="image/*"
             (change)="uploadFile($event.target.files)">
-          <button type="button" mat-raised-button color="primary" class="col-md-12" (click)="imagenCambio.click()">Cambiar
+          <button type="button" mat-raised-button color="primary" class="col-md-12"
+            (click)="imagenCambio.click()">Cambiar
             Imagen</button>
-          <button mat-raised-button color="primary" type="button" (click)="cambiarVideo()"> guardar
-          </button>
-          <button mat-raised-button color="warn" type="button" (click)="deleteAttachment(0)"> cancelar
-          </button>
+          <!--<button mat-raised-button color="primary" type="button" (click)="cambiarImagen()"> guardar
+          </button>-->
+          <!--<button mat-raised-button color="warn" type="button" (click)="deleteAttachment(0)"> cancelar
+          </button>-->
         </div>
       </div>
     </div>
   </div>
 </form>
 
-<mat-dialog-actions>
+<!--<mat-dialog-actions>
   <button mat-raised-button color="warn" [mat-dialog-close]="true">cancelar</button>
-</mat-dialog-actions>
+</mat-dialog-actions>-->

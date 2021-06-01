@@ -1,7 +1,20 @@
+.mat-form-field{
+  outline: none;
+  color: red;
+}
 .botonRegistrar {
   padding: 0.5%;
   font-size: 15px !important;
   min-width: auto !important;
+  outline: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+.mat-fab{
+  outline: none;
 }
 
 .redesSociales {
@@ -26,6 +39,7 @@
   .grupoBotonRedes {
     margin-left: 0%;
     margin-right: 0%;
+    outline: none;
   }
 }
 
@@ -39,6 +53,7 @@
   .grupoBotonRedes {
     margin-left: 8%;
     margin-right: 8%;
+    outline: none;
   }
 }
 
@@ -52,6 +67,7 @@
   .grupoBotonRedes {
     margin-left: 8%;
     margin-right: 8%;
+    outline: none;
   }
 }
 
@@ -64,6 +80,7 @@
   .grupoBotonRedes {
     margin-left: 12%;
     margin-right: 12%;
+    outline: none;
   }
 
   ._cuerpo {
@@ -108,7 +125,3 @@
   padding: 24px;
   // box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
-
-/*.footer{
-  margin: 8px 8px 20px 8px;
-}*/
