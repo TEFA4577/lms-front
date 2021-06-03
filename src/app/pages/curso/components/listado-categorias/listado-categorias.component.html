@@ -1,12 +1,12 @@
 <div class="container-fluid body">
   <div class="row justify-content-center text-align-center title-content">
     <div class="col-md-12 py-5 text-white text-center">
-      <p class="text-white text-align-center lead">Categorias de la Academia</p>
+      <p class="text-white text-align-center lead">Categorías de la Academia</p>
     </div>
   </div>
 </div>
 <hr>
-<div class="container">
+<div class="container content">
   <!--Presentacion de categorias-->
   <div class="row justify-content-center" role="status">
     <div *ngIf="!etiquetas" class="text-center">
@@ -20,13 +20,15 @@
         <img mat-card-image src="{{item.imagen_etiqueta}}" routerLink="/curso/cursos-categorias/{{item.id_etiqueta}}"
           class="img-cards" fallimg="avatar" />
         <hr>
-        <mat-card-header>
-          <mat-card-title>
-            <a mat-button class="lead center"
-              routerLink="/curso/cursos-categorias/{{item.id_etiqueta}}">{{item.nombre_etiqueta}}</a>
-          </mat-card-title>
-          <mat-card-subtitle>{{item.descripcion_etiqueta}}</mat-card-subtitle>
-        </mat-card-header>
+        <mat-card-title>
+          <a class="lead center" routerLink="/curso/cursos-categorias/{{item.id_etiqueta}}">{{item.nombre_etiqueta}}</a>
+        </mat-card-title>
+        <br>
+        <mat-card-content>
+          <div class="container" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
+            {{ item.descripcion_etiqueta }}
+          </div>
+        </mat-card-content>
       </mat-card>
       <br>
       <!--Final de los Cards - Categorias-->

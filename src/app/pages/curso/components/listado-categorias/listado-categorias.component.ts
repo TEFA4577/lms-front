@@ -11,7 +11,7 @@ import { EtiquetaService } from '../../../../services/etiqueta.service';
 export class ListadoCategoriasComponent implements OnInit {
 
   etiquetas: any;
-
+  texto = true;
   @Input()
   // tslint:disable-next-line: no-unused-expression
   id: any;

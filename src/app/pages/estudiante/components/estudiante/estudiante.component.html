@@ -95,9 +95,8 @@
               </mat-card>
               <br>
               <mat-card *ngIf="datosUsuario.id_rol == 2" class="info-ins">
-                <video class="video" mat-card-image [src]="rutaVideo"
-                  (click)="verVideo(datosUsuario.video_presentacion)" controls muted controlslist="nodownload"
-                  autoplay></video>
+                <video class="video" mat-card-image src="{{datosUsuario.datos_docente.video_presentacion}}" controls
+                  muted></video>
                 <hr>
                 <mat-card-actions align="end">
                   <input type="file" name="foto_usuario" #imagen hidden accept="image/*"

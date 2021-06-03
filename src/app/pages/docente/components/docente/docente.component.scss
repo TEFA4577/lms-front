@@ -23,7 +23,7 @@ p {
 .long-text {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
 
@@ -40,7 +40,7 @@ p {
 }
 
 .mat-card-content {
-  color: #abb2b9;
+  color: #808B96;
   flex-grow: 1;
   overflow: auto;
   align-content: justify;

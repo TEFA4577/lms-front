@@ -2,15 +2,25 @@
   //min-height: 680px;
   background: #03738c;
 }
-
-.text {
-  color: #2e3d4b;
+.content {
+  min-height: 680px;
 }
-
+.mat-card-content {
+  color:  #808B96;
+  flex-grow: 1;
+  overflow: auto;
+  align-content: justify;
+  text-align: justify;
+}
+.long-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
 p {
   font-size: xx-large;
 }
-
 .hr {
   border: 0.2px solid #03738c;
   border-radius: 3px;
@@ -22,24 +32,15 @@ p {
 }
 
 //Cards de las categorias
-.categorie-card {
-  width: 100%;
-  height: 90%;
-  box-shadow: 8px 8px 20px #c3cbd3;
-}
-
-.cat-img-cards {
-  height: 80%;
-  width: 100%;
-}
-
-//Cards de los cursos
 .example-card {
-  align-content: center;
-  text-align: center;
-  width: 100%;
-  justify-content: center;
+  height: 420px;
   box-shadow: 8px 8px 20px #c3cbd3;
+  outline: none;
+  margin-bottom: 15px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
@@ -48,7 +49,7 @@ a {
 }
 
 .img-cards {
-  height: 150px;
+  height: 200px;
   outline: none;
 }
 

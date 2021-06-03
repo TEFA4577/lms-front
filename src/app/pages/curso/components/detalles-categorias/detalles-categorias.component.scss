@@ -1,6 +1,9 @@
 .body {
   background: #03a6a6;
 }
+.content{
+  min-height: 680px;
+}
 .text {
   color: #2e3d4b;
 }
@@ -44,6 +47,7 @@ p {
   overflow: auto;
   align-content: justify;
   text-align: justify;
+  color: #808B96;
 }
 
 a {
