@@ -34,6 +34,6 @@ export class EtiquetaService {
     return this.http.put(this.API_BACKEND + 'cursos/registrar-etiqueta/' + id, datos);
   }
   mostrarEtiquetaCurso(id: number): any{
-    return this.http.get(this.API_BACKEND + 'etiquetas/cursos/' + id);
+    return this.http.get(this.API_BACKEND + 'cursos/' + id);
   }
 }
