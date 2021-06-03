@@ -21,7 +21,7 @@
         <a mat-button class="menu1" routerLink="/curso/cursos-general">
           Cursos
         </a>
-        <a mat-button class="menu1" [matMenuTriggerFor]="menu">Categorias</a>
+        <a mat-button class="menu1" [matMenuTriggerFor]="menu">Categorías</a>
         <mat-menu #menu="matMenu" xPosition="before">
           <a mat-menu-item *ngFor="let item of etiqueta" routerLink="/curso/cursos-categorias/{{ item.id_etiqueta }}">
             {{ item.nombre_etiqueta }}
@@ -64,12 +64,12 @@
           <button mat-menu-item *ngIf="datosUsuario.id_rol == 3" routerLink="/instructores/pasos-instructor">
             Quiero Ser Instructor
           </button>
-          <button mat-menu-item (click)="cerrarSesion()">Cerrar Session</button>
+          <button mat-menu-item (click)="cerrarSesion()">Cerrar Sesión</button>
         </mat-menu>
       </div>
 
       <div *ngIf="!estado">
-        <a mat-button routerLink="/instructores/pasos-instructor">Se instructor
+        <a mat-button routerLink="/instructores/pasos-instructor">Sé instructor
         </a>
         <a mat-button [matMenuTriggerFor]="menu">
           <mat-icon aria-hidden="false" aria-label="Example home icon" color="primary">menu_open</mat-icon>
@@ -94,7 +94,7 @@
         </div>
       </div>-->
       <div *ngIf="!estado">
-        <a mat-button class="itemsperfil" routerLink="/instructores/pasos-instructor">Se instructor
+        <a mat-button class="itemsperfil" routerLink="/instructores/pasos-instructor">Sé instructor
         </a>
         <a mat-button class="itemsperfil" routerLink="/login">Iniciar Sesión</a>
         <a mat-button class="itemsperfil" routerLink="/register">Regístrate</a>
@@ -132,7 +132,7 @@
             Quiero Ser Instructor
           </a>
           <hr>
-          <button mat-menu-item (click)="cerrarSesion()">Cerrar Session</button>
+          <button mat-menu-item (click)="cerrarSesion()">Cerrar Sesión</button>
         </mat-menu>
       </div>
     </div>
@@ -140,7 +140,7 @@
 
   <mat-toolbar-row *ngIf="deviceXs">
     <a mat-button routerLink="/curso/cursos-general">Novedades</a>
-    <button mat-button [matMenuTriggerFor]="menu">Categorias</button>
+    <button mat-button [matMenuTriggerFor]="menu">Categorías</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item *ngFor="let item of etiqueta" routerLink="/curso/cursos-categorias/{{ item.id_etiqueta }}">
         {{ item.nombre_etiqueta }}

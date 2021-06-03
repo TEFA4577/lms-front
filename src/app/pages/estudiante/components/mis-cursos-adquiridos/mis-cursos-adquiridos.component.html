@@ -20,23 +20,26 @@
               </a>
             </mat-card-title>
           </mat-card-header>
-          <div *ngIf="miCurso.estado_usuario_curso != 'no confirmado'">
-            <img mat-card-image
-            src="{{ miCurso.curso_solicitado.imagen_curso }}"
-            routerLink="/curso/curso-contenido/{{ miCurso.id_usuario_curso }}" class="imgCurso" fallimg>
+          <div *ngIf="miCurso.estado_usuario_curso == 'adquirido'">
+            <img mat-card-image src="{{ miCurso.curso_solicitado.imagen_curso }}"
+              routerLink="/curso/curso-contenido/{{ miCurso.id_usuario_curso }}" class="imgCurso" fallimg>
           </div>
-          <div *ngIf="miCurso.estado_usuario_curso != 'adquirido'">
-            <img mat-card-image
-            src="{{ miCurso.curso_solicitado.imagen_curso }}" class="imgCurso" fallimg>
+          <div *ngIf="miCurso.estado_usuario_curso == 'no confirmado'">
+            <img mat-card-image src="{{ miCurso.curso_solicitado.imagen_curso }}" class="imgCurso" fallimg>
+          </div>
+          <div *ngIf="miCurso.estado_usuario_curso == 'rechazado'">
+            <img mat-card-image src="{{ miCurso.curso_solicitado.imagen_curso }}" class="imgCurso" fallimg>
           </div>
           <mat-card-content>
             <hr>
             <div class="container row">
               <mat-card-subtitle>Estado de tu curso:</mat-card-subtitle>&nbsp;
               <mat-chip-list>
-                <mat-chip *ngIf="miCurso.estado_usuario_curso != 'adquirido'" color="accent" selected>
+                <mat-chip *ngIf="miCurso.estado_usuario_curso == 'no confirmado'" color="accent" selected>
                   {{miCurso.estado_usuario_curso}}</mat-chip>
-                <mat-chip *ngIf="miCurso.estado_usuario_curso != 'no confirmado'"
+                <mat-chip *ngIf="miCurso.estado_usuario_curso == 'rechazado'" color="warn" selected>
+                  {{miCurso.estado_usuario_curso}}</mat-chip>
+                <mat-chip *ngIf="miCurso.estado_usuario_curso == 'adquirido'"
                   routerLink="/curso/curso-contenido/{{ miCurso.id_usuario_curso }}" color="accent" selected>
                   {{miCurso.estado_usuario_curso}}</mat-chip>
               </mat-chip-list>
@@ -46,7 +49,7 @@
               {{ miCurso.curso_solicitado.descripcion_curso }}
             </div>
           </mat-card-content>
-          <mat-card-actions align="end" *ngIf="miCurso.estado_usuario_curso != 'no confirmado'">
+          <mat-card-actions align="end" *ngIf="miCurso.estado_usuario_curso == 'adquirido'">
             <button mat-button routerLink="/curso/curso-contenido/{{ miCurso.id_usuario_curso }}">IR A MI CURSO</button>
           </mat-card-actions>
         </mat-card>

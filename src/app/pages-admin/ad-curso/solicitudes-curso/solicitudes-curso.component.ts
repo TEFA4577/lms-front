@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./solicitudes-curso.component.scss']
 })
 export class SolicitudesCursoComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['usuario', 'curso', 'comprobante', 'id_usuario_curso'];
+  displayedColumns: string[] = ['usuario', 'curso', 'comprobante', 'precio', 'id_usuario_curso'];
   dataSource: MatTableDataSource<Solicitudes>;
   solicitudes: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;

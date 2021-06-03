@@ -1,26 +1,27 @@
 <div *ngIf="miMemb.length != 0" class="alert alert-success" role="alert">
-  Usted dispone de una membresia que se encuentra activa.
+  Usted dispone de una membresía que se encuentra activa.
 </div>
-<div  *ngIf="miMemb.length === 0" class="alert alert-danger" role="alert">
-  Debes adquirir una Membresia<a mat-stroked-button color="primary" href="#/admin/membresias/docente-membresia" class="alert-link">(click Aquí)</a> para vender tus cursos.
+<div *ngIf="miMemb.length === 0" class="alert alert-danger" role="alert">
+  Debe adquirir una membresía para vender sus cursos. <a mat-stroked-button color="primary"
+    href="#/admin/membresias/docente-membresia" class="alert-link">(click Aquí)</a>
 </div>
 <div class="container">
   <mat-card>
     <mat-card-content>
       <div class="d-flex justify-content-between">
         <mat-card-title>
-          Mis Cursos Creados
+          Mis cursos creados
         </mat-card-title>
         <button mat-raised-button matTooltip="Crear un nuevo curso" color="primary" (click)="openDialog()">
-          Crear Curso <mat-icon>add</mat-icon>
+          Crear un nuevo curso <mat-icon>add</mat-icon>
         </button>
       </div>
     </mat-card-content>
   </mat-card>
   <hr />
   <div *ngIf="estado" class="sinDatos d-flex align-items-center justify-content-center">
-    <p class="mensaje">Aún no creaste ningun curso, ¿¡Qué Esperas!? empieza <button mat-stroked-button color="primary"
-        (click)="openDialog()">aquí</button></p>
+    <p class="mensaje">Aún no creaste ningun curso, ¿¡Qué esperas!? empieza ya...<button mat-stroked-button
+        color="primary" (click)="openDialog()">aquí</button></p>
   </div>
   <div class="row" *ngIf="!estado">
     <div class="col-md-4" *ngFor="let miCurso of misCursos">
@@ -42,11 +43,16 @@
           </button>
         </div>
         <img mat-card-image src="{{ miCurso.imagen_curso }}" alt="{{miCurso.nombre_curso}}" class="imgCurso">
-        <div><hr></div>
+        <div>
+          <hr>
+        </div>
         <mat-card-subtitle>Mensaje del revisor: {{miCurso.mensaje}}
         </mat-card-subtitle>
+        <div>
+          <hr>
+        </div>
         <mat-card-content>
-          <h3>Etiquetas Curso</h3>
+          <h3>Categorías del curso</h3>
           <div class="container">
             <mat-chip-list aria-label="eltiquetas" class="row">
               <mat-chip *ngFor="let item of miCurso.etiquetas_curso" class="col-md">{{item.nombre_etiqueta}}</mat-chip>
@@ -59,12 +65,12 @@
             <!--<button mat-stroked-button (click)="verEtiquetas(miCurso)">Añade Etiquetas</button>
               <button *ngIf="miCurso.estado_curso != 'aprobado'" mat-raised-button color="primary"
                 routerLink="../administrar/{{miCurso.id_curso}}">Administrar Curso</button>-->
-            <button mat-button color="primary" *ngIf="miCurso.estado_curso != 'aprobado'" matTooltip="Administrar el Curso"
-              routerLink="../administrar/{{miCurso.id_curso}}">
+            <button mat-button color="primary" *ngIf="miCurso.estado_curso != 'aprobado'"
+              matTooltip="Administrar el curso" routerLink="../administrar/{{miCurso.id_curso}}">
               <mat-icon>create</mat-icon>ADMINISTRAR
             </button>
-            <button mat-button color="warn" matTooltip="Añade Etiquetas" (click)="verEtiquetas(miCurso)">
-              <mat-icon>style</mat-icon>CATEGORIAS
+            <button mat-button color="warn" matTooltip="Añade las categorías" (click)="verEtiquetas(miCurso)">
+              <mat-icon>style</mat-icon>CATEGORÍAS
             </button>
           </mat-card-actions>
         </mat-card-footer>

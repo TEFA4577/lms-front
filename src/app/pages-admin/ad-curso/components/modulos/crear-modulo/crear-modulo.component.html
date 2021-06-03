@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between">
-  <h1 mat-dialog-title>Crea módulo para tu curso</h1>
+  <h1 mat-dialog-title>Crea módulos para tu curso</h1>
   <button mat-icon-button [mat-dialog-close]="true">
     <mat-icon>close</mat-icon>
   </button>
@@ -8,18 +8,18 @@
   <div mat-dialog-content>
     <div class="row">
       <mat-form-field class="col-md-12">
-        <mat-label>Nombre del modulo</mat-label>
+        <mat-label>Nombre del módulo</mat-label>
         <input matInput formControlName="nombre_modulo" type="text" placeholder="">
       </mat-form-field>
       <mat-form-field class="col-md-12" hitLabel="maximo de caracteres 500">
-        <mat-label>descripción del curso</mat-label>
+        <mat-label>Descripción del módulo</mat-label>
         <textarea matInput #input formControlName="descripcion_modulo" maxlength="500"></textarea>
         <mat-hint align="end">{{input.value?.length || 0 }}/500</mat-hint>
       </mat-form-field>
     </div>
   </div>
   <mat-dialog-actions class="col-md-12 justify-content-center">
-    <button style="width: 40%;" mat-raised-button color="primary" [disabled]="formModulo.invalid">crear modulo</button>
+    <button style="width: 40%;" mat-raised-button color="primary" [disabled]="formModulo.invalid">Crear modulo</button>
     <button style="width: 40%;" mat-raised-button color="warn" [mat-dialog-close]="true">cancelar</button>
   </mat-dialog-actions>
 </form>

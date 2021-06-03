@@ -157,8 +157,8 @@ export class CursosService {
     return this.http.get(this.API_BACKEND + 'comentarios');
   }
   // tslint:disable-next-line: typedef
-  certificado(id){
-    return this.http.get(this.API_BACKEND + 'certificado/' + id);
+  certificado(idUsuarioCurso){
+    return this.http.get(this.API_BACKEND + 'certificado/' + idUsuarioCurso);
   }
   busquedaCurso(datos){
     return this.http.get(this.API_BACKEND + 'cursos/buscar/', datos);

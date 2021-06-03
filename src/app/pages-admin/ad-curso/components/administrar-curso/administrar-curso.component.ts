@@ -35,6 +35,8 @@ export class AdministrarCursoComponent implements OnInit {
   imagenCambio: any;
   rutaVideo: any;
   enviar: any;
+  texto = true;
+
   constructor(
     public serCursos: CursosService,
     public serEvaluacion: EvaluacionService,
@@ -274,7 +276,8 @@ export class AdministrarCursoComponent implements OnInit {
   crearPrueba(id: number):void{
     const dialogRef = this.dialog.open(CrearEvaluacionComponent, {
       disableClose: true,
-      data: id
+      data: id,
+      width: '100vh'
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

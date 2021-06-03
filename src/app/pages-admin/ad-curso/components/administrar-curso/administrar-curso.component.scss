@@ -9,11 +9,24 @@
   position: sticky;
   top: 0;
 }
+.mat-line{
+  width: 100%;
+}
 .mat-icon-button{
   outline: none;
 }
 .mat-raised-button{
   outline: none;
+}
+.textarea-descrip{
+  border: none;
+  outline: none;
+  width: 100%;
+  height: auto;
+}
+.textarea-descrip:focus{
+outline: none;
+background-color: #f0f0f0;
 }
 .mat-spinner {
   position: fixed;
