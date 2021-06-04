@@ -75,7 +75,7 @@ export class CrearClaseComponent implements OnInit {
 
     });
     this.formClase.get('video_clase').setValue('listo');
-        //console.log('files:', this.files);
+    console.log('files:', this.files);
   }
 
   // FIN DE CODIGO
