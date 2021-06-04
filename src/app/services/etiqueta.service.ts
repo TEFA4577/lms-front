@@ -27,6 +27,9 @@ export class EtiquetaService {
   cambiarEstado(id: number): any {
     return this.http.get(this.API_BACKEND + 'etiquetas');
   }
+  eliminarEtiqueta(id){
+    return this.http.get(this.API_BACKEND + 'etiquetas/eliminar/' + id);
+  }
   eliminarEtiquetasCurso(id) {
     return this.http.get(this.API_BACKEND + 'cursos/eliminar-etiquetas/' + id);
   }

@@ -7,6 +7,7 @@ import { Etiquetas } from '../../../../models/etiquetas';
 import { EtiquetaService } from '../../../../services/etiqueta.service';
 import { EditarEtiquetaComponent } from '../editar-etiqueta/editar-etiqueta.component';
 import { CrearEtiquetaComponent } from '../crear-etiqueta/crear-etiqueta.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-etiquetas',
@@ -17,6 +18,7 @@ export class EtiquetasComponent implements OnInit {
   displayedColumns: string[] = ['nombre_etiqueta', 'descripcion_etiqueta', 'imagen_etiqueta', 'estado_etiqueta', 'id_etiqueta'];
   dataSource: MatTableDataSource<Etiquetas>;
   etiquetas: any;
+  estadoCargando = false;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   // obtener el orden de la tabla
@@ -69,11 +71,29 @@ export class EtiquetasComponent implements OnInit {
       this.listarEtiquetas();
     });
   }
-  cambiarEstado(id: number): void{
-    if (confirm('¿Seguro que quieres eliminar la categoría?')) {
-      this.serEtiqueta.cambiarEstado(id).subscribe(res => {
-        console.log(res);
-      });
-    }
+  cambiarEstado(id: number): void {
+    Swal.fire({
+      title: 'Eliminar Recurso?',
+      text: 'seguro que desea eliminar el Recurso!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si deseo eliminar',
+      cancelButtonText: 'No, cancelar!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.estadoCargando = !this.estadoCargando;
+        this.serEtiqueta.eliminarEtiqueta(id).subscribe(res => {
+          console.log(res);
+          this.listarEtiquetas();
+        });
+        Swal.fire(
+          'Eliminado!',
+          'El Recurso se elimino correctamente.',
+          'success'
+        );
+      }
+    });
   }
 }
