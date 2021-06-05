@@ -88,6 +88,7 @@ export class EvaluacionCursoComponent implements OnInit {
   mostrarExamen(): void {
     this.serEvaluacion.darExamen(this.id).subscribe(res => {
       this.prueba = res;
+      console.log(this.prueba);
     }, error => {
       console.log(error);
     });

@@ -38,7 +38,9 @@ export class EvaluacionService {
     return this.http.get(this.API_BACKEND + 'opcion/mostrar/' + id);
   }
   darExamen(id){
-    return this.http.get(this.API_BACKEND + 'prueba/evaluar/' + id);
+    const date = JSON.parse(localStorage.getItem('datosUsuario'));
+    const datos = date.id_usuario;
+    return this.http.get(this.API_BACKEND + 'prueba-evaluar/' + id+ '/' + datos);
   }
   evaluarExamen(id){
     return this.http.get(this.API_BACKEND + 'prueba/evaluando/' + id);
