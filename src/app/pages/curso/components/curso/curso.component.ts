@@ -79,6 +79,7 @@ export class CursoComponent implements OnInit, OnDestroy {
       this.modulos = this.datos.modulos;
       this.progreso = JSON.parse(this.datos.cursoUsuario.progreso_curso);
       this.certificado =  this.datos.cursoUsuario.id_usuario_curso;
+      this.evaluacion = this.datos.evaluacion;
       this.estado = false;
       this.progresoBarra();
     });
@@ -95,8 +96,10 @@ export class CursoComponent implements OnInit, OnDestroy {
     const conteo = this.progreso.filter(res => res.estado === true);
     this.count = (conteo.length * 100) / this.progreso.length;
     if (this.count == 100) {
-      this.evaluacionButton = true;
+      this.certificadoBoton = true;
+      if(this.evaluacion.progreso_evaluacion == 100)
        this.certificadoBoton = true;
+       this.evaluacionButton = false;
     }
   }
 
