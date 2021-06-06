@@ -11,6 +11,7 @@ import {
 } from '@angular/material/snack-bar';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-registro-docente',
@@ -33,9 +34,11 @@ export class RegistroDocenteComponent implements OnInit {
   filesVideo: any = [];
   videoURL: any;
   filedataV: any;
-  filedata:any;
+  filedata: any;
   filesCV: any = [];
   filedataCV: any;
+  path: String;
+  video: any;
 
   constructor(
     public docenteAd: DocentesService,
@@ -43,7 +46,8 @@ export class RegistroDocenteComponent implements OnInit {
     private _snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<RegistroDocenteComponent>,
     private usuarioService: UsuarioService,
-    private firebaseStorage: FirebaseStorageService, //CODIGO PARA FIREBASE STORAGE
+    private firebaseStorage: FirebaseStorageService, //CODIGO PARA FIREBASE STORAGE.
+    private af: AngularFireStorage,
     public route: ActivatedRoute) { }
 
 
@@ -62,17 +66,32 @@ export class RegistroDocenteComponent implements OnInit {
   public finalizado = false;
 
   //Evento que se gatilla cuando el input de tipo archivo cambia
-  public cambioArchivo(event):void {
+  public cambioArchivo(event): void {
     if (event.target.files.length > 0) {
       for (let i = 0; i < event.target.files.length; i++) {
         this.mensajeArchivo = `Archivo preparado: ${event.target.files[i].name}`;
         this.nombreArchivo = event.target.files[i].name;
         this.datosFormulario.delete('archivo');
         this.datosFormulario.append('archivo', event.target.files[i], event.target.files[i].name);
-        }
-        console.log('nombreArchivo: ',this.nombreArchivo );
+      }
+      console.log('nombreArchivo: ', this.nombreArchivo);
 
-  } else {
+    } else {
+      this.mensajeArchivo = 'No hay un archivo seleccionado';
+    }
+  }
+
+  upload(event) {
+    this.path = event.target.files[0]
+
+    if (event.target.files.length > 0) {
+      for (let i = 0; i < event.target.files.length; i++) {
+        this.mensajeArchivo = `Archivo preparado: ${event.target.files[i].name}`;
+        this.nombreArchivo = event.target.files[i].name;
+      }
+      console.log('nombreArchivo: ', this.nombreArchivo);
+
+    } else {
       this.mensajeArchivo = 'No hay un archivo seleccionado';
     }
   }
@@ -91,16 +110,48 @@ export class RegistroDocenteComponent implements OnInit {
     });
 
     referencia.getDownloadURL().subscribe((URL) => {
-      if (this.filedata!= '') {
+      /*if (this.filedata!= '') {
         this.filedata='';
         this.filedata = URL;
       }else{
         this.filedata = URL;
-      }
+      }*/
+      this.URLPublica = URL;
+      console.log(this.URLPublica);
 
     });
-    this.formClase.get('video_clase').setValue('listo');
-        //console.log('files:', this.files);
+    //this.formClase.get('video_clase').setValue('listo');
+    //console.log('files:', this.files);
+  }
+
+  uploadImage() {
+    console.log(this.path);
+
+
+    //let archivo = this.datosFormulario.get('video_instructor');
+    this.af.upload("files" + Math.random() + this.path, this.path);
+    let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
+    //let tarea = this.firebaseStorage.tareaCloudStorage(this.nombreArchivo, archivo);
+    //Cambia el porcentaje
+    /*tarea.percentageChanges().subscribe((porcentaje) => {
+      this.porcentaje = Math.round(porcentaje);
+      if (this.porcentaje == 100) {
+        this.finalizado = true;
+      }
+    });*/
+
+    referencia.getDownloadURL().subscribe((URL) => {
+      /*if (this.filedata != '') {
+        this.filedata = '';
+        this.filedata = URL;
+      } else {
+        this.filedata = URL;
+      }*/
+      this.URLPublica = URL;
+      console.log(this.URLPublica);
+    });
+
+
   }
 
   ngOnInit(): void {
@@ -182,8 +233,8 @@ export class RegistroDocenteComponent implements OnInit {
     myFormData.append('telefono_docente', this.formDocente.get('telefono_docente').value);
     myFormData.append('experiencia_docente', this.formDocente.get('experiencia_docente').value);
     myFormData.append('descripcion_docente', this.formDocente.get('descripcion_docente').value);
-    myFormData.append('video_instructor', this.filedata);
-    myFormData.append('CV', this.filedataCV);
+    myFormData.append('video_instructor', this.URLPublica);
+    myFormData.append('CV', this.video);
     Swal.fire({
       title: 'Seguro que quiere mandar su solicitud?',
       showDenyButton: true,

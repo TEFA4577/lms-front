@@ -11,7 +11,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage'; //storage
+import { environment } from '../../../environments/environment';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PresentacionDocenteComponent } from './components/presentacion-docente/presentacion-docente.component';
@@ -46,7 +49,19 @@ import { PagoTarjetaComponent } from './components/pago/components/pago-tarjeta/
     MatProgressSpinnerModule,
     MatChipsModule,
     NgFallimgModule,
-    MatTabsModule
+    MatTabsModule,
+    // AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule, //storage
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyBbjahv-8segzC1493vVNC1NYoM8s_VUPw",
+      authDomain: "lms-academia-d36db.firebaseapp.com",
+      databaseURL: "https://lms-academia-d36db-default-rtdb.firebaseio.com",
+      projectId: "lms-academia-d36db",
+      storageBucket: "lms-academia-d36db.appspot.com",
+      messagingSenderId: "906083958185",
+      appId: "1:906083958185:web:f85f66b156f9b4834858b8",
+      measurementId: "G-VTLLWP484Y"
+    })
   ],
   exports: [
     RegistroDocenteComponent
