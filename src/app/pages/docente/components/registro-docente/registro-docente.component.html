@@ -48,7 +48,7 @@
               <div class="contenidoVideo">
                 <video [src]="videoURL" *ngIf="videoURL" class="videoR" controls></video>
               </div>-->
-              <!--<p class="download" *ngIf="finalizado">
+              <p class="download" *ngIf="finalizado">
                 URL de descarga:
                 <a href="{{ URLPublica }}" target="_blank">Descargar</a>
               </p>
@@ -86,19 +86,41 @@
                   ">
                   Subir video
                 </button>
-              </form>-->
-              <label for="Imagen">Image File</label>
+              </form>
+              <!--<label for="Imagen">Image File</label>
               <p class="download" *ngIf="finalizado">
                 URL de descarga:
                 <a href="{{ URLPublica }}" target="_blank">Descargar</a>
               </p>
-              <input type="file" (change)="upload($event)" formControlName="video_instructor"
+              <input type="file" (change)="upload($event)" formControlName="video_presentacion"
                 accept="video/mp4,video/x-m4v,video/*">
               <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
                 value="{{ porcentaje }}" max="100">
                 {{ porcentaje }}%
               </progress>
-              <button (click)="uploadImage()">Upload Image</button>
+              <button (click)="uploadImage()">Upload Image</button>-->
+
+
+              <!--<div style="padding: 20mm">
+
+                <input type="file" name="file" formControlName="video_presentacion" (input)="onFileChanged($event)"
+                  accept=".jpeg,.jpg,.png,.svg" />
+                <br />
+                <img [src]="downloadableURL" onerror="this.onerror=null;this.src='assets/noimage.jpg';" width="425px"
+                  height="300px" />
+                <br />
+                {{ downloadableURL }}
+                <br />-->
+              <!-- Progress Bar -->
+
+              <!--<div *ngIf="progressValue | async as val">
+                <progress type="warning" [value]="val" style="height: 7mm; width: 50%" max="100"></progress>
+                <br />
+                <span *ngIf="val<100" style="color:rgb(255, 60, 0); font-size: 17px; font-weight: 410;">{{ val |
+                  number}}% </span><span *ngIf="val == 100"
+                  style="color:rgb(1, 153, 34);  font-size: 17px; font-weight: 410;">Completed !</span>
+              </div>
+            </div>-->
             </div>
             <div class="col-md-6">
               <input type="file" name="CV" #imagen2 hidden (change)="uploadFileCV($event.target.files)" />
