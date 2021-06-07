@@ -98,30 +98,26 @@ export class RegistroDocenteComponent implements OnInit {
 
   //Sube el archivo a Cloud Storage
   public subirArchivo() {
-    let archivo = this.datosFormulario.get('archivo');
-    let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
-    let tarea = this.firebaseStorage.tareaCloudStorage(this.nombreArchivo, archivo);
-    //Cambia el porcentaje
-    tarea.percentageChanges().subscribe((porcentaje) => {
-      this.porcentaje = Math.round(porcentaje);
-      if (this.porcentaje == 100) {
-        this.finalizado = true;
-      }
-    });
+      let archivo = this.datosFormulario.get('archivo');
 
-    referencia.getDownloadURL().subscribe((URL) => {
-      /*if (this.filedata!= '') {
-        this.filedata='';
-        this.filedata = URL;
-      }else{
-        this.filedata = URL;
-      }*/
-      this.URLPublica = URL;
-      console.log(this.URLPublica);
+      let tarea = this.firebaseStorage.tareaCloudStorage(this.nombreArchivo, archivo);
+      //Cambia el porcentaje
+      tarea.percentageChanges().subscribe((porcentaje) => {
+        this.porcentaje = Math.round(porcentaje);
+        if (this.porcentaje == 100) {
+          this.finalizado = true;
+          let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
+          console.log('referencia: ', referencia);
+          referencia.getDownloadURL().subscribe((URL) => {
+            console.log('url: ', URL);
+            this.URLPublica=URL;
+            console.log('URLPublica: ', this.URLPublica);
 
-    });
-    //this.formClase.get('video_clase').setValue('listo');
-    //console.log('files:', this.files);
+          })
+        }
+        console.log("Porcentaje: ", this.porcentaje);
+      });
+      this.formClase.get('video_clase').setValue('listo');
   }
 
   uploadImage() {
