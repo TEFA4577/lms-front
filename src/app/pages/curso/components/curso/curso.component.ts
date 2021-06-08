@@ -90,6 +90,7 @@ export class CursoComponent implements OnInit, OnDestroy {
     this.progreso[index].estado = !valor;
     console.log(this.progreso);
     this.progresoBarra();
+	this.ngOnDestroy();
   }
 
   progresoBarra() {
@@ -172,6 +173,7 @@ export class CursoComponent implements OnInit, OnDestroy {
       });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
+        this.getData();
       });
   }
 
@@ -190,7 +192,7 @@ export class CursoComponent implements OnInit, OnDestroy {
       console.log(item);
       if (item.checked) {
         this.count = this.count + 1;
-        console.log(this.count);
+        console.log('changed',this.count);
       }
     });
   }
@@ -207,7 +209,8 @@ export class CursoComponent implements OnInit, OnDestroy {
     const progres = {
       'progreso_curso': JSON.stringify(this.progreso),
     };
-    this.serCursos.progresoCurso(progres, this.id).subscribe(res => {
+    console.log(progres);
+	  this.serCursos.progresoCurso(progres, this.id).subscribe(res => {
       console.log(res);
     }, error => console.log(error))
   }
