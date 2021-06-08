@@ -55,17 +55,23 @@ export class CrearClaseComponent implements OnInit {
   //Sube el archivo a Cloud Storage
   public subirArchivo() {
     let archivo = this.datosFormulario.get('archivo');
-    let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
+    //let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
     let tarea = this.firebaseStorage.tareaCloudStorage(this.nombreArchivo, archivo);
     //Cambia el porcentaje
     tarea.percentageChanges().subscribe((porcentaje) => {
       this.porcentaje = Math.round(porcentaje);
       if (this.porcentaje == 100) {
         this.finalizado = true;
+        let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
+        referencia.getDownloadURL().subscribe((URL) => {
+          this.filedata= URL;
+          console.log('FILEDATA:', this.filedata);
+
+        })
       }
     });
 
-    referencia.getDownloadURL().subscribe((URL) => {
+    /*referencia.getDownloadURL().subscribe((URL) => {
       if (this.filedata!= '') {
         this.filedata='';
         this.filedata = URL;
@@ -73,9 +79,9 @@ export class CrearClaseComponent implements OnInit {
         this.filedata = URL;
       }
 
-    });
+    });*/
     this.formClase.get('video_clase').setValue('listo');
-    console.log('files:', this.files);
+    //console.log('files:', this.files);
   }
 
   // FIN DE CODIGO

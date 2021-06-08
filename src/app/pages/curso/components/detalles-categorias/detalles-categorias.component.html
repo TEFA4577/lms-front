@@ -13,6 +13,11 @@
         <span class="visually-hidden"></span>
       </div>
     </div>
+    <div *ngIf="estado">
+      <div class="alert alert-danger col-12">
+        <h4 class="mensaje">Aún no existen cursos pertenecientes de la categoría</h4>
+      </div>
+    </div>
     <div class="col-md-3" *ngFor="let miCurso of categorias">
       <mat-card class="example-card">
         <img mat-card-image src="{{ miCurso.imagen_curso }}" routerLink="/curso/curso-detalle/{{ miCurso.id_curso }}"
