@@ -28,7 +28,7 @@ export class CursoComponent implements OnInit, OnDestroy {
   curso: any;
   modulos: any;
   certificado: any;
-  foro:any;
+  foro: any;
   estado = true;
   rutaVideo: string;
   clase: any;
@@ -78,7 +78,7 @@ export class CursoComponent implements OnInit, OnDestroy {
       this.curso = this.datos.curso;
       this.modulos = this.datos.modulos;
       this.progreso = JSON.parse(this.datos.cursoUsuario.progreso_curso);
-      this.certificado =  this.datos.cursoUsuario.id_usuario_curso;
+      this.certificado = this.datos.cursoUsuario.id_usuario_curso;
       this.evaluacion = this.datos.evaluacion;
       this.estado = false;
       this.progresoBarra();
@@ -96,10 +96,12 @@ export class CursoComponent implements OnInit, OnDestroy {
     const conteo = this.progreso.filter(res => res.estado === true);
     this.count = (conteo.length * 100) / this.progreso.length;
     if (this.count == 100) {
-      this.evaluacionButton = true;
-      if(this.evaluacion.progreso_evaluacion == 100)
-       {this.certificadoBoton = true;
-       this.evaluacionButton = false;}
+      //this.evaluacionButton = true;
+      this.certificadoBoton = true;
+      /*if (this.evaluacion.progreso_evaluacion == 100) {
+        //this.certificadoBoton = true;
+        this.evaluacionButton = true;
+      }*/
     }
   }
 
@@ -133,7 +135,7 @@ export class CursoComponent implements OnInit, OnDestroy {
   }
 
   //muestra los comentarios por clase
-  openComentarios(comments){
+  openComentarios(comments) {
     this.serCursos.mostrarComentario(comments).subscribe(res => {
       this.dat = res;
     }, error => {
@@ -163,16 +165,16 @@ export class CursoComponent implements OnInit, OnDestroy {
     });
   }
 
-  openEvaluacion( idCurso: number):void {
+  openEvaluacion(idCurso: number): void {
     this.idCurso = idCurso;
 
-      const dialogRef = this.dialog.open(EvaluacionCursoComponent,{
-        data: idCurso,
-        width: '100vh'
-      });
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-      });
+    const dialogRef = this.dialog.open(EvaluacionCursoComponent, {
+      data: idCurso,
+      width: '100vh'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   cargarDatos(): void {
