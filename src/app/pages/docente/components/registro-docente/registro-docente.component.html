@@ -87,19 +87,20 @@
                   Subir video
                 </button>
               </form>-->
-              <label for="Imagen">Image File</label>
+              <label for="Imagen">Archivo Presentacion</label>
               <p class="download" *ngIf="finalizado">
                 URL de descarga:
                 <a href="{{ URLPublica }}" target="_blank">Descargar</a>
               </p>
-              <input type="file" (change)="upload($event)" formControlName="video_instructor"
+              <input type="file" (change)="cambioArchivo($event) " formControlName="video_instructor"
                 accept="video/mp4,video/x-m4v,video/*">
               <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
                 value="{{ porcentaje }}" max="100">
                 {{ porcentaje }}%
               </progress>
-              <button (click)="uploadImage()">Upload Image</button>
+              <button (click)="subirArchivo()">Seleccionar Video</button>
             </div>
+
             <div class="col-md-6">
               <input type="file" name="CV" #imagen2 hidden (change)="uploadFileCV($event.target.files)" />
               <button mat-raised-button class="button-width" type="button" color="warn" (click)="imagen2.click()">
