@@ -103,23 +103,10 @@ export class EvaluacionCursoComponent implements OnInit {
 
 
   closeEv() {
-    Swal.fire({
-      title: '¿Seguro que deseas acabar tu evaluación?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, deseo terminar.',
-      cancelButtonText: 'No, cancelar!',
-      allowOutsideClick: false
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Evaluación completa!',
-          'La evaluación ha sido concluida satisfactoriamente.',
-          'success'
-        );
-      }
-    });
+    Swal.fire(
+      'Buen trabajo!',
+      'Acabaste tu evaluación satisfactoriamente!',
+      'success'
+    )
   }
 }
