@@ -17,12 +17,14 @@ export class DetallesCategoriasComponent implements OnInit {
   constructor(public cursoCategoria: EtiquetaService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
     this.id = this.route.snapshot.params.id;
     this.mostrarCursoCategoria();
   }
 
   mostrarCursoCategoria() {
     this.cursoCategoria.mostrarEtiquetaCurso(this.id).subscribe(data => {
+
       this.categorias = data;
       console.log(this.categorias);
       if (this.categorias.length !== 0) {

@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EncuestasService } from 'src/app/services/encuestas.service';
 import { EvaluacionService } from 'src/app/services/evaluacion.service';
 // import { CursosService } from 'src/app/services/cursos.service';
+import Swal from 'sweetalert2';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -57,35 +58,30 @@ export class EvaluacionCursoComponent implements OnInit {
     // this.setForm();
   }
 
-// setForm(): void {
-//   this.formRegistrar.get(' texto_prueba_opcion');
-// }
+  // setForm(): void {
+  //   this.formRegistrar.get(' texto_prueba_opcion');
+  // }
+
   getId(idP: any) {
     this.pId = idP;
     console.log(this.pId);
   }
   submitRegistrar(event: Event): void {
-    this.serEvaluacion.evaluarExamen(this.pId).subscribe(res => {
+    console.log(this.id);
+    this.serEvaluacion.evaluarExamen(this.pId, this.id).subscribe(res => {
       this.respuesta = res;
+      console.log(res);
       this.message = this.respuesta.mensaje;
-      if(this.respuesta.mensaje === "correcta"){
+      if (this.respuesta.mensaje === "correcta") {
         this.step++;
-      }else{
+      } else {
         this.message = "incorrecto";
       }
     });
   }
 
-  putData(){
-    // this.progreso = 100 / this.prueba.length;
-    // const progres = {
-    //   'progreso_evaluacion': JSON.stringify(this.progreso),
-    // };
-    // this.serEvaluacion.progresoEvaluacion(progres, this.idE).subscribe(resp => {
-    // })
-  }
-
   mostrarExamen(): void {
+    console.log(this.id);
     this.serEvaluacion.darExamen(this.id).subscribe(res => {
       this.prueba = res;
       console.log(this.prueba);
@@ -93,19 +89,37 @@ export class EvaluacionCursoComponent implements OnInit {
       console.log(error);
     });
   }
+
   ngOnInit(): void {
     this.mostrarExamen();
     this.buildForm();
+    //this.closeEv();
   }
 
   onNoClick(): void {
     this.buildForm();
     this.dialogRef.close();
   }
-  // verCertificado() {
-  //   console.log(this.id);
-  //   this.serCursos.certificado(this.id).subscribe(res => {
-  //     console.log(res);
-  //   }, error => console.log(error))
-  // }
+
+
+  closeEv() {
+    Swal.fire({
+      title: '¿Seguro que deseas acabar tu evaluación?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, deseo terminar.',
+      cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Evaluación completa!',
+          'La evaluación ha sido concluida satisfactoriamente.',
+          'success'
+        );
+      }
+    });
+  }
 }

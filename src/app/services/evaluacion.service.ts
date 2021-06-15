@@ -42,8 +42,10 @@ export class EvaluacionService {
     const datos = date.id_usuario;
     return this.http.get(this.API_BACKEND + 'prueba-evaluar/' + id+ '/' + datos);
   }
-  evaluarExamen(id){
-    return this.http.get(this.API_BACKEND + 'prueba/evaluando/' + id);
+  evaluarExamen(id, idC){
+    const date = JSON.parse(localStorage.getItem('datosUsuario'));
+    const idU = date.id_usuario;
+    return this.http.get(this.API_BACKEND + 'prueba/evaluando/' + id + '/' + idC + '/' + idU);
   }
   postExamen(datos){
     return this.http.post(this.API_BACKEND + 'inicio/evaluacion', datos);

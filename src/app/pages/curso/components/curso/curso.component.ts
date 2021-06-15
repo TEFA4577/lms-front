@@ -28,7 +28,7 @@ export class CursoComponent implements OnInit, OnDestroy {
   curso: any;
   modulos: any;
   certificado: any;
-  foro:any;
+  foro: any;
   estado = true;
   rutaVideo: string;
   clase: any;
@@ -78,7 +78,7 @@ export class CursoComponent implements OnInit, OnDestroy {
       this.curso = this.datos.curso;
       this.modulos = this.datos.modulos;
       this.progreso = JSON.parse(this.datos.cursoUsuario.progreso_curso);
-      this.certificado =  this.datos.cursoUsuario.id_usuario_curso;
+      this.certificado = this.datos.cursoUsuario.id_usuario_curso;
       this.evaluacion = this.datos.evaluacion;
       this.estado = false;
       this.progresoBarra();
@@ -90,17 +90,19 @@ export class CursoComponent implements OnInit, OnDestroy {
     this.progreso[index].estado = !valor;
     console.log(this.progreso);
     this.progresoBarra();
-	this.ngOnDestroy();
+    this.ngOnDestroy();
   }
 
   progresoBarra() {
     const conteo = this.progreso.filter(res => res.estado === true);
     this.count = (conteo.length * 100) / this.progreso.length;
+    console.log(this.count);
     if (this.count == 100) {
       this.evaluacionButton = true;
-      if(this.evaluacion.progreso_evaluacion == 100)
-       {this.certificadoBoton = true;
-       this.evaluacionButton = false;}
+      if (this.evaluacion.progreso_evaluacion >= 100) {
+        this.certificadoBoton = true;
+        this.evaluacionButton = false;
+      }
     }
   }
 
@@ -134,7 +136,7 @@ export class CursoComponent implements OnInit, OnDestroy {
   }
 
   //muestra los comentarios por clase
-  openComentarios(comments){
+  openComentarios(comments) {
     this.serCursos.mostrarComentario(comments).subscribe(res => {
       this.dat = res;
     }, error => {
@@ -164,17 +166,19 @@ export class CursoComponent implements OnInit, OnDestroy {
     });
   }
 
-  openEvaluacion( idCurso: number):void {
+  openEvaluacion(idCurso: number): void {
     this.idCurso = idCurso;
 
-      const dialogRef = this.dialog.open(EvaluacionCursoComponent,{
-        data: idCurso,
-        width: '100vh'
-      });
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        this.getData();
-      });
+    const dialogRef = this.dialog.open(EvaluacionCursoComponent, {
+      data: idCurso,
+      disableClose: true,
+      width: '100vh',
+
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.getData();
+    });
   }
 
   cargarDatos(): void {
@@ -192,7 +196,7 @@ export class CursoComponent implements OnInit, OnDestroy {
       console.log(item);
       if (item.checked) {
         this.count = this.count + 1;
-        console.log('changed',this.count);
+        console.log('changed', this.count);
       }
     });
   }
@@ -210,7 +214,7 @@ export class CursoComponent implements OnInit, OnDestroy {
       'progreso_curso': JSON.stringify(this.progreso),
     };
     console.log(progres);
-	  this.serCursos.progresoCurso(progres, this.id).subscribe(res => {
+    this.serCursos.progresoCurso(progres, this.id).subscribe(res => {
       console.log(res);
     }, error => console.log(error))
   }
