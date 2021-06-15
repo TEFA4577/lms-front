@@ -84,49 +84,49 @@ export class RegistroDocenteComponent implements OnInit {
 
   //Sube el archivo a Cloud Storage
   public subirArchivo() {
-      let archivo = this.datosFormulario.get('archivo');
+    let archivo = this.datosFormulario.get('archivo');
 
-      let tarea = this.firebaseStorage.tareaCloudStorage(this.nombreArchivo, archivo);
-      //Cambia el porcentaje
-      tarea.percentageChanges().subscribe((porcentaje) => {
-        this.porcentaje = Math.round(porcentaje);
-        if (this.porcentaje == 100) {
-          this.finalizado = true;
-          let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
-          console.log('referencia: ', referencia);
-          referencia.getDownloadURL().subscribe((URL) => {
-            console.log('url: ', URL);
-            this.URLPublica=URL;
-            console.log('URLPublica: ', this.URLPublica);
+    let tarea = this.firebaseStorage.tareaCloudStorage(this.nombreArchivo, archivo);
+    //Cambia el porcentaje
+    tarea.percentageChanges().subscribe((porcentaje) => {
+      this.porcentaje = Math.round(porcentaje);
+      if (this.porcentaje == 100) {
+        this.finalizado = true;
+        let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
+        console.log('referencia: ', referencia);
+        referencia.getDownloadURL().subscribe((URL) => {
+          console.log('url: ', URL);
+          this.URLPublica = URL;
+          console.log('URLPublica: ', this.URLPublica);
 
-          })
-        }
-        console.log("Porcentaje: ", this.porcentaje);
-      });
-      this.formClase.get('video_clase').setValue('listo');
+        })
+      }
+      console.log("Porcentaje: ", this.porcentaje);
+    });
+    this.formClase.get('video_clase').setValue('listo');
   }
 
   uploadImage() {
     let archivo = this.datosFormulario.get('archivo');
 
-      let tarea = this.firebaseStorage.tareaCloudStorage(this.nombreArchivo, archivo);
-      //Cambia el porcentaje
-      tarea.percentageChanges().subscribe((porcentaje) => {
-        this.porcentaje = Math.round(porcentaje);
-        if (this.porcentaje == 100) {
-          this.finalizado = true;
-          let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
-          console.log('referencia: ', referencia);
-          referencia.getDownloadURL().subscribe((URL) => {
-            console.log('url: ', URL);
-            this.URLPublica=URL;
-            console.log('URLPublica: ', this.URLPublica);
+    let tarea = this.firebaseStorage.tareaCloudStorage(this.nombreArchivo, archivo);
+    //Cambia el porcentaje
+    tarea.percentageChanges().subscribe((porcentaje) => {
+      this.porcentaje = Math.round(porcentaje);
+      if (this.porcentaje == 100) {
+        this.finalizado = true;
+        let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
+        console.log('referencia: ', referencia);
+        referencia.getDownloadURL().subscribe((URL) => {
+          console.log('url: ', URL);
+          this.URLPublica = URL;
+          console.log('URLPublica: ', this.URLPublica);
 
-          })
-        }
-        console.log("Porcentaje: ", this.porcentaje);
-      });
-      this.formClase.get('video_clase').setValue('listo');
+        })
+      }
+      console.log("Porcentaje: ", this.porcentaje);
+    });
+    this.formClase.get('video_clase').setValue('listo');
   }
   ngOnInit(): void {
     this.buildForm();

@@ -35,6 +35,7 @@ export class EvaluacionCursoComponent implements OnInit {
   step = 1;
   pId: any;
   certificadoBoton = true;
+  isActive = false;
   constructor(
     public dialogRef: MatDialogRef<EvaluacionCursoComponent>,
     public SerEncuestas: EncuestasService,
@@ -68,6 +69,7 @@ export class EvaluacionCursoComponent implements OnInit {
   }
   submitRegistrar(event: Event): void {
     console.log(this.id);
+    this.isActive = true;
     this.serEvaluacion.evaluarExamen(this.pId, this.id).subscribe(res => {
       this.respuesta = res;
       console.log(res);
@@ -101,12 +103,37 @@ export class EvaluacionCursoComponent implements OnInit {
     this.dialogRef.close();
   }
 
-
   closeEv() {
     Swal.fire(
-      'Buen trabajo!',
-      'Acabaste tu evaluación satisfactoriamente!',
+      'Evaluación completa!',
+      'La evaluación ha sido concluida satisfactoriamente.',
       'success'
-    )
+    );
   }
+
+  /*closeEv() {
+    Swal.fire({
+      title: '¿Seguro que deseas acabar tu evaluación?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, deseo terminar.',
+      cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Evaluación completa!',
+          'La evaluación ha sido concluida satisfactoriamente.',
+          'success',
+        ).finally(() => {
+          this.onNoClick();
+          this.isActive = false;
+        });
+      } else if (result.isDenied) {
+        Swal.fire('No se envió tu evaluación', '', 'info').finally(() => this.isActive = false);
+      }
+    });
+  }*/
 }
