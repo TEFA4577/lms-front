@@ -21,19 +21,14 @@ export class RegistroDocenteComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   respuesta: any;
   formDocente: FormGroup;
-  formClase: FormGroup;
   docente: any;
   estado = false;
   datosUsuario: any;
   isActive = false;
   filesVideo: any = [];
-  videoURL: any;
-  filedataV: any;
   filedata: any;
   filesCV: any = [];
   filedataCV: any;
-  path: String;
-  video: any;
   constructor(
     public docenteAd: DocentesService,
     public formBuilder: FormBuilder,
@@ -124,7 +119,7 @@ export class RegistroDocenteComponent implements OnInit {
       experiencia_docente: ['', [Validators.required, Validators.maxLength(80)]],
       descripcion_docente: ['', [Validators.required, Validators.maxLength(500)]],
       video_instructor: [''],
-      CV: [''],
+      cv_docente: [''],
     });
   }
 
@@ -141,7 +136,7 @@ export class RegistroDocenteComponent implements OnInit {
     myFormData.append('telefono_docente', this.formDocente.get('telefono_docente').value);
     myFormData.append('experiencia_docente', this.formDocente.get('experiencia_docente').value);
     myFormData.append('descripcion_docente', this.formDocente.get('descripcion_docente').value);
-    myFormData.append('CV', this.filedataCV);
+    myFormData.append('cv_docente', this.filedataCV);
     Swal.fire({
       title: 'Seguro que quiere mandar su solicitud?',
       showDenyButton: true,
@@ -174,11 +169,7 @@ export class RegistroDocenteComponent implements OnInit {
     });
   }
 
-  deleteAttachment(index): void {
-    this.filesVideo.splice(index, 1);
-    this.formDocente.get('CV').setValue('');
-  }
-  uploadFileCV(event): void {
+  uploadFile(event): void {
     for (let index = 0; index < event.length; index++) {
       this.deleteAttachment(index);
       const element = event[index];
@@ -188,7 +179,8 @@ export class RegistroDocenteComponent implements OnInit {
     }
     console.log(this.filesCV);
   }
-  deleteAttachmentCV(index): void {
+
+  deleteAttachment(index): void {
     this.filesCV.splice(index, 1);
   }
 }
