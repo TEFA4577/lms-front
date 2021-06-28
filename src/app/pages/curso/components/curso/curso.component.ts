@@ -68,6 +68,7 @@ export class CursoComponent implements OnInit, OnDestroy {
     this.getData();
     this.buildForm();
     this.respuestaForm();
+    this.progresoBarra();
   }
 
   getData() {
@@ -99,7 +100,8 @@ export class CursoComponent implements OnInit, OnDestroy {
     console.log(this.count);
     if (this.count == 100) {
       this.evaluacionButton = true;
-      if (this.evaluacion.progreso_evaluacion >= 100) {
+      if (this.evaluacion.progreso_evaluacion > 50) {
+        console.log(this.evaluacion.progreso_evaluacion);
         this.certificadoBoton = true;
         this.evaluacionButton = false;
       }

@@ -74,10 +74,10 @@ export class EvaluacionCursoComponent implements OnInit {
       this.respuesta = res;
       console.log(res);
       this.message = this.respuesta.mensaje;
-      if (this.respuesta.mensaje === "correcta") {
+      if (this.respuesta.mensaje == "correcta") {
         this.step++;
       } else {
-        this.message = "incorrecto";
+        this.message == "incorrecta";
       }
     });
   }
@@ -109,6 +109,7 @@ export class EvaluacionCursoComponent implements OnInit {
       'La evaluación ha sido concluida satisfactoriamente.',
       'success'
     );
+    this.certificadoBoton = true;
   }
 
   /*closeEv() {

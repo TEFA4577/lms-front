@@ -107,7 +107,7 @@
             <button mat-button color="accent" type="button"
               (click)="openEvaluacion(curso.id_curso);">Evaluación</button>
           </div>
-          <a *ngIf="certificadoBoton" href="{{API_BACKEND + certificado}}" target="_blank"> Ver
+          <a *ngIf="certificadoBoton==true" href="{{API_BACKEND + certificado}}" target="_blank"> Ver
             certificado</a>
         </div>
       </div>
