@@ -53,7 +53,9 @@ export class EvaluacionService {
     // id_usuario
     // progreso_evaluacion
   }
-  progresoEvaluacion(datos, id){
-    return this.http.put(this.API_BACKEND + 'evaluacion-progreso/' + id, datos);
+  progresoEvaluacion(id){
+    const date = JSON.parse(localStorage.getItem('datosUsuario'));
+    const datos = date.id_usuario;
+    return this.http.get(this.API_BACKEND + 'evaluacion-progreso/' + id+ '/' +datos);
   }
 }

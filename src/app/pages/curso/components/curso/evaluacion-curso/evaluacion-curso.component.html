@@ -1,16 +1,29 @@
 <div mat-dialog-content>
-  <div class="container">
+  <div class="row col-12" *ngIf="this.estadoP == 'warning' ">
+    <h3 class="text-center title-examen">
+      {{ this.mensaje }}
+    </h3>
+    <div class="row col-12">
+      <button mat-raised-button color="primary" class="col-12" mat-dialog-close="true">
+        Deacuerdo!
+      </button>
+    </div>
+  </div>
+  <div class="container" *ngIf="this.estadoP == 'success' ">
     <div class="card row">
-      <h3 class="card-header text-center">Exámen general del curso</h3>
+      <h3 class="card-header text-center title-examen">Evaluación General Del Curso</h3>
       <div class="card-body col-md-12 justify-content-center align-self-center">
         <!--Formulario de registro-->
+
         <mat-accordion class="example-headers-align col-md-12" *ngFor="let item of prueba; let i = index">
           <form [formGroup]="formRegistrar" autocomplete="off">
-            <mat-expansion-panel [expanded]="step === i+1" (opened)="setStep(i+1)" hideToggle>
-              <mat-expansion-panel-header>
-                <mat-panel-title>{{item.texto_prueba}}
-                </mat-panel-title>
+            <mat-expansion-panel [expanded]="step === i+1" (opened)="setStep(i+1)" hideToggle [disabled]="true" [state]="state">
+              <mat-expansion-panel-header class="title_prueba">
+                <h3>  💬 Prueba {{ i+1}}</h3>
               </mat-expansion-panel-header>
+              <mat-panel-title class="title_prueba">
+                {{item.texto_prueba}}
+              </mat-panel-title>
               <mat-radio-group aria-label="Select an option" formControlName="texto_prueba_opcion">
                 <div *ngFor="let opcion of item.prueba_opcion">
                   <mat-radio-button (click)="getId(opcion.id_prueba_opcion)">
@@ -20,9 +33,6 @@
               </mat-radio-group>
               <mat-action-row>
                 <div class="d-flex justify-content-between">
-                  <p *ngIf="message" (ngModel)="message">
-                    La opción seleccionada es: {{ message}}
-                  </p>
                   <button mat-raised-button color="primary" (click)="submitRegistrar()">Siguiente</button>
                 </div>
               </mat-action-row>
@@ -30,7 +40,7 @@
           </form>
         </mat-accordion>
         <div class="row">
-          <button mat-button class="col-12" mat-dialog-close="true" (click)="closeEv()">Envía tu evaluación!</button>
+            <button mat-raised-button color="primary" class="col-12" mat-dialog-close="true" (click)="closeEv()">Verificar Evaluación!</button>
         </div>
       </div>
     </div>

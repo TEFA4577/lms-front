@@ -170,12 +170,10 @@ export class CursoComponent implements OnInit, OnDestroy {
 
   openEvaluacion(idCurso: number): void {
     this.idCurso = idCurso;
-
     const dialogRef = this.dialog.open(EvaluacionCursoComponent, {
       data: idCurso,
       disableClose: true,
       width: '100vh',
-
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
