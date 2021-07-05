@@ -1,9 +1,9 @@
-.image{
+.image {
   width: 100%;
   align-content: center;
   border: none;
 }
-.mat-raised-button{
+.mat-raised-button {
   width: 50%;
 }
 
@@ -11,7 +11,272 @@
   height: 350px;
 }
 
-.mat-card-content{
+.mat-card-content {
   height: 100px;
   overflow-y: auto;
+}
+img {
+  height: 500px;
+  width: 80%;
+}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Poppins:wght@100;700;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+/*:root {
+  --Single-font: "Sniglet", cursive;
+  --Rubik: "Rubik", cursive;
+  --Patue: "Patua One", cursive;
+  --Lobster: "Lobster", cursive;
+  --light-black: #2e2c2caf;
+  --bggradient: linear-gradient(to bottom, #dd2476, #ff512f);
+  --light-gray:rgba(255,255,255,0.877);
+}
+header{
+  background: #dd2476;
+  background: var(--bggradient)
+}
+
+.row .col-md-5 {
+  padding: 4.2vmin 1vmin;
+}
+
+.row .col-md-7 {
+  padding: 22vmin 1vmin;
+  padding-bottom: 35vmin;
+  font-family: var(--Rubik);
+}
+
+.row .col-md-5 img {
+  width: 90%;
+}
+
+.container .col-md-7 h1 {
+  font-size: 6vmin;
+  font-weight: bold;
+  padding: 0.1em 0em;
+}
+
+.container .col-md-7 p {
+  padding: 1vmin 5vmin;
+}
+
+.container .col-md-7 button {
+  border-radius: 30px;
+  font-weight: bold;
+}*/
+
+p {
+  font-weight: 300;
+  color: #111;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(4, 63, 143, 0.2), rgba(4, 63, 143, 0.2)),
+    url(../../../../../assets/img/Nuevos_Logos_Academia/17.jpeg);
+  background-size: cover;
+}
+
+.banner .content {
+  max-width: 900px;
+  text-align: center;
+}
+
+.banner .content h1 {
+  font-size: 4em;
+  color: #fff;
+}
+
+.banner .content p {
+  font-size: 1em;
+  color: #fff;
+}
+
+.btn {
+  font-size: 1em;
+  color: #fff;
+  //background: #ff0157;
+  background: #ff6462;
+  display: inline-block;
+  padding: 10px 30px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: 0.5s;
+}
+.btn:hover {
+  letter-spacing: 4px;
+}
+section {
+  padding: 50px;
+}
+.row {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.row .col50 {
+  position: relative;
+  width: 48%;
+}
+
+.title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.titleText {
+  color: #111;
+  font-size: 2em;
+  font-weight: 300;
+}
+
+.titleText span {
+  color: #ff6462;
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+.row .col50 .imgBx {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+}
+
+.row .col50 .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 8px 8px 20px #c3cbd3;
+  border: 1px solid #f2f3f4;
+}
+
+.experts .content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 40px;
+}
+
+.experts .content .box {
+  width: 350px;
+  margin: 15px;
+}
+
+.experts .content .box .imgBx {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.experts .content .box .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 8px 8px 20px #c3cbd3;
+}
+
+.experts .content .box .text {
+  padding: 15px 0 5px;
+}
+
+.experts .content .box .text h3 {
+  /*font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 4em;
+  color: #111;*/
+  margin-top: 10px;
+  color: #ff6462;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.testimonials {
+  background: linear-gradient(rgba(4, 63, 143, 0.5), rgba(4, 63, 143, 0.5)),
+    url(../../../../../assets/img/lugar-de-estudio.jpg);
+  background-size: cover;
+}
+
+.white .titleText,
+.white p {
+  color: #fff;
+}
+
+.testimonials .content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 40px;
+}
+
+.testimonials .content .box {
+  width: 340px;
+  margin: 20px;
+  padding: 40px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.testimonials .content .box .imgBx {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 8px 8px 20px #c3cbd3;
+}
+
+.testimonials .content .box .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonials .content .box .text {
+  text-align: center;
+}
+
+.testimonials .content .box .text p {
+  color: #666;
+  font-style: italic;
+}
+
+.testimonials .content .box .text h3 {
+  margin-top: 20px;
+  color: #111;
+  font-size: 1em;
+  color: #ff0157;
+  font-weight: 600;
 }

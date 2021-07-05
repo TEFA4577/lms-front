@@ -36,43 +36,40 @@
             <div class="contenedor">
               <div class="contenedor_formulario">
                 <!--<h1 class="is-size-1">Subir archivos a Cloud Storage</h1>-->
-                <p class="download" *ngIf="finalizado">URL de descarga: <a href="{{ URLPublica }}"
+                <p class="download" *ngIf="finalizado">URL de descarga: <a mat-button href="{{ URLPublica }}"
                     target="_blank">Descargar</a></p>
                 <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
-                  <div class="file has-name is-boxed">
-                    <label class="file-label">
-                      <div class="contenidoVideo">
-                        <video [src]="videoURL" *ngIf="videoURL" class="videoR" controls></video>
-                      </div>
-                      <input class="file-input" type="file" formControlName="archivo" #imagen hidden
-                        accept="video/mp4,video/x-m4v,video/*" (change)="cambioArchivo($event) " name="video_clase">
-                      <span class="file-cta">
-                        <span class="file-label">
-                          Elegir un archivo…
-                        </span>
+                  <label class="file-label">
+                    <div class="contenidoVideo">
+                      <video [src]="videoURL" *ngIf="videoURL" class="videoR" controls></video>
+                    </div>
+                    <input class="file-input" type="file" formControlName="archivo" #imagen hidden
+                      accept="video/mp4,video/x-m4v,video/*" (change)="cambioArchivo($event) " name="video_clase">
+                    <span class="file-cta">
+                      <span class="file-label">
+                        Elegir un archivo…
                       </span>
-                      <span class="file-name">
-                        {{ mensajeArchivo }}
-                      </span>
-                    </label>
+                    </span>
+                    <span class="file-name">
+                      {{ mensajeArchivo }}
+                    </span>
+                  </label>
+                  <div class="container">
                     <button type="button" mat-raised-button color="primary" class="col-md-12" (click)="imagen.click()">
                       Seleccionar video
                     </button>
+                    <button mat-raised-button color="accent" class="col-md-12"
+                      [ngClass]="{'button': true, 'is-success': true, 'is-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}"
+                      [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir video</button>
+                    <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
+                      value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
                   </div>
-                  <button mat-raised-button color="accent" class="col-md-12"
-                    [ngClass]="{'button': true, 'is-success': true, 'is-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}"
-                    [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir video</button>
-                  <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
-                    value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
                   <hr>
                 </form>
               </div>
             </div>
           </div>
           <!-- FIN DE CODIGO -->
-
-
-
         </div>
       </div>
     </div>

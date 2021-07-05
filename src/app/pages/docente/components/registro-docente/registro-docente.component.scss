@@ -1,4 +1,10 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+* {
+  //font-family: "Poppins", sans-serif;
+  //font-size: 1em;
+}
+
 .full-width {
   width: 100%;
 }
@@ -6,6 +12,7 @@
 .button-width{
   width: 100%;
   margin-block-end: 10px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .button{
@@ -26,3 +33,17 @@
   width: 100%;
 }
 
+.row, h1{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h3{
+  font-family: 'Montserrat', sans-serif;
+}
+
+mat-label, input{
+  font-family: 'Montserrat', sans-serif;
+}

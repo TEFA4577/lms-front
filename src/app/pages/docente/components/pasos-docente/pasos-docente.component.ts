@@ -59,6 +59,7 @@ export class PasosDocenteComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(RegistroDocenteComponent, {
+      disableClose: true,
       width: '1000vh',
     });
     dialogRef.afterClosed().subscribe(result => {

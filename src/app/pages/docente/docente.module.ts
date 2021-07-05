@@ -15,6 +15,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage'; //storage
 import { environment } from '../../../environments/environment';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PresentacionDocenteComponent } from './components/presentacion-docente/presentacion-docente.component';
@@ -50,6 +52,8 @@ import { PagoTarjetaComponent } from './components/pago/components/pago-tarjeta/
     MatChipsModule,
     NgFallimgModule,
     MatTabsModule,
+    MatIconModule,
+    MatTooltipModule,
     // AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule, //storage
     AngularFireModule.initializeApp({

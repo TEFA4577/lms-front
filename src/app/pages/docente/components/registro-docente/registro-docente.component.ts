@@ -94,6 +94,49 @@ export class RegistroDocenteComponent implements OnInit {
     //console.log('files:', this.files);
   }
 
+
+  public cvForm = new FormGroup({
+    archivoCv: new FormControl('', Validators.required),
+  });
+  public mensajeArchivoCv = 'No hay un archivo seleccionado';
+  public datosFormularioCv = new FormData();
+  public nombreArchivoCv = '';
+  public URLPublicaCv = '';
+  public porcentajeCv = 0;
+  public finalizadoCv = false;
+
+
+  public changeCv(event): void{
+    if (event.target.files.length > 0) {
+      for (let i = 0; i < event.target.files.length; i++) {
+        this.mensajeArchivoCv = `CV preparado: ${event.target.files[i].name}`;
+        this.nombreArchivoCv = event.target.files[i].name;
+        this.datosFormularioCv.delete('archivoCv');
+        this.datosFormularioCv.append('archivoCv', event.target.files[i], event.target.files[i].name);
+      }
+      console.log('nombre CV: ', this.nombreArchivoCv);
+    } else {
+      this.mensajeArchivo = 'No hay un archivo seleccionado';
+    }
+  }
+
+  public upCv(){
+    let archivoCv = this.datosFormularioCv.get('archivoCv');
+    //let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
+    let tareaCv = this.firebaseStorage.tareaCloudStorage(this.nombreArchivoCv, archivoCv);
+    //Cambia el porcentaje
+    tareaCv.percentageChanges().subscribe((porcentajeCv) => {
+      this.porcentajeCv = Math.round(porcentajeCv);
+      if (this.porcentajeCv == 100) {
+        this.finalizadoCv = true;
+        let referenciaCv = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivoCv);
+        referenciaCv.getDownloadURL().subscribe((URL) => {
+          this.filedataCV = URL;
+          console.log('FILEDATA:', this.filedataCV);
+        })
+      }
+    });
+  }
   // FIN DE CODIGO
 
   ngOnInit(): void {
@@ -169,7 +212,7 @@ export class RegistroDocenteComponent implements OnInit {
     });
   }
 
-  uploadFile(event): void {
+  /*uploadFile(event): void {
     for (let index = 0; index < event.length; index++) {
       this.deleteAttachment(index);
       const element = event[index];
@@ -182,5 +225,9 @@ export class RegistroDocenteComponent implements OnInit {
 
   deleteAttachment(index): void {
     this.filesCV.splice(index, 1);
-  }
+  }*/
+
+
 }
+
+
