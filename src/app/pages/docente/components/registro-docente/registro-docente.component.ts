@@ -48,6 +48,16 @@ export class RegistroDocenteComponent implements OnInit {
   public porcentaje = 0;
   public finalizado = false;
 
+  public cvForm = new FormGroup({
+    archivoCv: new FormControl('', Validators.required),
+  });
+  public mensajeArchivoCv = 'No hay un archivo seleccionado';
+  public datosFormularioCv = new FormData();
+  public nombreArchivoCv = '';
+  public URLPublicaCv = '';
+  public porcentajeCv = 0;
+  public finalizadoCv = false;
+
   //Evento que se gatilla cuando el input de tipo archivo cambia
   public cambioArchivo(event): void {
     if (event.target.files.length > 0) {
@@ -94,19 +104,7 @@ export class RegistroDocenteComponent implements OnInit {
     //console.log('files:', this.files);
   }
 
-
-  public cvForm = new FormGroup({
-    archivoCv: new FormControl('', Validators.required),
-  });
-  public mensajeArchivoCv = 'No hay un archivo seleccionado';
-  public datosFormularioCv = new FormData();
-  public nombreArchivoCv = '';
-  public URLPublicaCv = '';
-  public porcentajeCv = 0;
-  public finalizadoCv = false;
-
-
-  public changeCv(event): void{
+  public changeCv(event): void {
     if (event.target.files.length > 0) {
       for (let i = 0; i < event.target.files.length; i++) {
         this.mensajeArchivoCv = `CV preparado: ${event.target.files[i].name}`;
@@ -120,7 +118,7 @@ export class RegistroDocenteComponent implements OnInit {
     }
   }
 
-  public upCv(){
+  public upCv() {
     let archivoCv = this.datosFormularioCv.get('archivoCv');
     //let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
     let tareaCv = this.firebaseStorage.tareaCloudStorage(this.nombreArchivoCv, archivoCv);

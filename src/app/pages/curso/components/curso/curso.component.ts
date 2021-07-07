@@ -141,6 +141,7 @@ export class CursoComponent implements OnInit, OnDestroy {
   openComentarios(comments) {
     this.serCursos.mostrarComentario(comments).subscribe(res => {
       this.dat = res;
+      console.log(this.dat);
     }, error => {
       console.log(error);
     });
@@ -164,7 +165,8 @@ export class CursoComponent implements OnInit, OnDestroy {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.cargarDatos();
+      //this.cargarDatos();
+      this.openComentarios(this.idClase);
     });
   }
 
@@ -206,6 +208,7 @@ export class CursoComponent implements OnInit, OnDestroy {
     this.rutaVideo = ruta;
     this.clasesId = idClase;
     this.getClase(idClase);
+    this.openComentarios(idClase);
     console.log(this.rutaVideo);
   }
 

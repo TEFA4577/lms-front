@@ -51,10 +51,11 @@
           <!--Comentarios-->
           <mat-selection-list *ngIf="dat" [multiple]="false">
             <mat-list-item *ngFor=" let item of dat" class="row">
-              <mat-icon mat-list-icon>person</mat-icon>
+              <mat-icon mat-list-icon><img class="avatar" [src]="item.usuario_comentario.foto_usuario"
+                  (error)="imagenError()" /></mat-icon>
               <div mat-line>
-                <div mat-line>De: {{ item.usuario_comentario.nombre_usuario }}</div>
-                <div mat-line>Comentario: {{ item.texto_comentario }}</div>
+                <div mat-line>{{ item.usuario_comentario.nombre_usuario }} <span>{{item.usuario_comentario.created_at}}</span> </div>
+                <div mat-line>{{ item.texto_comentario }}</div>
                 <div mat-line>
                   <button mat-button color="warn" (click)="openRespuestas(item.id_comentario);">Responder</button>
                 </div>
@@ -71,8 +72,10 @@
                       <mat-list-option *ngFor="let res of item.comentario_respuesta; let i = index">
                         <div mat-line>
                           <div mat-line>
-                            <mat-icon mat-list-icon>person</mat-icon>
-                            Respuesta: {{ res.texto_respuesta }}
+                            <mat-icon mat-list-icon>account_circle</mat-icon>
+                            <div mat-line>
+                              {{ res.texto_respuesta }}
+                            </div>
                           </div>
                         </div>
                       </mat-list-option>
@@ -104,8 +107,7 @@
             <mat-progress-bar mode="determinate" [value]="count">Tu progreso</mat-progress-bar>
           </p>
           <div *ngIf="evaluacionButton" mat-line>
-            <button mat-button color="accent" type="button"
-              (click)="openEvaluacion(curso.id_curso);">Evaluación</button>
+            <button mat-button color="basic" type="button" (click)="openEvaluacion(curso.id_curso);">Evaluación</button>
           </div>
           <a *ngIf="certificadoBoton==true" href="{{API_BACKEND + certificado}}" target="_blank"> Ver
             certificado</a>
@@ -124,34 +126,33 @@
               <div mat-line>
                 <div mat-line>
                   <!--clases.id_clase-->
-                  <button mat-icon-button color="primary" type="button"
-                    (click)="setVideo(clases.video_clase, clases.id_clase)" matTooltip="Reproducir video">
+                  <button mat-icon-button color="warn" type="button"
+                    (click)="setVideo(clases.video_clase, clases.id_clase, clases.id_clase)"
+                    matTooltip="Reproducir video">
                     <mat-icon>play_circle_filled</mat-icon>
                   </button>Capítulo {{ i + 1 }}: {{ clases.titulo_clase }}
                 </div>
                 <div mat-line>
-                  <p>
-                    <button mat-icon-button color="primary" matTooltip="Descripcion de la clase" color="accent">
-                      <mat-icon>description</mat-icon>
-                    </button>
-                    Descripcion de la clase: {{ clases.descripcion_clase }}
-                  </p>
-
+                  <!--<button mat-icon-button color="primary" matTooltip="Descripcion de la clase"
+                    color="accent">
+                    <mat-icon>description</mat-icon>
+                  </button>-->
+                  <textarea readonly> Descripción de la clase: {{ clases.descripcion_clase }}</textarea>
                 </div>
                 <!--Nueva seccion para los recursos-->
               </div>
               <div mat-line align="end">
                 <button mat-icon-button color="basic" type="button" (click)="getClase(clases.id_clase)"
                   matTooltip="Mostrar recursos de la clase">
-                  <mat-icon>assignment</mat-icon>
+                  <mat-icon>folder_open</mat-icon>
                 </button>
-                <button mat-icon-button color="primary" type="button" (click)="getIdClase(clases.id_clase)"
+                <!--<button mat-icon-button color="primary" type="button" (click)="getIdClase(clases.id_clase)"
                   matTooltip="Mostrar el foro de la clase">
                   <mat-icon>forum</mat-icon>
-                </button>
-                <button mat-icon-button color="warn" type="button" (click)="openDialog(clases.id_clase)"
+                </button>-->
+                <button mat-icon-button color="basic" type="button" (click)="openDialog(clases.id_clase)"
                   matTooltip="Agrega un comentario de la clase">
-                  <mat-icon>insert_comment</mat-icon>
+                  <mat-icon>forum</mat-icon>
                 </button>
               </div>
             </mat-list-item>

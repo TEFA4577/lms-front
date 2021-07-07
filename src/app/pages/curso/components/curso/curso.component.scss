@@ -1,10 +1,52 @@
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
+}
+//@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200&display=swap');
+//@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Numans&display=swap");
+mat-card-title,
+mat-card-subtitle,
+h4,
+button,
+a,
+mat-expansion-panel-header,
+mat-selection-list,
+mat-list-item,
+mat-checkbox {
+  font-family: "Numans", sans-serif;
+  color: #000;
 }
 
 video {
   width: 100%;
+  outline: none;
+}
+
+button {
+  outline: none;
+}
+.av {
+  margin-right: 0;
+}
+.avatar {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  outline: none;
+}
+
+textarea {
+  outline: none;
+  border: none;
+  height: 100px;
+  width: 100%;
+}
+
+.coment {
+  height: 50px;
+  outline: none;
 }
 
 a {
@@ -18,21 +60,22 @@ a {
 .mat-list-item:hover {
   font-weight: bold;
   background-color: #f0f0f0;
+  font-family: "Numans", sans-serif;
 }
 
 .example-margin {
   margin: 0 8px;
 }
 
-.card{
+.card {
   margin-block-end: 10px;
 }
 
-.mat-check-box{
+.mat-check-box {
   margin-top: 10%;
 }
 .example-margin {
-  align-content: end
+  align-content: end;
 }
 .example-full-width {
   width: 100%;
@@ -41,11 +84,12 @@ a {
   width: 100%;
 }
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
 }
-.comments{
+.comments {
   max-height: 200px;
   display: table;
   overflow: scroll;
+  font-family: "Numans", sans-serif;
 }

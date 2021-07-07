@@ -1,36 +1,64 @@
 .body {
-  background: linear-gradient(to left, #c70039, #ff5733, #f25e3d);
+  background:
+  //linear-gradient(rgba(4, 63, 143, 0.2), rgba(4, 63, 143, 0.2)),
+    //linear-gradient(rgb(4, 63, 143, 0.2), rgba(4, 63, 143, 0.2)),
+    url(../../../../../assets/img/st2.jpg);
+  //linear-gradient(to left, #c70039, #ff5733, #f25e3d);
+  background-size: cover;
 }
 
-.hr{
+.hr {
   border: 0.2px solid #f25e3d;
-    border-radius: 3px;
-    width: auto;
+  border-radius: 3px;
+  width: auto;
 }
 
-.card{
+.card {
   //border: 0.2px solid #f25e3d;
   box-shadow: 8px 8px 20px #c3cbd3;
 }
 
-.mat-card{
+.mat-card {
   box-shadow: 8px 8px 20px #c3cbd3;
+  height: 550px;
 }
 
 .mat-radio-button ~ .mat-radio-button {
   margin-left: 16px;
 }
 
-.card-ventajas{
-  border: 0.2px solid #f25e3d;
-  box-shadow: 8px 8px 20px #c70039;
+.card-ventajas {
+  //border: 0.2px solid #A72839;
+  //box-shadow: .5px .5px 10px #043F8F;
   background: #f3f3f3;
+  font-family: "Montserrat", sans-serif;
 }
 
-.info{
-  background: #2C3E50;
+legend{
+  font-family: "Montserrat", sans-serif;
 }
 
-.img{
-border-radius: 1px;
+.info {
+  background: #2c3e50;
+  font-family: "Montserrat", sans-serif;
+}
+
+.img {
+  border-radius: 1px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+* {
+  //font-family: "Montserrat", sans-serif;
+  //font-size: 1em;
+}
+
+h3 {
+  font-family: "Montserrat", sans-serif;
+}
+
+p{
+  //background: #2c3e50;
+  color: #2c3e50;
+  font-family: "Montserrat", sans-serif;
 }
