@@ -4,6 +4,7 @@ import { CursosService } from '../../../../services/cursos.service';
 import { DocentesService } from '../../../../services/docentes.service';
 import { PreguntaService } from '../../../../services/pregunta.service';
 import { EtiquetaService } from '../../../../services/etiqueta.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-inicio',
@@ -33,6 +34,32 @@ export class InicioComponent implements OnInit {
     this.cargarDocentes();
     this.cargarPreguntas();
   }
+
+    customOptions: OwlOptions = {
+      loop: true,
+      mouseDrag: false,
+      touchDrag: false,
+      pullDrag: false,
+      dots: false,
+      navSpeed: 700,
+      navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
+      responsive: {
+        0: {
+          items: 1
+        },
+        400: {
+          items: 2
+        },
+        740: {
+          items: 3
+        },
+        940: {
+          items: 4
+        }
+      },
+      nav: true
+    }
+
 
   cargarCursos() {
     this.serCursos.listarCursos().subscribe(data => {

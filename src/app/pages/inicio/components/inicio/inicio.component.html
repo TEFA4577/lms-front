@@ -32,7 +32,8 @@
           </div>
         </div>
         <!--Spinner de carga-->
-        <div class="container">
+
+        <!--<div class="container">
           <div class="content-card">
             <div class="col-md-3" *ngFor="let item of curso; let i = index">
               <div class="course bg-white h-100 align-self-stretch">
@@ -47,26 +48,105 @@
                     </span>{{item.modulos_curso.length}} módulos</div>
                   <h3><a routerLink="/curso/curso-detalle/{{ item.id_curso }}">{{ item.nombre_curso }}</a></h3>
                   <p [ngClass]="{'long-text': texto}" (click)="texto = !texto" align="justify">{{ item.descripcion_curso
-                    }}</p>
-                  <!--<div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
+                    }}</p>-->
+        <!--<div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
                     {{ item.descripcion_curso }}
                   </div>-->
-                </div>
+        <!--</div>
                 <div class="d-flex border-top stats">
                   <div class="py-4 px-4"><span class="icon-users">
                       <mat-icon>groups</mat-icon>
                     </span> {{ item.curso_estudiante.length}} estudiantes</div>
                   <!--<div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat">
                       <mat-icon>comment</mat-icon>
-                    </span> 2</div>-->
+                    </span> 2</div>--
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
+
+
       </div>
     </div>
   </section>
+
+  <section class="police-product">
+    <div class="container">
+      <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let item of curso; let i = index">
+          <ng-template carouselSlide [id]=" item.id">
+            <div class="course bg-white align-self-stretch">
+              <figure class="m-0">
+                <img routerLink="/curso/curso-detalle/{{ item.id_curso }}" src="{{ item.imagen_curso }}" alt="Image"
+                  class="img-cards" fallimg>
+              </figure>
+              <div class="course-inner-text py-4 px-4">
+                <span class="course-price">Bs. {{item.precio}}</span>
+                <div class="meta"><span>
+                    <mat-icon>library_books</mat-icon>
+                  </span>{{item.modulos_curso.length}} módulos</div>
+                <h3><a routerLink="/curso/curso-detalle/{{ item.id_curso }}">{{ item.nombre_curso }}</a></h3>
+                <p [ngClass]="{'long-text': texto}" (click)="texto = !texto" align="justify">{{ item.descripcion_curso
+                  }}</p>
+                <!--<div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
+              {{ item.descripcion_curso }}
+            </div>-->
+              </div>
+              <div class="d-flex border-top stats">
+                <div class="py-4 px-4"><span class="icon-users">
+                    <mat-icon>groups</mat-icon>
+                  </span> {{ item.curso_estudiante.length}} estudiantes</div>
+                <!--<div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat">
+                <mat-icon>comment</mat-icon>
+              </span> 2</div>-->
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </section>
+
+  <!--<section class="products">
+    <div class="container">
+      <div class="bg-position">
+          <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let item of curso; let i = index">
+              <ng-template carouselSlide [id]=" item.id">
+                <div class="course bg-white align-self-stretch">
+                  <figure class="m-0">
+                    <img routerLink="/curso/curso-detalle/{{ item.id_curso }}" src="{{ item.imagen_curso }}" alt="Image"
+                      class="img-cards" fallimg>
+                  </figure>
+                  <div class="course-inner-text py-4 px-4">
+                    <span class="course-price">Bs. {{item.precio}}</span>
+                    <div class="meta"><span>
+                        <mat-icon>library_books</mat-icon>
+                      </span>{{item.modulos_curso.length}} módulos</div>
+                    <h3><a routerLink="/curso/curso-detalle/{{ item.id_curso }}">{{ item.nombre_curso }}</a></h3>
+                    <p [ngClass]="{'long-text': texto}" (click)="texto = !texto" align="justify">{{
+                      item.descripcion_curso
+                      }}</p>-->
+                    <!--<div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
+                    {{ item.descripcion_curso }}
+                  </div>--
+                  </div>
+                  <div class="d-flex border-top stats">
+                    <div class="py-4 px-4"><span class="icon-users">
+                        <mat-icon>groups</mat-icon>
+                      </span> {{ item.curso_estudiante.length}} estudiantes</div>-->
+                    <!--<div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat">
+                      <mat-icon>comment</mat-icon>
+                    </span> 2</div>--
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+      </div>
+    </div>
+  </section>-->
   <!--Final Cursos en general-->
 
   <!--Listado de preguntas frecuentes-->
@@ -238,32 +318,38 @@
   </section>
   <!--Final Categorias de la Plataforma-->
 
-  <!--Instructores-->
-  <div class="site-section" id="teachers-section">
-    <div class="container">
-
-      <div class="row mb-5 justify-content-center">
-        <div class="col-lg-7 mb-5 text-center" data-aos="fade-up" data-aos-delay="">
-          <h2 class="section-title">Instructores</h2>
-          <p class="mb-5">Los mejores están en Academia Co Marca!</p>
+  <section>
+    <!--Instructores-->
+    <div class="site-section" id="teachers-section">
+      <div class="container">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-lg-7 mb-5 text-center" data-aos="fade-up" data-aos-delay="">
+            <h2 class="section-title">Instructores</h2>
+            <p class="mb-5">Los mejores están en Academia Co Marca!</p>
+          </div>
         </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-4" *ngFor="let doc of docente; let i = index">
-          <div data-aos="fade-up" data-aos-delay="100">
-            <div class="teacher text-center" *ngIf="i < 6">
-              <img src="{{ doc.foto_usuario }}" alt="Image" class="img-fluid border-radius"
-                routerLink="/docente/presentacion-docente/{{ doc.id_usuario }}" fallimg="avatar">
-              <div class="py-2">
-                <h3 class="text-black" routerLink="/instructores/presentacion-docente/{{ doc.id_usuario }}">{{
-                  doc.nombre_usuario }}</h3>
-                <p class="position">{{ doc.datos_docente.experiencia_docente}}</p>
-                <p>{{ doc.datos_docente.descripcion_docente }}</p>
+        <div class="row justify-content-center">
+          <div class="col-md-4" *ngFor="let doc of docente; let i = index">
+            <div data-aos="fade-up" data-aos-delay="100">
+              <div class="teacher text-center" *ngIf="i < 6">
+                <img src="{{ doc.foto_usuario }}" alt="Image" class="img-fluid border-radius"
+                  routerLink="/docente/presentacion-docente/{{ doc.id_usuario }}" fallimg="avatar">
+                <div class="py-2">
+                  <h3 class="text-black" routerLink="/instructores/presentacion-docente/{{ doc.id_usuario }}">{{
+                    doc.nombre_usuario }}</h3>
+                  <p class="position">{{ doc.datos_docente.experiencia_docente}}</p>
+                  <p>{{ doc.datos_docente.descripcion_docente }}</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!--Final Instructores-->
+    <!--Final Instructores-->
+  </section>
+
+  <!--Instructores-->
+
+  <!--Final de la seccion de instructores-->
+</div>

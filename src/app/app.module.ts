@@ -39,6 +39,7 @@ import { LandingModule } from './pages/landing/landing.module';
 import { PagesAdminModule} from './pages-admin/pages-admin.module';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
 import { ComponentsModule } from './components/components.module';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ComponentsModule } from './components/components.module';
     NotFoundComponent
   ],
   imports: [
+    CarouselModule,
     BrowserModule,
     RouterModule,
     AppRoutingModule,
