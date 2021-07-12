@@ -1,91 +1,3 @@
-.campus {
-  width: 80%;
-  margin: auto;
-  text-align: center;
-  padding-top: 50px;
-}
-.campus-col {
-  flex-basis: 32%;
-  border-radius: 10px;
-  margin-bottom: 30px;
-  position: relative;
-  overflow: hidden;
-}
-.campus-col img {
-  width: 100%;
-  height: 250px;
-  display: block;
-}
-.layer {
-  background: transparent;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: 0.5s;
-}
-.layer:hover {
-  background: rgba(255, 97, 103, 0.6);
-}
-.layer h3 {
-  width: 100%;
-  font-weight: 500;
-  color: #fff;
-  font-size: 26px;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  position: absolute;
-}
-.layer:hover h3 {
-  bottom: 49%;
-  opacity: 1;
-}
-
- .products .container .bg-position .owl-next, .products .owl-prev{
-  background: rgba(255,255,255, 0.781)!important;
-  color: #222!important;
-  height: 60px!important;
-  width: 60px!important;
-  border-radius: 50%!important;
-}
-
-.cta {
-  margin: 100px auto;
-  width: 80%;
-  background-image:
-  //linear-gradient(rgba(255, 192, 74, 0.7), rgba(255, 192, 74, 0.7)),
-    url(../../../../../assets/img/Nuevos_Logos_Academia/17.jpeg);
-  background-position: center;
-  background-size: cover;
-  border-radius: 10px;
-  text-align: center;
-  padding: 100px 0;
-
-  //
-}
-
-.cta h2 {
-  color: #fff;
-  margin-bottom: 40px;
-  padding: 0;
-}
-
-.border-radius {
-  border-radius: 340px;
-  width: 60%;
-  height: 180px;
-}
-a {
-  -webkit-transition: 0.3s all ease;
-  -o-transition: 0.3s all ease;
-  transition: 0.3s all ease;
-}
-a:hover {
-  text-decoration: none;
-}
-
 h1,
 h2,
 h3,
@@ -102,43 +14,135 @@ h5,
   font-family: "Montserrat", sans-serif;
 }
 
+#home {
+  min-height: 100vh;
+  width: 100vw;
+  //background: url(../../../../../assets/img/pexels-julia-m-cameron-4144294.jpg);
+  background: linear-gradient(
+      80.2deg,
+      #ffffff 52.45%,
+      rgba(196, 196, 196, 0.8) 52.49%
+    ),
+    url(../../../../../assets/img/st6.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  animation: background 10s alternate infinite;
+
+  .content {
+    position: relative;
+
+    h1 {
+      font-size: 4rem;
+      //color: #7971EA;
+      color: #043f8f;
+      font-weight: bold;
+    }
+
+    h2 {
+      font-size: 3rem;
+      color: #043f8f;
+    }
+
+    h3 {
+      font-size: 2rem;
+      color: #424949;
+      margin: 1rem 0;
+      font-weight: bold;
+    }
+  }
+
+  button {
+    /*outline: none;
+    border: none;
+    border-radius: 5rem;
+    color: #5499c7;
+    cursor: pointer;
+    height: 4rem;
+    width: 18rem;
+    font-size: 1.1rem;
+    text-transform: capitalize;*/
+
+    &:hover {
+      background: #fff;
+      color: #000;
+      border-width: 3px;
+      border-style: solid;
+      border-color: #ff6462;
+      border-radius: 20px;
+    }
+    width: 180px;
+    color: #fff;
+    font-size: 18px;
+    padding: 12px 0;
+    background: #ff6462;
+    border: 0;
+    border-radius: 20px;
+    outline: none;
+    margin-top: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    transition: background-color 0.5s;
+    cursor: pointer;
+  }
+}
+
+@keyframes background {
+  0%,
+  100% {
+    background: linear-gradient(
+        95.2deg,
+        #ffffff 52.45%,
+        rgba(196, 196, 196, 0) 52.49%
+      ),
+      url(../../../../../assets/img/st9.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  25% {
+    background: linear-gradient(
+        95.2deg,
+        #ffffff 52.45%,
+        rgba(196, 196, 196, 0) 52.49%
+      ),
+      url(../../../../../assets/img/st7.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  50% {
+    background: linear-gradient(
+        95.2deg,
+        #ffffff 52.45%,
+        rgba(196, 196, 196, 0) 52.49%
+      ),
+      url(../../../../../assets/img/st11.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  75% {
+    background: linear-gradient(
+        95.2deg,
+        #ffffff 52.45%,
+        rgba(196, 196, 196, 0) 52.49%
+      ),
+      url(../../../../../assets/img/st6.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+}
+
 .site-section {
-  padding: 4em 0;
+  padding: 5em 0;
   position: relative;
 }
 @media (max-width: 991.98px) {
   .site-section {
     padding: 4em 0;
   }
-}
-
-.cta a span {
-  //border-color: #7971ea;
-  border-color: #043f8f;
-  padding: 14px 20px;
-  color: #fff;
-  background: #043f8f;
-  border-radius: 30px;
-  font-size: 0.7rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  -webkit-transition: 0.3s all ease;
-  -o-transition: 0.3s all ease;
-  transition: 0.3s all ease;
-}
-
-
-.cta a:hover span {
-  background: #4f45e3;
-  color: #fff;
-}
-
-.cta a.active {
-  border-bottom: none;
-}
-.cta a.active > span {
-  background-color: #1c4b82;
-  color: #fff;
 }
 
 .section-sub-title {
@@ -170,7 +174,6 @@ h5,
 .section-1 {
   margin-top: 10rem;
 }
-
 
 .footer-section {
   padding: 7em 0;
@@ -294,11 +297,11 @@ h5,
 }
 
 .courses-entry-wrap {
-  margin-top: -282px;
+  margin-top: -360px;
 }
 @media (max-width: 1199.98px) {
   .courses-entry-wrap {
-    margin-top: -246px;
+    margin-top: -330px;
   }
 }
 
@@ -354,7 +357,6 @@ h5,
   box-shadow: 0 2px 22px -1px rgba(0, 0, 0, 0.3);
 }
 
-
 .teacher {
   //border: 1px solid #e9ecef;
   border: 1px solid #f2f3f4;
@@ -386,114 +388,32 @@ h5,
   //background-color: #283747;
 }
 
-#home {
-  min-height: 100vh;
-  width: 100vw;
-  //background: url(../../../../../assets/img/pexels-julia-m-cameron-4144294.jpg);
-  background: linear-gradient(
-      76.34deg,
-      #ffffff 52.45%,
-      rgba(196, 196, 196, 0) 52.49%
-    ),
-    url(../../../../../assets/img/st6.jpg) no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  animation: background 10s alternate infinite;
-
-  .content {
-    position: relative;
-
-    h1 {
-      font-size: 5rem;
-      //color: #7971EA;
-      color: #043f8f;
-    }
-
-    h2 {
-      font-size: 3rem;
-      color: #043f8f;
-    }
-
-    h3 {
-      font-size: 2rem;
-      color: #b2babb;
-      margin: 1rem 0;
-    }
-  }
-
-  button {
-    /*outline: none;
-    border: none;
-    border-radius: 5rem;
-    color: #5499c7;
-    cursor: pointer;
-    height: 4rem;
-    width: 18rem;
-    font-size: 1.1rem;
-    text-transform: capitalize;
-
-    &:hover {
-      background: #f5b041;
-    }*/
-    width: 180px;
-    color: #fff;
-    font-size: 18px;
-    padding: 12px 0;
-    background: #ff6462;
-    border: 0;
-    border-radius: 20px;
-    outline: none;
-    margin-top: 10px;
-  }
+.cta a span {
+  //border-color: #7971ea;
+  border-color: #043f8f;
+  padding: 14px 20px;
+  color: #fff;
+  background: #043f8f;
+  border-radius: 30px;
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  -webkit-transition: 0.3s all ease;
+  -o-transition: 0.3s all ease;
+  transition: 0.3s all ease;
 }
 
-@keyframes background {
-  0%,
-  100% {
-    background: linear-gradient(
-        76.34deg,
-        #ffffff 52.45%,
-        rgba(196, 196, 196, 0) 52.49%
-      ),
-      url(../../../../../assets/img/education.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  }
-  25% {
-    background: linear-gradient(
-        76.34deg,
-        #ffffff 52.45%,
-        rgba(196, 196, 196, 0) 52.49%
-      ),
-      url(../../../../../assets/img/st4.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  }
-  50% {
-    background: linear-gradient(
-        76.34deg,
-        #ffffff 52.45%,
-        rgba(196, 196, 196, 0) 52.49%
-      ),
-      url(../../../../../assets/img/enseñar3.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  }
-  75% {
-    background: linear-gradient(
-        76.34deg,
-        #ffffff 52.45%,
-        rgba(196, 196, 196, 0) 52.49%
-      ),
-      url(../../../../../assets/img/st6.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  }
+.cta a:hover span {
+  background: #4f45e3;
+  color: #fff;
+}
+
+.cta a.active {
+  border-bottom: none;
+}
+.cta a.active > span {
+  background-color: #1c4b82;
+  color: #fff;
 }
 
 .course .box-container {
@@ -582,6 +502,95 @@ h5,
   color: #f39c12;
   //color: #5499c7;
   font-size: 2rem;
+}
+
+.campus {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding-top: 50px;
+}
+.campus-col {
+  flex-basis: 32%;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+}
+.campus-col img {
+  width: 100%;
+  height: 250px;
+  display: block;
+}
+.layer {
+  background: transparent;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.5s;
+}
+.layer:hover {
+  background: rgba(255, 97, 103, 0.6);
+}
+.layer h3 {
+  width: 100%;
+  font-weight: 500;
+  color: #fff;
+  font-size: 26px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+}
+.layer:hover h3 {
+  bottom: 49%;
+  opacity: 1;
+}
+
+.police-product .container .owl-next,
+.police-product .container .owl-prev {
+  background: rgba(255, 255, 255, 0.781) !important;
+  color: #222 !important;
+  height: 60px !important;
+  width: 60px !important;
+  border-radius: 50% !important;
+}
+
+.cta {
+  margin: 100px auto;
+  width: 80%;
+  background-image:
+  //linear-gradient(rgba(255, 192, 74, 0.7), rgba(255, 192, 74, 0.7)),
+    url(../../../../../assets/img/Nuevos_Logos_Academia/17.jpeg);
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  text-align: center;
+  padding: 100px 0;
+
+  //
+}
+
+.cta h2 {
+  color: #fff;
+  margin-bottom: 40px;
+  padding: 0;
+}
+
+.border-radius {
+  border-radius: 340px;
+  width: 60%;
+  height: 180px;
+}
+a {
+  -webkit-transition: 0.3s all ease;
+  -o-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+a:hover {
+  text-decoration: none;
 }
 
 .mat-card-title {
@@ -673,15 +682,18 @@ h5,
 .mat-expansion-panel,
 .mat-list {
   background-color: #f3f3f3;
-
 }
 
-mat-expansion-panel-header, mat-panel-title, mat-list, mat-list-item, h3 {
- //font-style: italic;
- font-weight: bold;
+mat-expansion-panel-header,
+mat-panel-title,
+mat-list,
+mat-list-item,
+h3 {
+  //font-style: italic;
+  font-weight: bold;
 }
 
-.res{
+.res {
   color: #000;
 }
 
