@@ -4,6 +4,11 @@ import { RolGuard } from '../guards/rol.guard';
 import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
+  /*{
+    path:'dashboard',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./dashboard/ad')
+  },*/
   {
     path: 'cursos',
     canActivate: [AuthGuard],

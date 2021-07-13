@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between">
-  <h1 mat-dialog-title>Lista de Etiquetas curso: {{data.nombre_curso}}</h1>
+  <h1 mat-dialog-title>Lista de categorías del curso: {{data.nombre_curso}}</h1>
   <button mat-icon-button [mat-dialog-close]="true">
     <mat-icon>close</mat-icon>
   </button>
@@ -8,8 +8,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 cardEtiqueta">
-        <h3>Etiquetas Activas en Tu Curso</h3>
-        <h5 *ngIf="misEtiquetas.length == 0">no tienes etiquetas seleccionadas en este curso</h5>
+        <h3>Categorías activas en tu curso</h3>
+        <h5 *ngIf="misEtiquetas.length == 0">No tienes etiquetas seleccionadas en este curso</h5>
         <mat-chip-list #chipList aria-label="Fruit selection">
           <mat-chip color="accent" selected *ngFor="let miEtiqueta of misEtiquetas;let i=index" [removable]="true" (removed)="remove(i)">
             {{miEtiqueta.nombre_etiqueta}}
@@ -18,7 +18,7 @@
         </mat-chip-list>
       </div>
       <div class="col-md-6 cardEtiqueta">
-        <h3>Etiquetas Disponibles</h3>
+        <h3>Categorías disponibles</h3>
         <mat-spinner *ngIf="!etiquetas"></mat-spinner>
         <mat-chip-list>
           <mat-chip *ngFor="let etiqueta of etiquetas;let i=index" (click)="add(etiqueta)">
