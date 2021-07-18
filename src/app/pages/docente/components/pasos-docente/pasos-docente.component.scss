@@ -21,7 +21,7 @@ img {
 }
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Poppins:wght@100;700;900&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap");
 
 * {
   margin: 0;
@@ -138,13 +138,20 @@ section {
   align-items: justify;
 }
 
+@media screen and (max-width: 600px) {
+  .row .col50 {
+    position: relative;
+    width: 100%;
+    align-items: justify;
+  }
+}
 
-.row .col50 p{
+.row .col50 p {
   //font-size: 1.5em;
 
   font-weight: 600;
   font-size: 1.2em;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .title {
@@ -201,7 +208,7 @@ section {
 .experts .content .box .imgBx {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 500px;
 }
 
 .experts .content .box .imgBx img {
