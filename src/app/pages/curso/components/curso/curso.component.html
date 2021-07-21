@@ -51,12 +51,12 @@
           <!--Comentarios-->
           <mat-selection-list *ngIf="dat" [multiple]="false">
             <mat-list-item *ngFor=" let item of dat" class="row">
-              <img class="avatar" [src]="item.usuario_comentario.foto_usuario"
-                  (error)="imagenError()" />
               <div mat-line>
-                <div mat-line>{{ item.usuario_comentario.nombre_usuario }} <span>{{item.usuario_comentario.created_at}}</span> </div>
+                <div mat-line> <img class="avatar" [src]="item.usuario_comentario.foto_usuario"
+                    (error)="imagenError()" /> De: {{ item.usuario_comentario.nombre_usuario }}
+                  <span>{{item.usuario_comentario.created_at}}</span> </div>
                 <!--<div mat-line>{{ item.texto_comentario }}</div>-->
-                <textarea readonly> {{ item.texto_comentario }}</textarea>
+                <textarea readonly>Comentario: {{ item.texto_comentario }}</textarea>
                 <div mat-line>
                   <button mat-button color="warn" (click)="openRespuestas(item.id_comentario);">Responder</button>
                 </div>

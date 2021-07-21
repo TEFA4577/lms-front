@@ -124,7 +124,7 @@ h5,
 }
 
 .site-section {
-  padding: 5em 0;
+  padding: 4.2em 0;
   position: relative;
 }
 
@@ -163,7 +163,11 @@ h5,
   top: 0;
   position: relative;
   height: 500px;
-  width: 260px;
+  margin-left: 10px;
+  //width: 260px;
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem), 1fr);
 }
 .course .course-inner-text {
   position: relative;
@@ -272,7 +276,7 @@ h5,
 }
 
 .campus {
-  width: 80%;
+  width: 60%;
   margin: auto;
   text-align: center;
   padding-top: 50px;
@@ -305,12 +309,12 @@ h5,
   width: 100%;
   font-weight: 700;
   color: #fff;
-  font-size:30px;
+  font-size: 30px;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   position: absolute;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 .layer:hover h3 {
   bottom: 49%;
@@ -404,7 +408,6 @@ h5,
   font-weight: 600;
 }
 
-
 .border-radius {
   border-radius: 340px;
   width: 60%;
@@ -427,6 +430,11 @@ a:hover {
   .pr {
     background: #f3f3f3;
   }
+}
+
+.mat-accordion,
+.mat-expansion-panel {
+  height: auto;
 }
 
 .mat-accordion,
@@ -474,37 +482,67 @@ a {
   fill: #fff;
 }
 
-.carousel-inner .img {
-  width: auto;
-  height: 400px;
-}
-@media only screen and (max-width: 1000px) {
-  .col-md-3 {
-    max-width: 40%;
-  }
-}
-@media only screen and (max-width: 750px) {
-  .mat-card {
-    width: 300px;
-  }
-  .col-md-3 {
-    max-width: 70%;
-  }
-}
+@media only screen and (max-device-width: 480px) {
+  #home {
+    .content {
+      position: relative;
 
-@media only screen and (max-width: 600px) {
-  .carousel-inner .img {
-    width: 100%;
-    height: 300px;
-  }
-}
+      h1 {
+        font-size: 3rem;
+        //color: #7971EA;
+        color: #043f8f;
+        font-weight: bold;
+      }
 
-@media only screen and (max-width: 500px) {
-  .carousel-inner .img {
-    width: auto;
-    height: 200px;
+      h2 {
+        font-size: 2rem;
+        color: #043f8f;
+      }
+
+      h3 {
+        font-size: 2rem;
+        color: #424949;
+        margin: 1rem 0;
+        font-weight: bold;
+        text-align: center;
+      }
+    }
   }
-  .col-md-3 {
-    max-width: 100%;
+
+  /*.course {
+    -webkit-box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.3);
+    -webkit-transition: 0.3s all ease-in-out;
+    -o-transition: 0.3s all ease-in-out;
+    transition: 0.3s all ease-in-out;
+    top: 0;
+    position: relative;
+    height: 500px;
+    width: 85%;
+    margin-left: 20px;
+  }*/
+
+  .cta {
+    height: auto;
+    .mat-accordion,
+    .mat-expansion-panel,
+    .mat-expansion-panel-header {
+      height: auto;
+    }
+    .mat-accordion,
+    .mat-expansion-panel,
+    .mat-expansion-panel-header,
+    .mat-panel-title {
+      text-align: center;
+
+      h3 {
+        font-size: 0.9rem;
+      }
+    }
+    .mat-accordion,
+    .mat-expansion-panel,
+    .row {
+      text-align: justify;
+    }
   }
 }

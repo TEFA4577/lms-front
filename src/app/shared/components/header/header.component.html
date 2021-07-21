@@ -151,10 +151,10 @@
             </div>
           </button>
           <hr>
-          <button mat-menu-item routerLink="/estudiante/mi-perfil">
+          <button mat-menu-item (click)="sidenav.close()" routerLink="/estudiante/mi-perfil">
             Mi Perfil
           </button>
-          <button mat-menu-item color="warn" *ngIf="datosUsuario.id_rol == 3"
+          <button mat-menu-item color="warn" (click)="sidenav.close()" *ngIf="datosUsuario.id_rol == 3"
             routerLink="/estudiante/mis-cursos-adquiridos">
             Mis Cursos
           </button>
@@ -164,25 +164,26 @@
           <button mat-menu-item *ngIf="datosUsuario.id_rol == 2" routerLink="admin">
             Panel del Instructor
           </button>
-          <button mat-menu-item *ngIf="datosUsuario.id_rol == 3" routerLink="/instructores/pasos-instructor">
+          <button mat-menu-item (click)="sidenav.close()" *ngIf="datosUsuario.id_rol == 3"
+            routerLink="/instructores/pasos-instructor">
             Quiero Ser Instructor
           </button>
           <button mat-menu-item (click)="cerrarSesion()">Cerrar Sesión</button>
         </div>
         <hr>
         <mat-list-item>
-          <a mat-button routerLink="/curso/cursos-general">Cursos</a>
+          <a mat-button (click)="sidenav.close()" routerLink="/curso/cursos-general">Cursos</a>
         </mat-list-item>
         <mat-list-item>
-          <a mat-button routerLink="/instructores/listado-instructores">
+          <a mat-button (click)="sidenav.close()" routerLink="/instructores/listado-instructores">
             Instructores
           </a>
         </mat-list-item>
         <mat-list-item>
-          <a mat-button routerLink="/info/nosotros">Nosotros</a>
+          <a mat-button (click)="sidenav.close()" routerLink="/info/nosotros">Nosotros</a>
         </mat-list-item>
         <mat-list-item>
-          <a mat-button routerLink="/instructores/pasos-instructor">Sé instructor</a>
+          <a mat-button (click)="sidenav.close()" routerLink="/instructores/pasos-instructor">Sé instructor</a>
         </mat-list-item>
       </mat-list>
     </mat-sidenav>

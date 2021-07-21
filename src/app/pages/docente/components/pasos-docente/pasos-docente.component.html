@@ -1,287 +1,3 @@
-<!--<div class="container py-5">
-  <div class="row pt-5">
-    <div class="col-md-7">
-      <img src="assets/img/Inicio/11.png" class="image" />
-    </div>
-    <div class="col-md-5 py-5 text-center" align="end">
-      <h1>Haz un impacto en ti!</h1>
-      <h1>Cree un curso de video en línea y gane dinero enseñando a personas de toda Bolivia.</h1>
-      <button mat-raised-button color="warn" *ngIf="!estado; else logged" routerLink="/register">Convierte en
-        instructor</button>
-      <ng-template #logged>
-        <button mat-raised-button (click)="openDialog()" class="btn-block py-1" color="primary">Convierte en
-          instructor</button>
-      </ng-template>
-      <br>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="col-12 py-4 text-center">
-    <h1>Descubre tu potencial</h1>
-    <hr>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <mat-card-title>Gana dinero</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image src="assets/img/Iconos/mone.png " alt="Photo of a Shiba Inu">
-        <mat-card-content align="center">
-          <p>
-            Gane dinero cada vez que un estudiante compre su curso. Reciba pagos mensuales a través de PayPal o
-            Payoneer, es su elección.
-          </p>
-        </mat-card-content>
-      </mat-card>
-
-    </div>
-    <div class="col-md-4">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <mat-card-title>Inspira a tus estudiantes</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image src="assets/img/Iconos/video.png " alt="Photo of a Shiba Inu">
-        <mat-card-content align="center">
-          <p>
-            Ayude a las personas a aprender nuevas habilidades, avanzar en sus carreras y explorar sus pasatiempos
-            compartiendo su conocimiento.
-          </p>
-        </mat-card-content>
-      </mat-card>
-
-    </div>
-    <div class="col-md-4">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <mat-card-title>Se parte de nuestra comunidad</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image src="assets/img/Iconos/comunidad.png" alt="Photo of a Shiba Inu">
-        <mat-card-content align="center">
-          <p>
-            Aproveche nuestra comunidad activa de instructores para ayudarlo en el proceso de creación de su curso.
-          </p>
-        </mat-card-content>
-      </mat-card>
-
-    </div>
-  </div>
-  <div class="col-12 py-4 text-center">
-    <h1>Visualiza tu éxito</h1>
-    <hr>
-  </div>
-  <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="Planifica tu curso">
-      <div class="col-md-12">
-        <div class="row">
-          <div class="col-md-6 py-5">
-            <p>
-              Organizarse
-              Empiece por su pasión y conocimiento. Luego, elija un tema y planifique sus conferencias en Google Docs,
-              Microsoft Excel o su cuaderno favorito.
-            </p>
-            <p>
-              Puede enseñar de la manera que desee, incluso crear cursos en varios idiomas e inspirar a más
-              estudiantes.
-            </p>
-            <p>
-              Como te ayudamos
-              Ofrecemos cursos gratuitos sobre cómo crear tu propio curso, con hojas de trabajo y ejemplos del mundo
-              real. Además, nuestro panel del instructor y las páginas del plan de estudios lo ayudan a mantenerse
-              encaminado.
-            </p>
-          </div>
-          <div class="col-md-6">
-            <img mat-card-image src="assets/img/Inicio/12.png">
-          </div>
-        </div>
-      </div>
-    </mat-tab>
-
-    <mat-tab label="Grabe su video">
-      <div class="row">
-        <div class="col-md-6 py-5">
-          <p>
-            Luces, CAMARA, ACCION
-            ¿Tienes un teléfono inteligente o una DSLR? Agregue un micrófono y estará listo para filmar su primer
-            curso desde su casa o donde sea que se encuentre.
-          </p>
-          <p>
-            ¿Vergonzoso ante la Cámara? No hay problema. Utilice un software de screencasting, como Camtasia, para
-            hacer demostraciones de screencast.
-          </p>
-          <p>
-            Como te ayudamos
-            Nuestro equipo de soporte está disponible para ayudar y ofrece una revisión gratuita de sus videos. Y
-            nuestra comunidad de instructores en línea está aquí para ofrecer consejos e inspiración.
-          </p>
-        </div>
-        <div class="col-md-6">
-          <img mat-card-image src="assets/img/Inicio/Profesor.png">
-        </div>
-      </div>
-    </mat-tab>
-
-    <mat-tab label="Construye tu comunidad">
-      <div class="row">
-        <div class="col-md-6 py-5">
-          <p>
-            Cree cuestionarios, ejercicios y asignaciones para desarrollar la interactividad. Escriba mensajes de
-            bienvenida para sus estudiantes y responda a sus preguntas. Porque los estudiantes no solo miran,
-            lo hacen.
-          </p>
-          <p>
-            Como te ayudamos
-            Proporcionamos todas las herramientas para mensajería, preguntas y respuestas, anuncios de cursos y
-            cuestionarios, todo en un solo lugar.
-          </p>
-        </div>
-        <div class="col-md-6">
-          <img mat-card-image src="assets/img/Inicio/presentacion.png">
-        </div>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
-  <div class="col-12 py-5 text-center">
-    <h1>Expande tu alcance</h1>
-    <hr>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <mat-card class="example-card alcance">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Rebeka Mendez</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image src="assets/img/Profesionales/profile-2.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p align="center">
-            “Lo que más me gusta de la Academia es las herramientas de gestión para instructores y alumnos,
-            las pruebas continuas de modelos de promoción-ofertas, la comunicación directa de profesor alumno y
-            el trato directo que hay. Me hacen sentir como parte de la familia”.
-          </p>
-        </mat-card-content>
-      </mat-card>
-
-    </div>
-    <div class="col-md-4">
-      <mat-card class="example-card alcance">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Mauricio Lopez</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image src="assets/img/Profesionales/profile-3.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p align="center">
-            “Ganar Bs. 10 era todo un logro para mi. A día de hoy, casi podría vivir íntegramente
-            con el dinero que generan mis cursos online. así que la frase de ‘El que la sigue, la
-            consigue’ se aplica muy bien”.
-          </p>
-        </mat-card-content>
-      </mat-card>
-
-    </div>
-    <div class="col-md-4">
-      <mat-card class="example-card alcance">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Leticia Rodriguez</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image src="assets/img/Profesionales/profile-pic1.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p align="center">
-            “Es muy fácil de usar tanto para estudiantes como para profesores.
-            Y te deja gestionar totalmente el contenido. Además me permite decidir el precio, gestionar
-            descuentos y comunicarme fácilmente con mis estudiantes. Sin duda lo que buscaba, una gestión
-            100% hecha y supervisada por mí, sin intermediarios”.
-          </p>
-        </mat-card-content>
-      </mat-card>
-
-    </div>
-  </div>
-  <div class="col-12 py-4">
-  <div class="row">
-    <div class="col-md-5  py-5 text-center">
-      <h1>Conviértete en instructor hoy</h1>
-      <hr>
-      <button mat-raised-button color="warn" *ngIf="!estado; else logged" routerLink="/register">Empieza ahora</button>
-      <ng-template #logged>
-        <button mat-raised-button (click)="openDialog()" class="btn-block py-1" color="primary">Empieza ahora</button>
-      </ng-template>
-    </div>
-    <div class="col-md-7" align="end">
-      <img src="assets/img/Inicio/11.png" class="image"/>
-    </div>
-  </div>
-  </div>
-</div>-->
-<!--<header>
-  <div class="container text-center">
-    <div class="row">
-      <div class="col-md-7 col-sm-12">
-        <h1>HAZ UN IMPACTO EN TI!</h1>
-        <p>Crea un curso en línea y gana dinero enseñando a personas en todo el país.</p>
-        <button class="btn btn-light px-5 py-2" *ngIf="!estado; else logged" routerLink="/register">Convierte en
-          instructor</button>
-        <ng-template #logged>
-          <button class="btn btn-light px-5 py-2" (click)="openDialog()">Convierte en
-            instructor</button>
-        </ng-template>
-      </div>
-      <div class="col-md-5 col-sm-12 h-25">
-        <img src="../../../../../assets/img/enseñar3.jpg" alt="">
-      </div>
-    </div>
-  </div>
-</header>
-
-
-<section class="section">
-  <div class="container text-center">
-    <h1 class="text-dark">Descubre tu potencial</h1>
-  </div>
-  <div class="team row">
-    <div class="col-md-4 col-12 text-center">
-      <div class="card">
-        <div class="card-img-top">
-          <img src="../../../../../assets/img/enseñar2.jpg" alt="" class="img-fluid">
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Gana dinero</h3>
-          <p class="card-text">Gane dinero cada vez que un estudiante compre su curso. Reciba pagos a través
-            de depósitos bancarios.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-12 text-center">
-      <div class="card">
-        <div class="card-img-top">
-          <img src="../../../../../assets/img/enseñar3.jpg" alt="" class="img-fluid">
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Gana dinero</h3>
-          <p class="card-text">Gane dinero cada vez que un estudiante compre su curso. Reciba pagos a través
-            de depósitos bancarios.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-12 text-center">
-      <div class="card">
-        <div class="card-img-top">
-          <img src="../../../../../assets/img/enseñar.jpg" alt="" class="img-fluid">
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Gana dinero</h3>
-          <p class="card-text">Gane dinero cada vez que un estudiante compre su curso. Reciba pagos a través
-            de depósitos bancarios.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>-->
-
 <section class="banner" id="banner">
   <div class="content">
     <h1>¡HAZ UN IMPACTO EN TI!</h1>
@@ -305,9 +21,9 @@
 
 <section class="about" id="about">
   <div class="row">
-    <div class="col50 py-5">
+    <div class="col50">
       <h1 class="titleText">¡VISUALIZA<span> TU ÉXITO!</span></h1>
-      <h1 class="titleText">Planifica tu curso</h1>
+      <h1>Planifica tu curso</h1>
       <p>¡Organiza y empieza! Sabemos tu pasión por la enseñanza y el infinito conocimiento que tienes para entregar.
         <br><br>
         Elige un tema y elabora cada curso de la manera que desees enseñar, incluso crear cursos en varios idiomas e
@@ -329,7 +45,7 @@
         <img src="../../../../../assets/img/imagenes/9.png" alt="">
       </div>
     </div>
-    <div class="col50 py-5">
+    <div class="col50">
       <h1 class="titleText">ORGANIZA TU CURSO <br><span>¡GRABA VIDEOS DE TUS CLASES!</span></h1>
       <p>Sabemos tu pasión por la enseñanza y la experticia de tu conocimiento, entonces a comenzar con la creación de
         tu curso.
@@ -350,8 +66,8 @@
         fácilmente contenido atractivo y creativo a través de videos, para hacer demostraciones de screencast.
       </p>
     </div>
-    <div class="col50 py-5">
-      <h1 class="titleText">Construye tu comunidad</h1>
+    <div class="col50">
+      <h1 class="titleText">CONSTRUYE TU <span>COMUNIDAD</span></h1>
       <p>La Academia Co Marca te da la oportunidad de crear tu propia COMUNIDAD exponer tus cursos a una cantidad
         ilimitada de personas en el mundo y a partir de la interacción crear instrumentos que estrechen ese vínculo y
         dirijas el público objetivo a una relación laboral de mayor impacto para desarrollar la interactividad.
@@ -368,11 +84,9 @@
     </div>
   </div>
 </section>
-<hr>
 <section class="experts" id="experts">
-  <div class="title" data-aos="fade-up" data-aos-delay="">
-    <h2 class="titleText">Descubre tu <span>POTENCIAL</span>
-    </h2>
+  <div class="title">
+    <h2 class="titleText">DESCUBRE TU <span> POTENCIAL</span></h2>
   </div>
   <div class="content">
     <div class="box">
@@ -380,7 +94,7 @@
         <img src="../../../../../assets/img/1.jpeg" alt="">
       </div>
       <div class="text">
-        <h3 class="titleText">Sé parte de nuestra comunidad</h3>
+        <h1 class="titleText">Sé parte de nuestra comunidad</h1>
       </div>
     </div>
     <div class="box">
@@ -388,7 +102,7 @@
         <img src="../../../../../assets/img/2.png" alt="">
       </div>
       <div class="text">
-        <h3 class="titleText">Inspira a tus estudiantes</h3>
+        <h1 class="titleText">Inspira a tus estudiantes</h1>
       </div>
     </div>
     <div class="box">
@@ -396,7 +110,7 @@
         <img src="../../../../../assets/img/3.png" alt="">
       </div>
       <div class="text">
-        <h3 class="titleText">Gana tu dinero</h3>
+        <h1 class="titleText">Gana tu dinero</h1>
       </div>
     </div>
   </div>
@@ -404,7 +118,7 @@
 
 <section class="testimonials" id="testimonials">
   <div class="title white">
-    <h1 class="titleText">Expande<span> TU ALCANCE!</span></h1>
+    <h1 class="titleText">EXPANDE <span> TU ALCANCE!</span></h1>
   </div>
   <div class="content">
     <div class="box">

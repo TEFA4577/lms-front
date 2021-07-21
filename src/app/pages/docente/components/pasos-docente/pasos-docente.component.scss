@@ -31,49 +31,6 @@ img {
   scroll-behavior: smooth;
 }
 
-/*:root {
-  --Single-font: "Sniglet", cursive;
-  --Rubik: "Rubik", cursive;
-  --Patue: "Patua One", cursive;
-  --Lobster: "Lobster", cursive;
-  --light-black: #2e2c2caf;
-  --bggradient: linear-gradient(to bottom, #dd2476, #ff512f);
-  --light-gray:rgba(255,255,255,0.877);
-}
-header{
-  background: #dd2476;
-  background: var(--bggradient)
-}
-
-.row .col-md-5 {
-  padding: 4.2vmin 1vmin;
-}
-
-.row .col-md-7 {
-  padding: 22vmin 1vmin;
-  padding-bottom: 35vmin;
-  font-family: var(--Rubik);
-}
-
-.row .col-md-5 img {
-  width: 90%;
-}
-
-.container .col-md-7 h1 {
-  font-size: 6vmin;
-  font-weight: bold;
-  padding: 0.1em 0em;
-}
-
-.container .col-md-7 p {
-  padding: 1vmin 5vmin;
-}
-
-.container .col-md-7 button {
-  border-radius: 30px;
-  font-weight: bold;
-}*/
-
 p {
   font-weight: 500;
   color: #111;
@@ -138,20 +95,14 @@ section {
   align-items: justify;
 }
 
-@media screen and (max-width: 600px) {
-  .row .col50 {
-    position: relative;
-    width: 100%;
-    align-items: justify;
-  }
-}
-
 .row .col50 p {
   //font-size: 1.5em;
-
   font-weight: 600;
-  font-size: 1.2em;
+  font-size: 1.6em;
   font-family: "Montserrat", sans-serif;
+  text-align: justify;
+  font-weight: bold;
+  white-space: pre-line;
 }
 
 .title {
@@ -160,12 +111,17 @@ section {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
 }
 
 .titleText {
   color: #111;
   font-size: 2em;
   font-weight: 300;
+  margin-top: 70px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
 }
 
 .titleText span {
@@ -192,12 +148,29 @@ section {
   border: 1px solid #f2f3f4;
 }
 
+#experts {
+  .text,
+  .titleText {
+    margin-top: 0.5px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+  }
+
+  .titleText,
+  h1 {
+    margin-top: 8px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
 .experts .content {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .experts .content .box {
@@ -299,4 +272,80 @@ section {
   font-size: 1em;
   color: #ff0157;
   font-weight: 600;
+}
+
+@media only screen and (max-width: 1000px) {
+}
+@media only screen and (max-width: 750px) {
+  .mat-card {
+    width: 300px;
+  }
+  .col-md-3 {
+    max-width: 70%;
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+  .banner .content {
+    max-width: 800px;
+    text-align: center;
+  }
+
+  .banner .content h1 {
+    font-size: 2em;
+    color: #fff;
+  }
+
+  .banner .content p {
+    font-size: 1.1em;
+    color: #fff;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+  }
+
+  .row {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .row .col50 {
+    position: relative;
+    width: 100%;
+    align-items: justify;
+    text-align: justify;
+  }
+
+  .titleText {
+    color: #111;
+    font-size: 2em;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+
+  .titleText span {
+    color: #ff6462;
+    font-weight: 700;
+    font-size: 1.2em;
+  }
+
+  #experts {
+    .text,
+    .titleText {
+      margin-top: 0.5px;
+      font-family: "Montserrat", sans-serif;
+      font-weight: bold;
+    }
+  }
+
+  .titleText,
+  h1 {
+    margin-top: 8px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+  }
 }
