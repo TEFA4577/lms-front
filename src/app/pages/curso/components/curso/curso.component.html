@@ -53,7 +53,7 @@
             <mat-list-item *ngFor=" let item of dat" class="row">
               <div mat-line>
                 <div mat-line> <img class="avatar" [src]="item.usuario_comentario.foto_usuario"
-                    (error)="imagenError()" /> De: {{ item.usuario_comentario.nombre_usuario }}
+                    (error)="imagenError()" /> {{ item.usuario_comentario.nombre_usuario }}
                   <span>{{item.usuario_comentario.created_at}}</span> </div>
                 <!--<div mat-line>{{ item.texto_comentario }}</div>-->
                 <textarea readonly>Comentario: {{ item.texto_comentario }}</textarea>
@@ -73,9 +73,8 @@
                       <mat-list-option *ngFor="let res of item.comentario_respuesta; let i = index">
                         <div mat-line>
                           <div mat-line>
-                            <mat-icon mat-list-icon>account_circle</mat-icon>
                             <div mat-line>
-                              {{ res.texto_respuesta }}
+                              <mat-icon mat-list-icon>account_circle</mat-icon> {{ res.texto_respuesta }}
                             </div>
                           </div>
                         </div>

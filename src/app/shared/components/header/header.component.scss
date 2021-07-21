@@ -27,6 +27,11 @@
   justify-content: center;
 }
 
+.mat-sidenav-container{
+  position: relative;
+  z-index: 100;
+}
+
 .example-sidenav {
   padding: 20px;
 }

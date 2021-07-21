@@ -98,7 +98,7 @@ section {
 .row .col50 p {
   //font-size: 1.5em;
   font-weight: 600;
-  font-size: 1.6em;
+  font-size: 1.4em;
   font-family: "Montserrat", sans-serif;
   text-align: justify;
   font-weight: bold;
@@ -318,9 +318,19 @@ section {
     text-align: justify;
   }
 
+  .row .col50 p {
+    //font-size: 1.5em;
+    font-weight: 600;
+    font-size: 1.2em;
+    font-family: "Montserrat", sans-serif;
+    text-align: justify;
+    font-weight: bold;
+    white-space: pre-line;
+  }
+
   .titleText {
     color: #111;
-    font-size: 2em;
+    font-size: 1.4em;
     font-weight: 300;
     text-align: center;
     margin-top: 10px;
@@ -347,5 +357,6 @@ section {
     margin-top: 8px;
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
+    font-size: 1.2em;
   }
 }

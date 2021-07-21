@@ -25,7 +25,7 @@
                 {{item.texto_prueba}}
               </mat-panel-title>
               <mat-radio-group aria-label="Select an option" formControlName="texto_prueba_opcion">
-                <div *ngFor="let opcion of item.prueba_opcion">
+                <div *ngFor="let opcion of item.prueba_opcion" align="justify">
                   <mat-radio-button (click)="getId(opcion.id_prueba_opcion)">
                     {{opcion.texto_prueba_opcion}}
                   </mat-radio-button>
