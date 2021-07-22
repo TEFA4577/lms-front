@@ -19,7 +19,7 @@ img {
   height: 500px;
   width: 80%;
 }
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Poppins:wght@100;700;900&display=swap");
+//@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Poppins:wght@100;700;900&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap");
 
@@ -97,12 +97,13 @@ section {
 
 .row .col50 p {
   //font-size: 1.5em;
-  font-weight: 600;
-  font-size: 1.4em;
+  font-weight: 700;
+  font-size: 1.0em;
   font-family: "Montserrat", sans-serif;
   text-align: justify;
   font-weight: bold;
   white-space: pre-line;
+  letter-spacing: 0.1em;
 }
 
 .title {
@@ -127,7 +128,7 @@ section {
 .titleText span {
   color: #ff6462;
   font-weight: 700;
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 .row .col50 .imgBx {
@@ -153,14 +154,12 @@ section {
   .titleText {
     margin-top: 0.5px;
     font-family: "Montserrat", sans-serif;
-    font-weight: bold;
   }
 
   .titleText,
   h1 {
     margin-top: 8px;
     font-family: "Montserrat", sans-serif;
-    font-weight: bold;
     text-align: center;
   }
 }
@@ -175,7 +174,7 @@ section {
 
 .experts .content .box {
   width: 350px;
-  margin: 15px;
+  margin: 10px;
 }
 
 .experts .content .box .imgBx {
@@ -326,6 +325,21 @@ section {
     text-align: justify;
     font-weight: bold;
     white-space: pre-line;
+  }
+
+  .row .col50 .imgBx {
+    position: relative;
+    width: 100%;
+    min-height: 0px;
+  }
+
+  .row .col50 .imgBx img {
+    position:relative;
+    top: 0;
+    left: 0;
+    box-shadow: 8px 8px 20px #c3cbd3;
+    border: 1px solid #f2f3f4;
+
   }
 
   .titleText {
