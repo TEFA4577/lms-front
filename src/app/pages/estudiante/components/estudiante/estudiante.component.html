@@ -85,7 +85,7 @@
                   fallimg="avatar">
                 <hr>
                 <mat-card-actions align="end">
-                  <input type="file" name="foto_usuario" #imagen hidden accept="image/*"
+                  <input type="file" name="foto_usuario" #imagen hidden accept=".jpg, .jpeg, .png"
                     (change)="uploadFile($event.target.files)">
                   <button type="button" mat-mini-fab matTooltip="Cambia tu foto de perfil" (click)="imagen.click()"
                     class="example-button" color="accent">

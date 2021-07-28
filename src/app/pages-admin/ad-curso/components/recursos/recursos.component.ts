@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CursosService } from 'src/app/services/cursos.service';
+import { FirebaseStorageService } from 'src/app/firebase-storage.service'; //CODIGO PARA FIREBASE STORAGE
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,6 +18,7 @@ export class RecursosComponent implements OnInit {
   filedata: any;
   estadoCargando = false;
   constructor(
+    private firebaseStorage: FirebaseStorageService, //CODIGO PARA FIREBASE STORAGE
     public dialogRef: MatDialogRef<RecursosComponent>,
     public formBuilder: FormBuilder,
     public serCurso: CursosService,
@@ -37,6 +39,66 @@ export class RecursosComponent implements OnInit {
       nombre_recurso: ['', Validators.required],
     });
   }
+
+  // CODIGO PARA FIREBASE STORAGE
+  public archivoForm = new FormGroup({
+    archivo: new FormControl('', Validators.required),
+  });
+
+  public mensajeArchivo = 'No hay un archivo seleccionado';
+  public datosFormulario = new FormData();
+  public nombreArchivo = '';
+  public URLPublica = '';
+  public porcentaje = 0;
+  public finalizado = false;
+
+    //Evento que se gatilla cuando el input de tipo archivo cambia
+    public cambioArchivo(event):void {
+      if (event.target.files.length > 0) {
+        for (let i = 0; i < event.target.files.length; i++) {
+          this.mensajeArchivo = `Archivo preparado: ${event.target.files[i].name}`;
+          this.nombreArchivo = event.target.files[i].name;
+          this.datosFormulario.delete('archivo');
+          this.datosFormulario.append('archivo', event.target.files[i], event.target.files[i].name);
+          }
+    } else {
+        this.mensajeArchivo = 'No hay un archivo seleccionado';
+      }
+    }
+
+    //Sube el archivo a Cloud Storage
+    public subirArchivo() {
+      let archivo = this.datosFormulario.get('archivo');
+      //let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
+      let tarea = this.firebaseStorage.tareaCloudStorage(this.nombreArchivo, archivo);
+      //Cambia el porcentaje
+      tarea.percentageChanges().subscribe((porcentaje) => {
+        this.porcentaje = Math.round(porcentaje);
+        if (this.porcentaje == 100) {
+          this.finalizado = true;
+          let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
+          referencia.getDownloadURL().subscribe((URL) => {
+            this.filedata= URL;
+            console.log('FILEDATA:', this.filedata);
+
+          })
+        }
+      });
+
+      /*referencia.getDownloadURL().subscribe((URL) => {
+        if (this.filedata!= '') {
+          this.filedata='';
+          this.filedata = URL;
+        }else{
+          this.filedata = URL;
+        }
+
+      });*/
+      //this.formClase.get('video_clase').setValue('listo');
+      //console.log('files:', this.files);
+    }
+
+    // FIN DE CODIGO
 
   submitRecurso(event): void {
     event.preventDefault();

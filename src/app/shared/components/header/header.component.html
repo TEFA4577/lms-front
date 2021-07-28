@@ -1,12 +1,12 @@
 <mat-toolbar>
   <mat-toolbar-row fxLayoutAlign="space-between center">
     <div fxLayout="row">
-      <!--Boton y logo de la academia que redirecciona al inicio-->
-      <a mat-button routerLink="/inicio">
-        <img src="assets/img/Nuevos_Logos_Academia/logo_sin_fondo.png" height="85px" alt="" class="img" />
-      </a>
-
-      <!--<app-filter-cursos (search)="handleSearch($event)"></app-filter-cursos>
+      <div fxLayout="row" *ngIf="!deviceXs">
+        <!--Boton y logo de la academia que redirecciona al inicio-->
+        <a mat-button routerLink="/inicio">
+          <img src="assets/img/Nuevos_Logos_Academia/logo_sin_fondo.png" height="80px" alt="" class="img" />
+        </a>
+        <!--<app-filter-cursos (search)="handleSearch($event)"></app-filter-cursos>
       <div *ngIf="!deviceXs">
         <div class="search_wrap search_wrap_3">
           <div class="search_box">
@@ -17,7 +17,6 @@
           </div>
         </div>
       </div>-->
-      <div fxLayout="row" *ngIf="!deviceXs">
         <a mat-button class="menu1" routerLink="/curso/cursos-general">
           Cursos
         </a>
@@ -32,54 +31,6 @@
         </a>
         <a mat-button class="menu1" routerLink="/info/nosotros">Nosotros</a>
       </div>
-    </div>
-
-    <div fxLayout="row" *ngIf="deviceXs">
-      <div *ngIf="estado">
-        <button mat-button [matMenuTriggerFor]="menu">
-          <div fxLayout="row" fxLayoutAlign="end center">
-            <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!deviceXs">
-              <span class="user">{{ datosUsuario.nombre_usuario }}</span>
-              <span class="rol">{{ datosUsuario.rol_usuario.nombre_rol }}</span>
-            </div>
-            <div>
-              <img class="avatar" [src]="datosUsuario.foto_usuario" (error)="imagenError()" />
-            </div>
-          </div>
-        </button>
-        <mat-menu #menu="matMenu" xPosition="before">
-          <button mat-menu-item routerLink="/estudiante/mi-perfil">
-            Mi Perfil
-          </button>
-          <button mat-menu-item color="warn" *ngIf="datosUsuario.id_rol == 3"
-            routerLink="/estudiante/mis-cursos-adquiridos">
-            Mis Cursos
-          </button>
-          <button mat-menu-item *ngIf="datosUsuario.id_rol == 1" routerLink="admin">
-            Panel Administrativo
-          </button>
-          <button mat-menu-item *ngIf="datosUsuario.id_rol == 2" routerLink="admin">
-            Panel del Instructor
-          </button>
-          <button mat-menu-item *ngIf="datosUsuario.id_rol == 3" routerLink="/instructores/pasos-instructor">
-            Quiero Ser Instructor
-          </button>
-          <button mat-menu-item (click)="cerrarSesion()">Cerrar Sesión</button>
-        </mat-menu>
-      </div>
-
-      <div *ngIf="!estado">
-        <a mat-button routerLink="/instructores/pasos-instructor">Sé instructor
-        </a>
-        <a mat-button [matMenuTriggerFor]="menu">
-          <mat-icon aria-hidden="false" aria-label="Example home icon" color="primary">menu_open</mat-icon>
-        </a>
-        <mat-menu #menu="matMenu" xPosition="before">
-          <a mat-menu-item routerLink="/login">Iniciar Sesión</a>
-          <a mat-menu-item routerLink="/register">Regístrate</a>
-        </mat-menu>
-      </div>
-
     </div>
 
     <div *ngIf="!deviceXs">
@@ -101,20 +52,21 @@
       </div>
 
       <div fxLayout="row" *ngIf="estado">
-        <a mat-button *ngIf="datosUsuario.id_rol == 3" class="itemsperfil" routerLink="/estudiante/mis-cursos-adquiridos">
+        <a mat-button *ngIf="datosUsuario.id_rol == 3" class="itemsperfil"
+          routerLink="/estudiante/mis-cursos-adquiridos">
           Mis Cursos
         </a>
         <a mat-button *ngIf="datosUsuario.id_rol == 3" class="itemsperfil" routerLink="/instructores/pasos-instructor">
           Quiero Ser Instructor
         </a>
         <button mat-button [matMenuTriggerFor]="menu">
-          <div fxLayout="row" fxLayoutAlign="end center">
+          <div fxLayout="row">
+            <div>
+              <img class="avatar" [src]="datosUsuario.foto_usuario" (error)="imagenError()" />
+            </div>
             <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!deviceXs">
               <span class="user">{{ datosUsuario.nombre_usuario }}</span>
               <span class="rol">{{ datosUsuario.rol_usuario.nombre_rol }}</span>
-            </div>
-            <div>
-              <img class="avatar" [src]="datosUsuario.foto_usuario" (error)="imagenError()" />
             </div>
           </div>
         </button>
@@ -137,18 +89,103 @@
       </div>
     </div>
   </mat-toolbar-row>
-
-  <mat-toolbar-row *ngIf="deviceXs">
-    <a mat-button routerLink="/curso/cursos-general">Novedades</a>
-    <button mat-button [matMenuTriggerFor]="menu">Categorías</button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item *ngFor="let item of etiqueta" routerLink="/curso/cursos-categorias/{{ item.id_etiqueta }}">
-        {{ item.nombre_etiqueta }}
-      </button>
-    </mat-menu>
-    <a mat-button routerLink="/instructores/listado-instructores">
-      Instructores
-    </a>
-    <a mat-button routerLink="/info/nosotros">Nosotros</a>
-  </mat-toolbar-row>
 </mat-toolbar>
+
+
+
+<!--Dispositivos celulares-->
+<div *ngIf="deviceXs">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <div class="items">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="example-spacer"></span>
+        <a mat-button routerLink="/inicio">
+          <img src="assets/img/Nuevos_Logos_Academia/logo_sin_fondo.png" class="img2" />
+        </a>
+        <button mat-button [matMenuTriggerFor]="menu" class="cat">Categorías</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngFor="let item of etiqueta"
+            routerLink="/curso/cursos-categorias/{{ item.id_etiqueta }}">
+            {{ item.nombre_etiqueta }}
+          </button>
+        </mat-menu>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <!--Dispositivos celulares-->
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav hasBackdrop="false" class="example-sidenav" fixedInViewport="true"
+      [mode]="mobileQuery.matches ? 'over' : 'side'" fixedTopGap="56">
+      <mat-list>
+        <div *ngIf="!estado">
+          <mat-list-item><a mat-button routerLink="/login">Iniciar sesión</a>
+          </mat-list-item>
+          <mat-list-item><a mat-button routerLink="/register">Regístrate</a></mat-list-item>
+        </div>
+        <div *ngIf="estado">
+          <!--<button mat-button [matMenuTriggerFor]="menu">
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!deviceXs">
+              <span class="user">{{ datosUsuario.nombre_usuario }}</span>
+              <span class="rol">{{ datosUsuario.rol_usuario.nombre_rol }}</span>
+            </div>
+            <div>
+              <img class="avatar" [src]="datosUsuario.foto_usuario" (error)="imagenError()" />
+            </div>
+          </div>
+        </button>-->
+          <button mat-button>
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div fxLayout="column" fxLayoutAlign="center center">
+                <span class="user">{{ datosUsuario.nombre_usuario }}</span>
+                <span class="rol">{{ datosUsuario.rol_usuario.nombre_rol }}</span>
+              </div>
+              <div>
+                <img class="avatar" [src]="datosUsuario.foto_usuario" (error)="imagenError()" />
+              </div>
+            </div>
+          </button>
+          <hr>
+          <button mat-menu-item (click)="sidenav.close()" routerLink="/estudiante/mi-perfil">
+            Mi Perfil
+          </button>
+          <button mat-menu-item color="warn" (click)="sidenav.close()" *ngIf="datosUsuario.id_rol == 3"
+            routerLink="/estudiante/mis-cursos-adquiridos">
+            Mis Cursos
+          </button>
+          <button mat-menu-item *ngIf="datosUsuario.id_rol == 1" routerLink="admin">
+            Panel Administrativo
+          </button>
+          <button mat-menu-item *ngIf="datosUsuario.id_rol == 2" routerLink="admin">
+            Panel del Instructor
+          </button>
+          <button mat-menu-item (click)="sidenav.close()" *ngIf="datosUsuario.id_rol == 3"
+            routerLink="/instructores/pasos-instructor">
+            Quiero Ser Instructor
+          </button>
+          <button mat-menu-item (click)="cerrarSesion()">Cerrar Sesión</button>
+        </div>
+        <hr>
+        <mat-list-item>
+          <a mat-button (click)="sidenav.close()" routerLink="/curso/cursos-general">Cursos</a>
+        </mat-list-item>
+        <mat-list-item>
+          <a mat-button (click)="sidenav.close()" routerLink="/instructores/listado-instructores">
+            Instructores
+          </a>
+        </mat-list-item>
+        <mat-list-item>
+          <a mat-button (click)="sidenav.close()" routerLink="/info/nosotros">Nosotros</a>
+        </mat-list-item>
+        <mat-list-item>
+          <a mat-button (click)="sidenav.close()" routerLink="/instructores/pasos-instructor">Sé instructor</a>
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</div>

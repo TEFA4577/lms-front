@@ -6,7 +6,7 @@
   <mat-card class="example-card">
     <!--Titulo o cabecera del card-->
     <div class="justify-content-center">
-      <img src="assets/img/nuevo_logo_Academia.png" class="imagenLogo" />
+      <img src="assets/img/Nuevos_Logos_Academia/logo_sin_fondo.png" class="imagenLogo" />
     </div>
     <hr>
     <!--Final del Titulo o cabecera del card-->
@@ -33,7 +33,7 @@
       </mat-form-field>
       <p>
         <button [disabled]="form.invalid" type="submit" mat-raised-button class="col-md-12 btn2">Inicia
-          sesion!</button>
+          sesión!</button>
       </p>
     </form>
     <!--Final del Formulario de registro-->
@@ -63,10 +63,10 @@
           </div>
         </div>
         <div class="d-flex justify-content-center">
-          <span>¿Aún no tienes una cuenta? <a style="color: blue; font-size: 16px;" routerLink="/register">Registrate Aquí</a></span>
+          <span>¿Aún no tienes una cuenta? <a mat-button routerLink="/register">Regístrate aquí</a></span>
         </div> <br/>
         <div class="d-flex justify-content-center">
-          <span><button mat-raised-button color="accent" routerLink="/">Volver a Inicio</button></span>
+          <span><button mat-button routerLink="/">Volver a Inicio</button></span>
         </div>
       </div>
     </mat-card-footer>

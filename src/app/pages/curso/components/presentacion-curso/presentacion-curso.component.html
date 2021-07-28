@@ -158,13 +158,8 @@
       <!--Video de presentacion, Fotografia y nombre del Usuario-->
       <mat-card class="doc-img" *ngIf="docente">
         <!--Fotografia de referencia-->
-        <video [src]="rutaVideo" (click)="verVideo(datosDocente.video_presentacion)" poster="{{ docente.foto_usuario }}"
-          width="100%" controls muted controlslist="nodownload" autoplay></video>
-        <!--<img mat-card-image src="{{ docente.foto_usuario }}" />-->
-        <!--<button mat-icon-button color="primary" type="button" (click)="verVideo(datosDocente.video_presentacion)"
-            matTooltip="Reproducir video">
-            <mat-icon>play_circle_filled</mat-icon>
-          </button>-->
+        <video mat-card-image src="{{docente.datos_docente.video_presentacion}}" poster="{{docente.foto_usuario}}"
+          controls controlslist="nodownload"></video>
         <mat-card-header>
           <mat-card-title class="py-3">{{ docente.nombre_usuario }}</mat-card-title>
         </mat-card-header>

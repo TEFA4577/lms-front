@@ -41,7 +41,7 @@
 
 
             <mat-form-field class="col-md-6" appearance="outline">
-              <mat-label>Correo electronico:</mat-label>
+              <mat-label>Correo electrónico:</mat-label>
               <input matInput value="{{ datosUsuario.correo_usuario }}" [readonly]="true" />
             </mat-form-field>
 
@@ -57,7 +57,7 @@
           <!--<h3>Información adicional</h3>-->
           <div class="row">
             <mat-form-field class="col-md-11" appearance="outline">
-              <mat-label>Hablanos acerca de ti (Descripción del instructor):</mat-label>
+              <mat-label>Háblanos acerca de ti (Descripción del instructor):</mat-label>
               <textarea matInput formControlName="descripcion_docente" placeholder="Ex. Soy una persona..."
                 required></textarea>
             </mat-form-field>
@@ -152,8 +152,8 @@
                 <div class="file has-name is-boxed">
                   <label class="file-label">
                     <input class="file-input" type="file" formControlName="archivoCv" #imagen2 hidden
-                      accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
-                      (change)="changeCv($event)" name="cv_docente" />
+                      accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" (change)="changeCv($event)"
+                      name="cv_docente" />
                     <!--<span class="file-cta">
                         <span class="file-label"> Elegir un archivo… </span>
                       </span>
@@ -196,7 +196,9 @@
                     value="{{ porcentajeCv }}" max="100">
                     {{ porcentajeCv }}%
                   </progress>
-
+                  <!--<p *ngIf="filesCV">
+                    {{ nombreArchivoCv | json }}
+                  </p>-->
                   <!--<progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
                       value="{{ porcentaje }}" max="100">
                       {{ porcentaje }}%
@@ -230,8 +232,8 @@
 
             <!--Datos del Docente-->
           </div>
-          <button mat-raised-button class="col-md-12" color="primary" type="submit" [disabled]="formDocente.invalid">
-            Enviar mi solicitud de docencia
+          <button mat-raised-button  color="primary" type="submit" [disabled]="formDocente.invalid">
+            Enviar mi solicitud!
           </button>
         </div>
       </form>

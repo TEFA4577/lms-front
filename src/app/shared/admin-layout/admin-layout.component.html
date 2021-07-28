@@ -3,7 +3,7 @@
     <mat-icon>menu</mat-icon>
   </button>
   <a mat-button routerLink="/">
-    <img src="assets/img/nuevo_logo_Academia.png" class="img" height="40px" alt="" />
+    <img src="assets/img/Nuevos_Logos_Academia/logo_sin_fondo.png" height="80px" class="img" alt="" />
   </a>
   <span class="example-spacer"></span>
   <button mat-button [matMenuTriggerFor]="beforeMenu" class="rol">
@@ -34,12 +34,12 @@
       <mat-accordion>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
-            <mat-panel-title>
+            <mat-panel-title >
               {{item.grupo}}
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-list-item *ngFor="let items of item.contenido" [routerLink]="items.link">
-            <a [routerLink]="items.link">{{items.titulo}}</a>
+            <a [routerLink]="items.link" (click)="sidenav.close()">{{items.titulo}}</a>
             <!---{{items.titulo}}-->
           </mat-list-item>
         </mat-expansion-panel>
