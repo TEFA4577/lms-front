@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { EncuestasService } from 'src/app/services/encuestas.service';
 import { EvaluacionService } from 'src/app/services/evaluacion.service';
 // import { CursosService } from 'src/app/services/cursos.service';
 import Swal from 'sweetalert2';
@@ -101,7 +100,7 @@ export class EvaluacionCursoComponent implements OnInit {
   closeEv(): void {
     Swal.fire({
       title: '¿Seguro que desea ENVIAR a revisión?',
-      text: 'La evaluación ha sido concluida satisfactoriamente.',
+      text: 'La evaluación será concluida.',
       icon: 'success',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -110,9 +109,10 @@ export class EvaluacionCursoComponent implements OnInit {
       cancelButtonText: 'No, cancelar!',
       allowOutsideClick: false,
     }).then((result) => {
-      if(result.isConfirmed){
+      if (result.isConfirmed) {
         this.serEvaluacion.progresoEvaluacion(this.id).subscribe(res => {
           console.log(this.prueba);
+          console.log(res);
           this.progreso = res;
           Swal.fire({
             title: this.progreso.mensaje,
