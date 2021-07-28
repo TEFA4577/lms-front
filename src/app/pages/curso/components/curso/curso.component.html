@@ -54,7 +54,8 @@
               <mat-icon mat-list-icon><img class="avatar" [src]="item.usuario_comentario.foto_usuario"
                   (error)="imagenError()" /></mat-icon>
               <div mat-line>
-                <div mat-line>{{ item.usuario_comentario.nombre_usuario }} <span>{{item.usuario_comentario.created_at}}</span> </div>
+                <div mat-line>{{ item.usuario_comentario.nombre_usuario }}
+                  <span>{{item.usuario_comentario.created_at}}</span> </div>
                 <div mat-line>{{ item.texto_comentario }}</div>
                 <div mat-line>
                   <button mat-button color="warn" (click)="openRespuestas(item.id_comentario);">Responder</button>
