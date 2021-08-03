@@ -152,15 +152,16 @@ section {
 #experts {
   .text,
   .titleText {
-    margin-top: 0.5px;
+    margin-top: 0;
     font-family: "Montserrat", sans-serif;
   }
 
   .titleText,
   h1 {
-    margin-top: 8px;
+    //margin-top: 3px;
     font-family: "Montserrat", sans-serif;
     text-align: center;
+    font-size: 1.5em;
   }
 }
 

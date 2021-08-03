@@ -177,30 +177,32 @@
   </section>
   <!--Final Categorias de la Plataforma-->
 
-
-  <section class="testimonials" id="testimonials">
-    <div class="container py-5">
-      <div class="row mb-5 justify-content-center">
-        <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="">
-          <h2 class="section-title text-white">Instructores</h2>
-        </div>
-      </div>
-    </div>
-    <div class="content" data-aos="fade-up" data-aos-delay="100">
-      <div *ngFor="let doc of docente; let i = index">
-        <div class="box" *ngIf="i < 6">
-          <div class="imgBx">
-            <img src="{{ doc.foto_usuario }}" routerLink="/docente/presentacion-docente/{{ doc.id_usuario }}"
-              fallimg="avatar">
-          </div>
-          <div class="text">
-            <p>{{ doc.datos_docente.descripcion_docente }}</p>
-            <p>{{ doc.datos_docente.experiencia_docente }}</p>
-            <h3 routerLink="/instructores/presentacion-docente/{{ doc.id_usuario }}">{{doc.nombre_usuario }}</h3>
+  <!--Seccion de instructores-->
+  <div *ngIf="docente">
+    <section class="testimonials" id="testimonials">
+      <div class="container py-5">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="">
+            <h2 class="section-title text-white">Instructores</h2>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+      <div class="content" data-aos="fade-up" data-aos-delay="100">
+        <div *ngFor="let doc of docente; let i = index">
+          <div class="box" *ngIf="i < 6">
+            <div class="imgBx">
+              <img src="{{ doc.foto_usuario }}" routerLink="/docente/presentacion-docente/{{ doc.id_usuario }}"
+                fallimg="avatar">
+            </div>
+            <div class="text">
+              <p>{{ doc.datos_docente.descripcion_docente }}</p>
+              <p>{{ doc.datos_docente.experiencia_docente }}</p>
+              <h3 routerLink="/instructores/presentacion-docente/{{ doc.id_usuario }}">{{doc.nombre_usuario }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
   <!--Final de la seccion de instructores-->
 </div>

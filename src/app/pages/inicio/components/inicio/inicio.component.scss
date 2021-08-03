@@ -129,7 +129,7 @@ h5,
 }
 
 .section-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #000;
   margin-bottom: 1.8rem;
   font-weight: 900;
@@ -211,10 +211,10 @@ h5,
 
 #slider figure {
   position: relative;
-  width: 500%;
+  width: 400%;
   margin: 0;
   left: 0;
-  animation: 20s slider infinite;
+  animation: 10s slider infinite;
 }
 
 #slider figure img {
@@ -276,7 +276,7 @@ h5,
 }
 
 .campus {
-  width: 60%;
+  width: 70%;
   margin: auto;
   text-align: center;
   padding-top: 50px;
@@ -309,7 +309,7 @@ h5,
   width: 100%;
   font-weight: 700;
   color: #fff;
-  font-size: 30px;
+  font-size: 25px;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -551,5 +551,51 @@ a {
     .row {
       text-align: justify;
     }
+  }
+
+  .campus {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+  }
+  .campus-col {
+    flex-basis: 32%;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  .campus-col img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .layer {
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+  }
+  .layer:hover {
+    background: rgba(4, 151, 158, 0.5);
+  }
+  .layer h3 {
+    width: 100%;
+    font-weight: 700;
+    color: #fff;
+    font-size: 20px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    font-family: "Montserrat";
+  }
+  .layer:hover h3 {
+    bottom: 49%;
+    opacity: 1;
   }
 }

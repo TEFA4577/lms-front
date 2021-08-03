@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
 .body {
   background:
   //linear-gradient(rgba(4, 63, 143, 0.2), rgba(4, 63, 143, 0.2)),
@@ -5,6 +7,32 @@
     url(../../../../../assets/img/st2.jpg);
   //linear-gradient(to left, #c70039, #ff5733, #f25e3d);
   background-size: cover;
+}
+
+.section-title {
+  font-size: 4rem;
+  color: #000;
+  margin-bottom: 2rem;
+  font-weight:200;
+  font-family: "Montserrat", sans-serif;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 2.3rem;
+  color: #000;
+  margin-bottom: 2rem;
+  font-weight:300;
+  font-family: "Montserrat", sans-serif;
+}
+
+p {
+  //background: #2c3e50;
+  color: #2c3e50;
+  font-size: 1.3rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 480;
+  letter-spacing: 1.4px;
 }
 
 .hr {
@@ -20,7 +48,7 @@
 
 .mat-card {
   box-shadow: 8px 8px 20px #c3cbd3;
-  height: 580px;
+  height: 660px;
 }
 
 .mat-radio-button ~ .mat-radio-button {
@@ -32,9 +60,10 @@
   //box-shadow: .5px .5px 10px #043F8F;
   background: #f3f3f3;
   font-family: "Montserrat", sans-serif;
+  height: 800px;
 }
 
-legend{
+legend {
   font-family: "Montserrat", sans-serif;
 }
 
@@ -47,18 +76,13 @@ legend{
   border-radius: 1px;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
-* {
-  //font-family: "Montserrat", sans-serif;
-  //font-size: 1em;
-}
-
-h3 {
-  font-family: "Montserrat", sans-serif;
-}
-
-p{
-  //background: #2c3e50;
-  color: #2c3e50;
-  font-family: "Montserrat", sans-serif;
+@media only screen and (max-device-width: 480px) {
+  .section-title{
+    text-align: center;
+    font-size: 2.3rem;
+    color: #000;
+    margin-bottom: 2rem;
+    font-weight:300;
+    font-family: "Montserrat", sans-serif;
+  }
 }
