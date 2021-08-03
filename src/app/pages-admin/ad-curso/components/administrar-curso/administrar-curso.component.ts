@@ -273,7 +273,7 @@ export class AdministrarCursoComponent implements OnInit {
     this.rutaVideo = ruta;
   }
 
-  crearPrueba(id: number):void{
+  crearPrueba(id: number): void {
     const dialogRef = this.dialog.open(CrearEvaluacionComponent, {
       disableClose: true,
       data: id,
@@ -415,10 +415,10 @@ export class AdministrarCursoComponent implements OnInit {
           this.cargarDatosCurso();
           this.enviar = res
           Swal.fire({
-            title:this.enviar.mensaje,
+            title: this.enviar.mensaje,
             icon: this.enviar.estado
           });
-          if(this.enviar.estado == "success"){
+          if (this.enviar.estado == "success") {
             this.router.navigateByUrl('admin/cursos/mis-cursos');
           }
         }, error => {

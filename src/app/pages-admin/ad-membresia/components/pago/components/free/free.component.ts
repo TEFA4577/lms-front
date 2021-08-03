@@ -30,7 +30,7 @@ export class FreeComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private usuarioService: UsuarioService,
     public dialogRef: MatDialogRef<FreeComponent>,
-    @Inject(MAT_DIALOG_DATA)public data:number
+    @Inject(MAT_DIALOG_DATA) public data: number
   ) {
     this.id = data;
   }
@@ -57,23 +57,25 @@ export class FreeComponent implements OnInit {
     Swal.fire({
       title: 'Seguro que desea adquirir la membresia?',
       showDenyButton: true,
-      confirmButtonText: `Enviar`,
+      confirmButtonText: `Si, enviar`,
       denyButtonText: `No enviar`,
     }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
+      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.membresiaAd.adquirirMembresia(myFormData).subscribe(res => {
           this.respuesta = res;
-          Swal.fire('Enviado!', '', 'success').finally(() => {
+          Swal.fire({
+            title: this.respuesta.mensaje,
+            icon: this.respuesta.estado
+          }).finally(() => {
             this.onNoClick();
             this.isActive = false;
           });
-          this.openSnackBar(this.respuesta.mensaje, 'cerrar');
         }, error => {
-        console.log(error);
-      });
+          console.log(error);
+        });
       } else if (result.isDenied) {
-        Swal.fire('No se envió su solicitud', '', 'info').finally(() => this.isActive = false);
+        Swal.fire('No se envió su solicitud', '', 'warning').finally(() => this.isActive = false);
       }
     });
   }

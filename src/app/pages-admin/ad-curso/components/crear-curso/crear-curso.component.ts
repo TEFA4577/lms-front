@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CursosService } from 'src/app/services/cursos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crear-curso',
@@ -13,6 +14,7 @@ export class CrearCursoComponent implements OnInit {
   files: any = [];
   filedata: any;
   imgURL: any;
+  response: any;
   constructor(
     public dialogRef: MatDialogRef<CrearCursoComponent>,
     private formBuilder: FormBuilder,
@@ -59,11 +61,31 @@ export class CrearCursoComponent implements OnInit {
     myFormData.append('nombre_curso', this.formCrearCurso.get('nombre_curso').value);
     myFormData.append('descripcion_curso', this.formCrearCurso.get('descripcion_curso').value);
     myFormData.append('precio', this.formCrearCurso.get('precio_curso').value);
-    this.cursoSrv.registrarCurso(myFormData).subscribe(res => {
-      console.log(res);
-      this.dialogRef.close();
-    }, error => {
-      console.log(error);
-    });
+    Swal.fire({
+      title: 'Registrar curso',
+      text: '¿Está seguro que desea registrar el curso?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si deseo registrarlo',
+      cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cursoSrv.registrarCurso(myFormData).subscribe(res => {
+          console.log(res);
+          this.response = res;
+          this.dialogRef.close();
+          Swal.fire({
+            title: this.response.title,
+            text: this.response.mensaje,
+            icon: this.response.estado
+          });
+        }, error => {
+          console.log(error);
+        });
+      }
+    })
   }
 }

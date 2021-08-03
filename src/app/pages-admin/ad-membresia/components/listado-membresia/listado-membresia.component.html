@@ -6,7 +6,7 @@
       </div>
     </div>
   </div>
-  <hr/>
+  <hr />
   <div *ngIf="!membresias" class="sinDatos d-flex justify-content-center">
     <p class="mensaje">Aún no se tienen membresias disponibles</p>
   </div>
@@ -17,10 +17,12 @@
     <div class="col-md-4" *ngFor="let item of membresias">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>{{ item.nombre_membresia }}<hr></mat-card-title>
+          <mat-card-title>{{ item.nombre_membresia }}
+            <hr>
+          </mat-card-title>
           <mat-card-subtitle>{{ item.precio_membresia }} .Bs</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="{{ item.imagen_membresia}}" class="imgMembresia"/>
+        <img mat-card-image src="{{ item.imagen_membresia}}" class="imgMembresia" />
         <mat-card-content>
           <p *ngIf="item.precio_membresia == 0">
             <button color="accent" mat-raised-button (click)="metodoFree(item.id_membresia)">¡GRATIS!</button>
@@ -33,17 +35,15 @@
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <p class="descript">
-                <button mat-stroked-button class="btn-block" (click)="metodoDeposito(item.id_membresia)" matTooltip="Transferencia Bancaria"
-                      color="primary">
+                <button mat-stroked-button class="btn-block" (click)="metodoDeposito(item.id_membresia)"
+                  matTooltip="Transferencia Bancaria" color="primary">
                   <mat-icon>receipt_long
                   </mat-icon> Deposito Bancario
                 </button>
-                <button mat-stroked-button class="btn-block" matTooltip="Pago por Mone"
-                      color="basic">
+                <button mat-stroked-button class="btn-block" matTooltip="Pago por Mone" color="basic">
                   <mat-icon>qr_code</mat-icon> Pago por Mone
                 </button>
-                <button mat-stroked-button class="btn-block"
-                      matTooltip="Tarjeta de Credito/Debito" color="warn">
+                <button mat-stroked-button class="btn-block" matTooltip="Tarjeta de Credito/Debito" color="warn">
                   <mat-icon>credit_card</mat-icon> Tarjeta de Credito/Debito
                 </button>
               </p>
