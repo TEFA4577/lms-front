@@ -90,8 +90,8 @@ export class RegisterComponent implements OnInit {
       this.usuario.foto = datos.user.photoURL;
       this.usuario.password = datos.user.uid;
       console.log(this.usuario);
-
       this.registrarDatos(this.usuario);
+      this.log();
     });
   }
   /**
@@ -119,6 +119,26 @@ export class RegisterComponent implements OnInit {
     }
     console.log(usr);
     this.serLogin.loginUsuario(usr).subscribe(res => {
+      this.respuesta = res;
+      console.log(res);
+      this.openSnackBar(this.respuesta.mensaje, 'cerrar');
+      this.serUsuario.guardarDatosUsuario(this.respuesta.usuario);
+      this.serUsuario.guardarToken(this.respuesta.token);
+      this.router.navigateByUrl('inicio');
+    });
+  }
+
+  /**
+   * Decripcion: Esta funcion realiza el incio de sesion o autenticacion con los datos registrados mediante google
+   */
+
+  log(): void {
+    const user = {
+      correo_usuario: this.usuario.correo_usuario,
+      password: this.usuario.password
+    }
+    console.log(user);
+    this.serLogin.loginUsuario(user).subscribe(res => {
       this.respuesta = res;
       console.log(res);
       this.openSnackBar(this.respuesta.mensaje, 'cerrar');
