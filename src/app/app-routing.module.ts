@@ -12,12 +12,18 @@ const routes: Routes = [
   },
 
   {
+    path: 'password',
+    loadChildren: () => import('./password/password.module').then(m => m.PasswordModule)
+
+  },
+
+  {
     path: 'register',
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
   },
   {
     path: 'admin',
-    canActivate: [AuthGuard , RolGuard],
+    canActivate: [AuthGuard, RolGuard],
     component: AdminLayoutComponent,
     children: [
       {
@@ -45,7 +51,7 @@ const routes: Routes = [
       },
       {
         path: 'info',
-        loadChildren: () => import('./pages/landing/landing.module').then(m =>m.LandingModule)
+        loadChildren: () => import('./pages/landing/landing.module').then(m => m.LandingModule)
       },
       {
         path: 'instructores',

@@ -13,12 +13,24 @@
           <mat-label>Nombre del Recurso</mat-label>
           <input matInput formControlName="nombre_recurso" type="text" placeholder="">
         </mat-form-field>
-        <input type="file" name="recurso" #imagen hidden (change)="uploadFile($event.target.files)">
-        <button type="button" mat-raised-button color="accent" class="col-md-12" (click)="imagen.click()">Subir un
-          archivo</button>
-        <p *ngIf="files">
-          {{files | json}}
-        </p>
+
+
+        <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+          <input type="file" name="recurso" formControlName="archivo" #imagen hidden (change)="cambioArchivo($event)">
+         <div class="col-md-12 justify-content-center">
+          <button type="button" mat-raised-button color="accent" style="width: 50%;" (click)="imagen.click()">Elige un
+            archivo</button>
+          <button mat-raised-button color="primary" style="width: 50%;"
+            [ngClass]="{'button': true, 'is-success': true, 'is-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}"
+            [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir archivo</button>
+          <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
+            value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
+         </div>
+          <p *ngIf="filedata">
+            {{mensajeArchivo | json}}
+          </p>
+        </form>
+        <br>
         <div class="col-md-12 justify-content-center">
           <button style="width: 50%;" type="submit" mat-raised-button color="primary" class="col-md-12">Guardar</button>
           <button style="width: 50%;" mat-raised-button color="warn" type="button" (click)="onNoClick()">Cerrar</button>
@@ -36,8 +48,7 @@
             (click)="borrarRecurso(recurso.id_recurso)">
             <mat-icon>delete_forever</mat-icon>
           </button>
-          <a align="end" mat-icon-button color="accent" matTooltip="descargar recurso"
-          target=”_blank”
+          <a align="end" mat-icon-button color="accent" matTooltip="descargar recurso" target=”_blank”
             href="{{recurso.link_recurso}}">
             <mat-icon>drive_folder_upload</mat-icon>
           </a>

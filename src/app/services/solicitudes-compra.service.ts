@@ -20,11 +20,11 @@ export class SolicitudesCompraService {
     return this.http.get(this.API_BACKEND + 'habilitar-curso/' + id + '/' + estado);
   }
 
-  membresiaSolicitadas(){
+  membresiaSolicitadas() {
     return this.http.get(this.API_BACKEND + 'membresias-solicitada');
   }
-  habilitarMembresia(id, estado){
-    return this.http.get(this.API_BACKEND + 'membresia-habilitar/' +id+'/'+estado);
+  habilitarMembresia(id, estado) {
+    return this.http.get(this.API_BACKEND + 'membresia-habilitar/' + id + '/' + estado);
   }
 
 }

@@ -20,6 +20,7 @@
         <mat-icon matSuffix>email</mat-icon>
       </mat-form-field>
 
+
       <mat-form-field appearance="outline" class="col-md-12">
         <mat-label>Ingresa tu contraseña</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
@@ -29,12 +30,14 @@
             hide ? "visibility_off" : "visibility"
             }}</mat-icon>
         </button>
-
       </mat-form-field>
       <p>
         <button [disabled]="form.invalid" type="submit" mat-raised-button class="col-md-12 btn2">Inicia
           sesión!</button>
       </p>
+      <div class="d-flex justify-content-end">
+        <a routerLink="/password">¿Olvidaste tu contraseña?</a>
+      </div>
     </form>
     <!--Final del Formulario de registro-->
     <br>
@@ -64,7 +67,7 @@
         </div>
         <div class="d-flex justify-content-center">
           <span>¿Aún no tienes una cuenta? <a mat-button routerLink="/register">Regístrate aquí</a></span>
-        </div> <br/>
+        </div> <br>
         <div class="d-flex justify-content-center">
           <span><button mat-button routerLink="/">Volver a Inicio</button></span>
         </div>

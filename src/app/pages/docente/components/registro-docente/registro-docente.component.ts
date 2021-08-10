@@ -112,7 +112,7 @@ export class RegistroDocenteComponent implements OnInit {
         this.datosFormularioCv.delete('archivoCv');
         this.datosFormularioCv.append('archivoCv', event.target.files[i], event.target.files[i].name);
       }
-      console.log('nombre CV: ', this.nombreArchivoCv);
+      console.log('nombreArchivo: ', this.nombreArchivoCv);
     } else {
       this.mensajeArchivo = 'No hay un archivo seleccionado';
     }
