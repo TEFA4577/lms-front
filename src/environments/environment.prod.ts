@@ -7,7 +7,7 @@ export const environment = {
     projectId: "lms-academia-a582f",
     storageBucket: "lms-academia-a582f.appspot.com",
     messagingSenderId: "927465450199",
-    appId: "1:927465450199:web:f2d6d885318ae5c7109e92",
-    measurementId: "G-NFF115FXGG"
+    appId: "1:927465450199:web:9b83e140ca56e7f9109e92",
+    measurementId: "G-6YXVZTLLJK"
   },
 };
