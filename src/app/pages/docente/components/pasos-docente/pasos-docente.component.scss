@@ -44,7 +44,7 @@ p {
   justify-content: center;
   align-items: center;
   background: linear-gradient(rgba(4, 63, 143, 0.2), rgba(4, 63, 143, 0.2)),
-    url(../../../../../assets/img/enseñar2.jpg);
+    url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Fenseñar2.jpg?alt=media&token=41be2f17-1eed-4b0e-be95-a44b5ec2de14);
   background-size: cover;
 }
 
@@ -98,7 +98,7 @@ section {
 .row .col50 p {
   //font-size: 1.5em;
   font-weight: 700;
-  font-size: 1.0em;
+  font-size: 1em;
   font-family: "Montserrat", sans-serif;
   text-align: justify;
   font-weight: bold;
@@ -210,7 +210,7 @@ section {
 
 .testimonials {
   background: linear-gradient(rgba(4, 63, 143, 0.5), rgba(4, 63, 143, 0.5)),
-    url(../../../../../assets/img/lugar-de-estudio.jpg);
+    url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Flugar-de-estudio.jpg?alt=media&token=2eb20f69-4b57-4f4f-8283-546d658dca62);
   background-size: cover;
 }
 
@@ -335,12 +335,11 @@ section {
   }
 
   .row .col50 .imgBx img {
-    position:relative;
+    position: relative;
     top: 0;
     left: 0;
     box-shadow: 8px 8px 20px #c3cbd3;
     border: 1px solid #f2f3f4;
-
   }
 
   .titleText {
@@ -350,7 +349,6 @@ section {
     text-align: center;
     margin-top: 10px;
   }
-
 
   .titleText span {
     color: #ff6462;

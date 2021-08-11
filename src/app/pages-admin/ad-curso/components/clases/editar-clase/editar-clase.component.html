@@ -15,7 +15,7 @@
         <mat-label>descripción de la clase </mat-label>
         <textarea matInput formControlName="descripcion_clase"></textarea>
       </mat-form-field>
-        <input type="file" name="video_clase" #imagen hidden accept="video/mp4,video/x-m4v,video/*"
+      <!--<input type="file" name="video_clase" #imagen hidden accept="video/mp4,video/x-m4v,video/*"
           (change)="uploadFile($event.target.files)">
         <button type="button" mat-raised-button color="primary" class="col-md-12" (click)="imagen.click()">Cambiar
           Video</button>
@@ -29,12 +29,13 @@
         <button mat-stroked-button color="warn" (click)="deleteAttachment(0)">
           Cancelar <mat-icon>error_outline</mat-icon>
         </button>
-      </div>
+      </div>-->
     </div>
   </div>
-  <hr/>
+  <hr />
   <div mat-dialog-actions class="col-md-12 justify-content-center">
-    <button style="width: 40%;" mat-raised-button color="primary" [disabled]="formClase.invalid">Guardar Cambios</button>
+    <button style="width: 40%;" mat-raised-button color="primary" [disabled]="formClase.invalid">Guardar
+      Cambios</button>
     <button style="width: 40%;" mat-raised-button color="warn" type="button" [mat-dialog-close]="true">Cancelar</button>
   </div>
 </form>

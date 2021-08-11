@@ -36,7 +36,7 @@ import { DocenteModule } from './pages/docente/docente.module';
 import { EstudianteModule } from './pages/estudiante/estudiante.module';
 import { InicioModule } from './pages/inicio/inicio.module';
 import { LandingModule } from './pages/landing/landing.module';
-import { PagesAdminModule} from './pages-admin/pages-admin.module';
+import { PagesAdminModule } from './pages-admin/pages-admin.module';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
 import { ComponentsModule } from './components/components.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -72,25 +72,26 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     FlexLayoutModule,
     FormsModule,
     NgFallimgModule.forRoot({
-      default: '/assets/img/Cursos/sin_imagen.png',
-      avatar: '/assets/img/Profesionales/avatar.jpg'
+      default: 'https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Fsin_imagen.png?alt=media&token=4d298c8f-b583-49da-909b-c490deef31f7',
+      avatar: 'https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Favatar.jpg?alt=media&token=2efe842e-f75e-4445-af7e-caee25e119c9'
     })
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptorInterceptor,
-    multi: true},
+    multi: true
+  },
     AuthService,
     CursosService,
-     DocentesService,
-     EtiquetaService,
-     LoginService,
-     MembresiaService,
-     PreguntaService,
-     RegistroService,
-     SolicitudesCompraService,
-     UsuarioService,
-     EvaluacionService
+    DocentesService,
+    EtiquetaService,
+    LoginService,
+    MembresiaService,
+    PreguntaService,
+    RegistroService,
+    SolicitudesCompraService,
+    UsuarioService,
+    EvaluacionService
   ],
   bootstrap: [AppComponent]
 })
