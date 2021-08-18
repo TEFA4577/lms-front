@@ -60,7 +60,7 @@ export class InicioComponent implements OnInit {
       },
       1000: {
         items: 4,
-        nav: true
+        nav: true,
       },
     },
   }

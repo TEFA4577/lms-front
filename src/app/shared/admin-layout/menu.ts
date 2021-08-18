@@ -12,19 +12,15 @@ export const MENU_DOCENTE = [
     grupo: 'Cursos',
     contenido: [
       {
-        titulo: 'Mis Cursos',
+        titulo: 'Mi panel de cursos creados',
         link: './curso/mis-cursos',
       },
       {
-        titulo: '¿Como subir un curso?',
+        titulo: 'Tutoriales',
         link: 'cursos/tutoriales'
       },
       {
-        titulo: 'Mis Cursos Adquiridos',
-        link: '/estudiante/mis-cursos-adquiridos'
-      },
-      {
-        titulo: 'Sobre Mis Cursos',
+        titulo: 'Mis estudiantes',
         link: 'cursos/estudiantes'
       }
     ]

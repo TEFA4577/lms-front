@@ -16,16 +16,17 @@
 
 
         <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
-          <input type="file" name="recurso" formControlName="archivo" #imagen hidden (change)="cambioArchivo($event)">
-         <div class="col-md-12 justify-content-center">
-          <button type="button" mat-raised-button color="accent" style="width: 50%;" (click)="imagen.click()">Elige un
-            archivo</button>
-          <button mat-raised-button color="primary" style="width: 50%;"
-            [ngClass]="{'button': true, 'is-success': true, 'is-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}"
-            [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir archivo</button>
-          <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
-            value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
-         </div>
+          <input type="file" accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps/xls" name="recurso"
+            formControlName="archivo" #imagen hidden (change)="cambioArchivo($event)">
+          <div class="col-md-12 justify-content-center">
+            <button type="button" mat-raised-button color="accent" style="width: 50%;" (click)="imagen.click()">Elige un
+              archivo</button>
+            <button mat-raised-button color="primary" style="width: 50%;"
+              [ngClass]="{'button': true, 'is-success': true, 'is-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}"
+              [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir archivo</button>
+            <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
+              value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
+          </div>
           <p *ngIf="filedata">
             {{mensajeArchivo | json}}
           </p>

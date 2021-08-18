@@ -3,9 +3,14 @@
     <mat-icon>menu</mat-icon>
   </button>
   <a mat-button routerLink="/">
-    <img src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Flogo_sin_fondo.png?alt=media&token=a473dfd1-7040-4736-8118-4e9004205c9e" height="80px" class="img" alt="" />
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Flogo_sin_fondo.png?alt=media&token=a473dfd1-7040-4736-8118-4e9004205c9e"
+      height="80px" class="img" alt="" />
   </a>
   <span class="example-spacer"></span>
+  <a mat-button routerLink="/estudiante/mis-cursos-adquiridos">
+    Mis Cursos
+  </a>
   <button mat-button [matMenuTriggerFor]="beforeMenu" class="rol">
     <div fxLayout="row" fxLayoutAlign="end center">
       <div fxLayout="column" fxLayoutAlign="center center">
@@ -28,13 +33,13 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav hasBackdrop="false" class="example-sidenav" fixedInViewport="true"
     [mode]="mobileQuery.matches ? 'over' : 'side'" fixedTopGap="56">
-
-    <h4 align="center" mat-subheader>Menu Docente</h4>
+    <br>
+    <h4 align="center" mat-subheader>Menú del Instructor</h4>
     <mat-list *ngFor="let item of menuDocente">
       <mat-accordion>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
-            <mat-panel-title >
+            <mat-panel-title>
               {{item.grupo}}
             </mat-panel-title>
           </mat-expansion-panel-header>

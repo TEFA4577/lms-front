@@ -66,11 +66,15 @@
               <button *ngIf="miCurso.estado_curso != 'aprobado'" mat-raised-button color="primary"
                 routerLink="../administrar/{{miCurso.id_curso}}">Administrar Curso</button>-->
             <button mat-button color="primary" *ngIf="miCurso.estado_curso != 'aprobado'"
-              matTooltip="Administrar el curso" routerLink="../administrar/{{miCurso.id_curso}}">
-              <mat-icon>create</mat-icon>ADMINISTRAR
+              matTooltip="Añade el contenido" routerLink="../administrar/{{miCurso.id_curso}}">
+              <mat-icon>create</mat-icon>Crear contenido
+            </button>
+            <button mat-button color="primary" *ngIf="miCurso.estado_curso == 'aprobado'"
+              matTooltip="Administrar el curso" routerLink="../contenido-detalles/{{miCurso.id_curso}}">
+              <mat-icon>info</mat-icon>Ver mi curso
             </button>
             <button mat-button color="warn" matTooltip="Añade las categorías" (click)="verEtiquetas(miCurso)">
-              <mat-icon>style</mat-icon>CATEGORÍAS
+              <mat-icon>settings</mat-icon>Añade categorías
             </button>
           </mat-card-actions>
         </mat-card-footer>

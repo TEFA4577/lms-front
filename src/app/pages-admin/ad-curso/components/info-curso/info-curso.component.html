@@ -1,0 +1,132 @@
+<div class="container">
+  <ng-container>
+    <div class="row">
+      <div class="col-4">
+        <mat-card *ngIf="curso">
+          Nombre del curso
+          <mat-card-content>
+            <h2>{{curso.nombre_curso}}</h2>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-4">
+        <mat-card>
+          Total de estudiantes
+          <mat-card-content *ngFor="let item of misEstudiantes">
+            <h2 *ngIf="item.curso_estudiante.length || 0">{{ item.curso_estudiante.length }}</h2>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-4">
+        <mat-card>
+          Evaluaciones realizadas
+          <mat-card-content *ngFor="let item of misEstudiantes">
+            <h2 *ngIf="item.curso_evaluacion.length || 0">{{ item.curso_evaluacion.length }}</h2>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </ng-container>
+  <br>
+  <div class="row">
+    <div class="col-4">
+      <mat-card>
+        Lista de tus estudiantes
+        <mat-card-content>
+          <mat-list role="list" *ngFor="let item of misEstudiantes">
+            <mat-list-item role="listitem">{{item.id_usuario}}</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-8">
+      <mat-card>
+        <h2>Cotenido de tu clase</h2>
+        <mat-card-content>
+          <mat-accordion *ngFor="let modulo of modulos">
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Módulo: {{modulo.nombre_modulo}}
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <mat-selection-list #shoes [multiple]="false">
+                <mat-list-item *ngFor="let clase of modulo.clases_modulo">
+                  <div mat-line>
+                    <!--Nueva seccion para los recursos-->
+                    <p>Clase: {{clase.titulo_clase}}</p>
+                  </div>
+                  <div mat-line align="end">
+                    <!--<button mat-icon-button color="primary" type="button" (click)="getIdClase(clases.id_clase)"
+                      matTooltip="Mostrar el foro de la clase">
+                      <mat-icon>forum</mat-icon>
+                    </button>-->
+                    <button mat-icon-button color="basic" (click)="openForo(clase.id_clase);" type="button"
+                      matTooltip="Ve el foro de esta clase">
+                      <mat-icon>visibility</mat-icon>
+                    </button>
+                  </div>
+                </mat-list-item>
+              </mat-selection-list>
+            </mat-expansion-panel>
+            <br>
+          </mat-accordion>
+        </mat-card-content>
+
+        <mat-card [hidden]="!mostrarForo">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Foro de la Clase</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-selection-list *ngIf="dat" [multiple]="false">
+              <mat-list-item *ngFor=" let item of dat" class="row">
+                <div mat-line>
+                  <!--<div mat-line>{{ item.usuario_comentario.nombre_usuario }}
+          <span>{{item.usuario_comentario.created_at}}</span>
+        </div>
+        <div mat-line>{{ item.texto_comentario }}</div>-->
+                  <div mat-line>
+                    <img class="avatar" [src]="item.usuario_comentario.foto_usuario"
+                    (error)="imagenError()" />
+                    {{ item.usuario_comentario.nombre_usuario }}
+                    <span>{{item.usuario_comentario.created_at}}</span>
+                  </div>
+                  <!--<div mat-line>{{ item.texto_comentario }}</div>-->
+                  <textarea readonly>Comentario: {{ item.texto_comentario }}</textarea>
+                  <div mat-line>
+                    <button mat-button color="warn" (click)="openRespuestas(item.id_comentario);">Responder</button>
+                  </div>
+                </div>
+                <div mat-line>
+                  <div *ngIf="item.comentario_respuesta.length || 0">
+                    <mat-accordion>
+                      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            Ver {{item.comentario_respuesta.length}} respuestas
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-list-option *ngFor="let res of item.comentario_respuesta; let i = index">
+                          <div mat-line>
+                            <div mat-line>
+                              <div mat-line>
+                                <mat-icon mat-list-icon>account_circle</mat-icon> {{ res.texto_respuesta }}
+                              </div>
+                            </div>
+                          </div>
+                        </mat-list-option>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+              </mat-list-item>
+            </mat-selection-list>
+          </mat-card-content>
+        </mat-card>
+      </mat-card>
+    </div>
+  </div>
+</div>

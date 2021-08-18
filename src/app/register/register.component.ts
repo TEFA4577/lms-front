@@ -42,7 +42,6 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authSrv: AuthService,
-    // tslint:disable-next-line: variable-name
     private _snackBar: MatSnackBar
   ) { }
 
@@ -90,8 +89,7 @@ export class RegisterComponent implements OnInit {
       this.usuario.foto = datos.user.photoURL;
       this.usuario.password = datos.user.uid;
       console.log(this.usuario);
-      this.registrarDatos(this.usuario);
-      this.log();
+      this.registraDatos(this.usuario);
     });
   }
   /**
@@ -105,6 +103,17 @@ export class RegisterComponent implements OnInit {
       this.respuesta = data;
       this.openSnackBar(this.respuesta.mensaje, 'cerrar');
       this.login();
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  registraDatos(datos: any) {
+    this.serRegistro.registrarUsuario(datos).subscribe(data => {
+      console.log(data);
+      this.respuesta = data;
+      this.openSnackBar(this.respuesta.mensaje, 'cerrar');
+      this.log();
     }, error => {
       console.log(error);
     });
@@ -133,15 +142,10 @@ export class RegisterComponent implements OnInit {
    */
 
   log(): void {
-    const user = {
-      correo_usuario: this.usuario.correo_usuario,
-      password: this.usuario.password
-    }
-    console.log(user);
-    this.serLogin.loginUsuario(user).subscribe(res => {
+    this.serLogin.loginUsuario(this.usuario).subscribe(res => {
       this.respuesta = res;
       console.log(res);
-      this.openSnackBar(this.respuesta.mensaje, 'cerrar');
+      //this.openSnackBar(this.respuesta.mensaje, 'cerrar');
       this.serUsuario.guardarDatosUsuario(this.respuesta.usuario);
       this.serUsuario.guardarToken(this.respuesta.token);
       this.router.navigateByUrl('inicio');

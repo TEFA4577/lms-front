@@ -5,7 +5,7 @@
         <!--Boton y logo de la academia que redirecciona al inicio-->
         <a mat-button routerLink="/inicio">
           <img
-            src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Flogo_sin_fondo.png?alt=media&token=a473dfd1-7040-4736-8118-4e9004205c9e"
+            src="../../../../assets/img/logo_sin_fondo.png"
             height="80px" alt="" class="img" />
         </a>
         <!--<app-filter-cursos (search)="handleSearch($event)"></app-filter-cursos>
@@ -54,7 +54,7 @@
       </div>
 
       <div fxLayout="row" *ngIf="estado">
-        <a mat-button *ngIf="datosUsuario.id_rol == 3" class="itemsperfil"
+        <a mat-button *ngIf="datosUsuario.id_rol != 1" class="itemsperfil"
           routerLink="/estudiante/mis-cursos-adquiridos">
           Mis Cursos
         </a>
@@ -105,7 +105,7 @@
         </button>
         <span class="example-spacer"></span>
         <a mat-button routerLink="/inicio">
-          <img src="assets/img/Nuevos_Logos_Academia/logo_sin_fondo.png" class="img2" />
+          <img src="../../../../assets/img/logo_sin_fondo.png" class="img2" />
         </a>
         <button mat-button [matMenuTriggerFor]="menu" class="cat">Categorías</button>
         <mat-menu #menu="matMenu">

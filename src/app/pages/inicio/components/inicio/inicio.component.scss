@@ -167,7 +167,7 @@ h5,
   //width: 260px;
   gap: 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem), 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(1rem), 1fr);
 }
 .course .course-inner-text {
   position: relative;

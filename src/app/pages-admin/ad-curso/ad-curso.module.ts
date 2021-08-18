@@ -40,6 +40,8 @@ import { CrearEvaluacionComponent } from './components/evaluaciones/crear-evalua
 import { EditarEvaluacionComponent } from './components/evaluaciones/editar-evaluacion/editar-evaluacion.component';
 import { CrearEvaluacionOpcionComponent } from './components/evaluacion-opciones/crear-evaluacion-opcion/crear-evaluacion-opcion.component';
 import { EditarEvaluacionOpcionComponent } from './components/evaluacion-opciones/editar-evaluacion-opcion/editar-evaluacion-opcion.component';
+import { InfoCursoComponent } from './components/info-curso/info-curso.component';
+import { CommentsComponent } from './components/info-curso/components/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { EditarEvaluacionOpcionComponent } from './components/evaluacion-opcione
     CrearEvaluacionComponent,
     EditarEvaluacionComponent,
     CrearEvaluacionOpcionComponent,
-    EditarEvaluacionOpcionComponent
+    EditarEvaluacionOpcionComponent,
+    InfoCursoComponent,
+    CommentsComponent
   ],
   imports: [
     CommonModule,

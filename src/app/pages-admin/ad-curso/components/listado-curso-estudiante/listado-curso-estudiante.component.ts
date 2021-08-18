@@ -15,7 +15,6 @@ export class ListadoCursoEstudianteComponent implements OnInit {
   displayedColumns: string[] = ['nombre_curso', 'usuario_curso', 'usuario_evaluacion'];
   dataSource: MatTableDataSource<Cursos>;
   misEstudiantes: any;
-
   estado = true;
 
   @ViewChild(MatPaginator) paginator:MatPaginator;
