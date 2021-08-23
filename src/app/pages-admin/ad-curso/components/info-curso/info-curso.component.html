@@ -32,9 +32,11 @@
     <div class="col-4">
       <mat-card>
         Lista de tus estudiantes
-        <mat-card-content>
-          <mat-list role="list" *ngFor="let item of misEstudiantes">
-            <mat-list-item role="listitem">{{item.id_usuario}}</mat-list-item>
+        <mat-card-content *ngIf="usuarioCurso">
+          <mat-list role="list" *ngFor="let item of usuarioCurso">
+            <div *ngIf="usuario">
+              <mat-list-item role="listitem" *ngFor="let item of usuario">{{usuario.nombre_usuario}}</mat-list-item>
+            </div>
           </mat-list>
         </mat-card-content>
       </mat-card>

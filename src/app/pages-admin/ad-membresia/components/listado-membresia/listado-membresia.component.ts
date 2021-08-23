@@ -5,6 +5,7 @@ import { PagoComponent } from '../pago/pago.component';
 import { PagoTarjetaComponent } from '../pago/components/pago-tarjeta/pago-tarjeta.component';
 import { PagoMoneComponent } from '../pago/components/pago-mone/pago-mone.component';
 import { FreeComponent } from '../pago/components/free/free.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listado-membresia',
@@ -20,7 +21,8 @@ export class ListadoMembresiaComponent implements OnInit {
   datos: any;
   constructor(
     public serMembresia: MembresiaService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -44,6 +46,7 @@ export class ListadoMembresiaComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       this.listarMembresia();
+      this.router.navigateByUrl('admin/cursos/mis-cursos');
     });
   }
   metodoTarjeta(event) {
@@ -78,6 +81,7 @@ export class ListadoMembresiaComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       this.listarMembresia();
+      this.router.navigateByUrl('admin/cursos/mis-cursos');
     });
   }
   openCompra() {

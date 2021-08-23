@@ -22,6 +22,7 @@ export class InfoCursoComponent implements OnInit {
   pruebas: any;
   mostrarForo = false;
   idClase: any;
+  usuarioCurso: any;
 
   constructor(
     public cursoSrv: CursosService,
@@ -43,6 +44,7 @@ export class InfoCursoComponent implements OnInit {
       this.curso = this.datos.curso;
       this.modulos = this.datos.modulos;
       this.pruebas = this.datos.prueba;
+      this.usuarioCurso = this.datos.usuarioCurso;
       console.log(data);
     }, error => {
       console.log(error);

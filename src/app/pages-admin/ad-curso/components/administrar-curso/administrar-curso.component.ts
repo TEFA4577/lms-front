@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,6 +14,7 @@ import { CrearEvaluacionComponent } from '../evaluaciones/crear-evaluacion/crear
 import { EditarEvaluacionComponent } from '../evaluaciones/editar-evaluacion/editar-evaluacion.component';
 import { CrearEvaluacionOpcionComponent } from '../evaluacion-opciones/crear-evaluacion-opcion/crear-evaluacion-opcion.component';
 import { EditarEvaluacionOpcionComponent } from '../evaluacion-opciones/editar-evaluacion-opcion/editar-evaluacion-opcion.component';
+import { FirebaseStorageService } from 'src/app/firebase-storage.service'; //CODIGO PARA FIREBASE STORAGE
 import Swal from 'sweetalert2';
 import { title } from 'process';
 
@@ -43,10 +44,22 @@ export class AdministrarCursoComponent implements OnInit {
     public activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
-    public router: Router
+    public router: Router,
+    private firebaseStorage: FirebaseStorageService, //CODIGO PARA FIREBASE STORAGE.
   ) {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
   }
+
+  //CODIGO PARA FIREBASE STORAGE
+  public archivoForm = new FormGroup({
+    archivo: new FormControl('', Validators.required),
+  });
+  public mensajeArchivo = 'No hay un archivo seleccionado';
+  public datosFormulario = new FormData();
+  public nombreArchivo = '';
+  public URLPublica = '';
+  public porcentaje = 0;
+  public finalizado = false;
 
   ngOnInit(): void {
     this.buildForm();
@@ -99,7 +112,56 @@ export class AdministrarCursoComponent implements OnInit {
       }
     });
   }
-  uploadFile(event): void {
+
+
+  //Evento que se gatilla cuando el input de tipo archivo cambia
+  public cambioArchivo(event): void {
+    if (event.target.files.length > 0) {
+      for (let i = 0; i < event.target.files.length; i++) {
+        this.mensajeArchivo = `Archivo preparado: ${event.target.files[i].name}`;
+        this.nombreArchivo = event.target.files[i].name;
+        this.datosFormulario.delete('archivo');
+        this.datosFormulario.append('archivo', event.target.files[i], event.target.files[i].name);
+      }
+      console.log('nombreArchivo: ', this.nombreArchivo);
+    } else {
+      this.mensajeArchivo = 'No hay un archivo seleccionado';
+    }
+  }
+
+  //Sube el archivo a Cloud Storage
+  public subirArchivo() {
+    let archivo = this.datosFormulario.get('archivo');
+    //let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
+    let tarea = this.firebaseStorage.tareaCloudStorage(this.nombreArchivo, archivo);
+    //Cambia el porcentaje
+    tarea.percentageChanges().subscribe((porcentaje) => {
+      this.porcentaje = Math.round(porcentaje);
+      if (this.porcentaje == 100) {
+        this.finalizado = true;
+        let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
+        referencia.getDownloadURL().subscribe((URL) => {
+          this.filedata = URL;
+          console.log('FILEDATA:', this.filedata);
+
+        })
+      }
+    });
+    /*referencia.getDownloadURL().subscribe((URL) => {
+      if (this.filedata!= '') {
+        this.filedata='';
+        this.filedata = URL;
+      }else{
+        this.filedata = URL;
+      }
+
+    });*/
+    //this.formDocente.get('video_clase').setValue('listo');
+    //console.log('files:', this.files);
+  }
+
+
+  /*uploadFile(event): void {
     for (let index = 0; index < event.length; index++) {
       this.deleteAttachment(index);
       const element = event[index];
@@ -118,7 +180,8 @@ export class AdministrarCursoComponent implements OnInit {
   deleteAttachment(index): void {
     this.files.splice(index, 1);
     this.imagenCambio = false;
-  }
+  }*/
+
   actualizarCurso(event): void {
     event.preventDefault();
     const myFormData = new FormData();
@@ -259,7 +322,7 @@ export class AdministrarCursoComponent implements OnInit {
       this.cargarDatosCurso();
     });
   }
-  cambiarImagen(): void {
+  /*cambiarImagen(): void {
     const myFormData = new FormData();
     myFormData.append('id_curso', this.id + '');
     myFormData.append('imagen_curso', this.filedata);
@@ -268,7 +331,7 @@ export class AdministrarCursoComponent implements OnInit {
       this.deleteAttachment(0);
       this.cargarDatosCurso();
     });
-  }
+  }*/
   verVideo(ruta): void {
     this.rutaVideo = ruta;
   }

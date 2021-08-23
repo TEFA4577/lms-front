@@ -27,13 +27,54 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="contenidoImagen">
+          <!--<div class="contenidoImagen">
             <img [src]="imgURL" class="imagenR" *ngIf="imgURL">
           </div>
           <input type="file" name="imagen_curso" #imagen hidden accept="image/*"
             (change)="uploadFile($event.target.files)">
           <button type="button" mat-raised-button color="primary" class="btn-block" (click)="imagen.click()">Subir una
-            imagen de referencia</button>
+            imagen de referencia</button>-->
+          <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+            <div class="file has-name is-boxed">
+              <label class="file-label">
+                <input class="file-input" type="file" formControlName="archivo" #imagen hidden
+                  accept="image/*" (change)="cambioArchivo($event)" name="video_presentacion" />
+                <span class="file-cta">
+                  <span class="file-label"> Elegir un archivo… </span>
+                </span>
+                <span class="file-name">
+                  {{ mensajeArchivo }}
+                </span>
+              </label>
+              <div class="row">
+                <div class="col-3">
+                  <button mat-fab color="warn" matTooltip="Selecciona una imagen de referencia" (click)="imagen.click()">
+                    <mat-icon>photo_camera</mat-icon>
+                  </button>
+                </div>
+                <br>
+                <div class="col-3">
+                  <button mat-fab matTooltip="Sube el archivo" color="primary" [ngClass]="{
+                  button: true,
+                      'is-success': true,
+                      'is-large': true,
+                      'is-loading': porcentaje > 0 && porcentaje < 100
+                    }" [disabled]="
+                      !archivoForm.valid && porcentaje > 0 && porcentaje < 100
+                    ">
+                    <mat-icon>upload</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
+                value="{{ porcentaje }}" max="100">
+                {{ porcentaje }}%
+              </progress>
+              <div *ngIf="porcentaje == 100" class="alert alert-success" role="alert">
+                Archivo cargado: {{nombreArchivo}}
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

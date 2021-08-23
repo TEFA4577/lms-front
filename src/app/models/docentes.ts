@@ -11,6 +11,10 @@ export interface Docentes {
   video_presentacion: null | string;
   cv_docente: null | string;
   experiencia_docente: null | string;
+  nombre_banco: string;
+  numero_cuenta: number;
+  tipo_cuenta: string;
+  carnet_identidad: number;
   created_at: Date;
   updated_at: Date;
 }

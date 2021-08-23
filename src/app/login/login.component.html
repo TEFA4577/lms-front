@@ -6,7 +6,9 @@
   <mat-card class="example-card">
     <!--Titulo o cabecera del card-->
     <div class="justify-content-center">
-      <img src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Flogo_sin_fondo.png?alt=media&token=a473dfd1-7040-4736-8118-4e9004205c9e" class="imagenLogo" />
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Flogo_sin_fondo.png?alt=media&token=a473dfd1-7040-4736-8118-4e9004205c9e"
+        class="imagenLogo" />
     </div>
     <hr>
     <!--Final del Titulo o cabecera del card-->
@@ -35,17 +37,17 @@
         <button [disabled]="form.invalid" type="submit" mat-raised-button class="col-md-12 btn2">Inicia
           sesión!</button>
       </p>
-      <div class="d-flex justify-content-end">
+      <!--<div class="d-flex justify-content-end">
         <a routerLink="/password">¿Olvidaste tu contraseña?</a>
-      </div>
+      </div>-->
     </form>
     <!--Final del Formulario de registro-->
     <br>
     <mat-card-footer>
       <div class="card-footer">
-        <h3>
-          Continua con:
-        </h3>
+        <h2>
+          Continua con tu cuenta de Gmail:
+        </h2>
         <div class="grupoBotonRedes">
           <div class="d-flex align-content-center justify-content-center">
             <div class="col" align="center">
@@ -53,12 +55,12 @@
                 <mat-icon fontSet="fab" fontIcon="fa-google" class="redesSociales"></mat-icon>
               </button>
             </div>
-            <div style="height: 20px; margin-top: 5%; margin-bottom: 8%;" align="center">
+            <!--<div style="height: 20px; margin-top: 5%; margin-bottom: 8%;" align="center">
               <h2>
                 - O -
               </h2>
             </div>
-            <!--<div class="col" align="center">
+            <div class="col" align="center">
               <button mat-fab type="button" color="primary" (click)="abrirRegistro('facebook')">
                 <mat-icon fontSet="fab" fontIcon="fa-facebook-f" class="redesSociales"></mat-icon>
               </button>

@@ -1,14 +1,13 @@
 <mat-dialog-content class="mat-typography">
   <mat-card-header>
-    <mat-card-title>Codigo QR</mat-card-title>
+    <mat-card-title>Codigo QR - Pago por transferencia Mone</mat-card-title>
   </mat-card-header>
   <hr>
   <mat-card-content>
-    <mat-card-subtitle>URL de Confirmacion</mat-card-subtitle>
-    <form (ngSubmit)="submitAdquirirCurso($event)">
-      <button mat-raised-button color="primary" type="submit">Enlace de QR</button>
-    </form>
-
+    <div class="alert alert-warning" role="alert">
+      Este es un enlace de compra por codigo QR. Haga click en el botón para obtner el enlace.
+    </div>
+      <button mat-raised-button color="primary" type="submit" class="col-12">Obtener código QR</button>
   </mat-card-content>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

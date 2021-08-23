@@ -8,6 +8,7 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pago-deposito',
@@ -30,11 +31,11 @@ export class PagoDepositoComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public membresiaAd: UsuarioService,
-    // tslint:disable-next-line: variable-name
+    private router: Router,
     private _snackBar: MatSnackBar,
     private usuarioService: UsuarioService,
     public dialogRef: MatDialogRef<PagoDepositoComponent>,
-    @Inject(MAT_DIALOG_DATA)public data:number
+    @Inject(MAT_DIALOG_DATA) public data: number
   ) {
     this.id = data;
     console.log(this.id);
@@ -103,6 +104,7 @@ export class PagoDepositoComponent implements OnInit {
           Swal.fire('Enviado!', '', 'success').finally(() => {
             this.onNoClick();
             this.isActive = false;
+            this.router.navigateByUrl('admin/cursos/mis-cursos');
           });
           this.openSnackBar(this.respuesta.mensaje, 'cerrar');
         }, error => {

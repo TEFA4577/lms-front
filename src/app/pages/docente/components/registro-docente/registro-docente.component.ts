@@ -161,6 +161,10 @@ export class RegistroDocenteComponent implements OnInit {
       descripcion_docente: ['', [Validators.required, Validators.maxLength(500)]],
       video_instructor: [''],
       cv_docente: [''],
+      numero_cuenta: ['', [Validators.required, Validators.maxLength(16)]],
+      tipo_cuenta: ['', [Validators.required, Validators.maxLength(30)]],
+      nombre_banco: ['', [Validators.required, Validators.maxLength(30)]],
+      carnet_identidad: ['', [Validators.required, Validators.maxLength(8)]]
     });
   }
 
@@ -178,6 +182,10 @@ export class RegistroDocenteComponent implements OnInit {
     myFormData.append('experiencia_docente', this.formDocente.get('experiencia_docente').value);
     myFormData.append('descripcion_docente', this.formDocente.get('descripcion_docente').value);
     myFormData.append('cv_docente', this.filedataCV);
+    myFormData.append('numero_cuenta', this.formDocente.get('numero_cuenta').value);
+    myFormData.append('tipo_cuenta', this.formDocente.get('tipo_cuenta').value);
+    myFormData.append('nombre_banco', this.formDocente.get('nombre_banco').value);
+    myFormData.append('carnet_identidad', this.formDocente.get('carnet_identidad').value);
     Swal.fire({
       title: 'Seguro que quiere mandar su solicitud?',
       showDenyButton: true,

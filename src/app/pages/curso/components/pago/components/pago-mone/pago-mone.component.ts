@@ -17,11 +17,11 @@ import {
 })
 export class PagoMoneComponent implements OnInit {
 
-  id:any;
+  id: any;
   respuesta: any;
   isActive = false;
 
-  constructor(public route: ActivatedRoute, public dialogRef: MatDialogRef<PagoMoneComponent>, public serCursos: CursosService, public cursoAd: UsuarioService, private _snackBar: MatSnackBar,private usuarioService: UsuarioService) { }
+  constructor(public route: ActivatedRoute, public dialogRef: MatDialogRef<PagoMoneComponent>, public serCursos: CursosService, public cursoAd: UsuarioService, private _snackBar: MatSnackBar, private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
@@ -37,7 +37,8 @@ export class PagoMoneComponent implements OnInit {
     });
   }
 
-  submitAdquirirCurso(event: Event): void {
+  //PAGO MONE
+  datosMoneCurso(event: Event): void {
     event.preventDefault();
     const myFormData = new FormData();
     const datos = JSON.parse(localStorage.getItem('datosUsuario'));
@@ -45,13 +46,13 @@ export class PagoMoneComponent implements OnInit {
     myFormData.append('id_usuario', id);
     myFormData.append('id_curso', this.id);
     console.log(this.id);
-        this.cursoAd.adquirirCurso(myFormData).subscribe(res => {
-          const estad = this.usuarioService.estadoSession;
-          console.log(res);
-          this.respuesta = res;
-          this.openSnackBar(this.respuesta.mensaje, 'cerrar');
-        }, error => {
-          console.log(error);
-        });
+    this.cursoAd.adquirirCurso(myFormData).subscribe(res => {
+      const estad = this.usuarioService.estadoSession;
+      console.log(res);
+      this.respuesta = res;
+      this.openSnackBar(this.respuesta.mensaje, 'cerrar');
+    }, error => {
+      console.log(error);
+    });
   }
 }

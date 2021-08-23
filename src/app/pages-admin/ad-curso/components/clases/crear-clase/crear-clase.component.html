@@ -65,6 +65,9 @@
                       value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
                   </div>
                   <hr>
+                  <div *ngIf="porcentaje == 100" class="alert alert-success" role="alert">
+                    Archivo cargado: {{nombreArchivo}}
+                  </div>
                 </form>
               </div>
             </div>
