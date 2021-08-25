@@ -41,7 +41,7 @@ import { NotFoundComponent } from './not-found/not-found/not-found.component';
 import { ComponentsModule } from './components/components.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 //FACEBBOK MODULE
-import {FacebookModule} from 'ngx-facebook';
+import { FacebookModule } from 'ngx-facebook';
 
 @NgModule({
   declarations: [

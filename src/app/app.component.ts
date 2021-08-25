@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FacebookService, InitParams } from 'ngx-facebook';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  constructor(private facebookService: FacebookService) { }
+
+  ngOnInit(): void {
+    this.initFacebookService();
+  }
+
+  // facebook init
+  private initFacebookService(): void {
+    const initParams: InitParams = { xfbml: true, version: 'v11.0' };
+    this.facebookService.init(initParams);
+  }
+
   title = 'LMS-FRONTEND';
 }
