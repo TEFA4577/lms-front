@@ -153,11 +153,6 @@ h5,
 .courses-entry-wrap {
   margin-top: -360px;
 }
-@media (max-width: 1199.98px) {
-  .courses-entry-wrap {
-    margin-top: -330px;
-  }
-}
 
 .course {
   -webkit-box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.3);
@@ -208,27 +203,6 @@ h5,
   top: -10px;
   -webkit-box-shadow: 0 2px 22px -1px rgba(0, 0, 0, 0.3);
   box-shadow: 0 2px 22px -1px rgba(0, 0, 0, 0.3);
-}
-
-
-.teacher {
-  //border: 1px solid #e9ecef;
-  border: 1px solid #f2f3f4;
-  background: #fff;
-  padding: 30px;
-  margin-bottom: 5rem;
-  height: 400px;
-  box-shadow: 8px 8px 20px #c3cbd3;
-}
-.teacher img {
-  position: relative;
-  margin-top: -100px;
-}
-.teacher h3 {
-  font-size: 1.2rem;
-}
-.teacher .position {
-  color: #adb5bd;
 }
 
 .body {
@@ -370,11 +344,6 @@ h5,
   font-weight: 600;
 }
 
-.border-radius {
-  border-radius: 340px;
-  width: 60%;
-  height: 180px;
-}
 a {
   -webkit-transition: 0.3s all ease;
   -o-transition: 0.3s all ease;
@@ -386,12 +355,6 @@ a:hover {
 
 .a {
   color: #f3f3f3;
-}
-
-.preguntas {
-  .pr {
-    background: #f3f3f3;
-  }
 }
 
 .mat-accordion,
@@ -477,19 +440,6 @@ a {
     margin-bottom: 2rem;
     font-weight: 1000;
   }
-
-  /*.course {
-    -webkit-box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.3);
-    -webkit-transition: 0.3s all ease-in-out;
-    -o-transition: 0.3s all ease-in-out;
-    transition: 0.3s all ease-in-out;
-    top: 0;
-    position: relative;
-    height: 500px;
-    width: 85%;
-    margin-left: 20px;
-  }*/
 
   .cta {
     height: auto;
