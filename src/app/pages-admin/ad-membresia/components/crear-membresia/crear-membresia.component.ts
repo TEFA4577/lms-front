@@ -87,11 +87,10 @@ export class CrearMembresiaComponent implements OnInit {
       nombre_membresia: ['', Validators.required],
       texto_membresia: ['', Validators.required],
       precio_membresia: ['', Validators.required],
-     // imagen_membresia: ['', Validators.required],
       duracion_membresia: ['', Validators.required]
     });
   }
-  uploadFile(event): void {
+  /*uploadFile(event): void {
     for (let index = 0; index < event.length; index++) {
       this.deleteAttachment(index);
       const element = event[index];
@@ -108,7 +107,7 @@ export class CrearMembresiaComponent implements OnInit {
   deleteAttachment(index): void {
     this.files.splice(index, 1);
     this.formCrearMembresia.get('imagen_membresia').setValue('');
-  }
+  }*/
 
   submitCrearMembresia(event: Event): void {
     event.preventDefault();

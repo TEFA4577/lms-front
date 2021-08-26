@@ -51,12 +51,13 @@ export class MembresiaComponent implements OnInit {
   editarMembresia(id: number): void {
     const dialogRef = this.dialog.open(EditarMembresiaComponent, {
       disableClose: true,
-      data: id
+      data: id,
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.listarMembresia();
+      console.log(id);
     });
   }
   registrarMembresia(): void {

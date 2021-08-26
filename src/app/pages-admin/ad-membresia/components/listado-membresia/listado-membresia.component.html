@@ -31,7 +31,7 @@
             <mat-expansion-panel hideToggle>
               <mat-expansion-panel-header background="black">
                 <mat-panel-title>
-                  <p class="sub-seccion">Comprar Membresia</p>
+                  <p class="sub-seccion">Comprar Membresia<mat-icon color="warn">shopping_cart</mat-icon></p>
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <p class="descript">
@@ -49,6 +49,10 @@
               </p>
             </mat-expansion-panel>
           </mat-accordion>
+
+        </mat-card-content>
+        <mat-card-content>
+            <p>{{item.texto_membresia}}</p>
         </mat-card-content>
       </mat-card>
     </div>

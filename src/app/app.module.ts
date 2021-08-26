@@ -50,10 +50,10 @@ import { FacebookModule } from 'ngx-facebook';
     NotFoundComponent
   ],
   imports: [
-    FacebookModule.forRoot(),
     CarouselModule,
     BrowserModule,
     RouterModule,
+    FacebookModule.forRoot(),
     AppRoutingModule,
     SharedModule,
     ComponentsModule,

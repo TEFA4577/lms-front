@@ -16,8 +16,8 @@
   flex-direction: column;
 }
 
-.mat-card-image{
-  height: 250px;
+mat-card-image{
+  height: auto;
 }
 
 .mat-card-header {
@@ -29,6 +29,3 @@
   overflow: auto;
 }
 
-.mat-card-image{
-  height: 250px;
-}
