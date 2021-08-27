@@ -38,33 +38,35 @@
                 </mat-card>
                 <br>
                 <form [formGroup]="formDocente" (ngSubmit)="actualizarPerfilDocente($event)" class="example-form">
-                  <mat-card>
-                    <mat-card-header class="py-3">
-                      <mat-card-title>Datos de Instructor</mat-card-title>
-                    </mat-card-header>
-                    <mat-card-content>
-                      <hr>
-                      <mat-form-field class="col-md-12">
-                        <mat-label>Número de celular:</mat-label>
-                        <input matInput formControlName="telefono_docente" type="number">
-                      </mat-form-field>
-                      <mat-form-field class="col-md-12">
-                        <mat-label>Descripción profesional:</mat-label>
-                        <textarea matInput formControlName="descripcion_docente" type="text"></textarea>
-                      </mat-form-field>
-                      <mat-form-field class="col-md-12">
-                        <mat-label>Experiencia profesional:</mat-label>
-                        <textarea matInput formControlName="experiencia_docente" type="text"></textarea>
-                      </mat-form-field>
-                      <a mat-stroked-button color="primary" matTooltip="mira tu CV" target=”_blank”
-                        href="{{datosUsuario.datos_docente.cv_docente}}">
-                        Mira tu Curriculum
-                      </a>
-                    </mat-card-content>
-                    <mat-card-actions align="end">
-                      <button mat-button type="submit">Guardar cambios</button>
-                    </mat-card-actions>
-                  </mat-card>
+                  <div *ngIf="datosUsuario.datos_docente">
+                    <mat-card>
+                      <mat-card-header class="py-3">
+                        <mat-card-title>Datos de Instructor</mat-card-title>
+                      </mat-card-header>
+                      <mat-card-content>
+                        <hr>
+                        <mat-form-field class="col-md-12">
+                          <mat-label>Número de celular:</mat-label>
+                          <input matInput formControlName="telefono_docente" type="number">
+                        </mat-form-field>
+                        <mat-form-field class="col-md-12">
+                          <mat-label>Descripción profesional:</mat-label>
+                          <textarea matInput formControlName="descripcion_docente" type="text"></textarea>
+                        </mat-form-field>
+                        <mat-form-field class="col-md-12">
+                          <mat-label>Experiencia profesional:</mat-label>
+                          <textarea matInput formControlName="experiencia_docente" type="text"></textarea>
+                        </mat-form-field>
+                        <a mat-stroked-button color="primary" matTooltip="mira tu CV" target=”_blank”
+                          href="{{datosUsuario.datos_docente.cv_docente}}">
+                          Mira tu Curriculum
+                        </a>
+                      </mat-card-content>
+                      <mat-card-actions align="end">
+                        <button mat-button type="submit">Guardar cambios</button>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
                 </form>
               </div>
               <!--Informacion del Docente-->

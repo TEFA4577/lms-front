@@ -29,12 +29,14 @@ export class PresentacionDocenteComponent implements OnInit {
   mostrarDocente() {
     this.serDocente.mostrarDocente(this.id).subscribe(data => {
       this.docente = data;
+      console.log(this.docente);
     });
   }
 
   cursoDeDocente() {
     this.serDocente.cursoDeDocente(this.id).subscribe(data => {
       this.curso = data;
+      console.log(this.curso);
     });
   }
 

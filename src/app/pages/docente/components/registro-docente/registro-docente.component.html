@@ -69,6 +69,9 @@
                 <h3>Datos de tu cuenta bancaria</h3>
               </div>
             </div>
+            <div class="alert alert-warning" role="alert">
+              Con los datos de tu cuenta bancaria, podremos depositarte las ganancias de tus cursos expuestos.
+            </div>
             <div class="row">
               <mat-form-field class="col-md-3" appearance="outline">
                 <mat-label>Número de Cuenta:</mat-label>
@@ -139,12 +142,12 @@
                       name="cv_docente" />
                   </label>
                   <div *ngIf="!nombreArchivoCv">
-                    <button mat-raised-button color="warn"  matTooltip="Selecciona un archivo (.pdf)"
+                    <button mat-raised-button color="warn" matTooltip="Selecciona un archivo (.pdf)"
                       (click)="imagen2.click()">Selecciona tu hoja de vida (CV)<mat-icon>upload_file</mat-icon></button>
                   </div>
                   <br>
                   <div *ngIf="nombreArchivoCv">
-                      <button mat-raised-button matTooltip="Sube tu Hoja de Vida" color="primary" [ngClass]="{
+                    <button mat-raised-button matTooltip="Sube tu Hoja de Vida" color="primary" [ngClass]="{
                       button: true,
                           'is-success': true,
                           'is-large': true,
@@ -152,8 +155,8 @@
                         }" [disabled]="
                           !archivoForm.valid && porcentajeCv > 0 && porcentajeCv < 100
                         "> Carga tu archivo
-                        <mat-icon> upload</mat-icon>
-                      </button>
+                      <mat-icon> upload</mat-icon>
+                    </button>
                   </div>
                   <br>
                   <progress *ngIf="porcentajeCv > 0 && porcentajeCv < 100" class="progress is-large is-success"

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { UsuarioService } from '../../../../services/usuario.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import {
   MatSnackBar,
@@ -49,7 +49,7 @@ export class PagoComponent implements OnInit {
     public dialogRef: MatDialogRef<PagoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
   metodo: string;
-  // tslint:disable-next-line: typedef
+
   ngOnInit(): void {
     this.comprobarAuth();
     this.buildForm();
@@ -91,7 +91,7 @@ export class PagoComponent implements OnInit {
     myFormData.append('_method', 'put');
     myFormData.append('nombre_usuario', this.formPago.get('nombre_usuario').value);
     myFormData.append('correo_usuario', this.formPago.get('correo_usuario').value);
-    this.srvEstudiante.actualizarUsuario(myFormData, id).subscribe(res =>{
+    this.srvEstudiante.actualizarUsuario(myFormData, id).subscribe(res => {
       const obj: any = res;
       localStorage.setItem('datosUsuario', JSON.stringify(obj.datosUsuario));
       this.respuesta = res;
