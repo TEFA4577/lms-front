@@ -5,10 +5,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-/*
-    * Descripcion: Este servicio sirve para el manejo de informacion del usuario.
-    * @Autor: Alex Aguilar
-  */
+
 export class UsuarioService {
 
   API_BACKEND = environment.urlBackend;
@@ -65,6 +62,12 @@ export class UsuarioService {
   adquirirCurso(datos: any) {
     return this.http.post(this.API_BACKEND + 'adquirir-curso', datos);
   }
+
+  //MONE - PAGOS
+  moneAdC(datos: any){
+    return this.http.post(this.API_BACKEND + 'mone', datos);
+  }
+
   adquirirMembresia(datos: any) {
     return this.http.post(this.API_BACKEND + 'membresias/adquirir', datos);
   }

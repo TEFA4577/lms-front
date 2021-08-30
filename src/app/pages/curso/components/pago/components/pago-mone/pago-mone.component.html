@@ -1,13 +1,27 @@
 <mat-dialog-content class="mat-typography">
   <mat-card-header>
-    <mat-card-title>Codigo QR - Pago por transferencia Mone</mat-card-title>
+    <mat-card-title>Código QR - Pago por transferencia Mone</mat-card-title>
   </mat-card-header>
   <hr>
   <mat-card-content>
     <div class="alert alert-warning" role="alert">
-      Este es un enlace de compra por codigo QR. Haga click en el botón para obtner el enlace.
+      <p>
+        <mat-icon>info</mat-icon> Este es un enlace de compra por codigo QR. Haga click en el botón para obtener el
+        enlace. Atención: Este enlace está disponible solo 24 horas. Haz el pago correspondiente lo
+        más antes posible o tu solicitud será cancelada. Gracias!
+      </p>
+      <div *ngIf="estadoCargando" class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden"></span>
+        </div>
+      </div>
+      <div *ngIf="enlace && !estadoCargando">
+        <a href="{{enlace}}" target="_blank">Ingresa en el enlace</a>
+      </div>
     </div>
+    <form (ngSubmit)="datosMoneCurso($event)">
       <button mat-raised-button color="primary" type="submit" class="col-12">Obtener código QR</button>
+    </form>
   </mat-card-content>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

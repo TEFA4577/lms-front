@@ -88,6 +88,8 @@ export class PagoDepositoComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
+    console.log(this.id);
+
   }
 
   onNoClick(): void {

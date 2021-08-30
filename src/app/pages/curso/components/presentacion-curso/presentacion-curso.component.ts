@@ -46,14 +46,14 @@ export class PresentacionCursoComponent implements OnInit {
   rutaVideo: string;
   datosUsuario: any;
   estado_usuario_curso: any;
-  // tslint:disable-next-line: max-line-length
+
   constructor(public route: ActivatedRoute,
     public serCursos: CursosService,
     public miscursosSrv: UsuarioService,
     public dialog: MatDialog,
     public datepipe: DatePipe,
     private router: Router) { }
-  // tslint:disable-next-line: typedef
+
   ngOnInit(): void {
     this.comprobarAuth();
     this.id = this.route.snapshot.params.id;
@@ -125,7 +125,7 @@ export class PresentacionCursoComponent implements OnInit {
   setVideo(ruta: string) {
     this.rutaVideo = ruta;
   }
-  // tslint:disable-next-line: typedef
+
   metodoDeposito() {
     const dialogRef = this.dialog.open(PagoComponent, {
       width: '140vh',
@@ -138,34 +138,37 @@ export class PresentacionCursoComponent implements OnInit {
       this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
     });
   }
-  // tslint:disable-next-line: typedef
+
   metodoTarjeta() {
     const dialogRef = this.dialog.open(PagoTarjetaComponent, {
-      width: '120vh',
+      width: '140vh',
       data: {
         id: this.id,
       }
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
     });
   }
-  // tslint:disable-next-line: typedef
+
   metodoMone() {
     const dialogRef = this.dialog.open(PagoMoneComponent, {
-      width: '120vh',
-      data: {
-        id: this.id,
-      }
+      width: '140vh',
+      data: [
+        this.id,
+        this.idD,
+      ]
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
     });
   }
   metodoFree() {
     const dialogRef = this.dialog.open(FreeComponent, {
       width: '120vh',
-      data:[
+      data: [
         this.id,
         this.idD,
       ]

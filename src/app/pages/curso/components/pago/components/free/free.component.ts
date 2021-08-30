@@ -27,33 +27,29 @@ export class FreeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public cursoAd: UsuarioService,
-    // tslint:disable-next-line: variable-name
     private _snackBar: MatSnackBar,
     private usuarioService: UsuarioService,
     public router: Router,
     public dialogRef: MatDialogRef<FreeComponent>,
-    @Inject(MAT_DIALOG_DATA)public data:number
-    ) {
-      this.id = data[0];
-      this.idD = data[1];
-      console.log(this.idD);
-    }
+    @Inject(MAT_DIALOG_DATA) public data: number
+  ) {
+    this.id = data[0];
+    this.idD = data[1];
+    console.log(this.idD);
+  }
 
-    // tslint:disable-next-line: typedef
-    ngOnInit(): void {
+  ngOnInit(): void { }
 
-    }
+  onNoClick(): void {
+    this.dialogRef.close();
+    this.router.navigateByUrl('/instructores/presentacion-docente/' + this.idD);
+  }
 
-    onNoClick(): void {
-      this.dialogRef.close();
-      this.router.navigateByUrl('/instructores/presentacion-docente/'+this.idD);
-    }
-
-    openSnackBar(message: string, action: string): void {
-      this._snackBar.open(message, action, {
-        duration: 3000,
-      });
-    }
+  openSnackBar(message: string, action: string): void {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
 
   submitAdquirirCurso(event: Event): void {
     event.preventDefault();

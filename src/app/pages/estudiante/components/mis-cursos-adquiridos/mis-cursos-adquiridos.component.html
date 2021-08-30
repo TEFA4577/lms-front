@@ -10,11 +10,11 @@
         <p class="mensaje">Aun no adquiriste ningun curso</p>
       </div>
     </div>
-    <div *ngIf="estado" class="text-center">
+    <!--<div *ngIf="!estado" class="text-center">
       <div class="spinner-border" role="status">
         <span class="visually-hidden"></span>
       </div>
-    </div>
+    </div>-->
     <div class="row">
       <div class="col-md-4" *ngFor="let miCurso of misCursos">
         <mat-card class="example-card">

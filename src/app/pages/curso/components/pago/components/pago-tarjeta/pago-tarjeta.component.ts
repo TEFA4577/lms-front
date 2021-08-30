@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -10,11 +10,16 @@ export class PagoTarjetaComponent implements OnInit {
 
   formPagoTarjeta: FormGroup;
 
+  @Input()
+  id: any;
+
   constructor(private formBuilder: FormBuilder) {}
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
     this.buildForm();
+    console.log(this.id);
+
   }
 
   private buildForm(): void {
