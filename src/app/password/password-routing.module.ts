@@ -9,7 +9,7 @@ const routes: Routes = [
     component: ForgotPasswordComponent
   },
   {
-    path: 'cambiar-password',
+    path: 'change-pass',
     component: RecoverPasswordComponent
   }
 ];

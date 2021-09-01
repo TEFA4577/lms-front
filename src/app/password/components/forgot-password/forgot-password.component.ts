@@ -24,10 +24,16 @@ export class ForgotPasswordComponent implements OnInit {
     private _snackBar: MatSnackBar
   ) { }
 
-
+  respuesta: any;
 
   ngOnInit(): void {
     this.buildForm();
+  }
+
+  openSnackBar(message: string, action: string): void {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+    });
   }
 
   private buildForm(): void {
@@ -36,8 +42,21 @@ export class ForgotPasswordComponent implements OnInit {
     });
   }
 
-  emailPass(event: Event): void{
+  emailPass(event: Event): void {
+    event.preventDefault();
+    console.log(this.formEmail.value);
+    this.submitEmailPass(this.formEmail.value);
+  }
 
+  submitEmailPass(datos: any) {
+    this.serUsuario.sendMail(datos).subscribe(data => {
+      console.log(data);
+      this.respuesta = data;
+      this.openSnackBar(this.respuesta.mensaje, 'cerrar');
+    }, error => {
+      console.log(error);
+    });
   }
 
 }
+

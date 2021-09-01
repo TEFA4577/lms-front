@@ -55,6 +55,14 @@ export class UsuarioService {
     }
   }
 
+  sendMail(datos: any) {
+    return this.http.post(this.API_BACKEND + 'usuario/send-email', datos);
+  }
+
+  resetPass(datos: any) {
+    return this.http.post(this.API_BACKEND + 'usuario/reset-pass', datos);
+  }
+
   /**
    * Descripcion: esta funcion obtiene los datos guardados en la base de datos
    */
@@ -64,7 +72,7 @@ export class UsuarioService {
   }
 
   //MONE - PAGOS
-  moneAdC(datos: any){
+  moneAdC(datos: any) {
     return this.http.post(this.API_BACKEND + 'mone', datos);
   }
 
@@ -90,7 +98,7 @@ export class UsuarioService {
   cambiarImagenPerfil(datos: any) {
     return this.http.post(this.API_BACKEND + 'usuario/cambiar-foto', datos);
   }
-  usuarioRoles(){
+  usuarioRoles() {
     return this.http.get(this.API_BACKEND + 'usuario/roles');
   }
 }

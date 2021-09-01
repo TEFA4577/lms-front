@@ -10,10 +10,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
 
 
 @NgModule({
-  declarations: [ForgotPasswordComponent],
+  declarations: [ForgotPasswordComponent, RecoverPasswordComponent],
   imports: [
     CommonModule,
     PasswordRoutingModule,
