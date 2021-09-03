@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -47,7 +47,7 @@ import { FacebookModule } from 'ngx-facebook';
   declarations: [
     AppComponent,
     LayoutComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     CarouselModule,
@@ -96,6 +96,7 @@ import { FacebookModule } from 'ngx-facebook';
     UsuarioService,
     EvaluacionService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

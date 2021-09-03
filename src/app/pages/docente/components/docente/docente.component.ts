@@ -11,6 +11,7 @@ export class DocenteComponent implements OnInit {
 
   docente: any;
   texto = true;
+  estado = true;
 
   constructor(
     public route: ActivatedRoute,
@@ -24,6 +25,9 @@ export class DocenteComponent implements OnInit {
     this.serDocente.listarDocente().subscribe(data => {
       this.docente = data;
       console.log(data);
+      if (this.docente.length !== 0) {
+        this.estado = false;
+      }
     });
   }
 }

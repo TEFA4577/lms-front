@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PasswordRoutingModule } from './password-routing.module';
@@ -16,6 +16,7 @@ import { RecoverPasswordComponent } from './components/recover-password/recover-
 @NgModule({
   declarations: [ForgotPasswordComponent, RecoverPasswordComponent],
   imports: [
+    MatCardModule,
     CommonModule,
     PasswordRoutingModule,
     MatCardModule,
@@ -26,6 +27,7 @@ import { RecoverPasswordComponent } from './components/recover-password/recover-
     MatInputModule,
     MatIconModule,
     MatSnackBarModule
-  ]
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class PasswordModule { }

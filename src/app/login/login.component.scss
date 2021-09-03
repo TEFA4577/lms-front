@@ -1,67 +1,136 @@
-.imgizquierda {
-  width: 100%;
-  margin-top: 10%;
-}
-
-.card1 {
-  margin-top: 10%;
-}
-
-.img {
-  margin-top: 7%;
-  margin-left: 10%;
-  width: 80%;
-}
-.redesSociales {
-  font-size: 25px;
-}
-.btn {
-  background-color: #3B5998;
-  color: white;
-}
-
-.btn1 {
-  background-color: #FDFEFE;
-  color: #2C3E50;
-}
-
-.btn2 {
-  background-color: #2C3E50;
-  color: white;
-}
-
-a {
-  color: #2C3E50;
-}
-.imagenLogo {
-  margin-top: 5%;
-  margin-left: 20%;
-  width: 60%;
-}
-.d1 {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  float: left;
-  background: url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Flap7.png?alt=media&token=d69a7f47-8ac7-4574-8e94-264c75b93d6a) center;
+body {
+  height: 100vh;
+  //background: linear-gradient(120deg, #043F8F, #03989E);
+  background: linear-gradient(rgba(4, 63, 143, 0.2), rgba(4, 63, 143, 0.2)),
+    url("https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Flap7.png?alt=media&token=d69a7f47-8ac7-4574-8e94-264c75b93d6a")
+      center;
   background-size: cover;
   background-repeat: no-repeat;
-  display: table;
-  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.login {
-  position: fixed;
+.imagenLogo {
+  margin-left: 28%;
+  width: 40%;
+  //height: 140px;
+}
+
+.mat-button{
+  outline: none;
+}
+
+.card {
   overflow: hidden;
-  width: 100%;
-  max-width: 800px;
-  // background: #fff;
-  height: 100%;
-  z-index: 1;
+  border: 0 !important;
+  border-radius: 20px !important;
+  box-shadow: 8px 8px 20px #c3cbd3;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
 
-.example-card {
-  max-width: 600px;
-  margin: 15px;
-  // box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+.img-left {
+  width: 40%;
+  background: url('../../assets/img/imagen2.jpeg')
+    center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.title {
+  margin-bottom: 2rem;
+}
+
+.form-input {
+  position: relative;
+}
+
+.form-input input {
+  width: 100%;
+  height: 50px;
+  padding-left: 40px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  box-shadow: none;
+  border: 1px solid #00000020;
+  border-radius: 50px;
+  outline: none;
+  background: transparent;
+}
+
+.form-input span {
+  position: absolute;
+  top: 10px;
+  padding-left: 15px;
+  color: #043f8f;
+}
+
+.form-input input::placeholder {
+  color: black;
+  padding-left: 0;
+}
+
+.form-input input:focus,
+.form-input input:valid {
+  border: 2px solid #043f8f;
+}
+
+.form-input input:focus::placeholder {
+  color: #454b69;
+}
+
+.form-box button[type="submit"] {
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  background: #043f8f;
+  color: #fff;
+  font-size: 90%;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  transition: 0.5s;
+  padding: 12px;
+}
+
+.form-box button[type="submit"]:hover {
+  background: #043f8f;
+}
+
+.forget-link,
+.register-link {
+  color: #043f8f;
+  font-weight: bold;
+}
+
+.forget-link:hover,
+.register-link:hover {
+  color: #043f8f;
+  text-decoration: none;
+}
+
+.form-box .btn-social {
+  color: white !important;
+  border: 0;
+  font-weight: bold;
+}
+
+.form-box .btn-google {
+  background: #da3d34;
+}
+
+.form-box .btn-google:hover {
+  background: #bf3b31;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .imagenLogo {
+    margin-left: 20%;
+    width: 60%;
+  }
 }

@@ -1,79 +1,71 @@
-<div class="d1">
-</div>
-<div class="login">|
-  <div class="fondo">
-    <!--Inicio del Card-->
-    <mat-card class="example-card">
-      <!--Titulo o cabecera del card-->
-      <div class="justify-content-center">
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Flogo_sin_fondo.png?alt=media&token=a473dfd1-7040-4736-8118-4e9004205c9e"
-          class="imagenLogo" />
-      </div>
-      <!--<p class="lead text-center">Registrate aquí!</p>-->
-      <!--Final del Titulo o cabecera del card-->
-      <!--Formulario de registro-->
-      <form [formGroup]="form" (ngSubmit)="submitRegistrar($event)" autocomplete="off">
-
-        <mat-form-field appearance="outline" class="col-md-12">
-          <mat-label>Nombre Completo</mat-label>
-          <input matInput placeholder="Escribe tu Nombre" formControlName="nombre_usuario">
-          <mat-error *ngIf="nombreError.hasError('required')">el campo es requrido</mat-error>
-          <mat-error *ngIf="nombreError.hasError('minlength')">el minimo de caracteres es 4</mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" class="col-md-12">
-          <mat-label>Correo Electronico</mat-label>
-          <input matInput placeholder="correo@mail.com" formControlName="correo_usuario">
-          <mat-error *ngIf="correoError.hasError('required')">el campo es requrido</mat-error>
-          <mat-error *ngIf="correoError.hasError('email')">el dato tiene que ser un correo electronico valido
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" class="col-md-12">
-          <mat-label>Contraseña</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" placeholder="Contraseña" formControlName="password">
-          <mat-error *ngIf="passwordError.hasError('required')">el campo es requrido</mat-error>
-          <mat-error *ngIf="passwordError.hasError('minlength')">el minimo de caracteres es 6</mat-error>
-          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-            [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-        </mat-form-field>
-
-        <button [disabled]="form.invalid" type="submit" mat-raised-button class="botonRegistrar col-md-12"
-          color="primary">Registrarte!</button>
-      </form>
-      <!--Final del Formulario de registro-->
-      <br>
-      <p class="lead text-center">Registrate con tu cuenta de Gmail!</p>
-      <mat-card-footer>
-        <div class="grupoBotonRedes">
-          <div class="d-flex align-content-center justify-content-center">
-            <div class="col" align="center">
-              <button mat-fab type="button" color="warn" (click)="abrirRegistro('google')">
-                <mat-icon fontSet="fab" fontIcon="fa-google" class="redesSociales"></mat-icon>
-              </button>
-            </div>
-            <!--<div style="height: 20px; margin-top: 5%; margin-bottom: 8%;" align="center">
-              <h2>
-                - O -
-              </h2>
-            </div>
-            <div class="col" align="center">
-              <button mat-fab type="button" color="primary" (click)="abrirRegistro('facebook')">
-                <mat-icon fontSet="fab" fontIcon="fa-facebook-f" class="redesSociales"></mat-icon>
-              </button>
-            </div>-->
+<body>
+  <div class="container">
+    <div class="row px-3">
+      <div class="col-lg-10 col-xl-9 card flex-row mx-auto">
+        <!--<div class="img-left d-none d-md-flex"></div>-->
+        <div class="card-body">
+          <div class="justify-content-center">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Flogo_sin_fondo.png?alt=media&token=a473dfd1-7040-4736-8118-4e9004205c9e"
+              class="imagenLogo" />
           </div>
+          <!--<h4 class="title text-center mt-4">Inicio de Sesión!</h4>-->
+          <hr class="my-4">
+          <!--Formulario de registro-->
+          <form class="form-box px-3" [formGroup]="form" (ngSubmit)="submitRegistrar($event)" autocomplete="off">
+            <div class="form-input">
+              <span class="material-icons">
+                person
+              </span>
+              <input matInput placeholder="Escribe tu nombre" formControlName="nombre_usuario">
+              <!--<mat-error *ngIf="nombreError.hasError('required')">el campo es requrido</mat-error>
+              <mat-error *ngIf="nombreError.hasError('minlength')">el minimo de caracteres es 4</mat-error>-->
+            </div>
+
+            <div class="form-input">
+              <span class="material-icons">
+                email
+              </span>
+              <input matInput placeholder="Ingresa tu correo" formControlName="correo_usuario">
+              <!--<mat-error *ngIf="correoError.hasError('required')">el campo es requrido</mat-error>
+                <mat-error *ngIf="correoError.hasError('email')">el dato tiene que ser un correo electronico valido
+                </mat-error>-->
+            </div>
+            <div class="form-input">
+              <span class="material-icons">
+                vpn_key
+              </span>
+              <input matInput [type]="hide ? 'password' : 'text'" placeholder="Ingresa una contraseña"
+                formControlName="password">
+              <!--<mat-error *ngIf="passwordError.hasError('required')">el campo es requrido</mat-error>
+                <mat-error *ngIf="passwordError.hasError('minlength')">el minimo de caracteres es 6</mat-error>
+              <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>-->
+            </div>
+            <div class="mb-3">
+              <button [disabled]="form.invalid" type="submit" mat-raised-button
+                class="btn btn-block text-uppercase">Regístrate!</button>
+            </div>
+            <div class="text-center mb-3">Regístrate con:</div>
+            <!--Redes Sociales-->
+            <div class="row mb-3">
+              <div class="col-12">
+                <a class="btn btn-block btn-social btn-google" (click)="abrirRegistro('google')">
+                  <mat-icon fontSet="fab" fontIcon="fa-google" class="redesSociales"></mat-icon>Google
+                </a>
+              </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center mb-2">¿Ya tienes una cuenta?
+              <a routerLink="/login" class="register-link">Ingresa aquí!</a><br>
+              <span><button mat-button routerLink="/">Volver a Inicio</button></span>
+            </div>
+          </form>
+          <!--Final del Formulario de registro-->
         </div>
-        <div class="d-flex justify-content-center">
-          <span>¿Ya tienes una cuenta? <a mat-button routerLink="/login">Ingresa Aqui</a></span>
-        </div><br />
-        <div class="d-flex justify-content-center">
-          <span><button mat-button routerLink="/">Volver a Inicio</button></span>
-        </div>
-      </mat-card-footer>
-    </mat-card>
+      </div>
+    </div>
   </div>
-</div>
+</body>

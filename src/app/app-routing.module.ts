@@ -10,16 +10,13 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   },
-
-  {
-    path: 'password',
-    loadChildren: () => import('./password/password.module').then(m => m.PasswordModule)
-
-  },
-
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
+  },
+  {
+    path: 'pass',
+    loadChildren: () => import('./password/password.module').then(m => m.PasswordModule)
   },
   {
     path: 'admin',

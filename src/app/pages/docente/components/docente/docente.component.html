@@ -6,14 +6,21 @@
   </div>
 </div>
 <hr>
+<div *ngIf="estado">
+  <div class="container">
+    <div class="alert alert-primary" role="alert">
+      Se parte de nuestra comunidad. <a routerLink="/instructores/pasos-instructor" s>Ingresa aquí</a>
+    </div>
+  </div>
+</div>
 <div class="container content">
   <!--Presentacion del usuario-->
   <div class="row justify-content-center" role="status">
-    <div *ngIf="!docente" class="text-center">
+    <!--<div *ngIf="!docente" class="text-center">
       <div class="spinner-border" role="status">
         <span class="visually-hidden"></span>
       </div>
-    </div>
+    </div>-->
     <div class="col-md-3" *ngFor="let item of docente">
       <!--Cards de los nuevos cursos-->
       <mat-card class="example-card">

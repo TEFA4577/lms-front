@@ -2,9 +2,13 @@
   <section id="home" class="container-fluid">
     <div class="row align-items-center min-vh-100 content">
       <div class="col-md-8 col-md-5 text-center text-md-left">
-        <h2 class="section-title">Amplía tus</h2>
+        <!--<h2 class="section-title">Amplía tus</h2>
         <h1 class="section-title">habilidades</h1>
         <h3 class="section-title">e interactúa con nuestros cursos en línea.</h3>
+        <button routerLink="/instructores/pasos-instructor"> Sé instructor </button>-->
+        <h2 class="section-title">Comparte conocimientos,</h2>
+        <h1 class="section-title">crea una comunidad</h1>
+        <h3 class="section-title">sin límite y genera ingresos con lo que te apasiona.</h3>
         <button routerLink="/instructores/pasos-instructor"> Sé instructor </button>
       </div>
     </div>
@@ -170,7 +174,8 @@
 
 
 
-  <!--Categorias de la Plataforma-->
+  <div *ngIf="etiqueta">
+    <!--Categorias de la Plataforma-->
   <div class="site-section courses-title" id="courses-section">
     <div class="container">
       <div class="row mb-5 justify-content-center">
@@ -210,6 +215,7 @@
     </div>-->
   </section>
   <!--Final Categorias de la Plataforma-->
+  </div>
 
   <!--Seccion de instructores-->
   <div *ngIf="docente">
