@@ -21,6 +21,12 @@ export class InicioComponent implements OnInit {
   panelOpenState = false;
   texto = true;
 
+  //
+
+  etiq = true;
+  inst = true;
+  cursos = true;
+
   constructor(
     public serCursos: CursosService,
     public serDocente: DocentesService,
@@ -69,6 +75,10 @@ export class InicioComponent implements OnInit {
     this.serCursos.listarCursos().subscribe(data => {
       console.log(data);
       this.curso = data;
+      console.log(this.curso.length);
+      if (this.curso.length !== 0) {
+        this.cursos = false;
+      }
     });
   }
 
@@ -76,6 +86,10 @@ export class InicioComponent implements OnInit {
     this.serEtiqueta.listarEtiquetas().subscribe(data => {
       console.log(data);
       this.etiqueta = data;
+      console.log(this.etiqueta.length);
+      if (this.etiqueta.length !== 0) {
+        this.etiq = false;
+      }
     });
   }
 
@@ -83,6 +97,10 @@ export class InicioComponent implements OnInit {
     this.serDocente.listarDocente().subscribe(data => {
       console.log(data);
       this.docente = data;
+      console.log(this.docente.length);
+      if (this.docente.length !== 0) {
+        this.inst = false;
+      }
     });
   }
 

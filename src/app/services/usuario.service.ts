@@ -94,6 +94,9 @@ export class UsuarioService {
   actualizarUsuario(datos, id) {
     return this.http.post(this.API_BACKEND + 'usuario/actualizar/' + id, datos);
   }
+  actualizarFotoUsuario(datos, id){
+    return this.http.post(this.API_BACKEND + 'foto-usuario/actualizar/' + id, datos);
+  }
   // tslint:disable-next-line: typedef
   cambiarImagenPerfil(datos: any) {
     return this.http.post(this.API_BACKEND + 'usuario/cambiar-foto', datos);

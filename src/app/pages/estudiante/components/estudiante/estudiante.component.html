@@ -87,12 +87,39 @@
                   fallimg="avatar">
                 <hr>
                 <mat-card-actions align="end">
-                  <input type="file" name="foto_usuario" #imagen hidden accept=".jpg, .jpeg, .png"
-                    (change)="uploadFile($event.target.files)">
-                  <button type="button" mat-mini-fab matTooltip="Cambia tu foto de perfil" (click)="imagen.click()"
-                    class="example-button" color="accent">
-                    <mat-icon>mode_edit</mat-icon>
-                  </button>
+                  <form (ngSubmit)="actualizarFotoUsuario($event)">
+                    <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+                      <input class="file-input" type="file" formControlName="archivo" name="foto_usuario" #imagen hidden
+                        accept=".jpg, .jpeg, .png" (change)="cambioArchivo($event)">
+
+                      <div *ngIf="!nombreArchivo">
+                        <button mat-mini-fab matTooltip="Cambia tu foto de perfil" color="warn"
+                          (click)="imagen.click()">
+                          <mat-icon>image</mat-icon>
+                        </button>
+                      </div>
+                      <br>
+                      <div *ngIf="nombreArchivo">
+                        <button mat-mini-fab matTooltip="Carga tu foto" color="primary" [ngClass]="{
+                        button: true,
+                            'is-success': true,
+                            'is-large': true,
+                            'is-loading': porcentaje > 0 && porcentaje < 100
+                          }" [disabled]="
+                            !archivoForm.valid && porcentaje > 0 && porcentaje < 100
+                          ">Carga tu vídeo <mat-icon> upload</mat-icon></button>
+                      </div>
+                      <progress class="col-12" *ngIf="porcentaje > 0 && porcentaje < 100"
+                        class="progress is-large is-success" value="{{ porcentaje }}" max="100">
+                        {{ porcentaje }}%
+                      </progress>
+
+                      <div *ngIf="porcentaje == 100" class="alert alert-success" role="alert">
+                        Archivo cargado: {{nombreArchivo}}
+                      </div>
+                    </form>
+                    <button mat-button type="submit">Guardar cambios</button>
+                  </form>
                 </mat-card-actions>
               </mat-card>
               <br>

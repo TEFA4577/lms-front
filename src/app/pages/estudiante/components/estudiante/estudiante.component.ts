@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../../../services/usuario.service';
 import { DocentesService } from '../../../../services/docentes.service';
 import { MatDialog } from '@angular/material/dialog';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FirebaseStorageService } from 'src/app/firebase-storage.service'; //CODIGO PARA FIREBASE STORAGE
 import Swal from 'sweetalert2';
 import {
   MatSnackBar,
@@ -39,6 +40,7 @@ export class EstudianteComponent implements OnInit {
     public srvDocente: DocentesService,
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
+    private firebaseStorage: FirebaseStorageService, //CODIGO PARA FIREBASE STORAGE.
     public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -46,6 +48,64 @@ export class EstudianteComponent implements OnInit {
     this.buildForm();
     this.formBuild();
   }
+
+  //CODIGO PARA FIREBASE STORAGE
+  public archivoForm = new FormGroup({
+    archivo: new FormControl('', Validators.required),
+  });
+  public mensajeArchivo = 'No hay un archivo seleccionado';
+  public datosFormulario = new FormData();
+  public nombreArchivo = '';
+  public URLPublica = '';
+  public porcentaje = 0;
+  public finalizado = false;
+
+  //Evento que se gatilla cuando el input de tipo archivo cambia
+  public cambioArchivo(event): void {
+    if (event.target.files.length > 0) {
+      for (let i = 0; i < event.target.files.length; i++) {
+        this.mensajeArchivo = `Archivo preparado: ${event.target.files[i].name}`;
+        this.nombreArchivo = event.target.files[i].name;
+        this.datosFormulario.delete('archivo');
+        this.datosFormulario.append('archivo', event.target.files[i], event.target.files[i].name);
+      }
+      console.log('nombreArchivo: ', this.nombreArchivo);
+    } else {
+      this.mensajeArchivo = 'No hay un archivo seleccionado';
+    }
+  }
+
+  //Sube el archivo a Cloud Storage
+  public subirArchivo() {
+    let archivo = this.datosFormulario.get('archivo');
+    //let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
+    let tarea = this.firebaseStorage.tareaCloudStorage(this.nombreArchivo, archivo);
+    //Cambia el porcentaje
+    tarea.percentageChanges().subscribe((porcentaje) => {
+      this.porcentaje = Math.round(porcentaje);
+      if (this.porcentaje == 100) {
+        this.finalizado = true;
+        let referencia = this.firebaseStorage.referenciaCloudStorage(this.nombreArchivo);
+        referencia.getDownloadURL().subscribe((URL) => {
+          this.filedata = URL;
+          console.log('FILEDATA:', this.filedata);
+
+        })
+      }
+    });
+    /*referencia.getDownloadURL().subscribe((URL) => {
+      if (this.filedata!= '') {
+        this.filedata='';
+        this.filedata = URL;
+      }else{
+        this.filedata = URL;
+      }
+
+    });*/
+    //this.formDocente.get('video_clase').setValue('listo');
+    //console.log('files:', this.files);
+  }
+
 
   comprobarAuth(): void {
     if (localStorage.getItem('datosUsuario') !== null) {
@@ -81,7 +141,7 @@ export class EstudianteComponent implements OnInit {
     });
     this.setData();
   }
-  uploadFile(event): void {
+  /*uploadFile(event): void {
     for (let index = 0; index < event.length; index++) {
       this.deleteAttachment(index);
       const element = event[index];
@@ -99,7 +159,7 @@ export class EstudianteComponent implements OnInit {
   deleteAttachment(index): void {
     this.files.splice(index, 1);
     this.imagenPerfilCambio = false;
-  }
+  }*/
   setForm(): void {
     this.formUsuario.get('nombre_usuario').setValue(this.datosUsuario.nombre_usuario);
     this.formUsuario.get('correo_usuario').setValue(this.datosUsuario.correo_usuario);
@@ -116,13 +176,11 @@ export class EstudianteComponent implements OnInit {
     const datos = JSON.parse(localStorage.getItem('datosUsuario'));
     const id = datos.id_usuario;
     myFormData.append('id_usuario', id);
-    myFormData.append('foto', this.filedata);
-    myFormData.append('_method', 'put');
     myFormData.append('nombre_usuario', this.formUsuario.get('nombre_usuario').value);
     myFormData.append('correo_usuario', this.formUsuario.get('correo_usuario').value);
     Swal.fire({
       title: 'Datos de Perfil',
-      text: 'seguro que desea actualizar los cambios realizados!',
+      text: '¿Seguro que desea actualizar los cambios realizados?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -137,9 +195,9 @@ export class EstudianteComponent implements OnInit {
           localStorage.setItem('datosUsuario', JSON.stringify(obj.datosUsuario));
           console.log(res);
           this.imagenPerfilCambio = null;
-          window.location.reload();
           this.respuesta = res;
           this.openSnackBar(this.respuesta.mensaje, 'cerrar');
+          window.location.reload();
         }, error => {
           console.log(error);
         });
@@ -147,7 +205,42 @@ export class EstudianteComponent implements OnInit {
     });
   }
 
-  actualizarPerfilDocente(event): void {
+  actualizarFotoUsuario(event: Event): void {
+    event.preventDefault();
+    const myFormData = new FormData();
+    const datos = JSON.parse(localStorage.getItem('datosUsuario'));
+    const id = datos.id_usuario;
+    myFormData.append('id_usuario', id);
+    myFormData.append('foto_usuario', this.filedata);
+    //myFormData.append('_method', 'put');
+    Swal.fire({
+      title: 'Datos de Perfil',
+      text: '¿Seguro que desea actualizar su foto de perfil?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No, cancelar!',
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.srvEstudiante.actualizarFotoUsuario(myFormData, id).subscribe(res => {
+          const obj: any = res;
+          localStorage.setItem('datosUsuario', JSON.stringify(obj.datosUsuario));
+          console.log(res);
+          this.imagenPerfilCambio = null;
+          this.respuesta = res;
+          this.openSnackBar(this.respuesta.mensaje, 'cerrar');
+          window.location.reload();
+        }, error => {
+          console.log(error);
+        });
+      }
+    });
+  }
+
+  actualizarPerfilDocente(event: Event): void {
     event.preventDefault();
     console.log(this.formDocente.value);
     Swal.fire({
