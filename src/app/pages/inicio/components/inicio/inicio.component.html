@@ -1,21 +1,42 @@
 <div class="body">
-  <section id="home" class="container-fluid">
+  <!-- <section id="home" class="container-fluid">
     <div class="row align-items-center min-vh-100 content">
-      <div class="col-md-8 col-md-5 text-center text-md-left">
-        <!--<h2 class="section-title">Amplía tus</h2>
+      <div class="col-md-12 col-md-2 text-center text-md-right">
+        <h2 class="section-title">Amplía tus</h2>
         <h1 class="section-title">habilidades</h1>
         <h3 class="section-title">e interactúa con nuestros cursos en línea.</h3>
         <button routerLink="/instructores/pasos-instructor"> Sé instructor </button>-->
-        <h2 class="section-title">Comparte conocimientos,</h2>
+  <!--<h2 class="section-title">Comparte conocimientos,</h2>
         <h1 class="section-title">crea una comunidad</h1>
         <h3 class="section-title">sin límite y genera ingresos con lo que te apasiona.</h3>
         <button routerLink="/instructores/pasos-instructor"> Sé instructor </button>
       </div>
+      </div>
+</section>-->
+
+  <section id="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-right content">
+          <h3 class="section-title">Comparte conocimientos, crea una comunidad</h3>
+          <h3 class="section-title">sin límite y genera ingresos con lo que te apasiona.</h3>
+          <button routerLink="/instructores/pasos-instructor"> Sé instructor </button>
+
+        </div>
+        <div class="col-md-6 text-center">
+          <div class="container">
+            <div class="sliding-background"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src="../../../../../assets/img/wave1.png" alt="">
     </div>
   </section>
 
-  <div *ngIf="!cursos">
-    <!--Listado de Cursos en general-->
+  <!--<div *ngIf="!cursos">
+    Listado de Cursos en general
     <section>
       <div class="site-section courses-title" id="courses-section">
         <div class="container">
@@ -27,17 +48,15 @@
         </div>
       </div>
       <div class="site-section courses-entry-wrap" data-aos="fade-up" data-aos-delay="100">
-        <div class="row justify-content-center">
-          <!--Spinner de carga-->
+        <div class="row justify-content-center">-->
+  <!--Spinner de carga--
           <div *ngIf="!curso" class="col-12">
-            <!--<mat-spinner></mat-spinner>-->
             <div class="d-flex justify-content-center">
               <div class="spinner-border" role="status">
                 <span class="visually-hidden"></span>
               </div>
             </div>
           </div>
-          <!--Spinner de carga-->
         </div>
       </div>
     </section>
@@ -59,11 +78,12 @@
                       <mat-icon>library_books</mat-icon>
                     </span>{{item.modulos_curso.length}} módulos</div>
                   <h3><a routerLink="/curso/curso-detalle/{{ item.id_curso }}">{{ item.nombre_curso }}</a></h3>
-                  <p [ngClass]="{'long-text': texto}" (click)="texto = !texto" align="justify">{{ item.descripcion_curso
-                    }}</p>
-                  <!--<div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
+                  <p [ngClass]="{'long-text': texto}" (click)="texto = !texto" align="justify">{{
+                    item.descripcion_curso
+                    }}</p>-->
+  <!--<div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
                     {{ item.descripcion_curso }}
-                  </div>-->
+                  </div>--
                 </div>
                 <div class="d-flex border-top stats">
                   <div class="py-4 px-4"><span class="icon-users">
@@ -71,7 +91,7 @@
                     </span> {{ item.curso_estudiante.length}} estudiantes</div>
                   <!--<div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat">
                       <mat-icon>comment</mat-icon>
-                    </span> 2</div>-->
+                    </span> 2</div>--
                 </div>
               </div>
             </ng-template>
@@ -79,7 +99,27 @@
         </owl-carousel-o>
       </div>
     </section>
-  </div>
+  </div>-->
+
+  <section>
+    <div class="site-section courses-title" id="courses-section">
+      <div class="container">
+        <div class="row mb-5 justify-content-center">
+          <div class="col-lg-7 text-center" data-aos="fade-up" data-aos-delay="">
+            <h2 class="section-title">Aprende con nosotros</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section courses-entry-wrap" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-center py-5">
+          <video
+            src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/Videoa%2FVideo%201%20oficial.mp4?alt=media&token=21b42fe3-31d5-4369-9a1d-4076e3d3ca81"
+            controls></video>
+        </div>
+    </div>
+  </section>
 
   <section class="cta">
     <h2 class="section-title">¿Tienes preguntas?</h2>

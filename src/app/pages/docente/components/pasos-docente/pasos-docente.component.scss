@@ -49,7 +49,7 @@ p {
   justify-content: center;
   align-items: center;
   background: linear-gradient(rgba(4, 63, 143, 0.2), rgba(4, 63, 143, 0.2)),
-    url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Fenseñar2.jpg?alt=media&token=41be2f17-1eed-4b0e-be95-a44b5ec2de14);
+    url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/US%2Finstructor%202.png?alt=media&token=57f3ff52-fec0-4e85-b969-9236dfb54ebe);
   background-size: cover;
 }
 
@@ -109,6 +109,7 @@ section {
   font-weight: bold;
   white-space: pre-line;
   letter-spacing: 0.1em;
+  //width: 50px;
 }
 
 .title {
@@ -139,6 +140,7 @@ section {
 .row .col50 .imgBx {
   position: relative;
   width: 100%;
+  //width: 500px;
   min-height: 500px;
 }
 
@@ -147,9 +149,9 @@ section {
   top: 0;
   left: 0;
   width: 100%;
+  //width: 700px;
   height: 100%;
-  //background-size: cover;
-  object-fit: cover;
+  object-fit: contain;
   box-shadow: 8px 8px 20px #c3cbd3;
   border: 1px solid #f2f3f4;
 }

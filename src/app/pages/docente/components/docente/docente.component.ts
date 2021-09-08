@@ -12,19 +12,23 @@ export class DocenteComponent implements OnInit {
   docente: any;
   texto = true;
   estado = true;
+  cursoDoc: any;
+  cursos_docente: any;
+  nombre_usuario: any;
 
   constructor(
     public route: ActivatedRoute,
-    public serDocente: DocentesService) {}
+    public serDocente: DocentesService) { }
 
   ngOnInit(): void {
     this.mostrarDocentes();
   }
- // tslint:disable-next-line: typedef
- mostrarDocentes(){
+
+  mostrarDocentes() {
     this.serDocente.listarDocente().subscribe(data => {
       this.docente = data;
-      console.log(data);
+      this.nombre_usuario = this.docente;
+      console.log(this.nombre_usuario);
       if (this.docente.length !== 0) {
         this.estado = false;
       }

@@ -11,12 +11,112 @@ h5,
   font-family: "Montserrat", sans-serif;
 }
 
+#banner {
+  min-height: 100vh;
+  background-image: linear-gradient(to right, #17619e, #62b9b8);
+  color: #fff;
+  padding-top: 5%;
+
+  .content {
+    margin-top: 80px;
+    position: relative;
+
+    h1 {
+      font-size: 4rem;
+      color: #043f8f;
+      font-weight: bold;
+    }
+
+    h2 {
+      font-size: 3rem;
+      color: #043f8f;
+    }
+
+    h3 {
+      font-size: 2rem;
+      color: #fff;
+      margin: 1rem 0;
+      font-weight: bold;
+    }
+  }
+
+  button {
+    width: 180px;
+    color: #fff;
+    font-size: 18px;
+    padding: 12px 0;
+    background: #ff6462;
+    border: 0;
+    border-radius: 20px;
+    outline: none;
+    margin-top: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    transition: background-color 0.5s;
+    cursor: pointer;
+
+    &:hover {
+      background: #fff;
+      color: #000;
+      border-width: 3px;
+      border-style: solid;
+      border-color: #ff6462;
+      border-radius: 20px;
+    }
+  }
+}
+
+.container {
+  overflow: hidden;
+}
+
+.sliding-background {
+  height: 500px;
+  width: 5076px;
+}
+
+.sliding-background {
+  background: url("../../../../../assets/img/ins_1.png") no-repeat;
+  animation: slide 40s alternate infinite;
+}
+
+@keyframes slide {
+  0%,
+  100% {
+    background: url("../../../../../assets/img/ins_2.png") no-repeat;
+  }
+  20% {
+    background: url("../../../../../assets/img/ins_3.png") no-repeat;
+  }
+  40% {
+    background: url("../../../../../assets/img/ins_4.png") no-repeat;
+  }
+  60% {
+    background: url("../../../../../assets/img/ins_5.png") no-repeat;
+  }
+  80% {
+    background: url("../../../../../assets/img/ins_1.png") no-repeat;
+  }
+}
+
+.promo-title {
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 100px;
+}
+
+#banner a {
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+}
+
 #home {
   min-height: 100vh;
   width: 100vw;
   background: linear-gradient(
-      80.2deg,
-      #ffffff 52.45%,
+      76.34deg,
+      #ffffff 50.45%,
       rgba(196, 196, 196, 0.8) 52.49%
     ),
     url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/st6_500x500.jpg?alt=media&token=116e89bc-4158-43e9-8bd2-9b09861a3436)
@@ -24,7 +124,7 @@ h5,
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  animation: background 10s alternate infinite;
+  animation: background 20s alternate infinite;
 
   .content {
     position: relative;
@@ -78,50 +178,60 @@ h5,
   0%,
   100% {
     background: linear-gradient(
-        95.2deg,
-        #ffffff 52.45%,
-        rgba(196, 196, 196, 0) 52.49%
+        -95.2deg,
+        #ffffff 54%,
+        rgba(196, 196, 196, 0) 8%
       ),
-      url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Fst9_1200x1200.jpg?alt=media&token=490dc695-fa7d-44e5-9732-e3ce1d611fc4)
-        no-repeat;
-    background-size: cover;
-    background-position: center;
+      url(../../../../../assets/img/22.png) no-repeat;
+    //background-size: 650px;
+    //background-size: cover;
+    background-color: #000;
+    background-size: contain;
+    background-position: left;
+    object-fit: contain;
     background-attachment: fixed;
+    //background-repeat: no-repeat, repeat-y;
   }
   25% {
     background: linear-gradient(
-        95.2deg,
-        #ffffff 52.45%,
-        rgba(196, 196, 196, 0) 52.49%
+        -95.2deg,
+        #ffffff 54%,
+        rgba(196, 196, 196, 0) 8%
       ),
-      url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Fst7_1200x1200.jpg?alt=media&token=d06d6800-ea4e-4aa9-ac9d-f25c43868cf6)
+      url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/section-1%2F8-1.jpeg?alt=media&token=b123af52-a70f-4c41-ba94-771652dceb96)
         no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-size: contain;
+    background-position: left;
+    object-fit: contain;
     background-attachment: fixed;
   }
   50% {
     background: linear-gradient(
-        95.2deg,
-        #ffffff 52.45%,
-        rgba(196, 196, 196, 0) 52.49%
+        -95.2deg,
+        #ffffff 54%,
+        rgba(196, 196, 196, 0) 8%
       ),
-      url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Fst11_1200x1200.jpg?alt=media&token=6926424b-8339-42ff-bc79-1bfcb774ae5c)
+      url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/section-1%2F9-1.jpeg?alt=media&token=06d526c5-ec6c-4421-9e52-309d8fdce2dc)
         no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-size: contain;
+    background-position: left;
+    object-fit: contain;
     background-attachment: fixed;
   }
   75% {
     background: linear-gradient(
-        95.2deg,
-        #ffffff 52.45%,
-        rgba(196, 196, 196, 0) 52.49%
+        -95.2deg,
+        #ffffff 54%,
+        rgba(196, 196, 196, 0) 8%
       ),
-      url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Fst6_1200x1200.jpg?alt=media&token=b9df8486-655d-4a41-b4bc-0b54cd6064ff)
+      url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/section-1%2F10-1.jpeg?alt=media&token=ddb263c7-85de-4568-826b-6369fe437b91)
         no-repeat;
-    background-size: cover;
+    /*background-size: cover;
     background-position: center;
+    background-attachment: fixed;*/
+    background-size: contain;
+    background-position: left;
+    object-fit: contain;
     background-attachment: fixed;
   }
 }
@@ -140,7 +250,8 @@ h5,
 
 .courses-title {
   padding-bottom: 13rem;
-  background: #043f8f;
+  //background: #043f8f;
+  background: #673AB7;
 }
 .courses-title .section-title {
   color: #fff;
@@ -399,6 +510,12 @@ a {
 }
 
 @media only screen and (max-device-width: 480px) {
+
+  video {
+    width: 100%;
+    background-size: contain;
+  }
+
   #home {
     .content {
       position: relative;

@@ -12,6 +12,7 @@ import { PagoComponent } from '../pago/pago.component';
 import { PagoTarjetaComponent } from '../pago/components/pago-tarjeta/pago-tarjeta.component';
 import { PagoMoneComponent } from '../pago/components/pago-mone/pago-mone.component';
 import { FreeComponent } from '../pago/components/free/free.component';
+import { QrEstaticoComponent } from '../pago/components/qr-estatico/qr-estatico.component';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -142,6 +143,19 @@ export class PresentacionCursoComponent implements OnInit {
   metodoTarjeta() {
     const dialogRef = this.dialog.open(PagoTarjetaComponent, {
       width: '140vh',
+      data: {
+        id: this.id,
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
+    });
+  }
+
+  metodoQr() {
+    const dialogRef = this.dialog.open(QrEstaticoComponent, {
+      //width: '140vh',
       data: {
         id: this.id,
       }
