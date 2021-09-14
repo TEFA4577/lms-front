@@ -29,7 +29,7 @@ export class ListadoMembresiaComponent implements OnInit {
   ngOnInit(): void {
     this.listarMembresia();
   }
-  listarMembresia(): void{
+  listarMembresia(): void {
     this.serMembresia.listarMembresia().subscribe(resp => {
       this.datos = resp;
       this.membresias = this.datos.membresias;
@@ -85,7 +85,7 @@ export class ListadoMembresiaComponent implements OnInit {
       this.listarMembresia();
     });
   }
-  metodoFree(event){
+  metodoFree(event) {
     const dialogRef = this.dialog.open(FreeComponent, {
       width: '140vh',
       disableClose: true,

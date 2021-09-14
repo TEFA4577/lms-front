@@ -63,9 +63,23 @@
                   <p [ngClass]="{'long-text': texto}" (click)="texto = !texto" align="justify">{{
                     item.descripcion_curso
                     }}</p>
+<<<<<<< HEAD
                   <div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
                     {{ item.descripcion_curso }}
                   </div>
+=======
+                  <!--<div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
+                    {{ item.descripcion_curso }}
+                  </div>-->
+                </div>
+                <div class="d-flex border-top stats">
+                  <div class="py-4 px-4"><span class="icon-users">
+                      <mat-icon>groups</mat-icon>
+                    </span> {{ item.curso_estudiante.length}} estudiantes</div>
+                  <!--<div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat">
+                      <mat-icon>comment</mat-icon>
+                    </span> 2</div>-->
+>>>>>>> 852444de6595ba258b3cfbd1f0b3403b6162e8be
                 </div>
               </div>
             </ng-template>

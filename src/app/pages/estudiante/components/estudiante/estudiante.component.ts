@@ -89,21 +89,9 @@ export class EstudianteComponent implements OnInit {
         referencia.getDownloadURL().subscribe((URL) => {
           this.filedata = URL;
           console.log('FILEDATA:', this.filedata);
-
-        })
+        });
       }
     });
-    /*referencia.getDownloadURL().subscribe((URL) => {
-      if (this.filedata!= '') {
-        this.filedata='';
-        this.filedata = URL;
-      }else{
-        this.filedata = URL;
-      }
-
-    });*/
-    //this.formDocente.get('video_clase').setValue('listo');
-    //console.log('files:', this.files);
   }
 
 
@@ -141,25 +129,6 @@ export class EstudianteComponent implements OnInit {
     });
     this.setData();
   }
-  /*uploadFile(event): void {
-    for (let index = 0; index < event.length; index++) {
-      this.deleteAttachment(index);
-      const element = event[index];
-      this.files.push(element.name);
-      this.filedata = element;
-      console.log(element);
-      const reader = new FileReader();
-      reader.readAsDataURL(event[index]);
-      reader.onload = (_event) => {
-        this.imagenPerfilCambio = reader.result;
-      };
-    }
-    console.log(this.files);
-  }
-  deleteAttachment(index): void {
-    this.files.splice(index, 1);
-    this.imagenPerfilCambio = false;
-  }*/
   setForm(): void {
     this.formUsuario.get('nombre_usuario').setValue(this.datosUsuario.nombre_usuario);
     this.formUsuario.get('correo_usuario').setValue(this.datosUsuario.correo_usuario);
@@ -267,14 +236,5 @@ export class EstudianteComponent implements OnInit {
         });
       }
     });
-    /*this.srvDocente.actualizarDocente(this.formDocente.value, this.datosUsuario.id_usuario).subscribe(res => {
-      console.log(res);
-      const obj: any = res;
-      localStorage.setItem('datosUsuario', JSON.stringify(obj.datosUsuario));
-      this.respuesta = res;
-      this.openSnackBar(this.respuesta.mensaje, 'cerrar');
-    }, error => {
-      console.log(error);
-    });*/
   }
 }

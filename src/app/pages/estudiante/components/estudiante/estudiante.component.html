@@ -95,7 +95,7 @@
                       <div *ngIf="!nombreArchivo">
                         <button mat-mini-fab matTooltip="Cambia tu foto de perfil" color="warn"
                           (click)="imagen.click()">
-                          <mat-icon>image</mat-icon>
+                          <mat-icon>edit</mat-icon>
                         </button>
                       </div>
                       <br>
@@ -107,7 +107,9 @@
                             'is-loading': porcentaje > 0 && porcentaje < 100
                           }" [disabled]="
                             !archivoForm.valid && porcentaje > 0 && porcentaje < 100
-                          ">Carga tu vídeo <mat-icon> upload</mat-icon></button>
+                          ">
+                          <mat-icon>upload</mat-icon>
+                        </button>
                       </div>
                       <progress class="col-12" *ngIf="porcentaje > 0 && porcentaje < 100"
                         class="progress is-large is-success" value="{{ porcentaje }}" max="100">
@@ -118,7 +120,7 @@
                         Archivo cargado: {{nombreArchivo}}
                       </div>
                     </form>
-                    <button mat-button type="submit">Guardar cambios</button>
+                    <button *ngIf="porcentaje == 100" mat-button type="submit">Guardar cambios</button>
                   </form>
                 </mat-card-actions>
               </mat-card>
@@ -126,15 +128,6 @@
               <mat-card *ngIf="datosUsuario.id_rol == 2" class="info-ins">
                 <video class="video" mat-card-image src="{{datosUsuario.datos_docente.video_presentacion}}" controls
                   muted></video>
-                <hr>
-                <mat-card-actions align="end">
-                  <input type="file" name="foto_usuario" #imagen hidden accept="image/*"
-                    (change)="uploadFile($event.target.files)">
-                  <button type="button" mat-mini-fab matTooltip="Cambia tu video de presentacion" class="example-button"
-                    color="primary">
-                    <mat-icon>mode_edit</mat-icon>
-                  </button>
-                </mat-card-actions>
               </mat-card>
             </div>
             <!--Fotografia del usuario-->

@@ -1,7 +1,7 @@
 <div class="container">
   <ng-container>
     <div class="row">
-      <div class="col-4">
+      <div class="col-md-4">
         <mat-card *ngIf="curso">
           Nombre del curso
           <mat-card-content>
@@ -9,7 +9,8 @@
           </mat-card-content>
         </mat-card>
       </div>
-      <div class="col-4">
+      <br>
+      <div class="col-md-4">
         <mat-card>
           Total de estudiantes
           <mat-card-content *ngFor="let item of misEstudiantes">
@@ -17,7 +18,8 @@
           </mat-card-content>
         </mat-card>
       </div>
-      <div class="col-4">
+      <br>
+      <div class="col-md-4">
         <mat-card>
           Evaluaciones realizadas
           <mat-card-content *ngFor="let item of misEstudiantes">
@@ -25,11 +27,12 @@
           </mat-card-content>
         </mat-card>
       </div>
+      <br>
     </div>
   </ng-container>
   <br>
   <div class="row">
-    <div class="col-4">
+    <div class="col-md-4">
       <mat-card>
         Lista de tus estudiantes
         <mat-card-content *ngIf="usuarioCurso">
@@ -41,7 +44,7 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <div class="col-8">
+    <div class="col-md-8">
       <mat-card>
         <h2>Cotenido de tu clase</h2>
         <mat-card-content>
@@ -62,9 +65,9 @@
                   </div>
                   <div mat-line align="end">
                     <!--<button mat-icon-button color="primary" type="button" (click)="getIdClase(clases.id_clase)"
-                      matTooltip="Mostrar el foro de la clase">
-                      <mat-icon>forum</mat-icon>
-                    </button>-->
+                          matTooltip="Mostrar el foro de la clase">
+                          <mat-icon>forum</mat-icon>
+                        </button>-->
                     <button mat-icon-button color="basic" (click)="openForo(clase.id_clase);" type="button"
                       matTooltip="Ve el foro de esta clase">
                       <mat-icon>visibility</mat-icon>
@@ -87,12 +90,11 @@
               <mat-list-item *ngFor=" let item of dat" class="row">
                 <div mat-line>
                   <!--<div mat-line>{{ item.usuario_comentario.nombre_usuario }}
-          <span>{{item.usuario_comentario.created_at}}</span>
-        </div>
-        <div mat-line>{{ item.texto_comentario }}</div>-->
+              <span>{{item.usuario_comentario.created_at}}</span>
+            </div>
+            <div mat-line>{{ item.texto_comentario }}</div>-->
                   <div mat-line>
-                    <img class="avatar" [src]="item.usuario_comentario.foto_usuario"
-                    (error)="imagenError()" />
+                    <img class="avatar" [src]="item.usuario_comentario.foto_usuario" (error)="imagenError()" />
                     {{ item.usuario_comentario.nombre_usuario }}
                     <span>{{item.usuario_comentario.created_at}}</span>
                   </div>
