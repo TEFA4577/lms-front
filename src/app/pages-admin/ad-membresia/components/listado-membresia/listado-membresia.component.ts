@@ -5,6 +5,7 @@ import { PagoComponent } from '../pago/pago.component';
 import { PagoTarjetaComponent } from '../pago/components/pago-tarjeta/pago-tarjeta.component';
 import { PagoMoneComponent } from '../pago/components/pago-mone/pago-mone.component';
 import { FreeComponent } from '../pago/components/free/free.component';
+import { QrEstaticoComponent } from '../pago/components/qr-estatico/qr-estatico.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -66,6 +67,18 @@ export class ListadoMembresiaComponent implements OnInit {
     const dialogRef = this.dialog.open(PagoMoneComponent, {
       width: '120vh',
       data: event
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.listarMembresia();
+    });
+  }
+  metodoQr() {
+    const dialogRef = this.dialog.open(QrEstaticoComponent, {
+      //width: '140vh',
+      data: {
+        id: this.id,
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

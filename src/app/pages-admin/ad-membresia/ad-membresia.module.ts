@@ -34,6 +34,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgFallimgModule } from 'ng-fallimg';
 import { FreeComponent } from './components/pago/components/free/free.component';
+import { QrEstaticoComponent } from './components/pago/components/qr-estatico/qr-estatico.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { FreeComponent } from './components/pago/components/free/free.component'
     PagoDepositoComponent,
     PagoMoneComponent,
     PagoTarjetaComponent,
-    FreeComponent],
+    FreeComponent,
+    QrEstaticoComponent],
   imports: [
     CommonModule,
     MatStepperModule,

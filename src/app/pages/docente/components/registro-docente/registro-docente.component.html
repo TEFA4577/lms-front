@@ -143,7 +143,8 @@
                   </label>
                   <div *ngIf="!nombreArchivoCv">
                     <button mat-raised-button color="warn" matTooltip="Selecciona un archivo (.pdf)"
-                      (click)="imagen2.click()">Selecciona tu hoja de vida (CV)<mat-icon>upload_file</mat-icon></button>
+                      (click)="imagen2.click()">Selecciona tu hoja de vida (.pdf)<mat-icon>upload_file</mat-icon>
+                      </button>
                   </div>
                   <br>
                   <div *ngIf="nombreArchivoCv">
@@ -171,7 +172,8 @@
               </form>
             </div>
           </div>
-          <button mat-raised-button color="primary" type="submit" [disabled]="formDocente.invalid">
+          <button *ngIf="porcentajeCv == 100" mat-raised-button color="primary" type="submit"
+            [disabled]="formDocente.invalid">
             Enviar mi solicitud!
           </button>
         </div>
