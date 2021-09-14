@@ -36,8 +36,9 @@
                     Elige una imagen
                   </button>-->
                   <div *ngIf="!nombreArchivo">
-                    <button mat-raised-button color="warn" class="col-10" matTooltip="Selecciona la imagen de tu comprobante"
-                      (click)="imagen.click()"> Selecciona tu archivo
+                    <button mat-raised-button color="warn" class="col-10"
+                      matTooltip="Selecciona la imagen de tu comprobante" (click)="imagen.click()"> Selecciona tu
+                      archivo
                       <mat-icon>photo_camera</mat-icon>
                     </button>
                   </div>
@@ -68,17 +69,16 @@
                     value="{{ porcentaje }}" max="100">
                     {{ porcentaje }}%
                   </progress>
-
                 </div>
               </div>
             </form>
             <hr>
-            <button mat-raised-button class="col-10" color="accent" type="submit" [disabled]="archivoForm.invalid">
+            <button *ngIf="porcentaje == 100" mat-raised-button class="col-10" color="accent" type="submit"
+              [disabled]="archivoForm.invalid">
               Enviar mi comprobante!
             </button>
           </form>
           <!--Nuevo formulario para subir el comprobante-->
-
           <!--Formulario para subir la imagen del comprobante-->
           <!--<form (ngSubmit)="submitAdquirirCurso($event)">-->
           <!--En este input se sube la imagen del comprobante de deposito-->

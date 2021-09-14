@@ -161,7 +161,7 @@ export class RegistroDocenteComponent implements OnInit {
       descripcion_docente: ['', [Validators.required, Validators.maxLength(500)]],
       video_instructor: [''],
       cv_docente: [''],
-      numero_cuenta: ['', [Validators.required, Validators.maxLength(16)]],
+      numero_cuenta: ['', [Validators.required]],
       tipo_cuenta: ['', [Validators.required, Validators.maxLength(30)]],
       nombre_banco: ['', [Validators.required, Validators.maxLength(30)]],
       carnet_identidad: ['', [Validators.required, Validators.maxLength(8)]]

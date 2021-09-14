@@ -31,7 +31,8 @@
             <mat-expansion-panel hideToggle>
               <mat-expansion-panel-header background="black">
                 <mat-panel-title>
-                  <p class="sub-seccion">Comprar Membresia<mat-icon color="warn">shopping_cart</mat-icon></p>
+                  <p class="sub-seccion">Comprar Membresia<mat-icon color="warn">shopping_cart</mat-icon>
+                  </p>
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <p class="descript">
@@ -40,10 +41,16 @@
                   <mat-icon>receipt_long
                   </mat-icon> Deposito Bancario
                 </button>
-                <button mat-stroked-button class="btn-block" matTooltip="Pago por Mone" color="basic">
+                <button mat-stroked-button class="btn-block" (click)="metodoMone()" matTooltip="Pago por Mone"
+                  color="basic">
                   <mat-icon>qr_code</mat-icon> Pago por Mone
                 </button>
-                <button mat-stroked-button class="btn-block" matTooltip="Tarjeta de Credito/Debito" color="warn">
+                <button mat-stroked-button class="btn-block" (click)="metodoQr()" matTooltip="Pago por código QR"
+                  color="basic">
+                  <mat-icon>qr_code_scanner</mat-icon> Pago mediante QR
+                </button>
+                <button mat-stroked-button class="btn-block" (click)="metodoTarjeta()"
+                  matTooltip="Tarjeta de Credito/Debito" color="warn">
                   <mat-icon>credit_card</mat-icon> Tarjeta de Credito/Debito
                 </button>
               </p>
@@ -52,7 +59,7 @@
 
         </mat-card-content>
         <mat-card-content>
-            <p>{{item.texto_membresia}}</p>
+          <p>{{item.texto_membresia}}</p>
         </mat-card-content>
       </mat-card>
     </div>
