@@ -22,6 +22,11 @@
 
   <div *ngIf="!cursos">
     <section>
+      <div *ngIf="cursos" class="col-md-12">
+        <div class="spinner-border text-dark" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
       <div class="site-section courses-title" id="courses-section">
         <div class="container">
           <div class="row mb-5 justify-content-center">
@@ -63,23 +68,6 @@
                   <p [ngClass]="{'long-text': texto}" (click)="texto = !texto" align="justify">{{
                     item.descripcion_curso
                     }}</p>
-<<<<<<< HEAD
-                  <div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
-                    {{ item.descripcion_curso }}
-                  </div>
-=======
-                  <!--<div class="container descripcion" [ngClass]="{'long-text': texto}" (click)="texto = !texto">
-                    {{ item.descripcion_curso }}
-                  </div>-->
-                </div>
-                <div class="d-flex border-top stats">
-                  <div class="py-4 px-4"><span class="icon-users">
-                      <mat-icon>groups</mat-icon>
-                    </span> {{ item.curso_estudiante.length}} estudiantes</div>
-                  <!--<div class="py-3 px-4 w-25 ml-auto border-left"><span class="icon-chat">
-                      <mat-icon>comment</mat-icon>
-                    </span> 2</div>-->
->>>>>>> 852444de6595ba258b3cfbd1f0b3403b6162e8be
                 </div>
               </div>
             </ng-template>
@@ -89,7 +77,7 @@
     </section>
   </div>
 
-  <section>
+  <!--<section>
     <div class="site-section courses-title" id="courses-section">
       <div class="container">
         <div class="row mb-5 justify-content-center">
@@ -107,9 +95,9 @@
           controls></video>
       </div>
     </div>
-  </section>
+  </section>-->
 
-  <section class="cta">
+  <!--<section class="cta">
     <h2 class="section-title">¿Tienes preguntas?</h2>
     <div class="container">
       <mat-accordion multi>
@@ -130,7 +118,7 @@
       </mat-accordion>
       <br>
     </div>
-  </section>
+  </section>-->
   <!--Final Listado de preguntas frecuentes-->
 
   <section>
@@ -159,22 +147,22 @@
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <img
-                  src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/carousel%2Fcarousel-7.jpeg?alt=media&token=3e9871b1-d6d9-4811-a480-297c91c96cd6"
+                  src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/LMS%2F1%20(1).png?alt=media&token=fbcef6c0-dddd-4f42-bc41-98bf9edfaa54"
                   class="d-block w-100" alt="">
               </div>
               <div class="carousel-item">
                 <img
-                  src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/carousel%2Fcarousel-6.jpeg?alt=media&token=c2665b5c-4a51-4a27-b203-0a9bfec9ca79"
+                  src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/LMS%2F4.png?alt=media&token=4da2108b-5454-4a89-a878-fadf384b9f0c"
                   class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
                 <img
-                  src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/carousel%2Fcarousel-5.jpeg?alt=media&token=187d8c1c-392c-474f-8749-0162b28fcef7"
+                  src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/LMS%2F5.png?alt=media&token=24aa6477-48af-4cba-b0c0-73b5f16f9f77"
                   class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
                 <img
-                  src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/carousel%2Fcarousel-4.jpeg?alt=media&token=c4197a0d-7aa9-466c-9931-6b8e6ce48885"
+                  src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/LMS%2F6.png?alt=media&token=0187a2d4-ef1c-4571-9e94-23aedb64ff62"
                   class="d-block w-100" alt="...">
               </div>
               <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
@@ -222,7 +210,7 @@
   </div>
 
   <!--Seccion de instructores-->
-  <div *ngIf="!inst">
+  <!--<div *ngIf="!inst">
     <section class="testimonials" id="testimonials">
       <div class="container py-5">
         <div class="row mb-5 justify-content-center">
@@ -248,6 +236,6 @@
         </div>
       </div>
     </section>
-  </div>
+  </div>-->
   <!--Final de la seccion de instructores-->
 </div>
