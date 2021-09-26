@@ -1,119 +1,117 @@
 <!--Componte de dialogo o modal para el proceso de pago-->
 <mat-spinner *ngIf="isActive"></mat-spinner>
-<div *ngIf="!isActive">
-  <div class="d-flex justify-content-between">
-    <br>
-    <button mat-icon-button [mat-dialog-close]="true">
-      <mat-icon>close</mat-icon>
-    </button>
-  </div>
-  <div class="row">
-    <h1 mat-dialog-title>Formulario de solicitud para instructores</h1>
-  </div>
-  <mat-dialog-content class="mat-typography">
-    <div class="container">
-      <form [formGroup]="formDocente" (ngSubmit)="submitRegistrarDocente($event)" class="example-form">
-        <div class="row">
-          <div class="col-md-6">
-            <h3>Tus datos de Usuario</h3>
-          </div>
-          <div class="col-md-6">
-            <h3>Información adicional</h3>
-          </div>
+<div class="d-flex justify-content-between">
+  <br>
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div class="row">
+  <h1 mat-dialog-title>Formulario de solicitud para instructores</h1>
+</div>
+<mat-dialog-content class="mat-typography">
+  <div class="container">
+    <form [formGroup]="formDocente" (ngSubmit)="submitRegistrarDocente($event)" class="example-form">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Tus datos de Usuario</h3>
         </div>
+        <div class="col-md-6">
+          <h3>Información adicional</h3>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="row">
+          <!--Informacion del usuario-->
+          <mat-form-field class="col-md-6" appearance="outline">
+            <mat-label>Tu nombre completo:</mat-label>
+            <input matInput value="{{ datosUsuario.nombre_usuario }}" [readonly]="true" />
+          </mat-form-field>
+
+          <mat-form-field class="col-md-6" appearance="outline">
+            <mat-label>Tu número de celular:</mat-label>
+            <input matInput formControlName="telefono_docente" required />
+          </mat-form-field>
+
+          <!--Informacion del usuario-->
+        </div>
+        <div class="row">
+          <!--<h3>Agrega tus Datos de Instructor</h3>-->
+          <mat-form-field class="col-md-6" appearance="outline">
+            <mat-label>Correo electrónico:</mat-label>
+            <input matInput value="{{ datosUsuario.correo_usuario }}" [readonly]="true" />
+          </mat-form-field>
+
+          <mat-form-field class="col-md-6" appearance="outline">
+            <mat-label>Tu experiencia como instructor / docente:</mat-label>
+            <input matInput formControlName="experiencia_docente" required />
+          </mat-form-field>
+          <!--Datos del Docente-->
+
+
+        </div>
+        <!--<h3>Información adicional</h3>-->
         <div class="col-md-12">
           <div class="row">
-            <!--Informacion del usuario-->
-            <mat-form-field class="col-md-6" appearance="outline">
-              <mat-label>Tu nombre completo:</mat-label>
-              <input matInput value="{{ datosUsuario.nombre_usuario }}" [readonly]="true" />
+            <mat-form-field class="col-md-12" appearance="outline">
+              <mat-label>Háblanos acerca de ti (Descripción del instructor):</mat-label>
+              <textarea matInput formControlName="descripcion_docente" #input maxlength="100"
+                placeholder="Ex. Soy una persona..." required></textarea>
+              <mat-hint align="end">{{input.value?.length || 0 }} / 50</mat-hint>
             </mat-form-field>
-
-            <mat-form-field class="col-md-6" appearance="outline">
-              <mat-label>Tu número de celular:</mat-label>
-              <input matInput formControlName="telefono_docente" required />
-            </mat-form-field>
-
-            <!--Informacion del usuario-->
           </div>
-          <div class="row">
-            <!--<h3>Agrega tus Datos de Instructor</h3>-->
-            <mat-form-field class="col-md-6" appearance="outline">
-              <mat-label>Correo electrónico:</mat-label>
-              <input matInput value="{{ datosUsuario.correo_usuario }}" [readonly]="true" />
-            </mat-form-field>
+        </div>
 
-            <mat-form-field class="col-md-6" appearance="outline">
-              <mat-label>Tu experiencia como instructor / docente:</mat-label>
-              <input matInput formControlName="experiencia_docente" required />
-            </mat-form-field>
-            <!--Datos del Docente-->
-
-
-          </div>
-          <!--<h3>Información adicional</h3>-->
-          <div class="col-md-12">
-            <div class="row">
-              <mat-form-field class="col-md-12" appearance="outline">
-                <mat-label>Háblanos acerca de ti (Descripción del instructor):</mat-label>
-                <textarea matInput formControlName="descripcion_docente" #input maxlength="180"
-                  placeholder="Ex. Soy una persona..." required></textarea>
-                <mat-hint align="end">{{input.value?.length || 0 }} / 180</mat-hint>
-              </mat-form-field>
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="row">
-              <div class="col-md-6">
-                <h3>Datos de tu cuenta bancaria</h3>
-              </div>
-            </div>
-            <div class="alert alert-warning" role="alert">
-              Con los datos de tu cuenta bancaria, podremos depositarte las ganancias de tus cursos expuestos.
-            </div>
-            <div class="row">
-              <mat-form-field class="col-md-3" appearance="outline">
-                <mat-label>Número de Cuenta:</mat-label>
-                <input matInput formControlName="numero_cuenta" />
-              </mat-form-field>
-              <mat-form-field class="col-md-3" appearance="outline">
-                <mat-label>Tipo de Cuenta:</mat-label>
-                <input matInput formControlName="tipo_cuenta" />
-              </mat-form-field>
-              <mat-form-field class="col-md-3" appearance="outline">
-                <mat-label>Banco de origen:</mat-label>
-                <input matInput formControlName="nombre_banco" />
-              </mat-form-field>
-              <mat-form-field class="col-md-3" appearance="outline">
-                <mat-label>Carnet de Identidad:</mat-label>
-                <input matInput formControlName="carnet_identidad" />
-              </mat-form-field>
-            </div>
-          </div>
-
+        <div class="col-md-12">
           <div class="row">
             <div class="col-md-6">
-              <h3>Tu vídeo de presentación y hoja de Vida</h3>
+              <h3>Datos de tu cuenta bancaria</h3>
             </div>
           </div>
-
+          <div class="alert alert-warning" role="alert">
+            Con los datos de tu cuenta bancaria, podremos depositarte las ganancias de tus cursos expuestos.
+          </div>
           <div class="row">
-            <div class="col-6">
-              <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
-                <div class="file has-name is-boxed">
-                  <label class="file-label">
-                    <input class="file-input" type="file" formControlName="archivo" #imagen hidden
-                      accept="video/mp4,video/x-m4v,video/*" (change)="cambioArchivo($event)"
-                      name="video_presentacion" />
-                  </label>
-                  <div *ngIf="!nombreArchivo">
-                    <button mat-raised-button color="warn" matTooltip="Selecciona tu video de presentacion"
-                      (click)="imagen.click()">Selecciona tu archivo<mat-icon> videocam</mat-icon></button>
-                  </div>
-                  <br>
-                  <div *ngIf="nombreArchivo">
-                    <button mat-raised-button color="primary" matTooltip="Sube el video" [ngClass]="{
+            <mat-form-field class="col-md-3" appearance="outline">
+              <mat-label>Número de Cuenta:</mat-label>
+              <input matInput formControlName="numero_cuenta" />
+            </mat-form-field>
+            <mat-form-field class="col-md-3" appearance="outline">
+              <mat-label>Tipo de Cuenta:</mat-label>
+              <input matInput formControlName="tipo_cuenta" />
+            </mat-form-field>
+            <mat-form-field class="col-md-3" appearance="outline">
+              <mat-label>Banco de origen:</mat-label>
+              <input matInput formControlName="nombre_banco" />
+            </mat-form-field>
+            <mat-form-field class="col-md-3" appearance="outline">
+              <mat-label>Carnet de Identidad:</mat-label>
+              <input matInput formControlName="carnet_identidad" />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Tu vídeo de presentación y hoja de Vida</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+              <div class="file has-name is-boxed">
+                <label class="file-label">
+                  <input class="file-input" type="file" formControlName="archivo" #imagen hidden
+                    accept="video/mp4,video/x-m4v,video/*" (change)="cambioArchivo($event)" name="video_presentacion" />
+                </label>
+                <div *ngIf="!nombreArchivo">
+                  <button mat-raised-button color="warn" matTooltip="Selecciona tu video de presentacion"
+                    (click)="imagen.click()">Selecciona tu archivo<mat-icon> videocam</mat-icon></button>
+                </div>
+                <br>
+                <div *ngIf="nombreArchivo">
+                  <button mat-raised-button color="primary" matTooltip="Sube el video" [ngClass]="{
                       button: true,
                           'is-success': true,
                           'is-large': true,
@@ -121,33 +119,34 @@
                         }" [disabled]="
                           !archivoForm.valid && porcentaje > 0 && porcentaje < 100
                         ">Carga tu vídeo <mat-icon> upload</mat-icon></button>
-                  </div>
-                  <progress class="col-12" *ngIf="porcentaje > 0 && porcentaje < 100"
-                    class="progress is-large is-success" value="{{ porcentaje }}" max="100">
-                    {{ porcentaje }}%
-                  </progress>
-
-                  <div *ngIf="porcentaje == 100" class="alert alert-success" role="alert">
-                    Archivo cargado: {{nombreArchivo}}
-                  </div>
                 </div>
-              </form>
-            </div>
-            <div class="col-6">
-              <form [formGroup]="cvForm" (ngSubmit)="upCv()">
-                <div class="file has-name is-boxed">
-                  <label class="file-label">
-                    <input class="file-input" type="file" formControlName="archivoCv" #imagen2 hidden
-                      accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" (change)="changeCv($event)"
-                      name="cv_docente" />
-                  </label>
-                  <div *ngIf="!nombreArchivoCv">
-                    <button mat-raised-button color="warn" matTooltip="Selecciona un archivo (.pdf)"
-                      (click)="imagen2.click()">Selecciona tu hoja de vida (.pdf)<mat-icon>upload_file</mat-icon></button>
-                  </div>
-                  <br>
-                  <div *ngIf="nombreArchivoCv">
-                    <button mat-raised-button matTooltip="Sube tu Hoja de Vida" color="primary" [ngClass]="{
+                <progress class="col-12" *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
+                  value="{{ porcentaje }}" max="100">
+                  {{ porcentaje }}%
+                </progress>
+
+                <div *ngIf="porcentaje == 100" class="alert alert-success" role="alert">
+                  Archivo cargado: {{nombreArchivo}}
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-6">
+            <form [formGroup]="cvForm" (ngSubmit)="upCv()">
+              <div class="file has-name is-boxed">
+                <label class="file-label">
+                  <input class="file-input" type="file" formControlName="archivoCv" #imagen2 hidden
+                    accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" (change)="changeCv($event)"
+                    name="cv_docente" />
+                </label>
+                <div *ngIf="!nombreArchivoCv">
+                  <button mat-raised-button color="warn" matTooltip="Selecciona un archivo (.pdf)"
+                    (click)="imagen2.click()">Selecciona tu hoja de vida (.pdf)<mat-icon>upload_file</mat-icon>
+                  </button>
+                </div>
+                <br>
+                <div *ngIf="nombreArchivoCv">
+                  <button mat-raised-button matTooltip="Sube tu Hoja de Vida" color="primary" [ngClass]="{
                       button: true,
                           'is-success': true,
                           'is-large': true,
@@ -155,30 +154,30 @@
                         }" [disabled]="
                           !archivoForm.valid && porcentajeCv > 0 && porcentajeCv < 100
                         "> Carga tu archivo
-                      <mat-icon> upload</mat-icon>
-                    </button>
-                  </div>
-                  <br>
-                  <progress *ngIf="porcentajeCv > 0 && porcentajeCv < 100" class="progress is-large is-success"
-                    value="{{ porcentajeCv }}" max="100">
-                    {{ porcentajeCv }}%
-                  </progress>
-
-                  <div *ngIf="porcentajeCv == 100" class="alert alert-success" role="alert">
-                    Archivo preparado: {{nombreArchivoCv}}
-                  </div>
+                    <mat-icon> upload</mat-icon>
+                  </button>
                 </div>
-              </form>
-            </div>
+                <br>
+                <progress *ngIf="porcentajeCv > 0 && porcentajeCv < 100" class="progress is-large is-success"
+                  value="{{ porcentajeCv }}" max="100">
+                  {{ porcentajeCv }}%
+                </progress>
+
+                <div *ngIf="porcentajeCv == 100" class="alert alert-success" role="alert">
+                  Archivo preparado: {{nombreArchivoCv}}
+                </div>
+              </div>
+            </form>
           </div>
-          <button *ngIf="porcentajeCv == 100" mat-raised-button color="primary" type="submit" [disabled]="formDocente.invalid">
-            Enviar mi solicitud!
-          </button>
         </div>
-      </form>
-    </div>
-  </mat-dialog-content>
-  <mat-dialog-actions align="end">
-    <button mat-button [mat-dialog-close]>Cancelar</button>
-  </mat-dialog-actions>
-</div>
+        <button *ngIf="porcentajeCv == 100" mat-raised-button color="primary" type="submit"
+          [disabled]="formDocente.invalid">
+          Enviar mi solicitud!
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]>Cancelar</button>
+</mat-dialog-actions>
