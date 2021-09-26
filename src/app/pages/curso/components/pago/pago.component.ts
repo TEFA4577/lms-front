@@ -48,6 +48,7 @@ export class PagoComponent implements OnInit {
     private _snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<PagoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
+
   metodo: string;
 
   ngOnInit(): void {

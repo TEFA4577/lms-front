@@ -13,13 +13,9 @@ export class RolGuard implements CanActivate {
     private router: Router,
   ) {
     this.rol = this.usuarioService.obtenerDatosUsuario();
-    console.log(this.rol);
+    //console.log(this.rol);
   }
-  /**
-   * descripcion: La funcion verifica el rol del usuario que esta logeado y da permiso de acceder a la
-   * ruta en caso contrario redirecciona al inicio
-   * @author @AlexAguilarP
-   */
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

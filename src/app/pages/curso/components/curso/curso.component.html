@@ -18,7 +18,7 @@
               -->
         <!-- Este es el video de la clase con una imagen (poster) del curso-->
         <video src="{{ rutaVideo }}" poster="{{ curso.imagen_curso }}" controls muted controlslist="nodownload"
-          autoplay></video>
+          autoplay (contextmenu)="displayContextMenu($event); false"></video>
         <!--Titulo y Descripcion de Curso-->
         <mat-card-header>
           <mat-card-title class="py-3">
@@ -56,7 +56,7 @@
               <div mat-line>
                 <div mat-line>
                   <img class="avatar" [src]="item.usuario_comentario.foto_usuario"
-                    (error)="imagenError()" />
+                  fallimg="avatar" />
                   {{ item.usuario_comentario.nombre_usuario }}
                   <span>{{item.usuario_comentario.created_at}}</span>
                 </div>

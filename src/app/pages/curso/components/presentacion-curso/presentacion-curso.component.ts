@@ -136,7 +136,7 @@ export class PresentacionCursoComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-      this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
+      //this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
     });
   }
 
@@ -149,20 +149,20 @@ export class PresentacionCursoComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-      this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
+      //this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
     });
   }
 
   metodoQr() {
     const dialogRef = this.dialog.open(QrEstaticoComponent, {
-      //width: '140vh',
+      width: '150vh',
       data: {
         id: this.id,
       }
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-      this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
+      //this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
     });
   }
 
@@ -176,7 +176,7 @@ export class PresentacionCursoComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-      this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
+      //this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
     });
   }
   metodoFree() {

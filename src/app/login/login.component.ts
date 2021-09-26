@@ -81,13 +81,11 @@ export class LoginComponent implements OnInit {
       this.respuesta = res;
       this.openSnackBar(this.respuesta.mensaje, 'cerrar');
       console.log(res);
-      if (this.respuesta.mensaje === 'usuario no registrado') {
-        console.log(res);
-      } else if(this.respuesta.usuario.id_rol === 3){
+      if (this.respuesta.usuario.id_rol === 3) {
         this.serUsuario.guardarDatosUsuario(this.respuesta.usuario);
         this.serUsuario.guardarToken(this.respuesta.token);
         this.router.navigateByUrl('curso/cursos-general');
-      }else {
+      } else {
         this.serUsuario.guardarDatosUsuario(this.respuesta.usuario);
         this.serUsuario.guardarToken(this.respuesta.token);
         this.router.navigateByUrl('admin/cursos/mis-cursos');

@@ -52,10 +52,10 @@ export class ComentariosCursoComponent implements OnInit {
     myFormData.append('texto_comentario', this.formRegistrarComentario.get('texto_comentario').value);
     this.serCursos.registarComentario(myFormData).subscribe(res => {
       this.formRegistrarComentario.reset();
-      this.cargarDatos();
       this.respuesta = res;
       this.openSnackBar(this.respuesta.mensaje, 'cerrar');
       this.onNoClick();
+      this.cargarDatos();
     });
   }
 

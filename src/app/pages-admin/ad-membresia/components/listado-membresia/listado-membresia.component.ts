@@ -47,7 +47,7 @@ export class ListadoMembresiaComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       this.listarMembresia();
-      this.router.navigateByUrl('admin/cursos/mis-cursos');
+      //this.router.navigateByUrl('admin/cursos/mis-cursos');
     });
   }
   metodoTarjeta(event) {
@@ -94,7 +94,7 @@ export class ListadoMembresiaComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       this.listarMembresia();
-      this.router.navigateByUrl('admin/cursos/mis-cursos');
+      //this.router.navigateByUrl('admin/cursos/mis-cursos');
     });
   }
   openCompra() {

@@ -56,9 +56,9 @@
             <div class="row">
               <mat-form-field class="col-md-12" appearance="outline">
                 <mat-label>Háblanos acerca de ti (Descripción del instructor):</mat-label>
-                <textarea matInput formControlName="descripcion_docente" #input maxlength="100"
+                <textarea matInput formControlName="descripcion_docente" #input maxlength="180"
                   placeholder="Ex. Soy una persona..." required></textarea>
-                <mat-hint align="end">{{input.value?.length || 0 }} / 50</mat-hint>
+                <mat-hint align="end">{{input.value?.length || 0 }} / 180</mat-hint>
               </mat-form-field>
             </div>
           </div>

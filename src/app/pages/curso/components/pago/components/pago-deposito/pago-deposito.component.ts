@@ -4,6 +4,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import Swal from 'sweetalert2';
 import { FirebaseStorageService } from 'src/app/firebase-storage.service'; //CODIGO PARA FIREBASE STORAGE
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -36,6 +37,7 @@ export class PagoDepositoComponent implements OnInit {
     public cursoAd: UsuarioService,
     private _snackBar: MatSnackBar,
     private usuarioService: UsuarioService,
+    private router: Router,
     private firebaseStorage: FirebaseStorageService, //CODIGO PARA FIREBASE
     public dialogRef: MatDialogRef<PagoDepositoComponent>,
   ) { }
@@ -155,6 +157,7 @@ export class PagoDepositoComponent implements OnInit {
           Swal.fire('Enviado!', '', 'success').finally(() => {
             this.onNoClick();
             this.isActive = false;
+            this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
           });
           this.openSnackBar(this.respuesta.mensaje, 'cerrar');
         }, error => {

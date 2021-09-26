@@ -11,7 +11,7 @@
   </div>
   <div class="container" *ngIf="this.estadoP == 'success' ">
     <div class="card row">
-      <h3 class="card-header text-center title-examen">Evaluación General Del Curso</h3>
+      <h3 class="card-header text-center title-examen">Evaluación general del curso</h3>
       <div class="card-body col-md-12 justify-content-center align-self-center">
         <!--Formulario de registro-->
 
@@ -22,7 +22,7 @@
                 <h3>  💬 Prueba {{ i+1}}</h3>
               </mat-expansion-panel-header>
               <mat-panel-title class="title_prueba">
-                {{item.texto_prueba}}
+                <p>{{item.texto_prueba}}</p>
               </mat-panel-title>
               <mat-radio-group aria-label="Select an option" formControlName="texto_prueba_opcion">
                 <div *ngFor="let opcion of item.prueba_opcion" align="justify">
@@ -33,7 +33,7 @@
               </mat-radio-group>
               <mat-action-row>
                 <div class="d-flex justify-content-between">
-                  <button mat-raised-button color="primary" (click)="submitRegistrar()">Siguiente</button>
+                  <button mat-button color="basic" (click)="submitRegistrar()">Siguiente</button>
                 </div>
               </mat-action-row>
             </mat-expansion-panel>

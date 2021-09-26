@@ -158,7 +158,7 @@ export class RegistroDocenteComponent implements OnInit {
     this.formDocente = this.formBuilder.group({
       telefono_docente: ['', [Validators.required, Validators.maxLength(8)]],
       experiencia_docente: ['', [Validators.required, Validators.maxLength(80)]],
-      descripcion_docente: ['', [Validators.required, Validators.maxLength(500)]],
+      descripcion_docente: ['', [Validators.required, Validators.maxLength(180)]],
       video_instructor: [''],
       cv_docente: [''],
       numero_cuenta: ['', [Validators.required]],

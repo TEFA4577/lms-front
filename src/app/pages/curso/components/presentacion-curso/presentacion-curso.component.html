@@ -32,21 +32,26 @@
               color="accent">
               Adquiere el Curso, GRATIS
             </button>
-            <button mat-raised-button *ngIf="curso.precio != 0" (click)="openCompra();" class="btn-block py-1"
-              color="primary">
-              ¡Compra el curso ahora!, por {{ curso.precio }} Bs.
-            </button>
+              <button mat-raised-button *ngIf="curso.precio != 0" (click)="openCompra();" class="btn-block py-1"
+                color="primary">
+                ¡Compra el curso ahora!, por {{ curso.precio }} Bs.
+              </button>
           </ng-template>
 
           <div *ngFor="let item of misCursos">
             <div *ngIf="curso.id_curso == item.id_curso; else sinComprar">
               <br>
-              <div class="alert alert-warning" role="alert" *ngIf="item.estado_usuario_curso != 'adquirido'; else st">
-                Aun no se aprobo la solicitud de tu Compra
+              <div *ngIf="item.estado_usuario_curso != 'rechazado'; else st">
+                <div class="alert alert-warning" role="alert" *ngIf="item.estado_usuario_curso != 'adquirido'; else st">
+                  Aun no se aprobo la solicitud de tu compra
+                </div>
+                <div class="alert alert-success" role="alert"
+                  *ngIf="item.estado_usuario_curso != 'no confirmado'; else st">
+                  Ya adquiriste este curso
+                </div>
               </div>
-              <div class="alert alert-success" role="alert"
-                *ngIf="item.estado_usuario_curso != 'no confirmado'; else st">
-                Ya adquiriste este curso
+              <div class="alert alert-danger" role="alert" *ngIf="item.estado_usuario_curso == 'rechazado'; else st">
+                Tu compra fue rechazada
               </div>
             </div>
           </div>
@@ -73,8 +78,8 @@
               matTooltip="Tarjeta de Credito/Debito" color="warn">
               <mat-icon>credit_card</mat-icon> Tarjeta de Crédito/Débito
             </button>
-            <button mat-stroked-button class="btn-block" (click)="metodoQr()"
-              matTooltip="Pago por código QR" color="basic">
+            <button mat-stroked-button class="btn-block" (click)="metodoQr()" matTooltip="Pago por código QR"
+              color="basic">
               <mat-icon>qr_code_scanner</mat-icon> Pago mediante QR
             </button>
           </div>

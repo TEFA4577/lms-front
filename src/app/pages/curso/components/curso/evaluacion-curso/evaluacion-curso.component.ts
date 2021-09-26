@@ -62,21 +62,21 @@ export class EvaluacionCursoComponent implements OnInit {
 
   getId(idP: any) {
     this.pId = idP;
-    console.log(this.pId);
+    //console.log(this.pId);
   }
   submitRegistrar(event: Event): void {
     console.log(this.id);
     this.serEvaluacion.evaluarExamen(this.pId, this.id).subscribe(res => {
       this.respuesta = res;
-      console.log(res);
+      //console.log(res);
       this.step++;
     });
   }
 
   mostrarExamen(): void {
-    console.log(this.id);
+    //console.log(this.id);
     this.serEvaluacion.darExamen(this.id).subscribe(res => {
-      console.log(res);
+     // console.log(res);
       this.datos = res;
       this.prueba = this.datos.prueba;
       this.mensaje = this.datos.mensaje;
@@ -111,15 +111,15 @@ export class EvaluacionCursoComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.serEvaluacion.progresoEvaluacion(this.id).subscribe(res => {
-          console.log(this.prueba);
-          console.log(res);
+          //console.log(this.prueba);
+          //console.log(res);
           this.progreso = res;
           Swal.fire({
             title: this.progreso.mensaje,
             icon: this.progreso.estado
           });
         }, error => {
-          console.log(error);
+          //console.log(error);
         });
       }
     });

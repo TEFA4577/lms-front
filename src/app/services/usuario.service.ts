@@ -76,6 +76,10 @@ export class UsuarioService {
     return this.http.post(this.API_BACKEND + 'mone', datos);
   }
 
+  moneAdM(datos: any) {
+    return this.http.post(this.API_BACKEND + 'mone-membresia', datos);
+  }
+
   adquirirMembresia(datos: any) {
     return this.http.post(this.API_BACKEND + 'membresias/adquirir', datos);
   }
@@ -94,7 +98,7 @@ export class UsuarioService {
   actualizarUsuario(datos, id) {
     return this.http.post(this.API_BACKEND + 'usuario/actualizar/' + id, datos);
   }
-  actualizarFotoUsuario(datos, id){
+  actualizarFotoUsuario(datos, id) {
     return this.http.post(this.API_BACKEND + 'foto-usuario/actualizar/' + id, datos);
   }
   // tslint:disable-next-line: typedef

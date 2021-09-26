@@ -51,6 +51,7 @@ export class CursoComponent implements OnInit, OnDestroy {
   estadoCargando = false;
   respuesta: any;
   panelOpenState = false;
+  datosUsuario: any;
 
   constructor(
     public serCursos: CursosService,
@@ -71,10 +72,14 @@ export class CursoComponent implements OnInit, OnDestroy {
     this.progresoBarra();
   }
 
+  imagenError(): void {
+    this.datosUsuario.foto_usuario = 'https://ui-avatars.com/api/?background=random&name=' + this.datosUsuario.nombre_usuario;
+  }
+
   getData() {
     this.serCursos.cursarCurso(this.id).subscribe(data => {
       this.datos = data;
-      console.log(this.datos);
+      //console.log(this.datos);
       this.clasesModulo = this.datos.modulos;
       this.curso = this.datos.curso;
       this.modulos = this.datos.modulos;
@@ -87,9 +92,9 @@ export class CursoComponent implements OnInit, OnDestroy {
   }
 
   cambios(index, valor: { index; valor: boolean; }) {
-    console.log(index, valor);
+    //console.log(index, valor);
     this.progreso[index].estado = !valor;
-    console.log(this.progreso);
+    //console.log(this.progreso);
     this.progresoBarra();
     this.ngOnDestroy();
   }
@@ -97,11 +102,11 @@ export class CursoComponent implements OnInit, OnDestroy {
   progresoBarra() {
     const conteo = this.progreso.filter(res => res.estado === true);
     this.count = (conteo.length * 100) / this.progreso.length;
-    console.log(this.count);
+    //console.log(this.count);
     if (this.count == 100) {
       this.evaluacionButton = true;
       if (this.evaluacion.progreso_evaluacion > 50) {
-        console.log(this.evaluacion.progreso_evaluacion);
+        // console.log(this.evaluacion.progreso_evaluacion);
         this.certificadoBoton = true;
         this.evaluacionButton = false;
       }
@@ -141,9 +146,9 @@ export class CursoComponent implements OnInit, OnDestroy {
   openComentarios(comments) {
     this.serCursos.mostrarComentario(comments).subscribe(res => {
       this.dat = res;
-      console.log(this.dat);
+      //console.log(this.dat);
     }, error => {
-      console.log(error);
+      //onsole.log(error);
     });
   }
 
@@ -153,7 +158,7 @@ export class CursoComponent implements OnInit, OnDestroy {
       width: '100vh'
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      //console.log('The dialog was closed');
       this.openComentarios(idC);
     });
   }
@@ -164,7 +169,7 @@ export class CursoComponent implements OnInit, OnDestroy {
       width: '100vh'
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      //console.log('The dialog was closed');
       //this.cargarDatos();
       this.openComentarios(this.idClase);
     });
@@ -175,10 +180,10 @@ export class CursoComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(EvaluacionCursoComponent, {
       data: idCurso,
       disableClose: true,
-      width: '100vh',
+      width: '500vh',
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      //console.log('The dialog was closed');
       this.getData();
     });
   }
@@ -186,19 +191,19 @@ export class CursoComponent implements OnInit, OnDestroy {
   cargarDatos(): void {
     this.serCursos.comentario().subscribe(res => {
       this.dat = res;
-      console.log(this.dat);
+      //console.log(this.dat);
     }, error => {
-      console.log(error);
+      //console.log(error);
     });
   }
 
   changed() {
     this.count = 0;
     this.modulos.forEach(item => {
-      console.log(item);
+      //console.log(item);
       if (item.checked) {
         this.count = this.count + 1;
-        console.log('changed', this.count);
+        //console.log('changed', this.count);
       }
     });
   }
@@ -209,23 +214,23 @@ export class CursoComponent implements OnInit, OnDestroy {
     this.clasesId = idClase;
     this.getClase(idClase);
     this.openComentarios(idClase);
-    console.log(this.rutaVideo);
+    //console.log(this.rutaVideo);
   }
 
   ngOnDestroy() {
     const progres = {
       'progreso_curso': JSON.stringify(this.progreso),
     };
-    console.log(progres);
+    //console.log(progres);
     this.serCursos.progresoCurso(progres, this.id).subscribe(res => {
-      console.log(res);
+      // console.log(res);
     }, error => console.log(error))
   }
 
   verCertificado() {
-    console.log(this.id);
+    //console.log(this.id);
     this.serCursos.certificado(this.id).subscribe(res => {
-      console.log(res);
+      //console.log(res);
     }, error => console.log(error))
   }
 }
