@@ -23,13 +23,18 @@ export class UsuarioService {
         this.http.get(this.API_BACKEND + 'informacion-usuario/' + id.id_usuario).subscribe(res => {
           const datos: any = res;
           localStorage.setItem('datosUsuario', JSON.stringify(datos.datosUsuario));
-        }, e => console.log(e));
+        }, error => {
+          console.log(error);
+          window.location.reload();
+          localStorage.clear();
+        });
       } else {
         localStorage.removeItem('datosUsuario');
         localStorage.removeItem('token');
       }
     } else {
       estado = false;
+      localStorage.clear();
     }
     return estado;
   }

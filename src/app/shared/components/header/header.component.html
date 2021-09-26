@@ -5,8 +5,8 @@
         <!--Boton y logo de la academia que redirecciona al inicio-->
         <a mat-button routerLink="/inicio">
           <img
-            src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/LMS%2F2_sin_fondo.png?alt=media&token=0f14a34d-4f40-4597-a05e-179ec3375532"
-            alt="" class="img" />
+            src="../../../../assets/img/logo_sin_fondo.png"
+            height="80px" alt="" class="img" />
         </a>
         <!--<app-filter-cursos (search)="handleSearch($event)"></app-filter-cursos>
       <div *ngIf="!deviceXs">
@@ -19,22 +19,19 @@
           </div>
         </div>
       </div>-->
-
-        <!--<a mat-button class="menu1" [matMenuTriggerFor]="menu">Categorías</a>
+        <!--<a mat-button class="menu1" routerLink="/curso/cursos-general">
+          Cursos
+        </a>
+        <a mat-button class="menu1" [matMenuTriggerFor]="menu">Categorías</a>
         <mat-menu #menu="matMenu" xPosition="before">
           <a mat-menu-item *ngFor="let item of etiqueta" routerLink="/curso/cursos-categorias/{{ item.id_etiqueta }}">
             {{ item.nombre_etiqueta }}
           </a>
         </mat-menu>-->
-        <div class="py-4">
-          <a mat-button class="menu1" routerLink="/curso/cursos-general">
-            Cursos
-          </a>
-          <a mat-button class="menu1" routerLink="/instructores/listado-instructores">
-            Instructores
-          </a>
-          <a mat-button class="menu1" routerLink="/info/nosotros">Nosotros</a>
-        </div>
+        <a mat-button class="menu1" routerLink="/instructores/listado-instructores">
+          Instructores
+        </a>
+        <a mat-button class="menu1" routerLink="/info/nosotros">Nosotros</a>
       </div>
     </div>
 
@@ -108,8 +105,7 @@
         </button>
         <span class="example-spacer"></span>
         <a mat-button routerLink="/inicio">
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/LMS%2F2_sin_fondo.png?alt=media&token=0f14a34d-4f40-4597-a05e-179ec3375532" />
+          <img src="../../../../assets/img/logo_sin_fondo.png" class="img2" />
         </a>
         <!--<button mat-button [matMenuTriggerFor]="menu" class="cat">Categorías</button>
         <mat-menu #menu="matMenu">
@@ -177,9 +173,9 @@
           <button mat-menu-item (click)="cerrarSesion()">Cerrar Sesión</button>
         </div>
         <hr>
-        <mat-list-item>
+        <!--<mat-list-item>
           <a mat-button (click)="sidenav.close()" routerLink="/curso/cursos-general">Cursos</a>
-        </mat-list-item>
+        </mat-list-item>-->
         <mat-list-item>
           <a mat-button (click)="sidenav.close()" routerLink="/instructores/listado-instructores">
             Instructores

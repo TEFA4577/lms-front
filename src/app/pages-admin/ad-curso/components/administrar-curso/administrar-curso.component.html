@@ -16,20 +16,44 @@
             <mat-card-subtitle>Estado del curso: {{curso.estado_curso}}</mat-card-subtitle>
             <hr>
             <div class="d-flex flex-row-reverse">
-              <!-- <button mat-icon-button color="warn" type="button" (click)="borrarCurso(curso.id_curso)"
+              <button mat-icon-button color="warn" type="button" (click)="borrarCurso(curso.id_curso)"
                 matTooltip="borrar el curso">
                 <mat-icon>delete</mat-icon>
-              </button> -->
-              <!-- <button mat-icon-button color="primary" type="button" (click)="enviarARevision()"
+              </button>
+              <button mat-icon-button color="primary" type="button" (click)="enviarARevision()"
                 matTooltip="enviar el curso a revision">
                 <mat-icon>send</mat-icon>
-              </button> -->
-              <button mat-icon-button color="primary" type="button" (click)="imagenCurso.click()"
-                matTooltip="cambiar imagen del curso">
-                <mat-icon>add_photo_alternate</mat-icon>
               </button>
-              <input type="file" name="imagenCurso" #imagenCurso hidden accept="image/*"
-                (change)="uploadFile($event.target.files)">
+              <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+                <div class="file has-name is-boxed">
+                  <label class="file-label">
+                    <input class="file-input" type="file" formControlName="archivo" #imagen hidden accept="image/*"
+                      (change)="cambioArchivo($event)" name="imagen_curso" />
+                  </label>
+                  <button mat-icon-button color="warn" type="button" (click)="imagen.click()"
+                    matTooltip="cambiar imagen del curso">
+                    <mat-icon>add_photo_alternate</mat-icon>
+                  </button>
+                  <button *ngIf="nombreArchivo" mat-icon-button matTooltip="Sube el archivo" color="primary"
+                    [ngClass]="{
+                        button: true,
+                            'is-success': true,
+                            'is-large': true,
+                            'is-loading': porcentaje > 0 && porcentaje < 100
+                          }" [disabled]="
+                            !archivoForm.valid && porcentaje > 0 && porcentaje < 100
+                          ">
+                    <mat-icon>upload</mat-icon>
+                  </button>
+                  <mat-progress-bar *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
+                    value="{{ porcentaje }}" max="100">
+                    {{ porcentaje }}%
+                  </mat-progress-bar>
+                  <div *ngIf="porcentaje == 100" class="alert alert-success" role="alert">
+                    Archivo cargado: {{nombreArchivo}}
+                  </div>
+                </div>
+              </form>
             </div>
           </mat-card-header>
           <hr>

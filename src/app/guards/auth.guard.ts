@@ -24,7 +24,9 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     this.estado = this.usuarioService.estadoSession();
+    console.log(this.estado);
     if (!this.estado) {
+      localStorage.removeItem('token');
       Swal.fire({
         icon: 'error',
         title: 'Usuario no Identificado',

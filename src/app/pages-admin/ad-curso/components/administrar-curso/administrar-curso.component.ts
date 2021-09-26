@@ -143,8 +143,7 @@ export class AdministrarCursoComponent implements OnInit {
         referencia.getDownloadURL().subscribe((URL) => {
           this.filedata = URL;
           console.log('FILEDATA:', this.filedata);
-
-        })
+        });
       }
     });
     /*referencia.getDownloadURL().subscribe((URL) => {
@@ -156,12 +155,12 @@ export class AdministrarCursoComponent implements OnInit {
       }
 
     });*/
-    //this.formDocente.get('video_clase').setValue('listo');
+    this.formCurso.get('imagen_curso').setValue('listo');
     //console.log('files:', this.files);
   }
 
 
-  /*uploadFile(event): void {
+  uploadFile(event): void {
     for (let index = 0; index < event.length; index++) {
       this.deleteAttachment(index);
       const element = event[index];
@@ -174,13 +173,16 @@ export class AdministrarCursoComponent implements OnInit {
         this.imagenCambio = reader.result;
       };
     }
+    this.formCurso.get('imagen_curso').setValue('listo');
     console.log(this.files);
+    console.log(this.filedata);
   }
 
   deleteAttachment(index): void {
     this.files.splice(index, 1);
     this.imagenCambio = false;
-  }*/
+    this.formCurso.get('imagen_curso').setValue('');
+  }
 
   actualizarCurso(event): void {
     event.preventDefault();
@@ -215,6 +217,7 @@ export class AdministrarCursoComponent implements OnInit {
           console.log(error);
         });
       }
+      //window.location.reload();
     });
   }
   crearModulo(id: number): void {

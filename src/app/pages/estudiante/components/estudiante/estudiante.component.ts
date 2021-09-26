@@ -34,6 +34,8 @@ export class EstudianteComponent implements OnInit {
   isActive = false;
   estado = false;
   rutaVideo: string;
+  path: String;
+  filePath:String
 
   constructor(
     public srvEstudiante: UsuarioService,
@@ -94,7 +96,6 @@ export class EstudianteComponent implements OnInit {
     });
   }
 
-
   comprobarAuth(): void {
     if (localStorage.getItem('datosUsuario') !== null) {
       this.datosUsuario = localStorage.getItem('datosUsuario');
@@ -145,6 +146,8 @@ export class EstudianteComponent implements OnInit {
     const datos = JSON.parse(localStorage.getItem('datosUsuario'));
     const id = datos.id_usuario;
     myFormData.append('id_usuario', id);
+    myFormData.append('_method', 'put');
+    myFormData.append('foto_usuario', this.filedata);
     myFormData.append('nombre_usuario', this.formUsuario.get('nombre_usuario').value);
     myFormData.append('correo_usuario', this.formUsuario.get('correo_usuario').value);
     Swal.fire({
@@ -163,45 +166,8 @@ export class EstudianteComponent implements OnInit {
           const obj: any = res;
           localStorage.setItem('datosUsuario', JSON.stringify(obj.datosUsuario));
           console.log(res);
-          this.imagenPerfilCambio = null;
           this.respuesta = res;
           this.openSnackBar(this.respuesta.mensaje, 'cerrar');
-          window.location.reload();
-        }, error => {
-          console.log(error);
-        });
-      }
-    });
-  }
-
-  actualizarFotoUsuario(event: Event): void {
-    event.preventDefault();
-    const myFormData = new FormData();
-    const datos = JSON.parse(localStorage.getItem('datosUsuario'));
-    const id = datos.id_usuario;
-    myFormData.append('id_usuario', id);
-    myFormData.append('foto_usuario', this.filedata);
-    //myFormData.append('_method', 'put');
-    Swal.fire({
-      title: 'Datos de Perfil',
-      text: '¿Seguro que desea actualizar su foto de perfil?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si',
-      cancelButtonText: 'No, cancelar!',
-      allowOutsideClick: false
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.srvEstudiante.actualizarFotoUsuario(myFormData, id).subscribe(res => {
-          const obj: any = res;
-          localStorage.setItem('datosUsuario', JSON.stringify(obj.datosUsuario));
-          console.log(res);
-          this.imagenPerfilCambio = null;
-          this.respuesta = res;
-          this.openSnackBar(this.respuesta.mensaje, 'cerrar');
-          window.location.reload();
         }, error => {
           console.log(error);
         });

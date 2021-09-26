@@ -6,6 +6,8 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-recover-password',
@@ -21,7 +23,8 @@ export class RecoverPasswordComponent implements OnInit {
   constructor(
     private serUsuario: UsuarioService,
     private formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router
   ) { }
 
   respuesta: any;
@@ -59,6 +62,7 @@ export class RecoverPasswordComponent implements OnInit {
       console.log(data);
       this.respuesta = data;
       this.openSnackBar(this.respuesta.mensaje, 'cerrar');
+      this.router.navigateByUrl('/login');
     }, error => {
       console.log(error);
     });

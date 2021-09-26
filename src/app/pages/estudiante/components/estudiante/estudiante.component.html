@@ -77,50 +77,38 @@
                 <mat-card-header class="py-2">
                   <mat-card-title>{{ datosUsuario.nombre_usuario }}</mat-card-title>
                 </mat-card-header>
-                <div *ngIf="imagenPerfilCambio">
-                  <div class="alert alert-danger" role="alert">
-                    Haga click en "Guardar cambios" para cambiar su foto de perfil
-                  </div>
-                  <img class="img-usuario" mat-card-image [src]="imagenPerfilCambio">
-                </div>
-                <img class="img-usuario" *ngIf="!imagenPerfilCambio" mat-card-image src="{{datosUsuario.foto_usuario}}"
+                <!--<img class="img-usuario" *ngIf="!imagenPerfilCambio" mat-card-image src="{{datosUsuario.foto_usuario}}"
                   fallimg="avatar">
+                <img class="img-usuario" *ngIf="!imagenPerfilCambio" mat-card-image src="{{datosUsuario.foto_usuario}}"
+                  fallimg="avatar">-->
+                <img class="img-usuario" mat-card-image [src]="datosUsuario.foto_usuario" fallimg="avatar">
                 <hr>
                 <mat-card-actions align="end">
-                  <form (ngSubmit)="actualizarFotoUsuario($event)">
-                    <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
-                      <input class="file-input" type="file" formControlName="archivo" name="foto_usuario" #imagen hidden
-                        accept=".jpg, .jpeg, .png" (change)="cambioArchivo($event)">
-
-                      <div *ngIf="!nombreArchivo">
-                        <button mat-mini-fab matTooltip="Cambia tu foto de perfil" color="warn"
-                          (click)="imagen.click()">
-                          <mat-icon>edit</mat-icon>
-                        </button>
-                      </div>
-                      <br>
-                      <div *ngIf="nombreArchivo">
-                        <button mat-mini-fab matTooltip="Carga tu foto" color="primary" [ngClass]="{
-                        button: true,
-                            'is-success': true,
-                            'is-large': true,
-                            'is-loading': porcentaje > 0 && porcentaje < 100
-                          }" [disabled]="
-                            !archivoForm.valid && porcentaje > 0 && porcentaje < 100
-                          ">
+                  <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+                    <input class="file-input" type="file" formControlName="archivo" name="foto_usuario" #imagen hidden
+                      accept="image/*" (change)="cambioArchivo($event)">
+                      <button mat-icon-button matTooltip="Cambia tu foto de perfil" color="warn"
+                        (click)="imagen.click()">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                        <button *ngIf="nombreArchivo" mat-icon-button matTooltip="Carga tu foto" color="primary" [ngClass]="{
+                          button: true,
+                              'is-success': true,
+                              'is-large': true,
+                              'is-loading': porcentaje > 0 && porcentaje < 100
+                            }" [disabled]="
+                              !archivoForm.valid && porcentaje > 0 && porcentaje < 100
+                            ">
                           <mat-icon>upload</mat-icon>
                         </button>
-                      </div>
-                      <progress class="col-12" *ngIf="porcentaje > 0 && porcentaje < 100"
-                        class="progress is-large is-success" value="{{ porcentaje }}" max="100">
-                        {{ porcentaje }}%
-                      </progress>
+                    <mat-progress-bar color="primary" *ngIf="porcentaje > 0 && porcentaje < 100"
+                      class="progress is-large is-success" value="{{ porcentaje }}" max="100">
+                      {{ porcentaje }}%
+                    </mat-progress-bar>
 
-                      <div *ngIf="porcentaje == 100" class="alert alert-success" role="alert">
-                        Archivo cargado: {{nombreArchivo}}
-                      </div>
-                    </form>
-                    <button *ngIf="porcentaje == 100" mat-button type="submit">Guardar cambios</button>
+                    <div *ngIf="porcentaje == 100" class="alert alert-success" role="alert">
+                      Archivo cargado: {{nombreArchivo}}
+                    </div>
                   </form>
                 </mat-card-actions>
               </mat-card>
