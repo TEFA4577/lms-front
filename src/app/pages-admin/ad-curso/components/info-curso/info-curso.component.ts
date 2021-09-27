@@ -50,9 +50,9 @@ export class InfoCursoComponent implements OnInit {
       this.modulos = this.datos.modulos;
       this.pruebas = this.datos.prueba;
       this.usuarioCurso = this.datos.usuarioCurso;
-      console.log(this.datos);
+      //console.log(this.datos);
     }, error => {
-      console.log(error);
+      //console.log(error);
     });
   }
 
@@ -65,7 +65,7 @@ export class InfoCursoComponent implements OnInit {
       this.datosUsuario = localStorage.getItem('datosUsuario');
       this.datosUsuario = JSON.parse(localStorage.getItem('datosUsuario'));
     }
-    console.log(this.estado);
+    //console.log(this.estado);
   }
 
 
@@ -77,9 +77,9 @@ export class InfoCursoComponent implements OnInit {
   openComentarios(comments) {
     this.cursoSrv.mostrarComentario(comments).subscribe(res => {
       this.dat = res;
-      console.log(this.dat);
+      //console.log(this.dat);
     }, error => {
-      console.log(error);
+      //console.log(error);
     });
   }
 
@@ -97,7 +97,7 @@ export class InfoCursoComponent implements OnInit {
 
   listarMisEstudiantes(): void {
     this.cursoSrv.listarCursoEstudiantes().subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.misEstudiantes = data;
       if (this.misEstudiantes !== 0) {
         this.estado = false;
