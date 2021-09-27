@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AdCursoRoutingModule } from './ad-curso-routing.module';
 
+import { NgFallimgModule } from 'ng-fallimg';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -65,7 +67,7 @@ import { CommentsComponent } from './components/info-curso/components/comments/c
     CrearEvaluacionOpcionComponent,
     EditarEvaluacionOpcionComponent,
     InfoCursoComponent,
-    CommentsComponent
+    CommentsComponent,
   ],
   imports: [
     CommonModule,
@@ -85,6 +87,7 @@ import { CommentsComponent } from './components/info-curso/components/comments/c
     MatTooltipModule,
     MatTableModule,
     MatSortModule,
+    NgFallimgModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatDividerModule,

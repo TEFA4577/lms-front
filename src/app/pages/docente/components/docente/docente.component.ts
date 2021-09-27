@@ -27,8 +27,6 @@ export class DocenteComponent implements OnInit {
   mostrarDocentes() {
     this.serDocente.listarDocente().subscribe(data => {
       this.docente = data;
-      this.nombre_usuario = this.docente;
-      console.log(this.nombre_usuario);
       if (this.docente.length !== 0) {
         this.estado = false;
       }

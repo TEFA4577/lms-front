@@ -31,15 +31,18 @@
                 <div *ngIf="porcentaje == 100" class="alert alert-success" role="alert">
                   Archivo cargado: {{nombreArchivo}}
                 </div>
+                <div class="alert alert-warning" role="alert">
+                  Selecciona la imagen de tu comprobante, después cárgalo para posteriormente enviarlo.
+                </div>
                 <div class="example-button-row">
                   <!--<button type="button" mat-raised-button class="col-10" color="accent" (click)="imagen.click()">
                     Elige una imagen
                   </button>-->
                   <div *ngIf="!nombreArchivo">
-                    <button mat-raised-button color="warn" class="col-10"
+                    <button mat-raised-button color="primary" class="col-10"
                       matTooltip="Selecciona la imagen de tu comprobante" (click)="imagen.click()"> Selecciona tu
                       archivo
-                      <mat-icon>photo_camera</mat-icon>
+                      <mat-icon>add_photo_alternate</mat-icon>
                     </button>
                   </div>
                   <!--<button mat-raised-button class="col-10" color="primary" type="submit" [ngClass]="{
@@ -60,7 +63,7 @@
                           'is-loading': porcentaje > 0 && porcentaje < 100
                         }" [disabled]="
                           !archivoForm.valid && porcentaje > 0 && porcentaje < 100
-                        ">Sube el comprobante
+                        ">Carga el comprobante
                       <mat-icon>upload</mat-icon>
                     </button>
                   </div>
@@ -73,9 +76,8 @@
               </div>
             </form>
             <hr>
-            <button *ngIf="porcentaje == 100" mat-raised-button class="col-10" color="accent" type="submit"
-              [disabled]="archivoForm.invalid">
-              Enviar mi comprobante!
+            <button mat-raised-button class="col-10" color="primary" type="submit" [disabled]="archivoForm.invalid">
+              Enviar mi comprobante! <mat-icon>send</mat-icon>
             </button>
           </form>
           <!--Nuevo formulario para subir el comprobante-->

@@ -4,8 +4,8 @@
   </button>
   <a mat-button routerLink="/">
     <img
-      src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/images%2Flogo_sin_fondo.png?alt=media&token=a473dfd1-7040-4736-8118-4e9004205c9e"
-      height="80px" class="img" alt="" />
+      src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/LMS%2F2_sin_fondo.png?alt=media&token=0f14a34d-4f40-4597-a05e-179ec3375532"
+      alt="" class="img" />
   </a>
   <span class="example-spacer"></span>
   <a mat-button routerLink="/estudiante/mis-cursos-adquiridos">
@@ -34,7 +34,7 @@
   <mat-sidenav #sidenav hasBackdrop="false" class="example-sidenav" fixedInViewport="true"
     [mode]="mobileQuery.matches ? 'over' : 'side'" fixedTopGap="56">
     <br>
-    <h4 align="center" mat-subheader>Menú del Instructor</h4>
+    <h4 align="center" mat-subheader>Panel del Instructor</h4>
     <mat-list *ngFor="let item of menuDocente">
       <mat-accordion>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -84,39 +84,39 @@
       <router-outlet></router-outlet>
     </div>
     <br>
-    <footer class="body">
-      <div class="container-fluid">
-        <div class="row menu-footer text-white">
+    <section id="footer">
+      <img src="../../../../assets/img/wave2.png" class="footer-img" alt="">
+      <div class="container">
+        <div class="row">
           <div class="col-md-4">
-            <div class="py-5">
-              <p class="lead text-center">De emprendedores para emprendedores.
-              </p>
-            </div>
+            <h4>De emprendedores para emprendedores.</h4>
+            <P>Calacoto, Calle 12 y Av. Fuerza Naval</P>
+            <p>Pasaje Inofuentes #502.</p>
           </div>
-        </div>
-        <hr>
-        <div class="container py-5 text-white text-center ">
-          <div class="row">
-            <div class="col-md-4">
-              <a class="nav-link" href="#">Ponte en contacto con nosotros</a>
-              <a class="nav-link" href="#">Politica de privacidad</a>
+          <div class="col-md-4">
+            <div class="icons">
+              <a href="https://www.facebook.com/Academia-Co-Marca-705715713602577/" target="_blank"><i
+                  class="fa fa-facebook"></i></a>
+              <a href="https://www.youtube.com/channel/UCWz0S-q6Uzu_sUS7luevttw/featured" target="_blank"><i
+                  class="fa fa-youtube"></i></a>
+              <a href="https://www.instagram.com/academia_co_marca/?hl=es" target="_blank"><i
+                  class="fa fa-instagram"></i></a>
             </div>
-            <div class="col-md-4">
-              <a class="nav-link" href="#">Ayuda y asistencia</a>
-              <a class="nav-link" href="#">¿Quienes somos?</a>
+            <div>
+              <p>
+                © 2021, By Academia Co Marca</p>
             </div>
-            <div class="col-md-4">
-              <a class="nav-link" href="#">Condiciones</a>
-              <a class="nav-link" href="#">Blog</a>
+            <div>
+              <a href="">
+                <p>Política de Privacidad</p>
+              </a>
+              <a href="">
+                <p>Condiciones</p>
+              </a>
             </div>
-          </div><br><br>
-          <div class="row">
-            <img src="../../../../assets/img/Iconos/facebook.png " width="55"><br>
-            <img src="../../../../assets/img/Iconos/twitter.png " width="55"><br>
-            <img src="../../../../assets/img/Iconos/instagram.jpg " width="55">
           </div>
         </div>
       </div>
-    </footer>
+    </section>
   </mat-sidenav-content>
 </mat-sidenav-container>

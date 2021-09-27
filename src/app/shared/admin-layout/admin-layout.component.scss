@@ -7,8 +7,8 @@ $app-primary: mat-palette($mat-indigo);
   outline: none;
   background-color: #f3f3f3;
 }
-.img{
- height: 60px;
+.img {
+  height: 100px;
 }
 .mat-icon-button,
 .mat-button,
@@ -41,6 +41,11 @@ $app-primary: mat-palette($mat-indigo);
     background-color: darkgrey;
     outline: 1px solid slategrey;
   }
+}
+
+a {
+  color: #5f1782;
+  text-decoration: none;
 }
 
 .example-header {
@@ -81,8 +86,7 @@ $app-primary: mat-palette($mat-indigo);
 
 .mat-list-item:hover {
   width: 100%;
-  background-color: #f1c40f;
-  //mat-color($app-primary, 100) !important;
+  // background-color: #5f1782;
   outline: none;
 }
 
@@ -100,8 +104,8 @@ div.mat-expansion-panel-body {
   margin-top: 5%;
 }
 
-a {
-  color: #2c3e50;
+.mat-button {
+  color: #5f1782;
   text-decoration: none;
 }
 
@@ -134,3 +138,32 @@ a {
   margin-top: 5%;
 }
 
+#footer {
+  background-image: linear-gradient(to right, #a517ba, #5f1782);
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  min-height: 350px;
+
+  a {
+    //color: #2c3e50;
+    color: #f3f3f3;
+  }
+}
+
+.footer-img {
+  width: 100%;
+}
+
+h4 {
+  margin-bottom: 25px;
+  margin-top: 20px;
+  font-weight: 600;
+  align-items: center;
+}
+
+.icons .fa {
+  color: #f44336;
+  margin: 0 20px;
+  cursor: pointer;
+  padding: 18px 0;
+}

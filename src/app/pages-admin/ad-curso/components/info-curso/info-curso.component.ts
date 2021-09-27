@@ -3,6 +3,7 @@ import { CursosService } from '../../../../services/cursos.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CommentsComponent } from './components/comments/comments.component';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-info-curso',
@@ -17,18 +18,21 @@ export class InfoCursoComponent implements OnInit {
   dat: any;
   id: any;
   datos: any;
-  curso:any;
+  curso: any;
   modulos: any;
   pruebas: any;
   mostrarForo = false;
   idClase: any;
   usuarioCurso: any;
+  cantEst: any;
+  datosUsuario: any;
 
   constructor(
     public cursoSrv: CursosService,
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public dialog: MatDialog,
+    private usuarioService: UsuarioService,
   ) {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
   }
@@ -41,15 +45,29 @@ export class InfoCursoComponent implements OnInit {
   cargarDatosCurso(): void {
     this.cursoSrv.presentacionCurso(this.id).subscribe(data => {
       this.datos = data;
+      this.cantEst = this.datos.usuarioCurso.length;
       this.curso = this.datos.curso;
       this.modulos = this.datos.modulos;
       this.pruebas = this.datos.prueba;
       this.usuarioCurso = this.datos.usuarioCurso;
-      console.log(data);
+      console.log(this.datos);
     }, error => {
       console.log(error);
     });
   }
+
+  /*imagenError(): void {
+    this.datosUsuario.foto_usuario = 'https://ui-avatars.com/api/?background=random&name=' + this.datosUsuario.nombre_usuario;
+  }*/
+  comprobarAuth(): void {
+    this.estado = this.usuarioService.estadoSession();
+    if (this.estado) {
+      this.datosUsuario = localStorage.getItem('datosUsuario');
+      this.datosUsuario = JSON.parse(localStorage.getItem('datosUsuario'));
+    }
+    console.log(this.estado);
+  }
+
 
   openForo(idClase: any) {
     this.mostrarForo = !this.mostrarForo;
@@ -73,7 +91,7 @@ export class InfoCursoComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       //this.cargarDatos();
-      this.openComentarios(this.idClase);
+      //this.openComentarios(this.idClase);
     });
   }
 

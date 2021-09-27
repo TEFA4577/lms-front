@@ -129,7 +129,7 @@ export class PresentacionCursoComponent implements OnInit {
 
   metodoDeposito() {
     const dialogRef = this.dialog.open(PagoComponent, {
-      width: '140vh',
+      width: '200vh',
       data: {
         id: this.id,
       }

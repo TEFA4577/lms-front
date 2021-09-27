@@ -3,50 +3,112 @@
     <div class="row">
       <div class="col-md-4">
         <mat-card *ngIf="curso">
-          Nombre del curso
+          <mat-card-title>Nombre del curso</mat-card-title>
+          <div class="d-flex flex-row-reverse">
+            <mat-icon color="primary">format_list_bulleted</mat-icon>
+          </div>
+          <hr>
+          <mat-card-subtitle>{{curso.nombre_curso}}</mat-card-subtitle>
+        </mat-card>
+      </div>
+      <div class="col-md-4">
+        <mat-card>
+          <mat-card-title>Total de estudiantes</mat-card-title>
+          <div class="d-flex flex-row-reverse">
+            <mat-icon color="warn">groups</mat-icon>
+          </div>
+          <hr>
+          <mat-card-subtitle>
+            Cantidad: {{ cantEst}}
+          </mat-card-subtitle>
+        </mat-card>
+      </div>
+      <div class="col-md-4">
+        <mat-card>
+          <mat-card-title>Estudiantes del curso</mat-card-title>
+          <div class="d-flex flex-row-reverse">
+            <mat-icon color="warn">checklist</mat-icon>
+          </div>
+          <hr>
           <mat-card-content>
-            <h2>{{curso.nombre_curso}}</h2>
+            <mat-list role="list" *ngFor="let item of usuarioCurso" [multiple]="false">
+              <mat-list-item role="listitem">
+                <div mat-line>
+                  <div mat-line>
+                    <img class="avatar" [src]="item.usuario.foto_usuario" fallimg="avatar" />
+                    {{item.usuario.nombre_usuario}}
+                  </div>
+                </div>
+              </mat-list-item>
+
+            </mat-list>
           </mat-card-content>
         </mat-card>
       </div>
-      <br>
-      <div class="col-md-4">
-        <mat-card>
-          Total de estudiantes
-          <mat-card-content *ngFor="let item of misEstudiantes">
-            <h2 *ngIf="item.curso_estudiante.length || 0">{{ item.curso_estudiante.length }}</h2>
-          </mat-card-content>
-        </mat-card>
-      </div>
-      <br>
-      <div class="col-md-4">
-        <mat-card>
-          Evaluaciones realizadas
-          <mat-card-content *ngFor="let item of misEstudiantes">
-            <h2 *ngIf="item.curso_evaluacion.length || 0">{{ item.curso_evaluacion.length }}</h2>
-          </mat-card-content>
-        </mat-card>
-      </div>
-      <br>
     </div>
   </ng-container>
-  <br>
   <div class="row">
-    <!---<div class="col-md-4">
-      <mat-card>
-        Lista de tus estudiantes
-        <mat-card-content *ngIf="usuarioCurso">
-          <mat-list role="list" *ngFor="let item of usuarioCurso">
-            <div *ngIf="usuario">
-              <mat-list-item role="listitem" *ngFor="let item of usuario">{{usuario.nombre_usuario}}</mat-list-item>
-            </div>
-          </mat-list>
+    <div class="col-md-8">
+      <mat-card [hidden]="!mostrarForo">
+        <!--<div class="d-flex flex-row-reverse">
+          <button mat-icon-button>
+            <mat-icon color="warn" (click)="openForo();">cancel</mat-icon>
+          </button>
+        </div>
+        <hr>-->
+        <mat-card-header>
+          <mat-card-title>Foro de la Clase</mat-card-title>
+          <div class="d-flex flex-row-reverse">
+            <mat-icon color="warn">forum</mat-icon>
+          </div>
+        </mat-card-header>
+        <hr>
+        <mat-card-content>
+          <mat-selection-list *ngIf="dat" [multiple]="false">
+            <mat-list-item *ngFor=" let item of dat" class="row">
+              <div mat-line>
+                <div mat-line>
+                  <img class="avatar" [src]="item.usuario_comentario.foto_usuario" fallimg="avatar" />
+                  {{ item.usuario_comentario.nombre_usuario }}
+                  <span>{{item.usuario_comentario.created_at}}</span>
+                </div>
+                <!--<div mat-line>{{ item.texto_comentario }}</div>-->
+                <textarea readonly>Comentario: {{ item.texto_comentario }}</textarea>
+                <div mat-line>
+                  <button mat-button color="warn" (click)="openRespuestas(item.id_comentario);">Responder</button>
+                </div>
+              </div>
+              <div mat-line>
+                <div *ngIf="item.comentario_respuesta.length || 0">
+                  <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          Ver {{item.comentario_respuesta.length}} respuestas
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <mat-list-option *ngFor="let res of item.comentario_respuesta; let i = index">
+                        <div mat-line>
+                          <div mat-line>
+                            <div mat-line>
+                              <mat-icon mat-list-icon>account_circle</mat-icon> {{ res.texto_respuesta }}
+                            </div>
+                          </div>
+                        </div>
+                      </mat-list-option>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                </div>
+              </div>
+            </mat-list-item>
+          </mat-selection-list>
         </mat-card-content>
       </mat-card>
-    </div>-->
-    <div class="col-md-8">
+      <br>
       <mat-card>
-        <h2>Cotenido de tu clase</h2>
+        <mat-card-title>Cotenido de tu clase</mat-card-title>
+        <mat-card-subtitle>Módulos y clases</mat-card-subtitle>
+        <hr>
         <mat-card-content>
           <mat-accordion *ngFor="let modulo of modulos">
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -70,7 +132,7 @@
                         </button>-->
                     <button mat-icon-button color="basic" (click)="openForo(clase.id_clase);" type="button"
                       matTooltip="Ve el foro de esta clase">
-                      <mat-icon>visibility</mat-icon>
+                      <mat-icon color="warn">3p</mat-icon>
                     </button>
                   </div>
                 </mat-list-item>
@@ -79,57 +141,6 @@
             <br>
           </mat-accordion>
         </mat-card-content>
-
-        <mat-card [hidden]="!mostrarForo">
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>Foro de la Clase</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <mat-selection-list *ngIf="dat" [multiple]="false">
-              <mat-list-item *ngFor=" let item of dat" class="row">
-                <div mat-line>
-                  <!--<div mat-line>{{ item.usuario_comentario.nombre_usuario }}
-              <span>{{item.usuario_comentario.created_at}}</span>
-            </div>
-            <div mat-line>{{ item.texto_comentario }}</div>-->
-                  <div mat-line>
-                    <img class="avatar" [src]="item.usuario_comentario.foto_usuario" (error)="imagenError()" />
-                    {{ item.usuario_comentario.nombre_usuario }}
-                    <span>{{item.usuario_comentario.created_at}}</span>
-                  </div>
-                  <!--<div mat-line>{{ item.texto_comentario }}</div>-->
-                  <textarea readonly>Comentario: {{ item.texto_comentario }}</textarea>
-                  <div mat-line>
-                    <button mat-button color="warn" (click)="openRespuestas(item.id_comentario);">Responder</button>
-                  </div>
-                </div>
-                <div mat-line>
-                  <div *ngIf="item.comentario_respuesta.length || 0">
-                    <mat-accordion>
-                      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                        <mat-expansion-panel-header>
-                          <mat-panel-title>
-                            Ver {{item.comentario_respuesta.length}} respuestas
-                          </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <mat-list-option *ngFor="let res of item.comentario_respuesta; let i = index">
-                          <div mat-line>
-                            <div mat-line>
-                              <div mat-line>
-                                <mat-icon mat-list-icon>account_circle</mat-icon> {{ res.texto_respuesta }}
-                              </div>
-                            </div>
-                          </div>
-                        </mat-list-option>
-                      </mat-expansion-panel>
-                    </mat-accordion>
-                  </div>
-                </div>
-              </mat-list-item>
-            </mat-selection-list>
-          </mat-card-content>
-        </mat-card>
       </mat-card>
     </div>
   </div>

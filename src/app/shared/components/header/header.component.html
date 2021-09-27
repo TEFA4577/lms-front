@@ -66,12 +66,13 @@
         </a>
         <button mat-button [matMenuTriggerFor]="menu">
           <div fxLayout="row">
-            <div>
-              <img class="avatar" [src]="datosUsuario.foto_usuario" (error)="imagenError()" />
-            </div>
+
             <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!deviceXs">
               <span class="user">{{ datosUsuario.nombre_usuario }}</span>
               <span class="rol">{{ datosUsuario.rol_usuario.nombre_rol }}</span>
+            </div>
+            <div>
+              <img class="avatar" [src]="datosUsuario.foto_usuario" (error)="imagenError()" />
             </div>
           </div>
         </button>
