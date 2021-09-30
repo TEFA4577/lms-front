@@ -13,12 +13,12 @@ h5,
 
 #banner {
   min-height: 100vh;
-  background-image: linear-gradient(to right, #a517ba, #5f1782);
+  background-image: linear-gradient(to right, #17619e, #62b9b8);
   color: #fff;
   padding-top: 5%;
 
   .content {
-    margin-top: 150px;
+    margin-top: 80px;
     position: relative;
 
     h1 {
@@ -76,26 +76,26 @@ h5,
 }
 
 .sliding-background {
-  background: url("../../../../../assets/img/inicio/8.png") no-repeat;
+  background: url("../../../../../assets/img/ins_1.png") no-repeat;
   animation: slide 40s alternate infinite;
 }
 
 @keyframes slide {
   0%,
   100% {
-    background: url("../../../../../assets/img/inicio/9.png") no-repeat;
+    background: url("../../../../../assets/img/ins_2.png") no-repeat;
   }
   20% {
-    background: url("../../../../../assets/img/inicio/10.png") no-repeat;
+    background: url("../../../../../assets/img/ins_3.png") no-repeat;
   }
   40% {
-    background: url("../../../../../assets/img/inicio/8.png") no-repeat;
+    background: url("../../../../../assets/img/ins_4.png") no-repeat;
   }
   60% {
-    background: url("../../../../../assets/img/inicio/9.png") no-repeat;
+    background: url("../../../../../assets/img/ins_5.png") no-repeat;
   }
   80% {
-    background: url("../../../../../assets/img/inicio/10.png") no-repeat;
+    background: url("../../../../../assets/img/ins_1.png") no-repeat;
   }
 }
 
@@ -174,6 +174,67 @@ h5,
   }
 }
 
+@keyframes background {
+  0%,
+  100% {
+    background: linear-gradient(
+        -95.2deg,
+        #ffffff 54%,
+        rgba(196, 196, 196, 0) 8%
+      ),
+      url(../../../../../assets/img/22.png) no-repeat;
+    //background-size: 650px;
+    //background-size: cover;
+    background-color: #000;
+    background-size: contain;
+    background-position: left;
+    object-fit: contain;
+    background-attachment: fixed;
+    //background-repeat: no-repeat, repeat-y;
+  }
+  25% {
+    background: linear-gradient(
+        -95.2deg,
+        #ffffff 54%,
+        rgba(196, 196, 196, 0) 8%
+      ),
+      url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/section-1%2F8-1.jpeg?alt=media&token=b123af52-a70f-4c41-ba94-771652dceb96)
+        no-repeat;
+    background-size: contain;
+    background-position: left;
+    object-fit: contain;
+    background-attachment: fixed;
+  }
+  50% {
+    background: linear-gradient(
+        -95.2deg,
+        #ffffff 54%,
+        rgba(196, 196, 196, 0) 8%
+      ),
+      url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/section-1%2F9-1.jpeg?alt=media&token=06d526c5-ec6c-4421-9e52-309d8fdce2dc)
+        no-repeat;
+    background-size: contain;
+    background-position: left;
+    object-fit: contain;
+    background-attachment: fixed;
+  }
+  75% {
+    background: linear-gradient(
+        -95.2deg,
+        #ffffff 54%,
+        rgba(196, 196, 196, 0) 8%
+      ),
+      url(https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/section-1%2F10-1.jpeg?alt=media&token=ddb263c7-85de-4568-826b-6369fe437b91)
+        no-repeat;
+    /*background-size: cover;
+    background-position: center;
+    background-attachment: fixed;*/
+    background-size: contain;
+    background-position: left;
+    object-fit: contain;
+    background-attachment: fixed;
+  }
+}
 
 .site-section {
   padding: 4.2em 0;
@@ -189,11 +250,11 @@ h5,
 
 .courses-title {
   padding-bottom: 13rem;
-  //background: linear-gradient(to right, #a517ba, #5f1782);
-  background: #fff;
+  background: #043f8f;
+  //background: #673AB7;
 }
 .courses-title .section-title {
-  color: #5f1782;
+  color: #fff;
 }
 
 .courses-entry-wrap {
@@ -250,7 +311,7 @@ h5,
 }
 
 .body {
-  background-color: #fff;
+  background-color: #f3f3f3;
   height: auto;
   overflow-x: hidden;
 }
