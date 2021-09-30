@@ -12,7 +12,7 @@
   <mat-card>
     <mat-card-content>
       <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" class="table-responsive-lg table-hover">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
           <ng-container matColumnDef="estado_docente">
             <th mat-header-cell *matHeaderCellDef>Estado</th>
             <td mat-cell *matCellDef="let element">
@@ -48,7 +48,7 @@
             </td>
           </ng-container>-->
           <ng-container matColumnDef="experiencia_docente">
-            <th mat-header-cell *matHeaderCellDef>Experiencia</th>
+            <th mat-header-cell *matHeaderCellDef>Exp</th>
             <td mat-cell *matCellDef="let element">
               <h3 color="primary">{{ element.experiencia_docente }}</h3>
             </td>
@@ -60,7 +60,7 @@
             </td>
           </ng-container>
           <ng-container matColumnDef="tipo_cuenta">
-            <th mat-header-cell *matHeaderCellDef>Tipo de Cuenta</th>
+            <th mat-header-cell *matHeaderCellDef>Tipo-Cuenta</th>
             <td mat-cell *matCellDef="let element">
               <h3 color="primary">{{ element.tipo_cuenta }}</h3>
             </td>
@@ -81,7 +81,7 @@
             </td>
           </ng-container>
           <ng-container matColumnDef="video_presentacion">
-            <th mat-header-cell *matHeaderCellDef>Presentación</th>
+            <th mat-header-cell *matHeaderCellDef>Video</th>
             <td mat-cell *matCellDef="let element">
                 <a mat-icon-button color="primary" matTooltip="mira tu CV" target=”_blank”
                 href="{{element.video_presentacion}}">

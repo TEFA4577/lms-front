@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./usuarios.component.scss']
 })
 export class UsuariosComponent implements OnInit {
-  displayedColumns: string[]= ['estado_docente', 'cv_docente' ,'nombre_usuario', 'telefono_docente', 'experiencia_docente', 'numero_cuenta', 'nombre_banco' , 'video_presentacion', 'id_docente'];
+  displayedColumns: string[]= ['estado_docente', 'nombre_usuario', 'cv_docente' , 'telefono_docente', 'experiencia_docente', 'numero_cuenta', 'tipo_cuenta', 'nombre_banco' , 'video_presentacion', 'id_docente'];
   dataSource: MatTableDataSource<DocentesUsuarios>;
   solicitudes: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;
