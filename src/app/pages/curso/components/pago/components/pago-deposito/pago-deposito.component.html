@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <mat-card>
         <mat-card-title align="center">
           <h2>Detalle de la Cuenta</h2>
@@ -14,38 +14,35 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <div class="col-md-6" align="center">
+    <div class="col-md-5" align="center">
       <mat-card>
         <!--Card del comprobante de pago-->
         <!--Nuevo formulario para el comprobante de pago--
         <img mat-card-image [src]="imgURL" class="imagenR" *ngIf="imgURL">-->
-        <mat-card-actions>
-          <form (ngSubmit)="submitAdquirirCurso($event)">
-            <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
-              <div class="file has-name is-boxed">
-                <label class="file-label">
-                  <input class="file-input" type="file"
-                    accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" formControlName="archivo"
-                    #imagen hidden (change)="cambioArchivo($event)" name="comprobante" />
-                </label>
-                <div *ngIf="porcentaje == 100" class="alert alert-success" role="alert">
-                  Archivo cargado: {{nombreArchivo}}
-                </div>
-                <div class="alert alert-warning" role="alert">
-                  Selecciona la imagen de tu comprobante, después cárgalo para posteriormente enviarlo.
-                </div>
-                <div class="example-button-row">
-                  <!--<button type="button" mat-raised-button class="col-10" color="accent" (click)="imagen.click()">
+        <form (ngSubmit)="submitAdquirirCurso($event)">
+          <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+            <div class="file has-name is-boxed">
+              <label class="file-label">
+                <input class="file-input" type="file"
+                  accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" formControlName="archivo" #imagen
+                  hidden (change)="cambioArchivo($event)" name="comprobante" />
+              </label>
+              <div *ngIf="porcentaje == 100" class="alert alert-success" role="alert">
+                Archivo cargado: {{nombreArchivo}}
+              </div>
+              <div class="alert alert-warning" role="alert">
+                Selecciona la imagen de tu comprobante, después cárgalo para posteriormente enviarlo.
+              </div>
+              <div class="example-button-row">
+                <!--<button type="button" mat-raised-button class="col-10" color="accent" (click)="imagen.click()">
                     Elige una imagen
                   </button>-->
-                  <div *ngIf="!nombreArchivo">
-                    <button mat-raised-button color="primary" class="col-10"
-                      matTooltip="Selecciona la imagen de tu comprobante" (click)="imagen.click()"> Selecciona tu
-                      archivo
-                      <mat-icon>add_photo_alternate</mat-icon>
-                    </button>
-                  </div>
-                  <!--<button mat-raised-button class="col-10" color="primary" type="submit" [ngClass]="{
+                <button mat-raised-button color="basic" class="col-10"
+                  matTooltip="Selecciona la imagen de tu comprobante" (click)="imagen.click()"> Selecciona tu
+                  archivo
+                  <mat-icon>add_photo_alternate</mat-icon>
+                </button>
+                <!--<button mat-raised-button class="col-10" color="primary" type="submit" [ngClass]="{
                     button: true,
                         'is-success': true,
                         'is-large': true,
@@ -55,8 +52,8 @@
                       ">
                     Sube tu comprobante
                   </button>-->
-                  <div *ngIf="nombreArchivo">
-                    <button mat-raised-button matTooltip="Sube la imagen" class="col-10" color="primary" [ngClass]="{
+                <div *ngIf="nombreArchivo">
+                  <button mat-raised-button matTooltip="Sube la imagen" class="col-10" color="warn" [ngClass]="{
                       button: true,
                           'is-success': true,
                           'is-large': true,
@@ -64,27 +61,25 @@
                         }" [disabled]="
                           !archivoForm.valid && porcentaje > 0 && porcentaje < 100
                         ">Carga el comprobante
-                      <mat-icon>upload</mat-icon>
-                    </button>
-                  </div>
-                  <br>
-                  <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
-                    value="{{ porcentaje }}" max="100">
-                    {{ porcentaje }}%
-                  </progress>
+                    <mat-icon>upload</mat-icon>
+                  </button>
                 </div>
+                <br>
+                <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success"
+                  value="{{ porcentaje }}" max="100">
+                  {{ porcentaje }}%
+                </progress>
               </div>
-            </form>
-            <hr>
-            <button mat-raised-button class="col-10" color="primary" type="submit" [disabled]="archivoForm.invalid">
-              Enviar mi comprobante! <mat-icon>send</mat-icon>
-            </button>
+            </div>
           </form>
-          <!--Nuevo formulario para subir el comprobante-->
-          <!--Formulario para subir la imagen del comprobante-->
-          <!--<form (ngSubmit)="submitAdquirirCurso($event)">-->
-          <!--En este input se sube la imagen del comprobante de deposito-->
-          <!--<input type="file" name="comprobante" #imagen hidden accept="image/*"
+          <hr>
+
+        </form>
+        <!--Nuevo formulario para subir el comprobante-->
+        <!--Formulario para subir la imagen del comprobante-->
+        <!--<form (ngSubmit)="submitAdquirirCurso($event)">-->
+        <!--En este input se sube la imagen del comprobante de deposito-->
+        <!--<input type="file" name="comprobante" #imagen hidden accept="image/*"
               (change)="uploadFile($event.target.files)" />
             <div class="example-button-row">
               <button type="button" mat-raised-button class="col-10" color="accent" (click)="imagen.click()">
@@ -95,10 +90,19 @@
               </button>
             </div>
           </form>-->
-          <!--Final del formulario-->
+        <!--Final del formulario-->
+        <mat-card-actions>
+          <button mat-raised-button class="col-md-12" color="primary" type="submit" [disabled]="archivoForm.invalid">
+            Enviar mi comprobante! <mat-icon>send</mat-icon>
+          </button>
         </mat-card-actions>
         <!--Final del card de comprobante de pago-->
       </mat-card>
+    </div>
+    <div class="col-md-2">
+      <div class="container">
+        <img class="avatar" src="./assets/img/avatars/avatar.png" alt="">
+      </div>
     </div>
   </div>
 </div>

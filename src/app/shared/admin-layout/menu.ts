@@ -1,5 +1,5 @@
 export const MENU_DOCENTE = [
-  /*{
+  {
      grupo: 'Incio',
      contenido: [
        {
@@ -7,7 +7,7 @@ export const MENU_DOCENTE = [
          link: ''
        }
      ]
-   },*/
+   },
   {
     grupo: 'Cursos',
     contenido: [
@@ -25,7 +25,7 @@ export const MENU_DOCENTE = [
       }
     ]
   },
-  /*{
+  {
     grupo: 'Membresias',
     contenido: [
       {
@@ -33,7 +33,7 @@ export const MENU_DOCENTE = [
         link: './membresias/docente-membresia'
       }
     ]
-  }*/
+  }
 ];
 export const MENU_ADMIN = [
   {

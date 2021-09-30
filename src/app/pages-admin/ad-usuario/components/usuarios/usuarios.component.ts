@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./usuarios.component.scss']
 })
 export class UsuariosComponent implements OnInit {
-  displayedColumns: string[]= ['nombre_usuario','telefono_docente', 'descripcion_docente', 'experiencia_docente', 'numero_cuenta', 'nombre_banco' ,'video_presentacion', 'estado_docente', 'id_docente'];
+  displayedColumns: string[]= ['estado_docente', 'cv_docente' ,'nombre_usuario', 'telefono_docente', 'experiencia_docente', 'numero_cuenta', 'nombre_banco' , 'video_presentacion', 'id_docente'];
   dataSource: MatTableDataSource<DocentesUsuarios>;
   solicitudes: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -46,7 +46,7 @@ export class UsuariosComponent implements OnInit {
   habilitar(id): void {
     Swal.fire({
       title: 'solicitud',
-      text: '¿seguro que desea cambiarlo',
+      text: 'Â¿seguro que desea cambiarlo',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

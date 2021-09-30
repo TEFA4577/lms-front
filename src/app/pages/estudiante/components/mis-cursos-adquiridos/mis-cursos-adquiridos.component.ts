@@ -11,11 +11,22 @@ export class MisCursosAdquiridosComponent implements OnInit {
   misCursos: any = [];
   estado = true;
   texto = true;
+  datosUsuario: any;
 
   constructor(public miscursosSrv: UsuarioService) { }
 
   ngOnInit(): void {
     this.cursosAdquiridos();
+    this.comprobarAuth();
+  }
+
+  comprobarAuth(): void {
+    this.estado = this.miscursosSrv.estadoSession();
+    if (this.estado) {
+      this.datosUsuario = localStorage.getItem('datosUsuario');
+      this.datosUsuario = JSON.parse(localStorage.getItem('datosUsuario'));
+    }
+    console.log(this.estado);
   }
 
   cursosAdquiridos(): void {

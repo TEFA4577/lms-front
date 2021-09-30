@@ -92,7 +92,7 @@ export class PresentacionCursoComponent implements OnInit {
   misCursosAd(): void {
     this.miscursosSrv.misCursos().subscribe(data => {
       this.misCursos = data;
-      console.log(this.misCursos);
+      //console.log(this.misCursos);
       if (this.state) {
         this.misCursos.length !== 0
         this.state = false;
@@ -116,7 +116,7 @@ export class PresentacionCursoComponent implements OnInit {
   setCurso() {
     this.serCursos.cursarCurso(this.id).subscribe(data => {
       this.datos = data;
-      console.log(this.datos);
+      //console.log(this.datos);
     });
   }
 
@@ -129,13 +129,13 @@ export class PresentacionCursoComponent implements OnInit {
 
   metodoDeposito() {
     const dialogRef = this.dialog.open(PagoComponent, {
-      width: '200vh',
+      width: '1800px',
       data: {
         id: this.id,
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      //console.log(`Dialog result: ${result}`);
       //this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
     });
   }
@@ -148,7 +148,7 @@ export class PresentacionCursoComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      //console.log(`Dialog result: ${result}`);
       //this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
     });
   }
@@ -161,7 +161,7 @@ export class PresentacionCursoComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      //console.log(`Dialog result: ${result}`);
       //this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
     });
   }
@@ -175,7 +175,7 @@ export class PresentacionCursoComponent implements OnInit {
       ]
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      //console.log(`Dialog result: ${result}`);
       //this.router.navigateByUrl('estudiante/mis-cursos-adquiridos');
     });
   }
@@ -188,7 +188,7 @@ export class PresentacionCursoComponent implements OnInit {
       ]
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      //console.log(`Dialog result: ${result}`);
     });
   }
   // tslint:disable-next-line: typedef

@@ -8,7 +8,7 @@
   <div mat-dialog-content>
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
           <div class="row">
             <mat-form-field class="col-md-12">
               <mat-label>Nombre del curso</mat-label>
@@ -26,7 +26,7 @@
             </mat-form-field>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <!--<div class="contenidoImagen">
             <img [src]="imgURL" class="imagenR" *ngIf="imgURL">
           </div>
@@ -37,8 +37,8 @@
           <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
             <div class="file has-name is-boxed">
               <label class="file-label">
-                <input class="file-input" type="file" formControlName="archivo" #imagen hidden
-                  accept="image/*" (change)="cambioArchivo($event)" name="video_presentacion" />
+                <input class="file-input" type="file" formControlName="archivo" #imagen hidden accept="image/*"
+                  (change)="cambioArchivo($event)" name="video_presentacion" />
                 <span class="file-cta">
                   <span class="file-label"> Elegir un archivo… </span>
                 </span>
@@ -48,7 +48,8 @@
               </label>
               <div class="row">
                 <div class="col-3">
-                  <button mat-fab color="warn" matTooltip="Selecciona una imagen de referencia" (click)="imagen.click()">
+                  <button mat-fab color="warn" matTooltip="Selecciona una imagen de referencia"
+                    (click)="imagen.click()">
                     <mat-icon>photo_camera</mat-icon>
                   </button>
                 </div>
@@ -75,6 +76,11 @@
               </div>
             </div>
           </form>
+        </div>
+        <div class="col-md-3">
+          <div class="container">
+            <img class="avatar" src="./assets/img/avatars/avatar.png" alt="">
+          </div>
         </div>
       </div>
     </div>

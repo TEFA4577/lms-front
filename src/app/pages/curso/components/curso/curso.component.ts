@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ComentariosCursoComponent } from './comentarios-curso/comentarios-curso.component';
 import { RespuestasCursoComponent } from './respuestas-curso/respuestas-curso.component';
 import { EvaluacionCursoComponent } from './evaluacion-curso/evaluacion-curso.component';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-curso',
@@ -55,6 +56,7 @@ export class CursoComponent implements OnInit, OnDestroy {
 
   constructor(
     public serCursos: CursosService,
+    public miscursosSrv: UsuarioService,
     public postEvaluacion: EvaluacionService,
     private formBuilder: FormBuilder,
     public route: ActivatedRoute,
@@ -65,7 +67,7 @@ export class CursoComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
-
+    this.comprobarAuth();
     this.getData();
     this.buildForm();
     this.respuestaForm();
@@ -74,6 +76,15 @@ export class CursoComponent implements OnInit, OnDestroy {
 
   imagenError(): void {
     this.datosUsuario.foto_usuario = 'https://ui-avatars.com/api/?background=random&name=' + this.datosUsuario.nombre_usuario;
+  }
+
+  comprobarAuth(): void {
+    this.estado = this.miscursosSrv.estadoSession();
+    if (this.estado) {
+      this.datosUsuario = localStorage.getItem('datosUsuario');
+      this.datosUsuario = JSON.parse(localStorage.getItem('datosUsuario'));
+    }
+    console.log(this.estado);
   }
 
   getData() {

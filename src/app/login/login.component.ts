@@ -91,6 +91,8 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('admin/cursos/mis-cursos');
       }
     }, e => console.log(e));
+    this.openSnackBar('Contraseña incorrecta', 'cerrar');
+
   }
 
 

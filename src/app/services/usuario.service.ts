@@ -29,8 +29,10 @@ export class UsuarioService {
           localStorage.clear();
         });
       } else {
-        localStorage.removeItem('datosUsuario');
-        localStorage.removeItem('token');
+        window.location.reload();
+        localStorage.clear();
+        //localStorage.removeItem('datosUsuario');
+        //localStorage.removeItem('token');
       }
     } else {
       estado = false;
