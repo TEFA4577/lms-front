@@ -70,7 +70,7 @@ export class CursoComponent implements OnInit, OnDestroy {
     this.comprobarAuth();
     this.getData();
     this.buildForm();
-    this.respuestaForm();
+    //this.respuestaForm();
     this.progresoBarra();
   }
 
@@ -157,7 +157,7 @@ export class CursoComponent implements OnInit, OnDestroy {
   openComentarios(comments) {
     this.serCursos.mostrarComentario(comments).subscribe(res => {
       this.dat = res;
-      //console.log(this.dat);
+      console.log(this.dat);
     }, error => {
       //onsole.log(error);
     });

@@ -53,16 +53,30 @@
             <mat-list-item *ngFor=" let item of dat" class="row">
               <div mat-line>
                 <div mat-line>
-                  <img class="avatar" [src]="item.usuario_comentario.foto_usuario" fallimg="avatar" />
-                  {{ item.usuario_comentario.nombre_usuario }}
-                  <span>{{item.usuario_comentario.created_at}}</span>
+                  <div class="name">
+                    <mat-icon color="warn" *ngIf="curso.id_usuario == item.usuario_comentario.id_usuario">verified
+                    </mat-icon>
+                    <img class="avatar" [src]="item.usuario_comentario.foto_usuario" fallimg="avatar" />
+                    {{item.usuario_comentario.nombre_usuario }}
+                    <div *ngIf="item.usuario_comentario.id_rol == 3">
+                      Estudiante
+                    </div>
+                    <div *ngIf="item.usuario_comentario.id_rol == 2">
+                      Instructor
+                    </div>
+                    <mat-card-subtitle class="name">Fecha de publicación: {{item.created_at |
+                      date:"dd/MM/yy"}}
+                    </mat-card-subtitle>
+                  </div>
                 </div>
                 <!--<div mat-line>{{ item.texto_comentario }}</div>-->
                 <textarea readonly>Comentario: {{ item.texto_comentario }}</textarea>
+                <hr>
                 <div mat-line>
                   <button mat-button color="warn" (click)="openRespuestas(item.id_comentario);">Responder</button>
                 </div>
               </div>
+              <hr>
               <div mat-line>
                 <div *ngIf="item.comentario_respuesta.length || 0">
                   <mat-accordion>
@@ -76,7 +90,13 @@
                         <div mat-line>
                           <div mat-line>
                             <div mat-line>
-                              <mat-icon mat-list-icon>account_circle</mat-icon> {{ res.texto_respuesta }}
+                              <mat-icon mat-list-icon>
+                                person</mat-icon> {{ res.texto_respuesta }}
+                              <mat-icon color="warn" mat-list-icon *ngIf="res.id_usuario == curso.id_usuario">
+                                verified</mat-icon>
+                            </div>
+                            <div mat-line>
+                              {{res.created_at | date:"dd/MM/yy"}}
                             </div>
                           </div>
                         </div>
@@ -84,6 +104,7 @@
                     </mat-expansion-panel>
                   </mat-accordion>
                 </div>
+                <hr>
               </div>
             </mat-list-item>
           </mat-selection-list>

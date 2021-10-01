@@ -3,11 +3,8 @@
     <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title>
-        Datos Personales
+          <mat-icon>remember_me</mat-icon><h2>Datos Personales</h2>
         </mat-panel-title>
-        <mat-panel-description>
-          <mat-icon>paid</mat-icon>
-        </mat-panel-description>
       </mat-expansion-panel-header>
       <form [formGroup]="formPago" (ngSubmit)="submitEditarUsuario($event)" class="example-form">
         <!--Campos del formulario-->
@@ -23,7 +20,7 @@
         </mat-form-field>
         <!--Final del formmulario de registro-->
         <div class="col-12" align="end">
-          <button mat-flat-button color="accent" class="col-12"  type="submit">Edita tus datos</button>
+          <button mat-flat-button color="primary" class="col-12" type="submit">Edita tus datos</button>
         </div>
       </form>
       <mat-action-row>
@@ -34,20 +31,19 @@
     <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Comprobante de pago
+          <mat-icon>shopping_cart</mat-icon><h2>Comprobante de pago</h2>
         </mat-panel-title>
-        <mat-panel-description>
-          <mat-icon>paid</mat-icon>
-        </mat-panel-description>
       </mat-expansion-panel-header>
-
-      <app-pago-deposito [id]="data.id"></app-pago-deposito>
-
+      <app-pago-deposito [id]="data.id">
+      </app-pago-deposito>
+      <br>
       <mat-action-row>
         <button mat-button color="warn" (click)="prevStep()">Anterior</button>
       </mat-action-row>
+      <br>
     </mat-expansion-panel>
   </mat-accordion>
+  <br>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cerrar</button>

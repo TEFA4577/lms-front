@@ -8,7 +8,7 @@ $app-primary: mat-palette($mat-indigo);
   background-color: #f3f3f3;
 }
 .img {
-  height: 100px;
+  height: 70px;
 }
 .mat-icon-button,
 .mat-button,
@@ -41,11 +41,6 @@ $app-primary: mat-palette($mat-indigo);
     background-color: darkgrey;
     outline: 1px solid slategrey;
   }
-}
-
-a {
-  color: #5f1782;
-  text-decoration: none;
 }
 
 .example-header {
@@ -105,7 +100,7 @@ div.mat-expansion-panel-body {
 }
 
 .mat-button {
-  color: #5f1782;
+  color: #17619e;
   text-decoration: none;
 }
 
@@ -139,7 +134,7 @@ div.mat-expansion-panel-body {
 }
 
 #footer {
-  background-image: linear-gradient(to right, #a517ba, #5f1782);
+  background-image: linear-gradient(to right, #17619e, #62b9b8);
   color: #fff;
   font-family: "Montserrat", sans-serif;
   min-height: 350px;

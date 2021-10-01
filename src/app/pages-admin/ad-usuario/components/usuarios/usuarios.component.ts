@@ -28,13 +28,13 @@ export class UsuariosComponent implements OnInit {
     console.log(encodeURIComponent(btoa("12")));
     console.log(atob(decodeURIComponent("MQ%3D%3D")));
   }
-  openDialog(url){
+  /*openDialog(url){
     this.dialog.open(ModalImagenComponent, {
       width: 'auto',
       height: '100',
       data: url
     });
-  }
+  }*/
   listarSolicitudes(): void {
     this.serSoli.listDocente().subscribe(data =>{
       this.solicitudes = data;

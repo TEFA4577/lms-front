@@ -4,7 +4,7 @@
   </button>
   <a mat-button routerLink="/">
     <img
-      src="https://firebasestorage.googleapis.com/v0/b/lms-academia-a582f.appspot.com/o/LMS%2F2_sin_fondo.png?alt=media&token=0f14a34d-4f40-4597-a05e-179ec3375532"
+      src="../../../../assets/img/logo_sin_fondo.png"
       alt="" class="img" />
   </a>
   <span class="example-spacer"></span>
@@ -13,12 +13,12 @@
   </a>
   <button mat-button [matMenuTriggerFor]="beforeMenu" class="rol">
     <div fxLayout="row" fxLayoutAlign="end center">
+      <div>
+        <img class="avatar" [src]="datosUsuario.foto_usuario" (error)="imagenError()" />
+      </div>
       <div fxLayout="column" fxLayoutAlign="center center">
         <h3 class="user">{{ datosUsuario.nombre_usuario }}</h3>
         <mat-card-subtitle class="rol">{{ datosUsuario.rol_usuario.nombre_rol }}</mat-card-subtitle>
-      </div>
-      <div>
-        <img class="avatar" [src]="datosUsuario.foto_usuario" (error)="imagenError()" />
       </div>
     </div>
   </button>

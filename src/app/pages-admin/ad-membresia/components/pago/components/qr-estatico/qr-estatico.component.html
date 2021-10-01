@@ -1,11 +1,48 @@
-<mat-card-title>Escanea el código QR</mat-card-title>
-<mat-card-content>
-  <div class="container">
-    <div class="row content-center">
-      <img src="./assets/img/QR.jpeg" alt="">
-    </div>
+<div class="container">
+  <div class="row">
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Escanea el código QR
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon>paid</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="row">
+          <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <img src="./assets/img/QR.jpeg" alt="">
+        </div>
+        <div class="col-md-4"></div>
+        </div>
+        <mat-action-row>
+          <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Comprobante de pago
+          </mat-panel-title>
+          <mat-panel-description>
+            <mat-icon>paid</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <app-pago-deposito [id]="data.id">
+        </app-pago-deposito>
+
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
-</mat-card-content>
+</div>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cerrar</button>
 </mat-dialog-actions>
+

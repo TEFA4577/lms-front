@@ -40,7 +40,7 @@ export class ListadoMembresiaComponent implements OnInit {
   metodoDeposito(event) {
     console.log(event);
     const dialogRef = this.dialog.open(PagoComponent, {
-      width: '140vh',
+      width: '1800px',
       disableClose: true,
       data: event
     });
@@ -75,7 +75,7 @@ export class ListadoMembresiaComponent implements OnInit {
   }
   metodoQr() {
     const dialogRef = this.dialog.open(QrEstaticoComponent, {
-      //width: '140vh',
+      width: '150vh',
       data: {
         id: this.id,
       }
